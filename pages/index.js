@@ -1,47 +1,37 @@
 import Head from "next/head";
-import { useEffect, useState } from "react";
-import Content from "../components/Main/Content";
+import Changelog from "../components/Main/Changelog";
+import DonateSection from "../components/Main/DonateSection";
+import Footer from "../components/Main/Footer";
+import GetStarted from "../components/Main/GetStarted";
 import Header from "../components/Main/Header";
+import KeyFeatures from "../components/Main/KeyFeatures";
+import LookAt from "../components/Main/LookAt";
 import MainNav from "../components/Main/MainNav";
 
 export default function Home() {
-  const [scrollPepe, setScrollPepe] = useState(0);
-  const [visible, setVisible] = useState(true);
-
-  function logit() {
-    setScrollPepe(window.pageYOffset);
-  }
-
-  useEffect(() => {
-    window.addEventListener(
-      "scroll",
-      setVisible(scrollPepe > 750 ? false : true)
-    );
-    console.log(visible);
-  });
-  useEffect(() => {
-    setScrollPepe(window.pageYOffset);
-    window.addEventListener("scroll", logit);
-
-    return () => {
-      window.removeEventListener("scroll", logit);
-    };
-  }, [scrollPepe, visible]);
-
   return (
     <>
       <Head>
-        <title>FB Gaming Better</title>
-        <meta name="description" content="FBGamingBetter" />
+        <title>dopeChat</title>
+        <meta name="description" content="dopeChat" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
       <MainNav />
       <div className="w-screen h-screen bg-main-purple bg-header-bg bg-blend-multiply z-0 bg-fixed">
-        {visible ? <Header /> : ""}
+        <Header />
       </div>
       <div className="h-full relative">
-        <Content />
+        <div className="w-screen bg-accent-white ">
+          <div className=" w-screen max-w-7xl ml-auto mr-auto">
+            <KeyFeatures />
+            <LookAt />
+            <Changelog />
+            <DonateSection />
+            <GetStarted />
+            <Footer />
+          </div>
+        </div>
       </div>
     </>
   );

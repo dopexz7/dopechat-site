@@ -34,50 +34,9 @@ img {
   --accent-gray: #6b7280;
   --border-white: #e5e7eb;
   --delay: 0s;
-  --header-bg: url(webbg.webp);
+  --header-bg: url(/webbg.webp);
 }
-.xdd {
-  transform: translateX(-55%) translateY(40px) scaleX(0.86) scaleY(1)
-    skewX(0deg) skewY(8deg) translateZ(0px);
-  box-shadow: rgba(24, 24, 27, 0.4) 80px -40px 80px;
-  background: var(--main-black);
-  padding-bottom: 1px;
-  padding-right: 2px;
-  z-index: 3;
-}
-.xdd1 {
-  transform: translateX(-75%) translateY(40px) scaleX(1) scaleY(1) skewX(0deg)
-    skewY(8deg) translateZ(0px);
-  z-index: 3;
-}
-.xdd12 {
-  transform: translateX(-5px) translateY(0px) scaleX(1) scaleY(1) skewX(0deg)
-    skewY(8deg) translateZ(0px);
-  z-index: 2;
-}
-.xdd2 {
-  transform: translateX(-5px) translateY(0px) scaleX(0.86) scaleY(1) skewX(0deg)
-    skewY(8deg) translateZ(0px);
-  box-shadow: rgba(24, 24, 27, 0.4) 80px -40px 80px;
-  background: var(--main-black);
-  padding-bottom: 1px;
-  padding-right: 2px;
-  z-index: 0;
-}
-.xdd3 {
-  transform: translateX(40%) translateY(-20px) scaleX(0.86) scaleY(1)
-    skewX(0deg) skewY(8deg) translateZ(0px);
-  background: var(--main-black);
-  padding-bottom: 1px;
-  padding-right: 2px;
-  box-shadow: none;
-  z-index: 0;
-}
-.xdd13 {
-  transform: translateX(150%) translateY(0px) scaleX(1) scaleY(1) skewX(0deg)
-    skewY(8deg) translateZ(0px);
-  z-index: 1;
-}
+
 body {
   font-family: var(--body-font);
   color: var(--main-white);
@@ -525,4 +484,25 @@ a {
 
 #paypal-button-container img {
   width: 600px !important;
+}
+.lll {
+  background: url(https://i.imgur.com/e4cVsgT.png) no-repeat center;
+  background-size: cover;
+  height: 600px;
+  width: 500px;
+
+  box-shadow: rgba(24, 24, 27, 0.4) 60px -30px 90px;
+}
+.lll2 {
+  background: url(https://i.imgur.com/xEc2M4J.png) no-repeat center;
+  background-size: cover;
+  height: 570px;
+  width: 320px;
+}
+
+.lll3 {
+  background: url(https://i.imgur.com/dMSwaCj.png) no-repeat center;
+  background-size: cover;
+  height: 550px;
+  width: 320px;
 }

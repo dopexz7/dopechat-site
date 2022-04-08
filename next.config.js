@@ -1,9 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  assetPrefix: "./",
+  //assetPrefix: "./",
   images: {
-    domains: ["i.imgur.com", "imgur.com"],
+    domains: ["i.imgur.com", "imgur.com", "streamerfacts.com"],
   },
 };
 

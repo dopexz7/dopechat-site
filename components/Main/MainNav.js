@@ -3,114 +3,29 @@ import { Dialog, Transition, Menu } from "@headlessui/react";
 import Link from "next/link";
 import * as Fa from "react-icons/fa";
 import * as Bs from "react-icons/bs";
-import * as Io from "react-icons/io5";
 import * as Ai from "react-icons/ai";
 import * as Md from "react-icons/md";
-import { useRouter } from "next/router";
-import { useEffect, useState, Fragment } from "react";
+import { Fragment } from "react";
 import { NavData } from "./NavData";
+import MobileNav from "./MobileNav";
+
 const Linkx = Scroll.Link;
+
 export default function MainNav() {
-  const extensionVersion = "0.3.5.3";
-  const router = useRouter();
-  const { pathname } = router;
-  const splitLocation = pathname.split("/");
-  const [scrollY, setScrollY] = useState(0);
-  let [isOpen, setIsOpen] = useState(false);
-
   const scroll = Scroll.animateScroll;
-
-  function closeModal() {
-    setIsOpen(false);
-  }
-
-  function openModal() {
-    setIsOpen(true);
-  }
-
-  function logit() {
-    setScrollY(window.pageYOffset);
-  }
-
-  useEffect(() => {
-    setScrollY(window.pageYOffset);
-    window.addEventListener("scroll", logit);
-
-    return () => {
-      window.removeEventListener("scroll", logit);
-    };
-  }, []);
 
   return (
     <>
-      <Transition appear show={isOpen} as={Fragment}>
-        <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
-          <Dialog.Overlay
-            as="div"
-            className="fixed inset-0 z-50 overflow-hidden bg-black bg-opacity-60 duration-300"
-          >
-            <div className="h-screen w-4/6 text-center">
-              <Transition.Child
-                as={Fragment}
-                enter="duration-300"
-                enterFrom="-translate-x-full"
-                enterTo="translate-x-0"
-                leave="duration-300"
-                leaveFrom="translate-x-0"
-                leaveTo="-translate-x-full"
-              >
-                <div className="w-full h-full p-6 overflow-hidden text-left align-middle transition-all transform bg-darker-purple">
-                  <div className="mt-4">
-                    <div className="flex flex-col text-lg space-y-3">
-                      {NavData.map((item, index) => {
-                        return (
-                          <Linkx
-                            key={index}
-                            className={
-                              splitLocation[1] === item.path
-                                ? "hover:text-main-white text-white duration-500 cursor-pointer"
-                                : "hover:text-white text-main-white duration-500 cursor-pointer"
-                            }
-                            to={item.section}
-                            spy={true}
-                            onClick={() => {
-                              closeModal();
-                            }}
-                            smooth={true}
-                            offset={-70}
-                            duration={500}
-                          >
-                            {item.title}
-                          </Linkx>
-                        );
-                      })}
-                    </div>
-                  </div>
-                </div>
-              </Transition.Child>
-            </div>
-          </Dialog.Overlay>
-        </Dialog>
-      </Transition>
+      <MobileNav />
       <div
-        className={`duration-300 z-50 w-screen fixed bottom-auto bg-darker-purple bg-opacity-90 lg:bg-transparent ${
-          typeof window !== "undefined" && scrollY >= 80
-            ? "lg:bg-darker-purple bg-opacity-90 backdrop-blur-sm p-2"
-            : ""
-        }`}
+        className={`duration-300 z-50 w-screen fixed top-0 bg-darker-purple bg-opacity-10 backdrop-blur-sm`}
       >
         <div
-          className={`winScl:scale-[0.85] relative max-w-7xl w-screen mr-auto ml-auto flex flex-row justify-center items-center p-4 lg:p-8 duration-300 space-x-6 text-main-white text-sm font-semibold ${
-            typeof window !== "undefined" && scrollY >= 80 ? "py-4 lg:py-4" : ""
-          }`}
+          className={`winScl:scale-[0.85] relative max-w-7xl w-screen mr-auto ml-auto flex flex-row justify-center items-center p-4 lg:p-6 duration-300 space-x-6 text-main-white text-sm font-semibold`}
         >
           <Link href="/" passHref>
             <div
-              className={` ${
-                typeof window !== "undefined" && scrollY >= 80
-                  ? "text-lg"
-                  : "text-sm lg:text-xl"
-              } duration-300 font-normal cursor-pointer whitespace-nowrap text-clip w-max mr-auto text-white`}
+              className={` text-xl duration-300 font-normal cursor-pointer whitespace-nowrap text-clip w-max mr-auto text-white`}
             >
               dopeChat
             </div>
