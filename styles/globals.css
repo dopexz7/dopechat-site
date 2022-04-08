@@ -1,16 +1,528 @@
-html,
+@import url("https://use.typekit.net/qbv0jim.css");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .box-shadow-purple {
+    box-shadow: 0 0 6px #4f46e5;
+  }
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap");
+* {
+  outline: none;
+  box-sizing: border-box;
+}
+html {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+img {
+  max-width: 100%;
+}
+
+:root {
+  --body-font: poppins light;
+  --main-purple: #4f46e5;
+  --accent-purple: #5b57e9;
+  --darker-purple: #1f1189;
+  --accent-white: #f9fafb;
+  --main-black: #111827;
+  --main-white: #c7d2fe;
+  --accent-gray: #6b7280;
+  --border-white: #e5e7eb;
+  --delay: 0s;
+  --header-bg: url(https://us.123rf.com/450wm/aerial3/aerial31803/aerial3180300007/98115531-ultra-violet-color-vector-background-with-vintage-halftone-texture-overlay-square-shape-trendy-purpl.jpg);
+}
+.xdd {
+  transform: translateX(-55%) translateY(40px) scaleX(0.86) scaleY(1)
+    skewX(0deg) skewY(8deg) translateZ(0px);
+  box-shadow: rgba(24, 24, 27, 0.4) 80px -40px 80px;
+  background: var(--main-black);
+  padding-bottom: 1px;
+  padding-right: 2px;
+  z-index: 3;
+}
+.xdd1 {
+  transform: translateX(-75%) translateY(40px) scaleX(1) scaleY(1) skewX(0deg)
+    skewY(8deg) translateZ(0px);
+  z-index: 3;
+}
+.xdd12 {
+  transform: translateX(-5px) translateY(0px) scaleX(1) scaleY(1) skewX(0deg)
+    skewY(8deg) translateZ(0px);
+  z-index: 2;
+}
+.xdd2 {
+  transform: translateX(-5px) translateY(0px) scaleX(0.86) scaleY(1) skewX(0deg)
+    skewY(8deg) translateZ(0px);
+  box-shadow: rgba(24, 24, 27, 0.4) 80px -40px 80px;
+  background: var(--main-black);
+  padding-bottom: 1px;
+  padding-right: 2px;
+  z-index: 0;
+}
+.xdd3 {
+  transform: translateX(40%) translateY(-20px) scaleX(0.86) scaleY(1)
+    skewX(0deg) skewY(8deg) translateZ(0px);
+  background: var(--main-black);
+  padding-bottom: 1px;
+  padding-right: 2px;
+  box-shadow: none;
+  z-index: 0;
+}
+.xdd13 {
+  transform: translateX(150%) translateY(0px) scaleX(1) scaleY(1) skewX(0deg)
+    skewY(8deg) translateZ(0px);
+  z-index: 1;
+}
 body {
+  font-family: var(--body-font);
+  color: var(--main-white);
+  display: flex;
+  background: var(--main-white);
+  justify-content: center;
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  width: 100%;
+  height: 100vh;
+  overflow-y: overlay;
+  overflow-x: hidden;
 }
 
 a {
-  color: inherit;
   text-decoration: none;
 }
 
-* {
+.effect-3 {
+  display: inline-block;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  overflow: hidden;
+}
+.effect-3:before {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--main-white);
+  transform: translateX(-100%);
+}
+.effect-3:hover:before {
+  transform: translateX(0);
+}
+
+.box-shadow-purple {
+  box-shadow: var(--main-purple) 0px 3px 12px 0px;
+}
+.text-shadow-purple {
+  text-shadow: 0 0 10px var(--main-purple);
+}
+
+@keyframes rl {
+  0% {
+    transform: translateX(100px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes rll {
+  0% {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes lr {
+  0% {
+    transform: translateX(-50px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes bt {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes bt1 {
+  0% {
+    transform: translateY(100px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes fd {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fade1 {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.anim-rl {
+  animation: rl 0.8s var(--delay) both;
+}
+.anim-rll {
+  animation: rll 0.8s var(--delay) both;
+}
+.anim-lr {
+  animation: lr 0.8s var(--delay) both;
+}
+.anim-fd {
+  animation: fd 0.6s var(--delay) both;
+}
+.anim-fade {
+  animation: fade 0.6s var(--delay) both;
+}
+.anim-fade1 {
+  animation: fade1 0.6s var(--delay) both;
+}
+
+.anim-bt {
+  animation: bt 0.8s var(--delay) both;
+}
+.anim-bt1 {
+  animation: bt1 0.8s var(--delay) both;
+}
+.box-xl {
+  box-shadow: rgb(145 158 171 / 40%) -40px 40px 80px 0px;
+}
+
+::-webkit-scrollbar-track {
+  border-radius: 12px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 12px;
+}
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--main-white);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--darker-purple);
+  transition: 0.3s;
+}
+.anim {
+  animation: bottom 0.8s 0.1s both;
+}
+
+@keyframes bottom {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+#nprogress {
+  pointer-events: none;
+}
+
+#nprogress .bar {
+  background: var(--accent-white);
+
+  position: fixed;
+  z-index: 1031;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 2px;
+}
+
+/* Fancy blur effect */
+#nprogress .peg {
+  display: block;
+  position: absolute;
+  right: 0px;
+  width: 100px;
+  height: 100%;
+  box-shadow: 0 0 10px var(--main-purple), 0 0 5px var(--main-purple);
+  opacity: 1;
+
+  -webkit-transform: rotate(3deg) translate(0px, -4px);
+  -ms-transform: rotate(3deg) translate(0px, -4px);
+  transform: rotate(3deg) translate(0px, -4px);
+}
+
+/* Remove these to get rid of the spinner */
+#nprogress .spinner {
+  display: block;
+  position: fixed;
+  z-index: 1031;
+  top: 15px;
+  right: 15px;
+}
+
+#nprogress .spinner-icon {
+  width: 18px;
+  height: 18px;
   box-sizing: border-box;
+
+  border: solid 2px transparent;
+  border-top-color: var(--accent-white);
+  border-left-color: var(--accent-white);
+  border-radius: 50%;
+
+  -webkit-animation: nprogress-spinner 400ms linear infinite;
+  animation: nprogress-spinner 400ms linear infinite;
+}
+
+.nprogress-custom-parent {
+  overflow: hidden;
+  position: relative;
+}
+
+.nprogress-custom-parent #nprogress .spinner,
+.nprogress-custom-parent #nprogress .bar {
+  position: absolute;
+}
+
+@-webkit-keyframes nprogress-spinner {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+@keyframes nprogress-spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.txt-rotate > .wrap {
+  border-right: 0.02em solid #fff;
+}
+.xgrd {
+  grid-template-columns: repeat(6, minmax(auto, 1fr));
+}
+
+.fadeout {
+  -webkit-animation: fadeout 0.3s linear forwards;
+  animation: fadeout 0.3s linear forwards;
+}
+.item {
+  -webkit-animation: fadein 0.3s linear forwards;
+  animation: fadein 0.3s linear forwards;
+}
+
+@-webkit-keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeout {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeout {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+.file-upload {
+  display: block;
+  text-align: center;
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 12px;
+}
+.file-upload .file-select {
+  display: block;
+  border: 2px solid #dce4ec;
+  color: #34495e;
+  cursor: pointer;
+  height: 40px;
+  line-height: 40px;
+  text-align: left;
+  background: #ffffff;
+  overflow: hidden;
+  position: relative;
+}
+.file-upload .file-select .file-select-button {
+  background: #dce4ec;
+  padding: 0 10px;
+  display: inline-block;
+  height: 40px;
+  line-height: 40px;
+}
+.file-upload .file-select .file-select-name {
+  line-height: 40px;
+  display: inline-block;
+  padding: 0 10px;
+}
+.file-upload .file-select:hover {
+  border-color: #34495e;
+  transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+}
+.file-upload .file-select:hover .file-select-button {
+  background: #34495e;
+  color: #ffffff;
+  transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+}
+.file-upload.active .file-select {
+  border-color: #3fa46a;
+  transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+}
+.file-upload.active .file-select .file-select-button {
+  background: #3fa46a;
+  color: #ffffff;
+  transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+}
+.file-upload .file-select input[type="file"] {
+  z-index: 100;
+  cursor: pointer;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+.file-upload .file-select.file-select-disabled {
+  opacity: 0.65;
+}
+.file-upload .file-select.file-select-disabled:hover {
+  cursor: default;
+  display: block;
+  border: 2px solid #dce4ec;
+  color: #34495e;
+  cursor: pointer;
+  height: 40px;
+  line-height: 40px;
+  margin-top: 5px;
+  text-align: left;
+  background: #ffffff;
+  overflow: hidden;
+  position: relative;
+}
+.file-upload .file-select.file-select-disabled:hover .file-select-button {
+  background: #dce4ec;
+  color: #666666;
+  padding: 0 10px;
+  display: inline-block;
+  height: 40px;
+  line-height: 40px;
+}
+.file-upload .file-select.file-select-disabled:hover .file-select-name {
+  line-height: 40px;
+  display: inline-block;
+  padding: 0 10px;
+}
+
+.file-types {
+  overflow: visible !important;
+  font-size: 11px !important;
+}
+.h-full.w-full.mt-3.filedrop span {
+  color: var(--main-white) !important;
+  font-size: 17px;
+  text-decoration: none;
+}
+.h-full.w-full.mt-3.filedrop svg {
+  color: #fff !important;
+  filter: invert(62%) sepia(93%) saturate(1352%) hue-rotate(87deg)
+    brightness(19%) contrast(19%);
+}
+
+.paypal-button {
+  position: relative;
+  width: 100%;
+}
+
+.fake-paypal-button {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  width: max-content;
+  background-color: green;
+  color: white;
+  pointer-events: none;
+}
+
+#paypal-button-container img {
+  width: 600px !important;
 }
