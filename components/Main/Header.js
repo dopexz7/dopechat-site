@@ -56,7 +56,7 @@ export default function Header() {
             >
               {download
                 ? download
-                : `Download for ${browsName ? browsName : "your browser"}`}
+                : `Download for ${browsName ? browsName : "..."}`}
 
               {browsName === "Chrome" ? (
                 <Fa.FaChrome className="mt-1 ml-2" />
