@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import DashboardLeftSignedIn from "./Leftside/DashboardLeftSignedIn";
 import { supabase } from "../../../lib/supabaseClient";
 import { CircularProgress, Fade, LinearProgress } from "@mui/material";
-
+import * as Fa from "react-icons/fa";
 export default function DashboardLeftSection() {
   const [session, setSession] = useState(null);
   const [whyTwitch, setWhyTwitch] = useState(false);
@@ -49,8 +49,9 @@ export default function DashboardLeftSection() {
             <div className="p-6 w-full space-y-3 flex flex-col">
               <div
                 onClick={() => signInWithTwitch()}
-                className="group border-2 hover:bg-darker-purple font-normal hover:border-darker-purple border-main-purple  bg-main-purple duration-300 cursor-pointer text-white flex justify-center items-center p-3 rounded-xl w-full"
+                className=" group border-2 hover:bg-darker-purple font-normal hover:border-darker-purple border-main-purple  bg-main-purple duration-300 cursor-pointer text-white flex justify-center items-center p-3 rounded-xl w-full"
               >
+                <Fa.FaTwitch className="mr-3" />
                 Sign in with Twitch
               </div>
               <div
