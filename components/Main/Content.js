@@ -10,6 +10,7 @@ import { PayPalButton } from "react-paypal-button-v2";
 import { supabase } from "../../lib/supabaseClient";
 import { Modal } from "@mantine/core";
 import Script from "next/script";
+import Image from "next/image";
 
 const DonationAmount = ({ amount, setAmount, value }) => {
   return (
@@ -96,11 +97,13 @@ export default function Content() {
                     >
                       {EmoteData.map((item, index) => {
                         return (
-                          <img
+                          <Image
                             key={index}
                             src={item.path}
                             alt={item.title}
-                            className="anim-bt inline h-10 w-10 p-0.5"
+                            width={40}
+                            height={40}
+                            className="anim-bt inline p-0.5"
                           />
                         );
                       })}
@@ -188,10 +191,11 @@ export default function Content() {
             <div className="flex items-center relative justify-center">
               <Fade right>
                 <div className="flex justify-center items-center absolute w-[500px]">
-                  <img
+                  <Image
                     src="https://i.imgur.com/e4cVsgT.png"
                     alt=""
-                    className="xdd3 w-[500px] rounded-xl"
+                    width={500}
+                    className="xdd3 rounded-xl"
                   />
                   <span className="xdd13 right-0 absolute rounded-2xl bg-darker-purple p-3 overflow-hidden text-white opacity-90">
                     Theatre mode
@@ -200,8 +204,9 @@ export default function Content() {
               </Fade>
 
               <div className="flex justify-center items-center absolute">
-                <img
+                <Image
                   src="https://i.imgur.com/xEc2M4J.png"
+                  width={320}
                   className="xdd2 max-w-xs rounded-xl "
                   alt=""
                 />
@@ -212,8 +217,9 @@ export default function Content() {
 
               <Fade left>
                 <div className="flex justify-center items-center relative">
-                  <img
+                  <Image
                     src="https://i.imgur.com/dMSwaCj.png"
+                    width={320}
                     className="xdd max-w-xs rounded-xl"
                     alt=""
                     layout="fill"
@@ -486,8 +492,9 @@ export default function Content() {
             id="section6"
           >
             <div className="flex flex-col mb-6 text-xs space-y-1 justify-center items-center">
-              <img
-                className="h-10 w-10"
+              <Image
+                width={40}
+                height={40}
                 src="https://i.imgur.com/a1AhdsO.png"
                 alt="dopeChat"
               />

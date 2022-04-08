@@ -34,7 +34,7 @@ img {
   --accent-gray: #6b7280;
   --border-white: #e5e7eb;
   --delay: 0s;
-  --header-bg: url(https://us.123rf.com/450wm/aerial3/aerial31803/aerial3180300007/98115531-ultra-violet-color-vector-background-with-vintage-halftone-texture-overlay-square-shape-trendy-purpl.jpg);
+  --header-bg: url(webbg.webp);
 }
 .xdd {
   transform: translateX(-55%) translateY(40px) scaleX(0.86) scaleY(1)
