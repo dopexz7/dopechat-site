@@ -2,23 +2,6 @@ import React, { useEffect, useState, useRef } from "react";
 import DashboardLeftSignedIn from "./Leftside/DashboardLeftSignedIn";
 import { supabase } from "../../../lib/supabaseClient";
 import { CircularProgress, Fade, LinearProgress } from "@mui/material";
-import { PayPalButton } from "react-paypal-button-v2";
-import { Modal } from "@mantine/core";
-
-const DonationAmount = ({ amount, setAmount, value }) => {
-  return (
-    <span
-      className={`px-4 py-2 text-md cursor-pointer hover:border-b-2 ${
-        amount === value
-          ? "border-b-2 border-darker-purple text-darker-purple font-bold"
-          : ""
-      } `}
-      onClick={() => setAmount(value)}
-    >
-      {value}$
-    </span>
-  );
-};
 
 export default function DashboardLeftSection() {
   const [session, setSession] = useState(null);
