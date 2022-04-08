@@ -16,7 +16,7 @@ img {
 }
 
 :root {
-  --body-font: "Poppins";
+  --body-font: "Poppins", sans-serif;
   --main-purple: #4f46e5;
   --accent-purple: #5b57e9;
   --darker-purple: #1f1189;

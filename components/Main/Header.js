@@ -39,14 +39,11 @@ export default function Header() {
         <div className="h-screen flex flex-row mr-auto">
           <div className="winScl:scale-75 winScl:mt-20 p-6 lg:p-8 mt-20 lg:mt-44 w-full lg:w-[50vw] fixed top-0 flex-col flex lg:flex-col">
             <div className="flex flex-col">
-              <h1 className="hidden lg:flex text-5xl font-light max-w-xl anim-rl">
+              <h1 className="hidden lg:flex text-5xl font-light max-w-xl ">
                 The ultimate FB Gaming livestream experience
               </h1>
 
-              <p
-                className="text-base lg:text-lg lg:mt-8 xlx:mt-3 tracking-wider font-light anim-rl m-0 text-center lg:text-left"
-                style={{ "--delay": "0s" }}
-              >
+              <p className="text-base lg:text-lg lg:mt-8 xlx:mt-3 tracking-wider font-light m-0 text-center lg:text-left">
                 The all-in-one extension is designed to add custom emotes,
                 customize chat appearance and add more quality of life
                 improvements, tweaks. All within the easy-to-use settings page.
@@ -55,10 +52,11 @@ export default function Header() {
 
             <button
               onClick={() => handleButton()}
-              className="anim-rl box-shadow-purple hidden lg:flex lg:flex-row cursor-pointer duration-300 bg-accent-purple rounded-lg px-4 py-2 w-max text-main-white hover:bg-white hover:text-darker-purple lg:mt-9 xlx:mt-3"
-              style={{ "--delay": ".15s" }}
+              className="box-shadow-purple hidden lg:flex lg:flex-row cursor-pointer duration-300 bg-accent-purple rounded-lg px-4 py-2 w-max text-main-white hover:bg-white hover:text-darker-purple lg:mt-9 xlx:mt-3"
             >
-              {download ? download : `Download for ${browsName}`}
+              {download
+                ? download
+                : `Download for ${browsName ? browsName : "your browser"}`}
 
               {browsName === "Chrome" ? (
                 <Fa.FaChrome className="mt-1 ml-2" />
@@ -100,10 +98,7 @@ export default function Header() {
             ) : (
               ""
             )}
-            <div
-              className="lg:mt-9 xlx:mt-3 text-white flex flex-col anim-rl h-max lg:text-left  p-3 lg:border-0 lg:p-0"
-              style={{ "--delay": ".15s" }}
-            >
+            <div className="lg:mt-9 xlx:mt-3 text-white flex flex-col h-max lg:text-left  p-3 lg:border-0 lg:p-0">
               Available for
               <div className="flex flex-row lg:flex-row mt-3 space-x-2 lg:self-auto">
                 <div className="bg-accent-purple p-2 rounded-xl">
