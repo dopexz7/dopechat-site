@@ -1,16 +1,8 @@
-@import url("https://use.typekit.net/qbv0jim.css");
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
 
-@layer utilities {
-  .box-shadow-purple {
-    box-shadow: 0 0 6px #4f46e5;
-  }
-}
-
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap");
 * {
   outline: none;
   box-sizing: border-box;
@@ -24,7 +16,7 @@ img {
 }
 
 :root {
-  --body-font: poppins light;
+  --body-font: "Poppins";
   --main-purple: #4f46e5;
   --accent-purple: #5b57e9;
   --darker-purple: #1f1189;
@@ -54,7 +46,9 @@ body {
 a {
   text-decoration: none;
 }
-
+.box-shadow-purple {
+  box-shadow: 0 0 6px #4f46e5;
+}
 .effect-3 {
   display: inline-block;
   padding-top: 10px;
