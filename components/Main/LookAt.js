@@ -10,24 +10,24 @@ export default function LookAt() {
     >
       <div className="w-full p-10 lg:p-0 lg:w-2/5 flex flex-col lg:flex-col text-white lg:mr-16 lg:ml-16">
         <Fade left>
-          <h3 className="text-xs lg:text-sm font-bold text-accent-gray">
+          <h3 className="text-xs lg:text-sm font-normal text-accent-gray">
             features
           </h3>
         </Fade>
         <Fade left>
-          <h1 className="text-2xl lg:text-6xl font-bold lg:font-normal text-main-black mt-6 tracking-tight w-3/4">
+          <h1 className="text-2xl lg:text-6xl font-light text-main-black mt-6 tracking-tight w-3/4">
             A look at extension&apos;s features
           </h1>
         </Fade>
         <Fade left>
-          <h3 className="text-xs lg:text-sm font-bold text-accent-gray mt-6 w-3/4">
+          <h3 className="text-xs lg:text-sm font-normal text-accent-gray mt-6 w-3/4">
             Extension features customized chat apperance, custom emotes, popout
             chat and theatre mode.
           </h3>
         </Fade>
         <Fade left>
           <Link
-            className="border-2 hidden lg:flex lg:flex-row cursor-pointer duration-300 rounded-lg px-4 py-2 w-max text-main-black font-bold hover:border-accent-purple hover:text-main-purple mt-6"
+            className="border-2 hidden lg:flex lg:flex-row cursor-pointer duration-300 rounded-lg px-4 py-2 w-max text-main-black font-normal hover:border-accent-purple hover:text-main-purple mt-6"
             to="section3"
             spy={true}
             smooth={true}

@@ -15,7 +15,7 @@ export default function Footer() {
         />
         <div>© All rights reserved</div>
         <div className="">
-          made by <span className="text-darker-purple font-bold">dope</span>,
+          made by <span className="text-darker-purple font-normal">dope</span>,
           2022
         </div>
       </div>

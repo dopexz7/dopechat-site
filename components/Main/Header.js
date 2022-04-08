@@ -39,12 +39,12 @@ export default function Header() {
         <div className="h-screen flex flex-row mr-auto">
           <div className="winScl:scale-75 winScl:mt-20 p-6 lg:p-8 mt-20 lg:mt-44 w-full lg:w-[50vw] fixed top-0 flex-col flex lg:flex-col">
             <div className="flex flex-col">
-              <h1 className="hidden lg:flex text-5xl max-w-xl anim-rl">
+              <h1 className="hidden lg:flex text-5xl font-light max-w-xl anim-rl">
                 The ultimate FB Gaming livestream experience
               </h1>
 
               <p
-                className="text-base lg:text-lg lg:mt-8 xlx:mt-3 tracking-wider anim-rl m-0 text-center lg:text-left"
+                className="text-base lg:text-lg lg:mt-8 xlx:mt-3 tracking-wider font-light anim-rl m-0 text-center lg:text-left"
                 style={{ "--delay": "0s" }}
               >
                 The all-in-one extension is designed to add custom emotes,

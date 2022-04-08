@@ -76,7 +76,7 @@ export default function DashboardMiddleSection({ session, data }) {
   return (
     <>
       <div className="px-6 py-5  border-b-2 flex flex-row items-center">
-        <div className="font-bold text-lg flex-1 max-w-xs">All emotes</div>
+        <div className="font-normal text-lg flex-1 max-w-xs">All emotes</div>
 
         <div className="overflow-hidden duration-300 border-2 px-3 py-1 rounded-2xl ml-auto flex flex-row items-center text-md font-semibold">
           <Md.MdOutlineSearch className="mr-3 ml-auto" />
@@ -126,12 +126,12 @@ export default function DashboardMiddleSection({ session, data }) {
                     alt=""
                   />
                   <div className="duration-300 flex flex-col opacity-0 scale-0 group-hover:scale-100 group-hover:opacity-100 justify-center items-center">
-                    <div className="overflow-hidden text-sm font-bold ">
+                    <div className="overflow-hidden text-sm font-normal ">
                       {data.code}
                     </div>
                     <div className="text-xs ">by {data.by}</div>
                     {session ? (
-                      <div className="text-xs mt-1 bg-darker-purple rounded-3xl items-center justify-center p-1 flex flex-row text-white hover:bg-white hover:text-darker-purple duration-300 font-bold cursor-pointer">
+                      <div className="text-xs mt-1 bg-darker-purple rounded-3xl items-center justify-center p-1 flex flex-row text-white hover:bg-white hover:text-darker-purple duration-300 font-normal cursor-pointer">
                         <Md.MdAddCircleOutline className="mr-1" /> add to
                         channel
                       </div>
@@ -168,12 +168,12 @@ export default function DashboardMiddleSection({ session, data }) {
                       alt=""
                     />
                     <div className="duration-300 flex flex-col opacity-0 scale-0 group-hover:scale-100 group-hover:opacity-100 justify-center items-center">
-                      <div className="overflow-hidden text-sm font-bold ">
+                      <div className="overflow-hidden text-sm font-normal ">
                         {data.code}
                       </div>
                       <div className="text-xs ">by {data.by}</div>
                       {session ? (
-                        <div className="text-xs mt-1 bg-darker-purple rounded-3xl items-center justify-center p-1 flex flex-row text-white hover:bg-white hover:text-darker-purple duration-300 font-bold cursor-pointer">
+                        <div className="text-xs mt-1 bg-darker-purple rounded-3xl items-center justify-center p-1 flex flex-row text-white hover:bg-white hover:text-darker-purple duration-300 font-normal cursor-pointer">
                           <Md.MdAddCircleOutline className="mr-1" /> add to
                           channel
                         </div>

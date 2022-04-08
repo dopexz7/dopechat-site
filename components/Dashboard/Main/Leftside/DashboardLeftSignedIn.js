@@ -119,14 +119,14 @@ const DashboardLeftSignedIn = ({ session }) => {
             tabsListWrapper: "border-0 ",
             tabsList: "border-0 ",
             tabActive: "text-white border-0 border-b-2 !border-white ",
-            tabInner: "font-bold ",
+            tabInner: "font-normal ",
             tabLabel: "text-main-white hover:text-white duration-300 ",
           }}
         >
           <Tabs.Tab label="File upload">
             <div className="h-96 flex flex-col">
               {errors ? (
-                <div className="text-sm bg-accent-white rounded-sm text-accent-gray font-bold p-3 flex flex-row items-center">
+                <div className="text-sm bg-accent-white rounded-sm text-accent-gray font-normal p-3 flex flex-row items-center">
                   <Bs.BsExclamationSquareFill className="mr-2 text-red-500 rounded-sm" />
                   {errors}
                 </div>
@@ -170,7 +170,7 @@ const DashboardLeftSignedIn = ({ session }) => {
               <button
                 onClick={() => handleUploadFile()}
                 type="submit"
-                className="p-5 border-2 border-white text-white hover:bg-white hover:text-darker-purple mb-6 font-bold text-xl rounded-3xl cursor-pointer duration-300 w-full"
+                className="p-5 border-2 border-white text-white hover:bg-white hover:text-darker-purple mb-6 font-normal text-xl rounded-3xl cursor-pointer duration-300 w-full"
               >
                 {uploading ? "Uploading..." : "Upload"}
               </button>
@@ -208,7 +208,7 @@ const DashboardLeftSignedIn = ({ session }) => {
             alt={username}
             className="rounded-3xl w-10 border-2 shadow-xl"
           />
-          <div className="ml-2 font-bold text-main-black rounded-2xl text-md">
+          <div className="ml-2 font-normal text-main-black rounded-2xl text-md">
             {session.user.user_metadata.name}
           </div>
 
@@ -259,7 +259,7 @@ const DashboardLeftSignedIn = ({ session }) => {
             }
             passHref
           >
-            <div className="hover:border-main-purple hover:bg-main-purple hover:text-white duration-300 border-2 font-bold text-main-black cursor-pointer flex justify-center items-center p-3 rounded-xl w-full">
+            <div className="hover:border-main-purple hover:bg-main-purple hover:text-white duration-300 border-2 font-normal text-main-black cursor-pointer flex justify-center items-center p-3 rounded-xl w-full">
               {router.pathname.includes("profile")
                 ? "Dashboard"
                 : "Your profile"}
@@ -269,18 +269,18 @@ const DashboardLeftSignedIn = ({ session }) => {
             onClick={() => setOpened(true)}
             className="group border-2 border-main-purple  bg-main-purple duration-300 cursor-pointer text-white flex justify-center items-center p-3 rounded-xl w-full"
           >
-            <span className="opacity-75 font-bold group-hover:opacity-100 duration-300">
+            <span className="opacity-75 font-normal group-hover:opacity-100 duration-300">
               Submit emotes
             </span>
           </div>
-          <div className="hover:border-main-purple hover:bg-main-purple hover:text-white duration-300 border-2 font-bold text-main-black cursor-pointer flex justify-center items-center p-3 rounded-xl w-full">
+          <div className="hover:border-main-purple hover:bg-main-purple hover:text-white duration-300 border-2 font-normal text-main-black cursor-pointer flex justify-center items-center p-3 rounded-xl w-full">
             Subscribe
           </div>
-          <div className="flex flex-row items-center text-sm px-3 text-accent-gray font-bold">
+          <div className="flex flex-row items-center text-sm px-3 text-accent-gray font-normal">
             <Bs.BsPatchCheckFill className="mr-2 text-main-purple text-xl" />
             Not currently subscribed
           </div>
-          <div className="flex flex-row items-center text-sm px-3 text-accent-gray font-bold">
+          <div className="flex flex-row items-center text-sm px-3 text-accent-gray font-normal">
             Has no access to emote sets
           </div>
         </div>

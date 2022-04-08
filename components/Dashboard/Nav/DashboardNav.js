@@ -19,7 +19,7 @@ export default function DashboardNav({ session }) {
   return (
     <div className={`duration-300 z-50 w-screen`}>
       <div
-        className={`max-w-7xl w-screen mr-auto ml-auto flex flex-row justify-center items-center p-8 duration-300 space-x-8 text-main-white text-sm font-semibold`}
+        className={`max-w-7xl w-screen mr-auto ml-auto flex flex-row justify-center items-center p-6 duration-300 space-x-8 text-main-white text-sm font-semibold`}
       >
         <Link href="/" passHref>
           <div className="font-normal cursor-pointer whitespace-nowrap text-clip w-max mr-auto text-white text-xl">

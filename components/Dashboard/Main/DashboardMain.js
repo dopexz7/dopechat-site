@@ -11,7 +11,7 @@ export default function DashboardMain({ session, data }) {
       </div>
       <div className="text-black bg-border-white h-full w-3/12 flex flex-col">
         <div className="p-5 flex flex-row items-center justify-center ">
-          <div className="font-bold text-accent-purple  px-6 py-2 rounded-2xl  text-lg">
+          <div className="font-normal text-accent-purple  px-6 py-2 rounded-2xl  text-lg">
             Recently uploaded emotes
           </div>
         </div>

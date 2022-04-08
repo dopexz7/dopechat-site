@@ -8,7 +8,7 @@ export default function MainProfile({ session }) {
     <AuthRoute>
       <DashboardLayout session={session} title="Profile">
         <div className="text-black border-r-2 h-full w-[55%] flex flex-col overflow-hidden">
-          <div className="px-6 py-6 font-bold text-lg  border-b-2 flex flex-row items-center">
+          <div className="px-6 py-6 font-normal text-lg  border-b-2 flex flex-row items-center">
             <div className="p-0.5">Your emotes</div>
           </div>
           <div className="w-full flex flex-col p-6">
@@ -18,7 +18,7 @@ export default function MainProfile({ session }) {
 
         <div className="text-black bg-border-white h-full w-1/4 flex flex-col">
           <div className="px-6 py-5 flex flex-row items-center justify-center ">
-            <div className="font-bold text-accent-purple  px-6 py-2 rounded-2xl  text-lg">
+            <div className="font-normal text-accent-purple  px-6 py-2 rounded-2xl  text-lg">
               Your emote sets
             </div>
           </div>
@@ -30,10 +30,10 @@ export default function MainProfile({ session }) {
                   Owner
                 </div>
               </div>
-              <div className="ml-auto flex px-4 py-1 text-darker-purple border-2 font-bold cursor-pointer hover:bg-darker-purple hover:text-white duration-300 hover:border-darker-purple rounded-3xl">
+              <div className="ml-auto flex px-4 py-1 text-darker-purple border-2 font-normal cursor-pointer hover:bg-darker-purple hover:text-white duration-300 hover:border-darker-purple rounded-3xl">
                 Edit
               </div>
-              <div className="ml-auto flex px-4 py-1 text-darker-purple border-2 font-bold cursor-pointer hover:bg-darker-purple hover:text-white duration-300 hover:border-darker-purple rounded-3xl">
+              <div className="ml-auto flex px-4 py-1 text-darker-purple border-2 font-normal cursor-pointer hover:bg-darker-purple hover:text-white duration-300 hover:border-darker-purple rounded-3xl">
                 Settings
               </div>
             </div>
@@ -44,7 +44,7 @@ export default function MainProfile({ session }) {
                   Editor
                 </div>
               </div>
-              <div className="ml-auto flex px-4 py-0.5 text-darker-purple border-2 font-bold cursor-pointer hover:bg-darker-purple hover:text-white duration-300 hover:border-darker-purple rounded-3xl">
+              <div className="ml-auto flex px-4 py-0.5 text-darker-purple border-2 font-normal cursor-pointer hover:bg-darker-purple hover:text-white duration-300 hover:border-darker-purple rounded-3xl">
                 Edit
               </div>
             </div>
@@ -55,7 +55,7 @@ export default function MainProfile({ session }) {
                   Editor
                 </div>
               </div>
-              <div className="ml-auto flex px-4 py-0.5 text-darker-purple border-2 font-bold cursor-pointer hover:bg-darker-purple hover:text-white duration-300 hover:border-darker-purple rounded-3xl">
+              <div className="ml-auto flex px-4 py-0.5 text-darker-purple border-2 font-normal cursor-pointer hover:bg-darker-purple hover:text-white duration-300 hover:border-darker-purple rounded-3xl">
                 Edit
               </div>
             </div>
@@ -66,7 +66,7 @@ export default function MainProfile({ session }) {
                   Editor
                 </div>
               </div>
-              <div className="ml-auto flex px-4 py-0.5 text-darker-purple border-2 font-bold cursor-pointer hover:bg-darker-purple hover:text-white duration-300 hover:border-darker-purple rounded-3xl">
+              <div className="ml-auto flex px-4 py-0.5 text-darker-purple border-2 font-normal cursor-pointer hover:bg-darker-purple hover:text-white duration-300 hover:border-darker-purple rounded-3xl">
                 Edit
               </div>
             </div>
@@ -77,7 +77,7 @@ export default function MainProfile({ session }) {
                   Editor
                 </div>
               </div>
-              <div className="ml-auto flex px-4 py-0.5 text-darker-purple border-2 font-bold cursor-pointer hover:bg-darker-purple hover:text-white duration-300 hover:border-darker-purple rounded-3xl">
+              <div className="ml-auto flex px-4 py-0.5 text-darker-purple border-2 font-normal cursor-pointer hover:bg-darker-purple hover:text-white duration-300 hover:border-darker-purple rounded-3xl">
                 Edit
               </div>
             </div>
@@ -88,12 +88,12 @@ export default function MainProfile({ session }) {
                   Editor
                 </div>
               </div>
-              <div className="ml-auto flex px-4 py-0.5 text-darker-purple border-2 font-bold cursor-pointer hover:bg-darker-purple hover:text-white duration-300 hover:border-darker-purple rounded-3xl">
+              <div className="ml-auto flex px-4 py-0.5 text-darker-purple border-2 font-normal cursor-pointer hover:bg-darker-purple hover:text-white duration-300 hover:border-darker-purple rounded-3xl">
                 Edit
               </div>
             </div>
           </div>
-          <div className="border-t-2 px-6 py-6 flex flex-row items-center justify-center bg-white font-bold text-accent-purple text-lg hover:bg-darker-purple duration-300 cursor-pointer hover:text-white border-0">
+          <div className="border-t-2 px-6 py-6 flex flex-row items-center justify-center bg-white font-normal text-accent-purple text-lg hover:bg-darker-purple duration-300 cursor-pointer hover:text-white border-0">
             Request access to emote sets
           </div>
         </div>

@@ -49,13 +49,13 @@ export default function DashboardLeftSection() {
             <div className="p-6 w-full space-y-3 flex flex-col">
               <div
                 onClick={() => signInWithTwitch()}
-                className="group border-2 hover:bg-darker-purple font-bold hover:border-darker-purple border-main-purple  bg-main-purple duration-300 cursor-pointer text-white flex justify-center items-center p-3 rounded-xl w-full"
+                className="group border-2 hover:bg-darker-purple font-normal hover:border-darker-purple border-main-purple  bg-main-purple duration-300 cursor-pointer text-white flex justify-center items-center p-3 rounded-xl w-full"
               >
                 Sign in with Twitch
               </div>
               <div
                 onClick={() => setWhyTwitch(!whyTwitch)}
-                className="font-bold text-sm cursor-pointer text-darker-purple"
+                className="font-normal text-sm cursor-pointer text-darker-purple"
               >
                 Facebook extension, why Twitch login?
               </div>
@@ -72,7 +72,7 @@ export default function DashboardLeftSection() {
           </div>
         </>
       )}
-      <div className="flex flex-row mt-auto p-3 text-accent-gray font-bold text-md border-t-2">
+      <div className="flex flex-row mt-auto p-3 text-accent-gray font-normal text-md border-t-2">
         <span>© dope, 2022</span>
       </div>
     </div>
