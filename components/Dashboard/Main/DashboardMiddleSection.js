@@ -167,8 +167,6 @@ export default function DashboardMiddleSection({ session, data }) {
                       <Image
                         height={64}
                         width={64}
-                        placeholder="blur"
-                        blurDataURL={`https://res.cloudinary.com/demo/image/fetch/${data.src}`}
                         className="group-hover:scale-50 group-hover:opacity-25 duration-300"
                         src={`https://res.cloudinary.com/demo/image/fetch/${data.src}`}
                         alt={data.code}
