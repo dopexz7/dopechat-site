@@ -13,8 +13,8 @@ export default function Footer() {
           src="https://i.imgur.com/a1AhdsO.png"
           alt="dopeChat"
         />
-        <div>© All rights reserved</div>
-        <div className="">
+        <span>© All rights reserved</span>
+        <div>
           made by <span className="text-darker-purple font-normal">dope</span>,
           2022
         </div>

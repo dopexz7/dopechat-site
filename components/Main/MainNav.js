@@ -23,13 +23,12 @@ export default function MainNav() {
         <div
           className={`winScl:scale-[0.85] relative max-w-7xl w-screen mr-auto ml-auto flex flex-row justify-center items-center p-4 lg:p-6 duration-300 space-x-6 text-main-white text-sm font-semibold`}
         >
-          <Link href="/" passHref>
-            <div
-              className={` text-xl duration-300 font-normal cursor-pointer whitespace-nowrap text-clip w-max mr-auto text-white`}
-            >
-              dopeChat
-            </div>
-          </Link>
+          <div
+            onClick={() => scroll.scrollToTop()}
+            className={` text-xl duration-300 font-normal cursor-pointer whitespace-nowrap text-clip w-max mr-auto text-white`}
+          >
+            dopeChat
+          </div>
 
           <div
             className={`text-white duration-300 hidden lg:flex cursor-pointer lg:flex-row lg:items-center`}
@@ -103,11 +102,11 @@ export default function MainNav() {
             </Menu>
 
             <Link href="/dashboard" passHref>
-              <div
+              <a
                 className={`ml-3 flex flex-row items-center group w-max text-center cursor-pointer duration-300  text-main-white  hover:text-white`}
               >
                 <Md.MdDashboard className="mr-1" /> Dashboard
-              </div>
+              </a>
             </Link>
           </div>
           <div

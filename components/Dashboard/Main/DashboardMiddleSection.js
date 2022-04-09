@@ -6,6 +6,7 @@ import React, { useEffect, useState } from "react";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { supabase } from "../../../lib/supabaseClient";
+import Image from "next/image";
 
 export default function DashboardMiddleSection({ session, data }) {
   // const [posts, setPosts] = useState(null);
@@ -162,11 +163,18 @@ export default function DashboardMiddleSection({ session, data }) {
                   className="h-32 w-32 group duration-300 bg-accent-white rounded-md"
                 >
                   <div className="w-full h-32 overflow-hidden text-black flex flex-row items-center justify-center relative border-2 rounded-md">
-                    <img
-                      className="absolute w-16 duration-300 group-hover:w-36 group-hover:opacity-25"
-                      src={data.src}
-                      alt=""
-                    />
+                    <div className="group absolute w-full h-full duration-300 flex items-center justify-center">
+                      <Image
+                        height={64}
+                        width={64}
+                        placeholder="blur"
+                        blurDataURL={`https://res.cloudinary.com/demo/image/fetch/${data.src}`}
+                        className="group-hover:scale-50 group-hover:opacity-25 duration-300"
+                        src={`https://res.cloudinary.com/demo/image/fetch/${data.src}`}
+                        alt={data.code}
+                      />
+                    </div>
+
                     <div className="duration-300 flex flex-col opacity-0 scale-0 group-hover:scale-100 group-hover:opacity-100 justify-center items-center">
                       <div className="overflow-hidden text-sm font-normal ">
                         {data.code}

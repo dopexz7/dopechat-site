@@ -9,9 +9,9 @@ export default function Changelog() {
       >
         <div className="ml-auto h-3/4 w-full flex flex-row lg:flex-row text-white lg:mr-16 justify-center items-center">
           <Fade left>
-            <div className="w-2/3 text-2xl lg:text-8xl font-normal lg:font-light text-main-black tracking-tight">
+            <span className="w-2/3 text-2xl lg:text-8xl font-normal lg:font-light text-main-black tracking-tight">
               Changelog
-            </div>
+            </span>
           </Fade>
           <Fade right>
             <div className="h-5/6 shadow-2xl p-3 font-normal text-main-black rounded-xl flex flex-col scrollbar-thin scrollbar-thumb-darker-purple scrollbar-track-main-white overflow-y-scroll border-2 w-3/4 text-sm">

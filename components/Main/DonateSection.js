@@ -40,18 +40,18 @@ export default function DonateSection() {
       </div>
       <Fade right>
         <div className="w-full lg:w-3/4 flex flex-col ml-10">
-          <h3 className="hidden lg:flex text-xs lg:text-sm font-normal text-accent-gray ml-auto">
+          <span className="hidden lg:flex text-xs lg:text-sm font-normal text-accent-gray ml-auto">
             donate
-          </h3>
+          </span>
 
-          <h1 className=" hidden lg:flex text-2xl lg:text-6xl font-normal ml-auto lg:font-normal text-main-black mt-6 tracking-tight">
+          <span className=" hidden lg:flex text-2xl lg:text-6xl font-normal ml-auto lg:font-normal text-main-black mt-6 tracking-tight">
             Support the creator!
-          </h1>
+          </span>
 
-          <h1 className="flex text-sm lg:ml-auto lg:text-right font-normal lg:font-normal text-accent-gray mt-6 mr-6 lg:mr-0 tracking-tight">
+          <span className="flex text-sm lg:ml-auto lg:text-right font-normal lg:font-normal text-accent-gray mt-6 mr-6 lg:mr-0 tracking-tight">
             note: this is purely for donations to support the creator! If you
             want any benefits, check out subscription in the dashboard!
-          </h1>
+          </span>
         </div>
       </Fade>
     </div>

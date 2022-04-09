@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { browserName } from "react-device-detect";
 import * as Fa from "react-icons/fa";
-import HeaderH1 from "./HeaderH1";
 
 export default function Header() {
   const [download, setDownload] = useState("");
@@ -52,7 +51,7 @@ export default function Header() {
 
             <button
               onClick={() => handleButton()}
-              className="box-shadow-purple hidden lg:flex lg:flex-row cursor-pointer duration-300 bg-accent-purple rounded-lg px-4 py-2 w-max text-main-white hover:bg-white hover:text-darker-purple lg:mt-9 xlx:mt-3"
+              className="box-shadow-purple hidden lg:flex lg:flex-row cursor-pointer duration-300 bg-accent-purple rounded-lg px-4 py-2 w-max text-white hover:bg-white hover:text-darker-purple lg:mt-9 xlx:mt-3"
             >
               {download
                 ? download
