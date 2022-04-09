@@ -177,7 +177,9 @@ export default function DashboardMiddleSection({ session, data }) {
                       <div className="overflow-hidden text-sm font-normal ">
                         {data.code}
                       </div>
-                      <div className="text-xs ">by {data.by}</div>
+                      <div className="text-xs ">
+                        by {data.by ? data.by : "dope"}
+                      </div>
                       {session ? (
                         <div className="text-xs mt-1 bg-darker-purple rounded-3xl items-center justify-center p-1 flex flex-row text-white hover:bg-white hover:text-darker-purple duration-300 font-normal cursor-pointer">
                           <Md.MdAddCircleOutline className="mr-1" /> add to
