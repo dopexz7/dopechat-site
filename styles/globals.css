@@ -488,3 +488,12 @@ a {
   height: 550px;
   width: 320px;
 }
+
+.approve {
+  background-color: #0be881;
+  box-shadow: #0be881 0px 0px 20px;
+}
+.remove {
+  background-color: #eb3b5a;
+  box-shadow: #eb3b5a 0px 0px 20px;
+}

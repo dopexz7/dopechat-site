@@ -14,6 +14,7 @@ const nextConfig = {
       "cdn.discordapp.com",
       "cdn.betterttv.net",
       "res.cloudinary.com",
+      "emxllayyisdskjtscvck.supabase.co",
     ],
   },
 };

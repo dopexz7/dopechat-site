@@ -41,12 +41,6 @@ export default function DashboardMiddleSection({ session, data }) {
 
   const [moreThanTwo, setMoreThanTwo] = useState(false);
 
-  const [load, setLoad] = useState(true);
-
-  useEffect(() => {
-    setLoad(false);
-  }, []);
-
   const beginUpdate = async () => {
     try {
       const kekres = await fetch(
@@ -156,7 +150,7 @@ export default function DashboardMiddleSection({ session, data }) {
             hasMore={true}
             scrollableTarget="scrollableDiv"
           >
-            {(posts &&
+            {posts &&
               posts.map((data, index) => (
                 <div
                   key={index}
@@ -191,52 +185,7 @@ export default function DashboardMiddleSection({ session, data }) {
                     </div>
                   </div>
                 </div>
-              ))) || (
-              <>
-                <Skeleton
-                  height={125}
-                  count={6}
-                  width={125}
-                  baseColor="#e5e7eb"
-                  highlightColor="#f9fafb"
-                />
-                <Skeleton
-                  height={125}
-                  count={6}
-                  width={125}
-                  baseColor="#e5e7eb"
-                  highlightColor="#f9fafb"
-                />
-                <Skeleton
-                  height={125}
-                  count={6}
-                  width={125}
-                  baseColor="#e5e7eb"
-                  highlightColor="#f9fafb"
-                />
-                <Skeleton
-                  height={125}
-                  count={6}
-                  width={125}
-                  baseColor="#e5e7eb"
-                  highlightColor="#f9fafb"
-                />
-                <Skeleton
-                  height={125}
-                  count={6}
-                  width={125}
-                  baseColor="#e5e7eb"
-                  highlightColor="#f9fafb"
-                />
-                <Skeleton
-                  height={125}
-                  count={6}
-                  width={125}
-                  baseColor="#e5e7eb"
-                  highlightColor="#f9fafb"
-                />
-              </>
-            )}
+              ))}
           </InfiniteScroll>
         </div>
       )}

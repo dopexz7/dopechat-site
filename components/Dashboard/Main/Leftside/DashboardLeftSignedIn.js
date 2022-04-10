@@ -7,7 +7,8 @@ import FileDrop from "../FileDrop";
 import { supabase } from "../../../../lib/supabaseClient";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { FileUploader } from "react-drag-drop-files";
+
+import { Stepper } from "@mantine/core";
 
 const DashboardLeftSignedIn = ({ session }) => {
   const [opened, setOpened] = useState(false);
@@ -20,6 +21,12 @@ const DashboardLeftSignedIn = ({ session }) => {
   const [avatarUrl, setAvatarUrl] = useState(null);
 
   const [uploading, setUploading] = useState(false);
+
+  const [active, setActive] = useState(1);
+  const nextStep = () =>
+    setActive((current) => (current < 3 ? current + 1 : current));
+  const prevStep = () =>
+    setActive((current) => (current > 0 ? current - 1 : current));
 
   const xxx = async () => {
     // const { data: kekw, error } = await supabase.storage
@@ -183,15 +190,65 @@ const DashboardLeftSignedIn = ({ session }) => {
           </Tabs.Tab>
           <Tabs.Tab label="How does it work?">
             <div className="h-96 flex flex-col">
-              <h1 className="text-3xl mt-3">How does emote submission work?</h1>
-              <p className="mt-3 text-xl">Simple!</p>
-              <p className="text-xl">1. You submit emotes</p>
-              <p className="text-xl">
-                2. Moderators approve or deny the submitted emotes
-              </p>
-              <p className="text-xl">
-                3. If your emote is approved, you can use it in your emote set!
-              </p>
+              <h1 className="text-3xl text-center mt-6 mb-6">
+                How does emote submission work?
+              </h1>
+              <Stepper
+                classNames={{
+                  separator: "bg-accent-purple",
+                  stepIcon: "!border-accent-purple",
+                  stepCompletedIcon: "!bg-accent-purple rounded-full",
+                  stepLabel: "text-white",
+                  stepDescription: "text-main-white",
+                }}
+                styles={{
+                  stepIcon: {
+                    backgroundColor: "var(--main-purple) !important",
+                    color: "white",
+                  },
+                }}
+                active={active}
+                onStepClick={setActive}
+                breakpoint="sm"
+              >
+                <Stepper.Step label="First" description="Submit emotes">
+                  1. You submit emotes by uploading files or using the Quick
+                  upload function
+                </Stepper.Step>
+                <Stepper.Step label="Second" description="Get approved">
+                  2. Moderators review and approve or deny the submitted emotes
+                </Stepper.Step>
+                <Stepper.Step
+                  label="Final step"
+                  description="Use in your emote set"
+                >
+                  3. If your emote is approved, you can use it in your emote
+                  set!
+                </Stepper.Step>
+                <Stepper.Completed>Done!</Stepper.Completed>
+              </Stepper>
+              <div className="mt-3 flex flex-row items-center justify-center space-x-3">
+                <div
+                  className={` ${
+                    active === 0
+                      ? " opacity-10"
+                      : "cursor-pointer hover:bg-white hover:text-accent-purple"
+                  } p-2 px-4 border-2 rounded-2xl  duration-300 `}
+                  onClick={() => prevStep()}
+                >
+                  Back
+                </div>
+                <div
+                  className={` ${
+                    active === 3
+                      ? "opacity-10"
+                      : "hover:bg-main-purple cursor-pointer"
+                  } p-2 px-4 rounded-2xl bg-accent-purple  duration-300 `}
+                  onClick={() => nextStep()}
+                >
+                  Next
+                </div>
+              </div>
             </div>
           </Tabs.Tab>
         </Tabs>
