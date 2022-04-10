@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from "react";
 import DashboardLeftSignedIn from "./Leftside/DashboardLeftSignedIn";
 import { supabase } from "../../../lib/supabaseClient";
-import { CircularProgress, Fade, LinearProgress } from "@mui/material";
+import { CircularProgress } from "@mui/material";
 import * as Fa from "react-icons/fa";
 export default function DashboardLeftSection() {
   const [session, setSession] = useState(null);

@@ -2,10 +2,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 
 import { Tooltip } from "@mantine/core";
 import * as Md from "react-icons/md";
-import React, { useEffect, useState } from "react";
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
-import { supabase } from "../../../lib/supabaseClient";
+import React, { useState } from "react";
 import Image from "next/image";
 
 export default function DashboardMiddleSection({ session, data }) {
@@ -115,16 +112,23 @@ export default function DashboardMiddleSection({ session, data }) {
                 className="h-32 w-32 group duration-300 bg-accent-white rounded-md"
               >
                 <div className="w-full h-32 overflow-hidden text-black flex flex-row items-center justify-center relative border-2 rounded-md">
-                  <img
-                    className="absolute w-16 duration-300 group-hover:w-36 group-hover:opacity-25"
-                    src={data.src}
-                    alt=""
-                  />
+                  <div className="group absolute w-full h-full duration-300 flex items-center justify-center">
+                    <Image
+                      height={64}
+                      width={64}
+                      className="group-hover:scale-50 group-hover:opacity-25 duration-300"
+                      src={`https://res.cloudinary.com/demo/image/fetch/${data.src}`}
+                      alt={data.code}
+                    />
+                  </div>
+
                   <div className="duration-300 flex flex-col opacity-0 scale-0 group-hover:scale-100 group-hover:opacity-100 justify-center items-center">
                     <div className="overflow-hidden text-sm font-normal ">
                       {data.code}
                     </div>
-                    <div className="text-xs ">by {data.by}</div>
+                    <div className="text-xs ">
+                      by {data.by ? data.by : "dope"}
+                    </div>
                     {session ? (
                       <div className="text-xs mt-1 bg-darker-purple rounded-3xl items-center justify-center p-1 flex flex-row text-white hover:bg-white hover:text-darker-purple duration-300 font-normal cursor-pointer">
                         <Md.MdAddCircleOutline className="mr-1" /> add to

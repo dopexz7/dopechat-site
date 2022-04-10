@@ -37,61 +37,6 @@ export default function MainProfile({ session }) {
                 Settings
               </div>
             </div>
-            <div className="space-x-1 flex flex-row p-6 items-center justify-center bg-white w-full rounded-2xl">
-              <div className="flex flex-col mr-auto w-full">
-                <div className="font-semibold py-1">Ramee&apos;s set</div>
-                <div className="border-2 font-normal w-max px-3 py-0.5 rounded-3xl">
-                  Editor
-                </div>
-              </div>
-              <div className="ml-auto flex px-4 py-0.5 text-darker-purple border-2 font-normal cursor-pointer hover:bg-darker-purple hover:text-white duration-300 hover:border-darker-purple rounded-3xl">
-                Edit
-              </div>
-            </div>
-            <div className="space-x-1 flex flex-row p-6 items-center justify-center bg-white w-full rounded-2xl">
-              <div className="flex flex-col mr-auto w-full">
-                <div className="font-semibold py-1">Rated&apos;s set</div>
-                <div className="border-2 font-normal w-max px-3 py-0.5 rounded-3xl">
-                  Editor
-                </div>
-              </div>
-              <div className="ml-auto flex px-4 py-0.5 text-darker-purple border-2 font-normal cursor-pointer hover:bg-darker-purple hover:text-white duration-300 hover:border-darker-purple rounded-3xl">
-                Edit
-              </div>
-            </div>
-            <div className="space-x-1 flex flex-row p-6 items-center justify-center bg-white w-full rounded-2xl">
-              <div className="flex flex-col mr-auto w-full">
-                <div className="font-semibold py-1">Vader&apos;s set</div>
-                <div className="border-2 font-normal w-max px-3 py-0.5 rounded-3xl">
-                  Editor
-                </div>
-              </div>
-              <div className="ml-auto flex px-4 py-0.5 text-darker-purple border-2 font-normal cursor-pointer hover:bg-darker-purple hover:text-white duration-300 hover:border-darker-purple rounded-3xl">
-                Edit
-              </div>
-            </div>
-            <div className="space-x-1 flex flex-row p-6 items-center justify-center bg-white w-full rounded-2xl">
-              <div className="flex flex-col mr-auto w-full">
-                <div className="font-semibold py-1">Vader&apos;s set</div>
-                <div className="border-2 font-normal w-max px-3 py-0.5 rounded-3xl">
-                  Editor
-                </div>
-              </div>
-              <div className="ml-auto flex px-4 py-0.5 text-darker-purple border-2 font-normal cursor-pointer hover:bg-darker-purple hover:text-white duration-300 hover:border-darker-purple rounded-3xl">
-                Edit
-              </div>
-            </div>
-            <div className="space-x-1 flex flex-row p-6 items-center justify-center bg-white w-full rounded-2xl">
-              <div className="flex flex-col mr-auto w-full">
-                <div className="font-semibold py-1">Vader&apos;s set</div>
-                <div className="border-2 font-normal w-max px-3 py-0.5 rounded-3xl">
-                  Editor
-                </div>
-              </div>
-              <div className="ml-auto flex px-4 py-0.5 text-darker-purple border-2 font-normal cursor-pointer hover:bg-darker-purple hover:text-white duration-300 hover:border-darker-purple rounded-3xl">
-                Edit
-              </div>
-            </div>
           </div>
           <div className="border-t-2 px-6 py-6 flex flex-row items-center justify-center bg-white font-normal text-accent-purple text-lg hover:bg-darker-purple duration-300 cursor-pointer hover:text-white border-0">
             Request access to emote sets

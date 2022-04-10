@@ -7,7 +7,6 @@ import FileDrop from "../FileDrop";
 import { supabase } from "../../../../lib/supabaseClient";
 import Link from "next/link";
 import { useRouter } from "next/router";
-
 import { Stepper } from "@mantine/core";
 
 const DashboardLeftSignedIn = ({ session }) => {
@@ -19,33 +18,23 @@ const DashboardLeftSignedIn = ({ session }) => {
   const [errors, setsError] = useState("");
   const [username, setUsername] = useState(null);
   const [avatarUrl, setAvatarUrl] = useState(null);
-
   const [uploading, setUploading] = useState(false);
+
+  const [mod, setMod] = useState(false);
+  const checkMod = async () => {
+    let { data: mods, error } = await supabase
+      .from("mods")
+      .select("*")
+      .eq("name", session.user.user_metadata.name); //session.user.user_metadata.name
+    if (mods?.length) return true;
+    return false;
+  };
 
   const [active, setActive] = useState(1);
   const nextStep = () =>
     setActive((current) => (current < 3 ? current + 1 : current));
   const prevStep = () =>
     setActive((current) => (current > 0 ? current - 1 : current));
-
-  const xxx = async () => {
-    // const { data: kekw, error } = await supabase.storage
-    //   .from("uploads")
-    //   .list("", {
-    //     sortBy: { column: "created_at", order: "desc" },
-    //   });
-    // let arOfUrls = [];
-    // for (var i = 0; i < kekw.length; i++) {
-    //   let { data: lll, er } = await supabase.storage
-    //     .from("uploads")
-    //     .getPublicUrl("ggg.png");
-    // }
-    //console.log(kekw);
-  };
-
-  setInterval(() => {
-    xxx();
-  }, 1000);
 
   const handleUploadFile = async () => {
     try {
@@ -101,7 +90,10 @@ const DashboardLeftSignedIn = ({ session }) => {
     const user = supabase.auth.user();
     setUsername(user.user_metadata.name);
     setAvatarUrl(user.user_metadata.avatar_url);
-  }, []);
+    checkMod().then((res) => {
+      setMod(res);
+    });
+  }, [session, mod]);
 
   return (
     <>
@@ -265,12 +257,32 @@ const DashboardLeftSignedIn = ({ session }) => {
             alt={username}
             className="rounded-3xl w-10 border-2 shadow-xl"
           />
-          <div className="ml-2 font-normal text-main-black rounded-2xl text-md">
+          <div className="ml-2 font-normal text-main-black rounded-2xl text-md overflow-hidden text-ellipsis whitespace-nowrap">
             {session.user.user_metadata.name}
           </div>
 
           <div className="ml-auto flex flex-row items-center">
-            {router.pathname.includes("profile") ? (
+            {mod ? (
+              <Tooltip
+                transition="pop"
+                transitionDuration={300}
+                transitionTimingFunction="ease"
+                label="Mod dashboard"
+                withArrow
+              >
+                <a
+                  onClick={() => router.push("/dashboard/admin")}
+                  className="p-2 hover:border-main-purple text-sm hover:bg-main-purple duration-300 hover:text-white cursor-pointer border-2 flex text-darker-purple items-center justify-center rounded-3xl mr-1"
+                >
+                  <Md.MdOutlineAdminPanelSettings />
+                </a>
+              </Tooltip>
+            ) : (
+              ""
+            )}
+
+            {router.pathname.includes("profile") ||
+            router.pathname.includes("admin") ? (
               <Tooltip
                 transition="pop"
                 transitionDuration={300}
@@ -288,7 +300,6 @@ const DashboardLeftSignedIn = ({ session }) => {
             ) : (
               ""
             )}
-
             <Tooltip
               label="Logout"
               withArrow
