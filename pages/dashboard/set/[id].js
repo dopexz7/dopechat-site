@@ -14,6 +14,7 @@ export default function Set(props) {
   const [startUpdate, setStartUpdate] = useState(false);
   const [error, setError] = useState("");
   const [mod, setMod] = useState(false);
+  const [sorting, setSorting] = useState(false);
   const seeMods = async () => {
     let { data: mods, error } = await supabase
       .from("useremotes")
@@ -96,108 +97,57 @@ export default function Set(props) {
                 className="peer w-16 bg-transparent border-0 focus:w-36 duration-300"
                 placeholder="Search..."
               />
-              <div
-                onClick={() => {
-                  beginUpdate();
-                }}
-                className="hover:border-darker-purple text-main-black hover:bg-darker-purple hover:text-white cursor-pointer peer-focus:opacity-100 opacity-0 duration-300 w-1 peer-focus:w-20 overflow-hidden border-2 px-1 items-center flex justify-center rounded-3xl"
-              >
-                Update
-              </div>
             </div>
           </div>
           <div className="w-full flex flex-col p-6 overflow-auto">
             <div className="h-full w-full grid grid-cols-11">
-              {startUpdate && q.length > 2 ? (
-                <>
-                  {pageSet
-                    .filter((val) => {
-                      if (q === "") {
-                        return val;
-                      } else if (
-                        val.code.toLowerCase().includes(q.toLowerCase())
-                      ) {
-                        return val;
-                      }
-                    })
-                    .map((data, index) => (
-                      <div
-                        key={index}
-                        className="h-32 w-32 group duration-300 bg-accent-white rounded-md"
-                      >
-                        <div className="w-full h-32 overflow-hidden text-black flex flex-row justify-center relative border-2 rounded-md">
-                          <div className="group absolute w-full h-full duration-300 flex items-center justify-center">
-                            <Image
-                              height={64}
-                              width={64}
-                              className="group-hover:scale-50 group-hover:opacity-25 duration-300"
-                              src={`https://res.cloudinary.com/demo/image/fetch/${data.src}`}
-                              alt={data.code}
-                            />
-                          </div>
+              {pageSet &&
+                pageSet
+                  .filter((val) => {
+                    if (q === "") {
+                      return val;
+                    } else if (
+                      val.code.toLowerCase().includes(q.toLowerCase())
+                    ) {
+                      return val;
+                    }
+                  })
+                  .map((data, index) => (
+                    <div
+                      key={index}
+                      className="h-32 w-32 group duration-300 bg-accent-white rounded-md"
+                    >
+                      <div className="w-full h-32 overflow-hidden text-black flex flex-row justify-center relative border-2 rounded-md">
+                        <div className="group absolute w-full h-full duration-300 flex items-center justify-center">
+                          <Image
+                            height={64}
+                            width={64}
+                            className="group-hover:scale-50 group-hover:opacity-25 duration-300"
+                            src={`https://res.cloudinary.com/demo/image/fetch/${data.src}`}
+                            alt={data.code}
+                          />
+                        </div>
 
-                          <div className="w-full  relative duration-300 flex flex-col opacity-0 scale-0 group-hover:scale-100 group-hover:opacity-100">
-                            <div className="overflow-hidden mt-auto ml-auto mr-auto text-sm font-normal">
-                              {data.code}
-                            </div>
-                            {mod ? (
-                              <div className="flex flex-row justify-center items-center mt-auto">
-                                <div
-                                  onClick={() => deleteFromSet(data)}
-                                  className="remove w-full flex items-center justify-center hover:rounded-2xl p-1 text-center text-white text-sm  cursor-pointer duration-300 h-full"
-                                >
-                                  <Md.MdRemoveCircleOutline />
-                                </div>
-                              </div>
-                            ) : (
-                              ""
-                            )}
+                        <div className="w-full  relative duration-300 flex flex-col opacity-0 scale-0 group-hover:scale-100 group-hover:opacity-100">
+                          <div className="overflow-hidden mt-auto ml-auto mr-auto text-sm font-normal">
+                            {data.code}
                           </div>
+                          {mod ? (
+                            <div className="flex flex-row justify-center items-center mt-auto">
+                              <div
+                                onClick={() => deleteFromSet(data)}
+                                className="remove w-full flex items-center justify-center hover:rounded-2xl p-1 text-center text-white text-sm  cursor-pointer duration-300 h-full"
+                              >
+                                <Md.MdRemoveCircleOutline />
+                              </div>
+                            </div>
+                          ) : (
+                            ""
+                          )}
                         </div>
                       </div>
-                    ))}
-                </>
-              ) : (
-                <>
-                  {pageSet &&
-                    pageSet.map((data, index) => (
-                      <div
-                        key={index}
-                        className="h-32 w-32 group duration-300 bg-accent-white rounded-md"
-                      >
-                        <div className="w-full h-32 overflow-hidden text-black flex flex-row justify-center relative border-2 rounded-md">
-                          <div className="group absolute w-full h-full duration-300 flex items-center justify-center">
-                            <Image
-                              height={64}
-                              width={64}
-                              className="group-hover:scale-50 group-hover:opacity-25 duration-300"
-                              src={`https://res.cloudinary.com/demo/image/fetch/${data.src}`}
-                              alt={data.code}
-                            />
-                          </div>
-
-                          <div className="w-full  relative duration-300 flex flex-col opacity-0 scale-0 group-hover:scale-100 group-hover:opacity-100">
-                            <div className="overflow-hidden mt-auto ml-auto mr-auto text-sm font-normal">
-                              {data.code}
-                            </div>
-                            {mod ? (
-                              <div className="flex flex-row justify-center items-center mt-auto">
-                                <div
-                                  onClick={() => deleteFromSet(data)}
-                                  className="remove w-full flex items-center justify-center hover:rounded-2xl p-1 text-center text-white text-sm  cursor-pointer duration-300 h-full"
-                                >
-                                  <Md.MdRemoveCircleOutline />
-                                </div>
-                              </div>
-                            ) : (
-                              ""
-                            )}
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                </>
-              )}
+                    </div>
+                  ))}
             </div>
           </div>
         </div>

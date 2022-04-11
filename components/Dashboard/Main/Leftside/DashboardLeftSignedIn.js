@@ -282,7 +282,8 @@ const DashboardLeftSignedIn = ({ session }) => {
             )}
 
             {router.pathname.includes("profile") ||
-            router.pathname.includes("admin") ? (
+            router.pathname.includes("admin") ||
+            router.pathname.includes("set") ? (
               <Tooltip
                 transition="pop"
                 transitionDuration={300}
