@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import DashboardLayout from "./DashboardLayout";
 import DashboardMiddleSection from "./DashboardMiddleSection";
 import YourEmoteSets from "./Rightside/YourEmoteSets";
