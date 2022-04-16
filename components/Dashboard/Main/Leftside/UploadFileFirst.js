@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import * as Bs from "react-icons/bs";
+
 import { supabase } from "../../../../lib/supabaseClient";
 import useUploadLimit from "../../../../funcs/useUploadLimit";
 import setUploadLimit from "../../../../funcs/useSetUploadLimit";
@@ -23,41 +23,42 @@ export default function UploadFileFirst(props) {
     );
   };
   const handleUploadFile = async () => {
-    try {
+    if (!selectedFile || selectedFile === 0) {
+      setError("You must select an image to upload.");
+    } else {
       setUploading(true);
-      if (!selectedFile || selectedFile === 0) {
-        console.log("err1");
-        setError("You must select an image to upload.");
+      try {
+        const file = selectedFile;
+
+        await supabase.storage.from("uploads").upload(selfilename, file);
+
+        const { data: fileUrl, er } = await supabase.storage
+          .from("uploads")
+          .getPublicUrl(selfilename);
+        if (er) console.log(er);
+
+        const newFile = {
+          uploaded_by: supabase.auth.user().user_metadata.name,
+          name: selfilename,
+          url: fileUrl.publicURL,
+        };
+
+        await supabase.from("submitfiles").insert(newFile);
+
+        if (error) {
+          throw error;
+        }
+      } catch (e) {
+        console.log(e.message);
+      } finally {
+        setUploading(false);
+        setTimeout(() => {
+          setSelectedFile();
+          setSelectedFileName("");
+          setSelfilename("");
+          handleUploadLimit();
+        }, 1000);
       }
-      const file = selectedFile;
-
-      await supabase.storage.from("uploads").upload(selfilename, file);
-
-      const { data: fileUrl, er } = await supabase.storage
-        .from("uploads")
-        .getPublicUrl(selfilename);
-      if (er) console.log(er);
-
-      const newFile = {
-        uploaded_by: supabase.auth.user().user_metadata.name,
-        name: selfilename,
-        url: fileUrl.publicURL,
-      };
-
-      await supabase.from("submitfiles").insert(newFile);
-
-      if (error) {
-        throw error;
-      }
-    } catch (e) {
-      console.log(e.message);
-    } finally {
-      setUploading(false);
-      setTimeout(() => {
-        setSelectedFile();
-        setSelectedFileName("");
-        handleUploadLimit();
-      }, 1000);
     }
   };
 
@@ -65,21 +66,17 @@ export default function UploadFileFirst(props) {
     event.preventDefault();
     if (!event.target.files || event.target.files.length === 0) {
       setError("You must select an image to upload.");
+    } else {
+      setSelectedFile(event.target.files[0]);
+      setSelectedFileName(event.target.files[0].name);
     }
-    setSelectedFile(event.target.files[0]);
-    setSelectedFileName(event.target.files[0].name);
   };
   return (
     <>
-      {error ? (
-        <div className="w-full justify-center mb-3 text-xs bg-border-white rounded text-accent-gray font-semibold px-2 py-3  flex flex-row items-center">
-          <Bs.BsExclamationSquareFill className="mr-2 text-red-500 rounded-sm" />
-          {error}
-        </div>
-      ) : (
-        ""
-      )}
-      {upLimit > 0 ? (
+      <div className="remove text-white justify-center mb-3 text-xs bg-border-white rounded font-normal px-2 py-3  flex flex-row items-center">
+        {error || "Accepted formats: .jpg, .png, .webp, .gif"}
+      </div>
+      {upLimit && upLimit > 0 ? (
         <>
           <div id="fileupload" className="group p-0.5 relative mb-4">
             <div className="block text-center">
@@ -115,6 +112,7 @@ export default function UploadFileFirst(props) {
             <input
               className="peer w-full py-4 px-4 mb-0 text-base text-black outline-none border-b-[1px] bg-transparent border-transparent-black placeholder-transparent"
               type="text"
+              value={selfilename}
               placeholder="Code"
               onChange={(e) => setSelfilename(e.target.value)}
               required
@@ -140,11 +138,12 @@ export default function UploadFileFirst(props) {
             {uploading ? "Uploading..." : "Upload"}
           </button>
         </>
-      ) : (
-        <div className="w-full justify-center mb-3 text-xs bg-border-white rounded text-accent-gray font-semibold px-2 py-3  flex flex-row items-center">
-          <Bs.BsExclamationSquareFill className="mr-2 text-red-500 rounded-sm" />
+      ) : upLimit <= 0 ? (
+        <div className="remove text-white justify-center mb-3 text-xs bg-border-white rounded font-normal px-2 py-3  flex flex-row items-center">
           You have exceeded daily limit! (15 uploads)
         </div>
+      ) : (
+        ""
       )}
     </>
   );

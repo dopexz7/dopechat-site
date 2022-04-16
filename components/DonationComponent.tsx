@@ -164,6 +164,7 @@ export default function DonationComponent({ username }) {
               Every contribution helps a lot for this and other upcoming
               projects
               <img
+                alt="PauseChamp"
                 className="w-5 h-5 inline-block ml-1"
                 src="https://cdn.betterttv.net/emote/61686a6d054a252a431f0ea8/3x"
               />

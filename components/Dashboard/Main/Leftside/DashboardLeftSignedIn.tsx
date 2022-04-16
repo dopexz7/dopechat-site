@@ -120,6 +120,7 @@ const DashboardLeftSignedIn = ({ session }) => {
                 : "Your profile"}
             </div>
           </Link>
+
           <LeftSideModal username={username} />
 
           <DonationComponent username={username} />

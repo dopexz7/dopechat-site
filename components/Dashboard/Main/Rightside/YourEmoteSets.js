@@ -26,7 +26,7 @@ export default function YourEmoteSets(props) {
   return (
     <div className="text-black bg-border-white h-full w-1/4 flex flex-col">
       <div className="px-6 py-5 flex flex-row items-center justify-center ">
-        <div className="font-normal text-accent-purple  px-6 py-2 rounded-2xl  text-lg">
+        <div className="font-normal text-accent-purple  px-6 py-2 text-lg">
           Your emote sets
         </div>
       </div>

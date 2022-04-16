@@ -7,7 +7,6 @@ import { Stepper, Tabs } from "@mantine/core";
 import UploadFileFirst from "./UploadFileFirst";
 import { Modal } from "@supabase/ui";
 import { motion } from "framer-motion";
-
 export default function LeftSideModal({ username }) {
   const [visible, setVisible] = useState(false);
   const [seeFileUpload, setSeeFileUpload] = useState(false);
@@ -50,7 +49,24 @@ export default function LeftSideModal({ username }) {
       </motion.div>
     );
   }
-
+  const stepperVariant = {
+    hover: {
+      scale: 1.05,
+      transition: {
+        duration: 1,
+        yoyo: Infinity,
+      },
+    },
+  };
+  const iconVariant = {
+    hover: {
+      scale: 1.05,
+      rotate: 360,
+    },
+    transition: {
+      yoyo: 1,
+    },
+  };
   return (
     <>
       <div
@@ -63,16 +79,19 @@ export default function LeftSideModal({ username }) {
       </div>
 
       <Modal
-        className="backdrop-blur"
-        title={seeFileUpload ? "" : "Emote submission"}
-        description={seeFileUpload ? "" : "Submit your own 15 emotes daily!"}
+        className="backdrop-blur  mt-auto mb-auto"
+        title={"Emote submission"}
+        description={"Submit your own 15 emotes daily!"}
         visible={visible}
         onCancel={toggle}
         onConfirm={toggle}
         footerBackground
         closable
         customFooter={[
-          <div className="w-full flex flex-row space-x-3" key={0}>
+          <div
+            className="w-full flex flex-row space-x-3 absolute bottom-0 p-3 left-0 right-0"
+            key={0}
+          >
             <div
               onClick={toggle}
               className="p-2 text-center bg-border-white text-main-black font-medium text-sm rounded cursor-pointer duration-300 w-full"
@@ -95,69 +114,73 @@ export default function LeftSideModal({ username }) {
           background: "transparent !important",
         }}
         icon={
-          <div className="text-lg !text-main-purple bg-border-white p-4 rounded-2xl">
+          <motion.div
+            variants={seeFileUpload ? iconVariant : ""}
+            whileInView="hover"
+            className="text-lg !text-main-purple bg-border-white p-4 rounded-2xl"
+          >
             <Bs.BsEmojiLaughing />
-          </div>
+          </motion.div>
         }
       >
-        {seeFileUpload ? (
-          <>
-            <StyledTabs>
-              <Tabs.Tab label="Upload files" icon={<Ai.AiOutlineUpload />}>
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
+        <div className="h-80 flex w-full">
+          {seeFileUpload ? (
+            <>
+              <StyledTabs>
+                <Tabs.Tab label="Upload files" icon={<Ai.AiOutlineUpload />}>
+                  <motion.div
+                    initial={{ opacity: 0, x: -50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0 }}
+                  >
+                    <UploadFileFirst username={username} />
+                  </motion.div>
+                </Tabs.Tab>
+                <Tabs.Tab label="Drag & drop" icon={<Ri.RiDragDropFill />}>
+                  <motion.div
+                    initial={{ opacity: 0, x: 50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0 }}
+                  >
+                    <FileDrop username={username} />
+                  </motion.div>
+                </Tabs.Tab>
+              </StyledTabs>
+            </>
+          ) : (
+            <>
+              <motion.div
+                //initial={{ opacity: 0, x: -50 }}
+                variants={stepperVariant}
+                whileInView="hover"
+                className="m-auto"
+              >
+                <Stepper
+                  orientation="vertical"
+                  classNames={{
+                    root: "m-auto",
+                    separator: "bg-accent-purple",
+                    stepIcon: "!border-accent-purple",
+                    stepCompletedIcon: "!bg-accent-purple rounded-full",
+                    stepLabel: "text-black",
+                    stepDescription: "text-main-black",
+                  }}
+                  styles={{
+                    stepIcon: {
+                      backgroundColor: "var(--main-purple) !important",
+                      color: "white",
+                    },
+                  }}
+                  size="md"
                 >
-                  <UploadFileFirst username={username} />
-                </motion.div>
-              </Tabs.Tab>
-              <Tabs.Tab label="Drag & drop" icon={<Ri.RiDragDropFill />}>
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                >
-                  <FileDrop username={username} />
-                </motion.div>
-              </Tabs.Tab>
-            </StyledTabs>
-          </>
-        ) : (
-          <>
-            <Stepper
-              orientation="vertical"
-              classNames={{
-                root: "ml-auto mr-auto p-6",
-                separator: "bg-accent-purple",
-                stepIcon: "!border-accent-purple",
-                stepCompletedIcon: "!bg-accent-purple rounded-full",
-                stepLabel: "text-black",
-                stepDescription: "text-main-black",
-              }}
-              styles={{
-                stepIcon: {
-                  backgroundColor: "var(--main-purple) !important",
-                  color: "white",
-                },
-              }}
-              size="sm"
-            >
-              <Stepper.Step
-                label="First."
-                description="Submit emotes."
-              ></Stepper.Step>
-              <Stepper.Step
-                label="Second."
-                description="Get aproved."
-              ></Stepper.Step>
-              <Stepper.Step
-                label="Third."
-                description="Use your emotes."
-              ></Stepper.Step>
-            </Stepper>
-          </>
-        )}
+                  <Stepper.Step label="First." description="Submit emotes." />
+                  <Stepper.Step label="Second." description="Get aproved." />
+                  <Stepper.Step label="Third." description="Use your emotes." />
+                </Stepper>
+              </motion.div>
+            </>
+          )}
+        </div>
       </Modal>
     </>
   );

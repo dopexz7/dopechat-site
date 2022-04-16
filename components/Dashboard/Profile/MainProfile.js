@@ -5,19 +5,15 @@ import { supabase } from "../../../lib/supabaseClient";
 import Image from "next/image";
 import * as Im from "react-icons/im";
 import * as Md from "react-icons/md";
-export default function MainProfile({ session }) {
+export default function MainProfile({ session, data }) {
   const [approvedEmotes, setApprovedEmotes] = useState();
 
   useEffect(() => {
-    const searchApprovedEmotes = async () => {
-      return await supabase
-        .from("allemotes")
-        .select("*")
-        .eq("uploaded_by", session?.user.user_metadata.name);
-    };
-    searchApprovedEmotes().then((res) => {
-      setApprovedEmotes(res.data);
+    let x = [];
+    data.forEach((v) => {
+      if (v.uploaded_by === session?.user?.user_metadata.name) x.push(v);
     });
+    setApprovedEmotes(x.length ? x : "");
   }, [session]);
 
   const EmoteComponent = ({ data }) => {
@@ -96,18 +92,13 @@ export default function MainProfile({ session }) {
           <div className="px-6 py-6 font-normal text-lg  border-b-2 flex flex-row items-center">
             <div className="p-0.5">Your approved emotes</div>
           </div>
-          <div className="grid xgrd gap-3 p-6 overflow-y-auto">
-            {approvedEmotes ? (
-              <>
-                {approvedEmotes &&
-                  approvedEmotes.map((data, index) => (
-                    <EmoteComponent key={index} data={data} />
-                  ))}
-              </>
-            ) : (
-              "You have no approved emotes yet."
-            )}
-          </div>
+          {(approvedEmotes && (
+            <div className="grid xgrd gap-3 p-6 overflow-y-auto">
+              {approvedEmotes.map((data, index) => (
+                <EmoteComponent key={index} data={data} />
+              ))}
+            </div>
+          )) || <div className="p-6">You have no approved emotes yet.</div>}
         </div>
 
         <div className="text-black bg-border-white h-full w-1/4 flex flex-col">

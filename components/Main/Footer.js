@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 export default function Footer() {
+  //https://codepen.io/scanfcode/pen/MEZPNd
   return (
     <div
       className="winScl:scale-90 flex text-accent-gray justify-center"
