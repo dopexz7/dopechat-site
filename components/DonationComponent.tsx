@@ -22,7 +22,7 @@ export default function DonationComponent({ username }) {
   }
   useEffect(() => {
     console.log(username);
-  }, []);
+  }, [username]);
   // const [orderId, setOrderId] = useState();
   // const createMutation = useMutation<{ data: any }, AxiosError, any, Response>(
   //   (): any => axios.post("/api/paypal/createOrder")

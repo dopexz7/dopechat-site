@@ -3,10 +3,7 @@ import React from "react";
 import { useRouter } from "next/router";
 import NProgress from "nprogress";
 
-export default function App({
-  Component,
-  pageProps: { session, ...pageProps },
-}) {
+export default function App({ Component, pageProps: { ...pageProps } }) {
   const router = useRouter();
   React.useEffect(() => {
     const handleStart = () => {
