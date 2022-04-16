@@ -21,13 +21,16 @@ export default function DashboardMain({ session, data }) {
         <YourEmoteSets onSuccess={onEditingSet} session={session} />
       ) : (
         <div className="bg-border-white h-full w-1/4 flex flex-col">
-          <div className="font-normal space-y-3 text-accent-purple text-lg p-6 flex flex-col items-center justify-center ">
-            <div className="border-2 border-main-purple text-main-black w-max rounded-2xl p-3">
-              A signed in user can:
+          <div className="font-normal text-main-black text-lg p-6 flex flex-col items-center">
+            <div className="border-2 border-accent-purple  w-max text-accent-purple rounded-2xl p-3">
+              A signed in user can
             </div>
-            <p>Upload up to 15 emotes daily</p>
-            <p>View other user sets</p>
-            <p>Edit available user sets</p>
+            <div className="flex flex-col items-center space-y-3 p-6">
+              <p className="list-item">Upload up to 15 emotes daily</p>
+              <p className="list-item">View other user sets</p>
+              <p className="list-item">Edit available user sets</p>
+              <p className="list-item">Enjoy other benefits</p>
+            </div>
           </div>
         </div>
       )}
