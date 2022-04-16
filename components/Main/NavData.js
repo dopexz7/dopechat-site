@@ -1,7 +1,7 @@
 import * as Fa from "react-icons/fa";
 import * as Hi from "react-icons/hi";
 import * as Md from "react-icons/md";
-import * as Bs from "react-icons/bs";
+
 export const NavData = [
   {
     title: "About",

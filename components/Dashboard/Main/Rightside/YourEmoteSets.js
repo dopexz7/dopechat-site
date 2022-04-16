@@ -7,6 +7,7 @@ export default function YourEmoteSets(props) {
   const [availEdits, setAvailEdits] = useState([]);
   const seeMods = async () => {
     let { data: mods, error } = await supabase.from("useremotes").select("*");
+    if (error) console.log(error);
     mods?.forEach((v) => {
       if (v.mods?.includes(props.session?.user?.user_metadata.name)) {
         setAvailEdits((prevState) => [...prevState, v]);

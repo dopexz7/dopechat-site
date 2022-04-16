@@ -9,13 +9,14 @@ import Image from "next/image";
 export default function Set(props) {
   const [session, setSession] = useState(null);
   const [q, setQ] = useState("");
-  const [error, setError] = useState("");
+  //const [error, setError] = useState("");
   const [mod, setMod] = useState(false);
   const seeMods = async () => {
     let { data: mods, error } = await supabase
       .from("useremotes")
       .select("mods")
       .eq("name", pageName);
+    if (error) console.log(error);
     const availMods = mods[0]?.mods;
     availMods?.forEach((v) => {
       if (v === session.user.user_metadata.name) setMod(true);
@@ -53,7 +54,7 @@ export default function Set(props) {
     });
     setPageSet(finalArray);
     //console.log(finalArray);
-    const { data, error } = await supabase
+    await supabase
       .from("useremotes")
       .update({ emotes: finalArray })
       .eq("name", pageName);
@@ -71,11 +72,11 @@ export default function Set(props) {
               {pageName ? `${pageName}'s set` : "Set doesn't exist"}
             </div>
 
-            {error && (
+            {/* {error && (
               <div className="mr-auto ml-auto bg-red-500 py-2 px-3 rounded-2xl text-accent-white">
                 {error}
               </div>
-            )}
+            )} */}
 
             <div className="overflow-hidden duration-300 border-2 px-3 py-1 rounded-2xl ml-auto flex flex-row items-center text-md font-semibold">
               <Md.MdOutlineSearch className="mr-3 ml-auto" />

@@ -13,13 +13,15 @@ export default function DashboardMiddleSection({
   fullSet,
   editingSet,
 }) {
+  /* eslint-disable no-unused-vars */
   const [blogs, setBlogs] = useState(fullSet);
+  const [allCount, setAllCount] = useState(fullSet.length);
+  /* eslint-enable no-unused-vars */
   const [q, setQ] = useState("");
   const [startUpdate, setStartUpdate] = useState(false);
   const [posts, setPosts] = useState(data);
   const [sorting, setSorting] = useState(false);
   const isMod = useIsMod(session?.user?.user_metadata.name);
-  const [allCount, setAllCount] = useState(fullSet.length);
 
   const getMorePost = async () => {
     try {
@@ -29,6 +31,7 @@ export default function DashboardMiddleSection({
         .select("*")
         .range(posts.length, kekl)
         .order("code", { ascending: true });
+      if (error) console.log(error);
       const newPosts = data;
       setPosts((post) => [...post, ...newPosts]);
     } catch (e) {

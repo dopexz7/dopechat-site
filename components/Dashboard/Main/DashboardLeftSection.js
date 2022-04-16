@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import DashboardLeftSignedIn from "./Leftside/DashboardLeftSignedIn";
 import { supabase } from "../../../lib/supabaseClient";
 import { CircularProgress } from "@mui/material";
@@ -7,9 +7,9 @@ export default function DashboardLeftSection() {
   const [session, setSession] = useState(null);
   const [whyTwitch, setWhyTwitch] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [amount, setAmount] = useState(10);
-  const [opened, setOpened] = useState(false);
-  const [donationComplete, setDonationComplete] = useState(false);
+  // const [amount, setAmount] = useState(10);
+  // const [opened, setOpened] = useState(false);
+  // const [donationComplete, setDonationComplete] = useState(false);
   useEffect(() => {
     setSession(supabase.auth.session());
 
@@ -21,7 +21,7 @@ export default function DashboardLeftSection() {
 
   async function signInWithTwitch() {
     const href = window.location.href;
-    const { user, session, error } = await supabase.auth.signIn(
+    await supabase.auth.signIn(
       {
         provider: "twitch",
       },

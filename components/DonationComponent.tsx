@@ -1,16 +1,16 @@
-import React, { useState } from "react";
-import {
-  PayPalScriptProvider,
-  PayPalButtons,
-  FUNDING,
-} from "@paypal/react-paypal-js";
-import * as Bs from "react-icons/bs";
+import React, { useEffect, useState } from "react";
+// import {
+//   PayPalScriptProvider,
+//   PayPalButtons,
+//   FUNDING,
+// } from "@paypal/react-paypal-js";
+// import * as Bs from "react-icons/bs";
 import * as Bi from "react-icons/bi";
-import axios, { AxiosError } from "axios";
-import { useMutation } from "react-query";
-import { supabase } from "../lib/supabaseClient";
+// import axios, { AxiosError } from "axios";
+// import { useMutation } from "react-query";
+// import { supabase } from "../lib/supabaseClient";
 import { Modal } from "@supabase/ui";
-import { Stepper, Tabs } from "@mantine/core";
+import { Tabs } from "@mantine/core";
 import { motion } from "framer-motion";
 import * as Fa from "react-icons/fa";
 
@@ -20,7 +20,9 @@ export default function DonationComponent({ username }) {
   function toggle() {
     setVisible(!visible);
   }
-
+  useEffect(() => {
+    console.log(username);
+  }, []);
   // const [orderId, setOrderId] = useState();
   // const createMutation = useMutation<{ data: any }, AxiosError, any, Response>(
   //   (): any => axios.post("/api/paypal/createOrder")

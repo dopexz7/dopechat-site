@@ -8,10 +8,7 @@ const EmoteComponent = ({ data, session, editingSet, isMod, kekRef }) => {
   const [deleted, setDeleted] = useState(false);
   const [loading, setLoading] = useState(false);
   const deleteFromDb = async (v) => {
-    const { lulerz, error } = await supabase
-      .from("allemotes")
-      .delete()
-      .eq("src", v.src);
+    await supabase.from("allemotes").delete().eq("src", v.src);
     setLoading(true);
     setTimeout(() => {
       setDeleted(true);
@@ -24,10 +21,11 @@ const EmoteComponent = ({ data, session, editingSet, isMod, kekRef }) => {
       .from("useremotes")
       .select("emotes")
       .eq("name", editingSet);
+    if (erro) console.log(erro);
     const arr = useremotes[0].emotes;
 
     arr.push(d);
-    const { data, error } = await supabase
+    await supabase
       .from("useremotes")
       .update({ emotes: arr })
       .eq("name", editingSet);

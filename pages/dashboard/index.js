@@ -36,6 +36,7 @@ export const getStaticProps = async () => {
     .from("allemotes")
     .select("*")
     .order("date", { ascending: false });
+  if (error) console.log(error);
 
   // const data = await fetch(
   //   "https://emxllayyisdskjtscvck.supabase.co/rest/v1/allemotes?select=*",

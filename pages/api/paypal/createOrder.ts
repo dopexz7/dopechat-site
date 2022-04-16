@@ -29,7 +29,7 @@ export default async function handle(
     res.status(500);
   }
   //Once order is created store the data using Prisma
-  const { data: lelelelelel, error } = await supabase
+  await supabase
     .from("donations")
     .insert([{ orderID: response.result.id, status: "PENDING" }]);
   res.json({ orderID: response.result.id });

@@ -1,9 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import DashboardLayout from "./DashboardLayout";
 import DashboardMiddleSection from "./DashboardMiddleSection";
-import { supabase } from "../../../lib/supabaseClient";
-import * as Md from "react-icons/md";
-import { Tooltip } from "@mantine/core";
 import YourEmoteSets from "./Rightside/YourEmoteSets";
 export default function DashboardMain({ session, data }) {
   const [editingSet, setEditingSet] = useState("");

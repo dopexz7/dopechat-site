@@ -1,5 +1,5 @@
 import "../styles/globals.css";
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useRouter } from "next/router";
 import NProgress from "nprogress";
 
@@ -9,7 +9,7 @@ export default function App({
 }) {
   const router = useRouter();
   React.useEffect(() => {
-    const handleStart = (url) => {
+    const handleStart = () => {
       NProgress.start();
     };
     const handleStop = () => {

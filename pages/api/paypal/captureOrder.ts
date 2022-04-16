@@ -17,7 +17,7 @@ export default async function handle(
     res.status(500);
   }
   // Update payment to PAID status once completed
-  const { data, error } = await supabase
+  await supabase
     .from("donations")
     .update({ status: "PAID" })
     .eq("orderID", orderID);

@@ -38,14 +38,14 @@ const FileDrop = (props) => {
     const { data: fileUrl, er } = await supabase.storage
       .from("uploads")
       .getPublicUrl(fileName);
-
+    if (er) console.log(er);
     const newFile = {
       uploaded_by: supabase.auth.user().user_metadata.name,
       name: fileName,
       url: fileUrl.publicURL,
     };
 
-    const { data: drx, e } = await supabase.from("submitfiles").insert(newFile);
+    await supabase.from("submitfiles").insert(newFile);
 
     if (uploadError) {
       console.log(uploadError);
@@ -69,16 +69,15 @@ const FileDrop = (props) => {
             handleChange={handleChange}
             name="file"
             onTypeError={(e) => setError(e)}
-            children={
-              <div className="flex flex-col cursor-pointer duration-300 border-dashed rounded text-sm font-semibold text-accent-gray border-2 p-14 w-full flex justify-center items-center">
-                Drag & drop files here!
-                <span className="text-xs text-accent-gray opacity-50">
-                  .JPG, .PNG, .WEBP, .GIF
-                </span>
-              </div>
-            }
             types={fileTypes}
-          />
+          >
+            <div className="flex flex-col cursor-pointer duration-300 border-dashed rounded text-sm font-semibold text-accent-gray border-2 p-14 w-full flex justify-center items-center">
+              Drag & drop files here!
+              <span className="text-xs text-accent-gray opacity-50">
+                .JPG, .PNG, .WEBP, .GIF
+              </span>
+            </div>
+          </FileUploader>
         </>
       ) : (
         <div className="justify-center mb-3 text-xs bg-border-white rounded text-accent-gray font-semibold px-2 py-3  flex flex-row items-center">

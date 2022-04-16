@@ -1,5 +1,5 @@
 import { useState, Fragment } from "react";
-import { Dialog, Transition, Menu } from "@headlessui/react";
+import { Dialog, Transition } from "@headlessui/react";
 import * as Scroll from "react-scroll";
 import { NavData } from "./NavData";
 import { useRouter } from "next/router";

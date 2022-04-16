@@ -1,4 +1,3 @@
-import { useRouter } from "next/router";
 import AuthRoute from "../../../contexts/authRoute";
 import DashboardLayout from "../../../components/Dashboard/Main/DashboardLayout";
 import { useEffect, useState } from "react";
@@ -7,20 +6,17 @@ import Image from "next/image";
 import * as Im from "react-icons/im";
 import * as Md from "react-icons/md";
 export default function MainProfile({ session }) {
-  const router = useRouter();
-
   const [approvedEmotes, setApprovedEmotes] = useState();
 
   useEffect(() => {
     const searchApprovedEmotes = async () => {
-      let { data: allemotes, error } = await supabase
+      return await supabase
         .from("allemotes")
         .select("*")
         .eq("uploaded_by", session?.user.user_metadata.name);
-      return allemotes;
     };
     searchApprovedEmotes().then((res) => {
-      setApprovedEmotes(res);
+      setApprovedEmotes(res.data);
     });
   }, [session]);
 
@@ -28,10 +24,7 @@ export default function MainProfile({ session }) {
     const [loading, setLoading] = useState(false);
     const [deleted, setDeleted] = useState(false);
     const deleteFromDb = async (v) => {
-      const { lulerz, error } = await supabase
-        .from("allemotes")
-        .delete()
-        .eq("src", v.src);
+      await supabase.from("allemotes").delete().eq("src", v.src);
       setLoading(true);
       setTimeout(() => {
         setDeleted(true);

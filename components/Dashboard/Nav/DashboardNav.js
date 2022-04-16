@@ -1,22 +1,9 @@
 import React from "react";
 import Link from "next/link";
-import { DashboardNavData } from "./DashboardNavData";
-import * as Bs from "react-icons/bs";
 import * as Fa from "react-icons/fa";
-import * as Go from "react-icons/go";
-import * as Ai from "react-icons/ai";
-import { Menu, Transition } from "@headlessui/react";
-import { Fragment, useState } from "react";
-import { useRouter } from "next/router";
-
-import { supabase } from "../../../lib/supabaseClient";
 import Links from "../../Links";
 
-export default function DashboardNav({ session }) {
-  const extensionVersion = "0.3.5.3";
-  const [loggedIn, setLoggedIn] = useState(false);
-  const router = useRouter();
-
+export default function DashboardNav() {
   return (
     <div className={`duration-300 z-50 w-screen`}>
       <div

@@ -10,7 +10,7 @@ const DashboardLayout = (props) => {
         <title>{props.title}</title>
       </Head>
       <div className="overflow-hidden h-screen w-screen flex flex-col justify-center items-center bg-main-purple bg-header-bg bg-blend-multiply">
-        <DashboardNav session={props.session} />
+        <DashboardNav />
 
         <div className="overflow-hidden w-full h-full flex flex-row bg-accent-white">
           <QueryClientProvider client={queryClient}>
