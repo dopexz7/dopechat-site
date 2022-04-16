@@ -14,34 +14,34 @@ import { Stepper, Tabs } from "@mantine/core";
 import { motion } from "framer-motion";
 import * as Fa from "react-icons/fa";
 
-export default function DonationComponent() {
+export default function DonationComponent({ username }) {
   const [visible, setVisible] = useState(false);
   const [seeDonation, setSeeDonation] = useState(false);
   function toggle() {
     setVisible(!visible);
   }
 
-  const [orderId, setOrderId] = useState();
-  const createMutation = useMutation<{ data: any }, AxiosError, any, Response>(
-    (): any => axios.post("/api/paypal/createOrder")
-  );
-  const captureMutation = useMutation<string, AxiosError, any, Response>(
-    (data): any => axios.post("/api/paypal/captureOrder", data)
-  );
-  const createPayPalOrder = async (): Promise<string> => {
-    const response = await createMutation.mutateAsync({});
-    setOrderId(response.data.orderID);
-    return response.data.orderID;
-  };
+  // const [orderId, setOrderId] = useState();
+  // const createMutation = useMutation<{ data: any }, AxiosError, any, Response>(
+  //   (): any => axios.post("/api/paypal/createOrder")
+  // );
+  // const captureMutation = useMutation<string, AxiosError, any, Response>(
+  //   (data): any => axios.post("/api/paypal/captureOrder", data)
+  // );
+  // const createPayPalOrder = async (): Promise<string> => {
+  //   const response = await createMutation.mutateAsync({});
+  //   setOrderId(response.data.orderID);
+  //   return response.data.orderID;
+  // };
 
-  const onApprove = async (data: OnApproveData): Promise<void> => {
-    const { data: pepeg, error } = await supabase
-      .from("donations")
-      .update({ username: username, amount: "5" })
-      .eq("orderID", orderId);
+  // const onApprove = async (data: OnApproveData): Promise<void> => {
+  //   const { data: pepeg, error } = await supabase
+  //     .from("donations")
+  //     .update({ username: username, amount: "5" })
+  //     .eq("orderID", orderId);
 
-    return captureMutation.mutate({ orderID: data.orderID });
-  };
+  //   return captureMutation.mutate({ orderID: data.orderID });
+  // };
   function StyledTabs(props) {
     return (
       <motion.div

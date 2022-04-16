@@ -122,7 +122,7 @@ const DashboardLeftSignedIn = ({ session }) => {
           </Link>
           <LeftSideModal username={username} />
 
-          <DonationComponent />
+          <DonationComponent username={username} />
         </div>
       </div>
     </>
