@@ -1,17 +1,26 @@
 import InfiniteScroll from "react-infinite-scroll-component";
-
 import { Tooltip } from "@mantine/core";
 import * as Md from "react-icons/md";
 import * as Bs from "react-icons/bs";
-import React, { useEffect, useState } from "react";
-import Image from "next/image";
+import React, { useRef, useState } from "react";
 import { supabase } from "../../../lib/supabaseClient";
-export default function DashboardMiddleSection({ session, data, editingSet }) {
-  const [blogs, setBlogs] = useState(null);
+import useIsMod from "../../../funcs/useIsMod";
+import EmoteComponent from "./Emote/EmoteComponent";
+
+export default function DashboardMiddleSection({
+  session,
+  data,
+  fullSet,
+  editingSet,
+}) {
+  const [blogs, setBlogs] = useState(fullSet);
   const [q, setQ] = useState("");
   const [startUpdate, setStartUpdate] = useState(false);
   const [posts, setPosts] = useState(data);
   const [sorting, setSorting] = useState(false);
+  const isMod = useIsMod(session?.user?.user_metadata.name);
+  const [allCount, setAllCount] = useState(fullSet.length);
+
   const getMorePost = async () => {
     try {
       const kekl = posts.length + 12;
@@ -26,126 +35,33 @@ export default function DashboardMiddleSection({ session, data, editingSet }) {
       console.log(e);
     }
   };
+
   const [moreThanTwo, setMoreThanTwo] = useState(false);
-  const beginUpdate = async () => {
-    try {
-      let { data, error } = await supabase
-        .from("allemotes")
-        .select("*")
-        .order("code", { ascending: true });
-      setBlogs(data);
-      console.log(blogs);
-      if (q.length > 2) {
-        setStartUpdate(true);
+  const beginUpdate = () => {
+    if (q.length > 2) {
+      setStartUpdate(true);
+      setMoreThanTwo(false);
+    } else {
+      setStartUpdate(false);
+      setMoreThanTwo(true);
+      setTimeout(() => {
         setMoreThanTwo(false);
-      } else {
-        setStartUpdate(false);
-        setMoreThanTwo(true);
-        setTimeout(() => {
-          setMoreThanTwo(false);
-        }, 2000);
-      }
-    } catch (e) {
-      console.log(e);
+      }, 2000);
     }
   };
-
-  const EmoteComponent = ({ data }) => {
-    return (
-      <div
-        className={`h-32 w-32 group duration-300 bg-accent-white rounded-md select-none`}
-      >
-        <div className="w-full h-32 overflow-hidden text-black flex flex-row justify-center relative border-2 rounded-md">
-          <div className="group absolute w-full h-full duration-300 flex items-center justify-center">
-            <Image
-              height={64}
-              width={64}
-              className={`group-hover:scale-50 group-hover:opacity-25 duration-300`}
-              src={`https://res.cloudinary.com/demo/image/fetch/${data.src}`}
-              alt={data.code}
-            />
-          </div>
-
-          <div
-            className={`w-full relative duration-300 flex flex-col opacity-0 scale-0 group-hover:scale-100 group-hover:opacity-100`}
-          >
-            <div className="flex flex-col items-center justify-center h-full">
-              <div className=" overflow-hidden text-sm font-normal">
-                {data.code}
-              </div>
-              <div className="text-xs">by {data.by ? data.by : "dope"}</div>
-            </div>
-            <div className="flex flex-row">
-              {session && editingSet ? (
-                <div
-                  onClick={() => addToSet(data)}
-                  className="approve flex items-center justify-center w-full hover:rounded-2xl p-1 text-white text-xs cursor-pointer duration-300 h-full"
-                >
-                  <Md.MdAddCircleOutline className="mr-1" />{" "}
-                  {mod ? "" : `${editingSet}'s set`}
-                </div>
-              ) : (
-                ""
-              )}
-              {mod ? (
-                <div
-                  onClick={() => deleteFromDb(data)}
-                  className="remove w-full flex items-center justify-center hover:rounded-2xl p-0.5 text-center text-white text-xs cursor-pointer duration-300 h-full"
-                >
-                  <Md.MdRemoveCircleOutline />
-                </div>
-              ) : (
-                ""
-              )}
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  };
-
-  const [mod, setMod] = useState(false);
-  const checkMod = async () => {
-    let { data: mods, error } = await supabase
-      .from("mods")
-      .select("*")
-      .eq("name", session?.user.user_metadata.name);
-    if (mods.length) return true;
-    return false;
-  };
-
-  const deleteFromDb = async (v) => {
-    const { lulerz, error } = await supabase
-      .from("allemotes")
-      .delete()
-      .eq("code", v.code);
-    setPosts(data);
-  };
-
-  const addToSet = async (d) => {
-    let { data: useremotes, erro } = await supabase
-      .from("useremotes")
-      .select("emotes")
-      .eq("name", editingSet);
-    const arr = useremotes[0].emotes;
-
-    arr.push(d);
-    const { data, error } = await supabase
-      .from("useremotes")
-      .update({ emotes: arr })
-      .eq("name", editingSet);
-  };
-
-  useEffect(() => {
-    checkMod().then((res) => {
-      setMod(res);
-    });
-  }, [session, mod, data]);
-
+  const divRef = useRef();
   return (
     <>
       <div className="px-6 py-5  border-b-2 flex flex-row items-center">
-        <div className="font-normal text-lg flex-1 max-w-xs">All emotes</div>
+        <div className="font-normal  space-x-3 flex flex-row items-center">
+          <p className="text-lg">All emotes</p>
+          <p
+            className="border-2 px-2 rounded-2xl text-sm text-darker-purple "
+            ref={divRef}
+          >
+            {allCount}
+          </p>
+        </div>
 
         <div className="overflow-hidden duration-300 border-2 rounded-2xl ml-auto flex flex-row items-center text-md font-semibold">
           <Tooltip
@@ -200,7 +116,16 @@ export default function DashboardMiddleSection({ session, data, editingSet }) {
                 return val;
               }
             })
-            .map((data, index) => <EmoteComponent key={index} data={data} />)
+            .map((data, index) => (
+              <EmoteComponent
+                key={index}
+                data={data}
+                session={session}
+                editingSet={editingSet}
+                isMod={isMod}
+                kekRef={divRef}
+              />
+            ))
             .sort((a, b) =>
               sorting
                 ? a.code > b.code
@@ -235,7 +160,14 @@ export default function DashboardMiddleSection({ session, data, editingSet }) {
                     : new Date(b.date) - new Date(a.date)
                 )
                 .map((data, index) => (
-                  <EmoteComponent key={index} data={data} />
+                  <EmoteComponent
+                    key={index}
+                    data={data}
+                    session={session}
+                    editingSet={editingSet}
+                    isMod={isMod}
+                    kekRef={divRef}
+                  />
                 ))}
           </InfiniteScroll>
         </div>

@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 import { browserName } from "react-device-detect";
 import * as Fa from "react-icons/fa";
-
+import { motion } from "framer-motion";
+import { leftToRightVariant } from "./transitionVariants";
 export default function Header() {
   const [download, setDownload] = useState("");
   const [browsName, setBrowsName] = useState("");
@@ -36,7 +37,13 @@ export default function Header() {
         id="section0"
       >
         <div className="h-screen flex flex-row mr-auto">
-          <div className="winScl:scale-75 winScl:mt-20 p-6 lg:p-8 mt-20 lg:mt-44 w-full lg:w-[50vw] fixed top-0 flex-col flex lg:flex-col">
+          <motion.div
+            initial="offscreen"
+            whileInView="onscreen"
+            viewport={{ once: true, amount: 0.8 }}
+            variants={leftToRightVariant}
+            className="winScl:scale-75 winScl:mt-20 p-6 lg:p-8 mt-20 lg:mt-44 w-full lg:w-[50vw] fixed top-0 flex-col flex lg:flex-col"
+          >
             <div className="flex flex-col">
               <h1 className="hidden lg:flex text-5xl font-light max-w-xl ">
                 The ultimate FB Gaming livestream experience
@@ -119,7 +126,7 @@ export default function Header() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </>

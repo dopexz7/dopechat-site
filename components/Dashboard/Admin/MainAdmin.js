@@ -5,48 +5,63 @@ import * as Bi from "react-icons/bi";
 import * as Md from "react-icons/md";
 import Image from "next/image";
 import { supabase } from "../../../lib/supabaseClient";
+import useReadSubmissions from "../../../funcs/useReadSubmissions";
 export default function MainAdmin({ session }) {
   const [data, setData] = useState();
-  const readSubmissions = async () => {
-    let { data: submitfiles, error } = await supabase
-      .from("submitfiles")
-      .select("*");
-    setData(submitfiles);
-  };
-
+  const submissions = useReadSubmissions();
   useEffect(() => {
-    readSubmissions();
-  }, [data]);
-  console.log();
+    setData(submissions);
+  }, [submissions]);
+
   const deleteFromDb = async (v) => {
-    const { lulerz, error } = await supabase
+    const deletingFromDb = supabase
       .from("submitfiles")
       .delete()
       .eq("url", v.url);
-    console.log(v);
-    const { lol, er } = await supabase.storage.from("uploads").remove([v.name]);
+    const removeFromUploads = supabase.storage.from("uploads").remove([v.name]);
+
+    let newAr = [];
+    const dataAr = data;
+    dataAr.forEach((d) => {
+      if (d !== v) newAr.push(d);
+    });
+    setData(newAr);
+
+    await Promise.all([deletingFromDb, removeFromUploads]);
   };
   const approveToDb = async (v) => {
-    const { data, error } = await supabase.storage
+    const movingToApproved = supabase.storage
       .from("uploads")
       .move(`${v.name}`, `approved/${v.name}`);
-
     const { data: fileUrl, erx } = await supabase.storage
       .from("uploads")
       .getPublicUrl(`approved/${v.name}`);
-
+    if (erx) console.log(erx);
+    console.log(data);
     const newFile = {
       uploaded_by: v.uploaded_by,
       code: v.name,
       src: fileUrl.publicURL,
       date: v.created_at,
     };
-    const { data: drx, e } = await supabase.from("allemotes").insert(newFile);
+    const insertingNewFile = supabase.from("allemotes").insert(newFile);
 
-    const { lulerz, er } = await supabase
+    const deletingFromOldTable = supabase
       .from("submitfiles")
       .delete()
       .eq("url", v.url);
+
+    let newAr = [];
+    const dataAr = data;
+    dataAr.forEach((d) => {
+      if (d !== v) newAr.push(d);
+    });
+    setData(newAr);
+    await Promise.all([
+      movingToApproved,
+      insertingNewFile,
+      deletingFromOldTable,
+    ]);
   };
   return (
     <AdminRoute>
@@ -56,7 +71,7 @@ export default function MainAdmin({ session }) {
             <div className="p-0.5">User submitted emotes</div>
           </div>
 
-          <div className="grid xgrd gap-3 p-6">
+          <div className="grid xgrd gap-3 p-6 overflow-y-auto">
             {data &&
               data.map((d, index) => (
                 <div
@@ -69,7 +84,7 @@ export default function MainAdmin({ session }) {
                         height={64}
                         width={64}
                         className="group-hover:scale-50 group-hover:opacity-25 duration-300"
-                        src={`https://res.cloudinary.com/demo/image/fetch/${d.url}`}
+                        src={d.url}
                         alt={d.code}
                       />
                     </div>

@@ -1,15 +1,28 @@
-import React, { useState } from "react";
-
-import * as Bs from "react-icons/bs";
+import React, { useEffect, useState } from "react";
 import { supabase } from "../../../lib/supabaseClient";
 import { FileUploader } from "react-drag-drop-files";
-
+import useUploadLimit from "../../../funcs/useUploadLimit";
+import setUploadLimit from "../../../funcs/useSetUploadLimit";
+import * as Bs from "react-icons/bs";
 const fileTypes = ["JPG", "PNG", "GIF", "WEBP"];
 
-const FileDrop = () => {
+const FileDrop = (props) => {
   const [error, setError] = useState(
-    "Make sure the file name is named as the code of the emote ex. 'KEKW.png'"
+    "Make sure the file name is the code of the emote!"
   );
+
+  const limit = useUploadLimit(props.username);
+  const [upLimit, setUpLimit] = useState(limit);
+
+  useEffect(() => {
+    setUpLimit(limit);
+  }, [limit]);
+  const handleUploadLimit = () => {
+    return (
+      setUploadLimit(props.username, upLimit ? upLimit - 1 : null),
+      setUpLimit(upLimit - 1)
+    );
+  };
 
   const handleChange = async (event) => {
     if (!event || event === undefined) {
@@ -22,7 +35,6 @@ const FileDrop = () => {
     let { error: uploadError } = await supabase.storage
       .from("uploads")
       .upload(fileName, file);
-    //
     const { data: fileUrl, er } = await supabase.storage
       .from("uploads")
       .getPublicUrl(fileName);
@@ -39,19 +51,41 @@ const FileDrop = () => {
       console.log(uploadError);
       setError("An emote with the same name might already be uploaded!");
     }
+    setError("Uploaded!");
+    setTimeout(() => {
+      handleUploadLimit();
+      setError("");
+    }, 1000);
   };
   return (
-    <div className="h-full w-full flex flex-col mt-3 filedrop">
-      <div className="mb-3 text-sm bg-accent-white rounded-sm text-accent-gray font-bold p-3 flex flex-row items-center">
-        <Bs.BsExclamationSquareFill className=" mr-2 text-red-500 rounded-sm" />
-        {error}
-      </div>
-      <FileUploader
-        classes="!text-white !h-full !border-border-white !p-10 !max-w-full !w-full flex justify-center items-center"
-        handleChange={handleChange}
-        name="file"
-        types={fileTypes}
-      />
+    <div className="h-full w-full flex flex-col">
+      {upLimit > 0 ? (
+        <>
+          <div className="justify-center mb-3 text-xs bg-border-white rounded text-accent-gray font-semibold px-2 py-3  flex flex-row items-center">
+            {error}
+          </div>
+          <FileUploader
+            maxSize="10"
+            handleChange={handleChange}
+            name="file"
+            onTypeError={(e) => setError(e)}
+            children={
+              <div className="flex flex-col cursor-pointer duration-300 border-dashed rounded text-sm font-semibold text-accent-gray border-2 p-14 w-full flex justify-center items-center">
+                Drag & drop files here!
+                <span className="text-xs text-accent-gray opacity-50">
+                  .JPG, .PNG, .WEBP, .GIF
+                </span>
+              </div>
+            }
+            types={fileTypes}
+          />
+        </>
+      ) : (
+        <div className="justify-center mb-3 text-xs bg-border-white rounded text-accent-gray font-semibold px-2 py-3  flex flex-row items-center">
+          <Bs.BsExclamationSquareFill className="mr-2 text-red-500 rounded-sm" />
+          You have exceeded daily limit! (15 uploads)
+        </div>
+      )}
     </div>
   );
 };

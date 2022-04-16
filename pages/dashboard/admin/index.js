@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { supabase } from "../../../lib/supabaseClient";
 import MainAdmin from "../../../components/Dashboard/Admin/MainAdmin";
 
@@ -12,5 +12,6 @@ export default function Admin() {
       setSession(session);
     });
   }, []);
+
   return <MainAdmin session={session} />;
 }

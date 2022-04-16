@@ -3,18 +3,14 @@ import { useEffect, useState } from "react";
 import DashboardLayout from "../../../components/Dashboard/Main/DashboardLayout";
 import AuthRoute from "../../../contexts/authRoute";
 import { supabase } from "../../../lib/supabaseClient";
-import InfiniteScroll from "react-infinite-scroll-component";
 import * as Md from "react-icons/md";
 import Image from "next/image";
-import * as Bi from "react-icons/bi";
 
 export default function Set(props) {
   const [session, setSession] = useState(null);
   const [q, setQ] = useState("");
-  const [startUpdate, setStartUpdate] = useState(false);
   const [error, setError] = useState("");
   const [mod, setMod] = useState(false);
-  const [sorting, setSorting] = useState(false);
   const seeMods = async () => {
     let { data: mods, error } = await supabase
       .from("useremotes")
@@ -48,14 +44,7 @@ export default function Set(props) {
       }
     });
   }, [props]);
-  const beginUpdate = () => {
-    if (q.length > 2) {
-      setStartUpdate(true);
-      setError("");
-    } else {
-      setError("Type at least 3 letters!");
-    }
-  };
+
   const deleteFromSet = async (d) => {
     const newArray = pageSet;
     const finalArray = [];
@@ -123,7 +112,7 @@ export default function Set(props) {
                             height={64}
                             width={64}
                             className="group-hover:scale-50 group-hover:opacity-25 duration-300"
-                            src={`https://res.cloudinary.com/demo/image/fetch/${data.src}`}
+                            src={data.src}
                             alt={data.code}
                           />
                         </div>
