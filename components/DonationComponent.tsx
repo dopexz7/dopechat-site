@@ -206,19 +206,19 @@ export default function DonationComponent({ username }) {
   );
 }
 
-declare global {
-  interface Window {
-    paypal: any;
-  }
-}
+// declare global {
+//   interface Window {
+//     paypal: any;
+//   }
+// }
 
-interface OnApproveData {
-  billingToken?: string | null;
-  facilitatorAccessToken: string;
-  orderID: string;
-  amount: string;
-  payerID?: string | null;
-  paymentID?: string | null;
-  subscriptionID?: string | null;
-  authCode?: string | null;
-}
+// interface OnApproveData {
+//   billingToken?: string | null;
+//   facilitatorAccessToken: string;
+//   orderID: string;
+//   amount: string;
+//   payerID?: string | null;
+//   paymentID?: string | null;
+//   subscriptionID?: string | null;
+//   authCode?: string | null;
+// }
