@@ -25,7 +25,7 @@ export default function DashboardMiddleSection({
 
   const getMorePost = async () => {
     try {
-      const kekl = session ? posts.length + 12 : posts.length + 20;
+      const kekl = posts.length + 12;
       let { data, error } = await supabase
         .from("allemotes")
         .select("*")
@@ -145,7 +145,7 @@ export default function DashboardMiddleSection({
           className="overflow-y-scroll overflow-x-hidden w-full"
         >
           <InfiniteScroll
-            className={`grid ${session ? "xgrd" : "grid-cols-10"} gap-3 p-6`}
+            className="grid xgrd gap-3 p-6"
             dataLength={posts.length}
             next={getMorePost}
             hasMore={true}

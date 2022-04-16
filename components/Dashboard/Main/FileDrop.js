@@ -3,7 +3,6 @@ import { supabase } from "../../../lib/supabaseClient";
 import { FileUploader } from "react-drag-drop-files";
 import useUploadLimit from "../../../funcs/useUploadLimit";
 import setUploadLimit from "../../../funcs/useSetUploadLimit";
-import * as Bs from "react-icons/bs";
 const fileTypes = ["JPG", "PNG", "GIF", "WEBP"];
 
 const FileDrop = (props) => {
