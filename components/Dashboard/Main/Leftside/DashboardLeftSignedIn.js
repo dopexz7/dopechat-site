@@ -1,5 +1,3 @@
-import React, { useEffect, useState } from "react";
-
 import * as Md from "react-icons/md";
 import * as Io from "react-icons/io5";
 import { Tooltip } from "@mantine/core";
