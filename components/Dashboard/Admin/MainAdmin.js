@@ -37,7 +37,6 @@ export default function MainAdmin({ session }) {
       .from("uploads")
       .getPublicUrl(`approved/${v.name}`);
     if (erx) console.log(erx);
-    console.log(data);
     const newFile = {
       uploaded_by: v.uploaded_by,
       code: v.name,

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as Md from "react-icons/md";
 import { supabase } from "../../../../lib/supabaseClient";
 import * as Im from "react-icons/im";
@@ -105,6 +105,9 @@ const EmoteComponent = ({ data, session, editingSet, isMod, kekRef }) => {
       </div>
     );
   };
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
   return (
     <div
       className={`h-32 w-32 group duration-300 bg-accent-white rounded-md select-none`}
@@ -141,7 +144,9 @@ const EmoteComponent = ({ data, session, editingSet, isMod, kekRef }) => {
                 <div className=" overflow-hidden text-sm font-normal">
                   {data.code}
                 </div>
-                <div className="text-xs">by {data.by ? data.by : "dope"}</div>
+                <div className="text-xs">
+                  by {data.uploaded_by ? data.uploaded_by : "dope_xz7"}
+                </div>
               </div>
               <EmoteTools />
             </>

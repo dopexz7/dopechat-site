@@ -27,6 +27,83 @@ export default function Changelog() {
             className="h-5/6 shadow-2xl p-3 font-normal text-main-black rounded-xl flex flex-col scrollbar-thin scrollbar-thumb-darker-purple scrollbar-track-main-white overflow-y-scroll border-2 w-3/4 text-sm"
           >
             <div className="bg-darker-purple px-3 py-1 flex text-main-white w-max rounded-2xl">
+              1.0
+            </div>
+            <div className="m-3">
+              -Official website! dopechat.ddns.net
+              <div className="">--Dashboard</div>
+              <div className="">--Current dashboard features:</div>
+              <div className="">
+                ---Login with Twitch and upload your own emotes
+              </div>
+              <div className="">
+                ---Create your own emote set (up to 5 emotes)
+              </div>
+              <div className="">
+                ---View all current emotes in the extension
+              </div>
+              <div>-Reworked a big part of the extension:</div>
+              <div>--No more installing emote sets: </div>
+              <div>---Global emotes:</div>
+              <div>----They will be constantly updated with new emotes.</div>
+              <div>---Channel emotes:</div>
+              <div>
+                ----If the streamer has an emote set made in the new website,
+                mods will approve it and it will automatically be enabled on the
+                channel ready to use.
+              </div>
+              <div>-Improved settings UI:</div>
+              <div>
+                --Font settings now show 50+ font options, with the ability to
+                add your own fonts
+              </div>
+              <div>--Random username colors toggle (enabled by default)</div>
+              <div>--Made it easier to add new highlighted keywords</div>
+              <div>-Theatre mode:</div>
+              <div>
+                --Theatre mode no longer has a button, use the keyboard shortcut
+                ALT+T (button clutter)
+              </div>
+              <div>-Updated emote menu:</div>
+              <div>--Reworked emote menu completely</div>
+              <div>
+                --You can either click on the emote menu button or ALT+E to
+                bring up the emote menu (it&apos;s no longer draggable)
+              </div>
+              <div>--Emote menu search:</div>
+              <div>---TAB to autocomplete the emote name</div>
+              <div>
+                ---TAB also inputs the first emote into the chatbox (if you have
+                typed anything in it)
+              </div>
+              <div>--Left navigation:</div>
+              <div>
+                ---Buttons for global/streamer emotes and extension settings
+              </div>
+              <div>-TAB autocomplete emotes:</div>
+              <div>
+                --You can now press TAB while typing in the chat input box to
+                autocomplete emotes.
+              </div>
+              <div>
+                --Type exact start of emote codes, ex. Pepe finds all the emotes
+                starting with &quot;Pepe&quot;, &quot;PepeL&quot; or
+                &quot;Pepeg&quot; narrows downthe search and so on.
+              </div>
+              <div>
+                -Moved &quot;Enable emote set&quot; to the Other settings tab
+              </div>
+              <div>
+                -Fixed emote menu sometimes causing browsers to lag (now loads
+                &apos;infinitely&apos; emotes - scroll down to load more)
+              </div>
+              <div>-Other minor fixes and improvements</div>
+              <div>
+                -Timestamps in chat toggle (in settings, hidden by default)
+              </div>
+            </div>
+
+            <div className="bg-darker-purple px-3 py-1 flex text-main-white w-max rounded-2xl">
               0.3.5
             </div>
             <div className="m-3">Minor fixes, improvements</div>

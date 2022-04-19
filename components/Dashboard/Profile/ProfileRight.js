@@ -17,6 +17,10 @@ export default function ProfileRight({ session }) {
   const [loading, setLoading] = useState(false);
   const [modValue, setModValue] = useState("");
   const [requested, setRequested] = useState(false);
+  const [setDeletion, setSetDeletion] = useState(false);
+  const [setDeleted, setSetDeleted] = useState(false);
+  const [error, setError] = useState("");
+  const [setCreated, setSetCreated] = useState(false);
   useEffect(() => {
     setEmotesLen(showSetMods?.emotes?.length);
     setMods(showSetMods?.mods);
@@ -48,6 +52,7 @@ export default function ProfileRight({ session }) {
   };
   const createNewSet = async () => {
     setCreatingSet("Creating set");
+    setSetCreated(true);
     return await supabase
       .from("useremotes")
       .insert([
@@ -69,15 +74,29 @@ export default function ProfileRight({ session }) {
       .eq("name", session?.user?.user_metadata.name)
       .then(() => setRequested(true));
 
+  const initiateSetDeletion = async () =>
+    await supabase
+      .from("useremotes")
+      .delete()
+      .eq("name", session?.user?.user_metadata.name)
+      .then(() => setError("Set deleted!"))
+      .then(() => {
+        setTimeout(() => {
+          setError("");
+          setSetDeleted(true);
+        }, 2000);
+      });
+
   return (
     <div className="text-black bg-border-white h-full w-1/4 flex flex-col p-5">
-      {!isOwnerOfSomething ? (
-        <div
+      {!isOwnerOfSomething || setDeleted ? (
+        <button
+          disabled={setCreated}
           onClick={() => createNewSet()}
           className="group hover:bg-white hover:text-main-purple  bg-main-purple duration-300 cursor-pointer text-white flex justify-center items-center p-3 rounded-2xl w-1/2"
         >
           {creatingSet}
-        </div>
+        </button>
       ) : (
         <>
           <div className="space-x-1 flex flex-row p-0 items-center bg-white w-full rounded-3xl">
@@ -153,6 +172,22 @@ export default function ProfileRight({ session }) {
                   </div>
                 ))}
             </div>
+            <div
+              onClick={() =>
+                !setDeletion ? setSetDeletion(true) : initiateSetDeletion()
+              }
+              className="mt-6 remove text-white duration-300 font-normal hover:text-red-400 cursor-pointer flex justify-center items-center p-3 rounded-xl w-full"
+            >
+              {setDeletion ? "Are you sure? Press again" : "Delete your set"}
+            </div>
+            {error && (
+              <div
+                className="remove mt-3 text-white justify-center mb-3 text-xs bg-border-white
+                rounded font-normal px-2 py-3 flex flex-row items-center"
+              >
+                {error}
+              </div>
+            )}
           </div>
         </>
       )}
