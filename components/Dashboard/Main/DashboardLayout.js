@@ -1,8 +1,9 @@
 import Head from "next/head";
 import DashboardNav from "../Nav/DashboardNav";
 import DashboardLeftSection from "./DashboardLeftSection";
-import { QueryClient, QueryClientProvider } from "react-query";
-const queryClient = new QueryClient();
+
+import Link from "next/link";
+
 const DashboardLayout = (props) => {
   return (
     <>
@@ -13,11 +14,26 @@ const DashboardLayout = (props) => {
         <DashboardNav />
 
         <div className="overflow-hidden w-full h-full flex flex-row bg-accent-white">
-          <QueryClientProvider client={queryClient}>
-            <DashboardLeftSection session={props.session} />
-          </QueryClientProvider>
+          <DashboardLeftSection session={props.session} />
 
           {props.children}
+        </div>
+        <div className="w-full bg-accent-white border-t-2">
+          <div className="w-full flex flex-row text-black items-center max-w-7xl p-1 m-auto text-xs">
+            <div>Copyright © 2022 All Rights Reserved by dopeChat</div>
+            <div className="ml-auto flex flex-row items-center text-xs space-x-3">
+              <Link href="/legal/privacy" passHref>
+                <span className="hover:text-main-purple duration-300 cursor-pointer">
+                  Privacy policy
+                </span>
+              </Link>
+              <Link href="/legal/terms" passHref>
+                <span className="hover:text-main-purple duration-300 cursor-pointer">
+                  Terms
+                </span>
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
     </>

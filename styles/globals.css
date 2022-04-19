@@ -415,3 +415,9 @@ a {
 ::file-selector-button {
   display: none;
 }
+
+.sbui-input:focus {
+  border-color: var(--accent-purple) !important;
+  --tw-ring-color: var(--accent-purple) !important;
+  box-shadow: var(--main-purple) 0px 0px 2px !important;
+}

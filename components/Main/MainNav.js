@@ -6,6 +6,7 @@ import * as Md from "react-icons/md";
 import { NavData } from "./NavData";
 import MobileNav from "./MobileNav";
 import Links from "../Links";
+import ContactMain from "../Contact/ContactMain";
 // import { useState } from "react";
 
 const Linkx = Scroll.Link;
@@ -13,6 +14,7 @@ const Linkx = Scroll.Link;
 export default function MainNav() {
   const scroll = Scroll.animateScroll;
   //const [isOpen, setIsOpen] = useState(false);
+
   return (
     <>
       <MobileNav />
@@ -54,6 +56,10 @@ export default function MainNav() {
             );
           })}
           <Links />
+          <ContactMain
+            btnClass={`hover:text-white duration-300 hidden lg:flex cursor-pointer lg:flex-row lg:items-center`}
+            iconClass={`mr-3`}
+          />
           <Link href="/dashboard" passHref>
             <a
               className={`ml-3 hidden lg:flex flex-row items-center group w-max text-center cursor-pointer duration-300  text-main-white  hover:text-white`}

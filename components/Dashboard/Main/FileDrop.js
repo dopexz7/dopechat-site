@@ -23,7 +23,6 @@ const FileDrop = (props) => {
 
   const handleChange = async (event) => {
     if (!event || event === undefined) {
-      console.log("err");
       setError("Failed to upload file!");
     } else {
       setError("Uploading...");

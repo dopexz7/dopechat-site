@@ -2,6 +2,7 @@ import React from "react";
 import Link from "next/link";
 import * as Fa from "react-icons/fa";
 import Links from "../../Links";
+import ContactMain from "../../Contact/ContactMain";
 
 export default function DashboardNav() {
   return (
@@ -19,6 +20,7 @@ export default function DashboardNav() {
             <Fa.FaHome className="mr-1" /> Home
           </div>
         </Link>
+
         <a
           href="https://www.paypal.com/donate/?hosted_button_id=BBESL24DMEABC"
           target="_blank"
@@ -28,6 +30,11 @@ export default function DashboardNav() {
           <Fa.FaPaypal className="mr-1" />
           Donate
         </a>
+        <ContactMain
+          btnClass={`hover:text-white duration-300 hidden lg:flex cursor-pointer lg:flex-row lg:items-center`}
+          iconClass={`mr-3`}
+        />
+
         <Links />
       </div>
     </div>

@@ -7,9 +7,6 @@ export default function DashboardLeftSection() {
   const [session, setSession] = useState(null);
   const [whyTwitch, setWhyTwitch] = useState(false);
   const [loading, setLoading] = useState(true);
-  // const [amount, setAmount] = useState(10);
-  // const [opened, setOpened] = useState(false);
-  // const [donationComplete, setDonationComplete] = useState(false);
   useEffect(() => {
     setSession(supabase.auth.session());
 
@@ -73,9 +70,6 @@ export default function DashboardLeftSection() {
           </div>
         </>
       )}
-      <div className="flex flex-row mt-auto p-3 text-accent-gray font-normal text-md border-t-2">
-        <span>© dope, 2022</span>
-      </div>
     </div>
   );
 }

@@ -1,33 +1,56 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, Fragment } from "react";
 import { browserName } from "react-device-detect";
 import * as Fa from "react-icons/fa";
+import * as Bs from "react-icons/bs";
 import { motion } from "framer-motion";
 import { leftToRightVariant } from "./transitionVariants";
+import { Menu, Transition } from "@headlessui/react";
 export default function Header() {
-  const [download, setDownload] = useState("");
+  const [download, setDownload] = useState("Browser might not be supported!");
   const [browsName, setBrowsName] = useState("");
   useEffect(() => {
     setBrowsName(browserName);
   }, []);
+  const chromeUrl =
+    "https://chrome.google.com/webstore/detail/fb-gaming-better/aflheebbcchbhephcfamiiciepiibpak";
+  const firefoxUrl =
+    "https://addons.mozilla.org/en-US/firefox/addon/better-gaming/";
+  const operaUrl =
+    "https://chrome.google.com/webstore/detail/fb-gaming-better/aflheebbcchbhephcfamiiciepiibpak";
+  const edgeUrl =
+    "https://microsoftedge.microsoft.com/addons/detail/fb-gaming-better/pmmmalmbjnajoogjgbghgiagjpejfhdi";
+  const menuData = [
+    {
+      title: "Chrome",
+      href: chromeUrl,
+      icon: <Fa.FaChrome />,
+    },
+    {
+      title: "Firefox",
+      href: firefoxUrl,
+      icon: <Fa.FaFirefox />,
+    },
+    {
+      title: "Opera",
+      href: operaUrl,
+      icon: <Fa.FaOpera />,
+    },
+    {
+      title: "Edge",
+      href: edgeUrl,
+      icon: <Fa.FaEdge />,
+    },
+  ];
+
   function handleButton() {
     if (browsName === "Chrome") {
-      window.open(
-        "https://chrome.google.com/webstore/detail/fb-gaming-better/aflheebbcchbhephcfamiiciepiibpak"
-      );
+      window.open(chromeUrl);
     } else if (browsName === "Firefox") {
-      window.location.replace(
-        "https://addons.mozilla.org/en-US/firefox/addon/better-fb-gaming/"
-      );
+      window.open(firefoxUrl);
     } else if (browsName === "Opera") {
-      window.open(
-        "https://chrome.google.com/webstore/detail/fb-gaming-better/aflheebbcchbhephcfamiiciepiibpak"
-      );
+      window.open(operaUrl);
     } else if (browsName === "Edge") {
-      window.open(
-        "https://microsoftedge.microsoft.com/addons/detail/fb-gaming-better/pmmmalmbjnajoogjgbghgiagjpejfhdi"
-      );
-    } else {
-      setDownload("Your browser might not be supported");
+      window.open(edgeUrl);
     }
   }
   return (
@@ -58,71 +81,70 @@ export default function Header() {
 
             <button
               onClick={() => handleButton()}
-              className="box-shadow-purple hidden lg:flex lg:flex-row cursor-pointer duration-300 bg-accent-purple rounded-lg px-4 py-2 w-max text-white hover:bg-white hover:text-darker-purple lg:mt-9 xlx:mt-3"
+              className="box-shadow-purple hidden lg:flex lg:flex-row items-center cursor-pointer duration-300 bg-accent-purple rounded-lg px-4 py-2 w-max text-white hover:bg-white hover:text-darker-purple lg:mt-9 xlx:mt-3"
             >
-              {download
-                ? download
-                : `Download for ${browsName ? browsName : "..."}`}
-
-              {browsName === "Chrome" ? (
-                <Fa.FaChrome className="mt-1 ml-2" />
-              ) : browsName === "Firefox" ? (
-                <Fa.FaFirefox className="mt-1 ml-2" />
-              ) : browsName === "Opera" ? (
-                <Fa.FaOpera className="mt-1 ml-2" />
-              ) : browsName === "Edge" ? (
-                <Fa.FaEdge className="mt-1 ml-2" />
-              ) : browsName === "Safari" ? (
-                <Fa.FaSafari className="mt-1 ml-2" />
-              ) : (
-                ""
-              )}
+              <Fa.FaDownload className="mr-3 text-sm" />
+              Download for {browsName ? browsName : "your browser"}
             </button>
-            {download ? (
-              <>
-                <div className="flex flex-row space-x-3">
-                  <a
-                    href="https://chrome.google.com/webstore/detail/fb-gaming-better/aflheebbcchbhephcfamiiciepiibpak"
-                    className="box-shadow-purple flex flex-row cursor-pointer duration-300 bg-accent-purple rounded-lg px-4 py-2 w-max text-main-white hover:bg-main-white hover:text-main-purple mt-3"
-                  >
-                    Chrome version
-                  </a>
-                  <a
-                    href="https://addons.mozilla.org/en-US/firefox/addon/better-fb-gaming/"
-                    className="box-shadow-purple flex flex-row cursor-pointer duration-300 bg-accent-purple rounded-lg px-4 py-2 w-max text-main-white hover:bg-main-white hover:text-main-purple mt-3"
-                  >
-                    Firefox version
-                  </a>
-                  <a
-                    href="https://microsoftedge.microsoft.com/addons/detail/fb-gaming-better/pmmmalmbjnajoogjgbghgiagjpejfhdi"
-                    className="box-shadow-purple flex flex-row cursor-pointer duration-300 bg-accent-purple rounded-lg px-4 py-2 w-max text-main-white hover:bg-main-white hover:text-main-purple mt-3"
-                  >
-                    Edge version
-                  </a>
-                </div>
-              </>
-            ) : (
-              ""
-            )}
+
+            <div className="hidden lg:flex items-center mt-3">
+              <Menu as="div" className="relative inline-block mr-3">
+                <Menu.Button
+                  className={`hover:text-white duration-300 hidden lg:flex cursor-pointer lg:flex-row lg:items-center`}
+                >
+                  <div className="inline-flex items-center justify-center font-normal text-xs">
+                    All versions
+                    <Bs.BsCaretDownFill
+                      className={`text-main-white  group-hover:text-white
+                     duration-300 w-3 h-3 ml-2`}
+                      aria-hidden="true"
+                    />
+                  </div>
+                </Menu.Button>
+
+                <Transition
+                  as={Fragment}
+                  enter="transition ease-out duration-100"
+                  enterFrom="transform opacity-0 scale-95"
+                  enterTo="transform opacity-100 scale-100"
+                  leave="transition ease-in duration-75"
+                  leaveFrom="transform opacity-100 scale-100"
+                  leaveTo="transform opacity-0 scale-95"
+                >
+                  <Menu.Items className="text-main-black p-1 rounded-md space-y-1 font-semibold text-sm absolute right-0 w-56 mt-3 origin-top-right bg-accent-white shadow-lg">
+                    {menuData.map((data, index) => (
+                      <Menu.Item key={index}>
+                        <a
+                          target="_blank"
+                          rel="noreferrer"
+                          href={data.href}
+                          className={`hover:bg-darker-purple rounded-md cursor-pointer overflow-hidden duration-300 hover:text-white group flex items-center p-2`}
+                        >
+                          <div className="mr-1 p-0.5">{data.icon}</div>
+                          {data.title}
+                        </a>
+                      </Menu.Item>
+                    ))}
+                  </Menu.Items>
+                </Transition>
+              </Menu>
+            </div>
             <div className="lg:mt-9 xlx:mt-3 text-white flex flex-col h-max lg:text-left  p-3 lg:border-0 lg:p-0">
               Available for
               <div className="flex flex-row lg:flex-row mt-3 space-x-2 lg:self-auto">
-                <div className="bg-accent-purple p-2 rounded-xl">
-                  <Fa.FaChrome className="w-6 h-6" />
-                </div>
-                <div className="bg-accent-purple p-2 rounded-xl">
-                  <Fa.FaFirefox className="w-6 h-6" />
-                </div>
-                <div className="bg-accent-purple p-2 rounded-xl">
-                  <Fa.FaOpera className="w-6 h-6" />
-                </div>
-                <div className="bg-accent-purple p-2 rounded-xl">
-                  <Fa.FaEdge className="w-6 h-6" />
-                </div>
+                {menuData.map((data, index) => (
+                  <div
+                    key={index}
+                    title={data.title}
+                    className="bg-accent-purple p-2 flex justify-center items-center rounded-2xl text-2xl"
+                  >
+                    {data.icon}
+                  </div>
+                ))}
               </div>
               <div className="mt-3 text-white flex flex-col">
                 <div className="text-main-white text-xs hidden lg:flex">
-                  Other browsers like Brave might work
+                  Browsers like Brave might work
                 </div>
               </div>
             </div>

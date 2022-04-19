@@ -5,6 +5,7 @@ import { supabase } from "../../../lib/supabaseClient";
 import Image from "next/image";
 import * as Im from "react-icons/im";
 import * as Md from "react-icons/md";
+import ProfileRight from "./ProfileRight";
 export default function MainProfile({ session, data }) {
   const [approvedEmotes, setApprovedEmotes] = useState();
 
@@ -101,29 +102,7 @@ export default function MainProfile({ session, data }) {
           )) || <div className="p-6">You have no approved emotes yet.</div>}
         </div>
 
-        <div className="text-black bg-border-white h-full w-1/4 flex flex-col">
-          <div className="px-6 py-5 flex flex-row items-center justify-center ">
-            <div className="font-normal text-accent-purple  px-6 py-2 rounded-2xl  text-lg">
-              WIP
-            </div>
-          </div>
-          {/* <div className="w-full overflow-y-auto h-full p-6 flex flex-col space-y-3">
-            <div className="space-x-1 flex flex-row p-6 items-center justify-center bg-white w-full rounded-2xl">
-              <div className="flex flex-col mr-auto w-full">
-                <div className="font-semibold py-1">dope&apos;s set</div>
-                <div className="border-2 font-normal w-max px-3 py-0.5 rounded-3xl">
-                  Owner
-                </div>
-              </div>
-              <div className="ml-auto flex px-4 py-1 text-darker-purple border-2 font-normal cursor-pointer hover:bg-darker-purple hover:text-white duration-300 hover:border-darker-purple rounded-3xl">
-                Edit
-              </div>
-              <div className="ml-auto flex px-4 py-1 text-darker-purple border-2 font-normal cursor-pointer hover:bg-darker-purple hover:text-white duration-300 hover:border-darker-purple rounded-3xl">
-                Settings
-              </div>
-            </div>
-          </div> */}
-        </div>
+        <ProfileRight session={session} />
       </DashboardLayout>
     </AuthRoute>
   );

@@ -3,21 +3,23 @@ import React, { useEffect, useState } from "react";
 import * as Md from "react-icons/md";
 import * as Io from "react-icons/io5";
 import { Tooltip } from "@mantine/core";
-
+import * as Bs from "react-icons/bs";
 import { supabase } from "../../../../lib/supabaseClient";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import LeftSideModal from "./LeftSideModal";
 import useIsMod from "../../../../funcs/useIsMod";
-
-import DonationComponent from "../../../DonationComponent";
+import useIsDonor from "../../../../funcs/useIsDonor";
+import useHasEdits from "../../../../funcs/useHasEdits";
+import DonationComponent from "../../../Donation/DonationComponent";
 
 const DashboardLeftSignedIn = ({ session }) => {
   const router = useRouter();
   const [username, setUsername] = useState(null);
   const [avatarUrl, setAvatarUrl] = useState(null);
   const isMod = useIsMod(username);
-
+  const isDonor = useIsDonor(username);
+  const hasEdits = useHasEdits(username);
   useEffect(() => {
     let subed = true;
     if (subed) {
@@ -120,10 +122,24 @@ const DashboardLeftSignedIn = ({ session }) => {
                 : "Your profile"}
             </div>
           </Link>
-
           <LeftSideModal username={username} />
-
           <DonationComponent username={username} />
+          <div className="flex flex-row items-center text-sm px-3 text-accent-gray font-medium">
+            {isDonor ? (
+              <>
+                <Bs.BsFillPatchCheckFill className="mr-2 text-main-purple text-xl" />
+                Thank you for your support!
+              </>
+            ) : (
+              <>
+                <Bs.BsFillPatchCheckFill className="mr-2 text-accent-gray text-xl" />
+                Hasn&apos;t currently donated.
+              </>
+            )}
+          </div>
+          <div className="flex flex-row items-center text-sm px-3 text-accent-gray font-medium">
+            You have access to {hasEdits ? hasEdits.length : "0"} emote sets.
+          </div>
         </div>
       </div>
     </>

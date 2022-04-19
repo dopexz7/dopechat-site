@@ -126,9 +126,7 @@ export default function UploadFileFirst(props) {
             onClick={() => {
               if (upLimit > 0) {
                 handleUploadFile();
-                console.log(upLimit);
               } else {
-                console.log("exceeded", upLimit);
                 setError("You have exceeded daily limit!");
               }
             }}

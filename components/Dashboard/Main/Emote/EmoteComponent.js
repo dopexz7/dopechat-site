@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import * as Md from "react-icons/md";
 import { supabase } from "../../../../lib/supabaseClient";
 import * as Im from "react-icons/im";
-
+import useIsDonor from "../../../../funcs/useIsDonor";
 const EmoteComponent = ({ data, session, editingSet, isMod, kekRef }) => {
   const [deleted, setDeleted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -15,6 +15,7 @@ const EmoteComponent = ({ data, session, editingSet, isMod, kekRef }) => {
       kekRef.current.textContent = kekRef.current.textContent - 1;
     }, 800);
   };
+  const isDonor = useIsDonor(session?.user?.user_metadata.name);
 
   const addToSet = async (d) => {
     let { data: useremotes, erro } = await supabase
@@ -23,12 +24,56 @@ const EmoteComponent = ({ data, session, editingSet, isMod, kekRef }) => {
       .eq("name", editingSet);
     if (erro) console.log(erro);
     const arr = useremotes[0].emotes;
-
-    arr.push(d);
-    await supabase
-      .from("useremotes")
-      .update({ emotes: arr })
-      .eq("name", editingSet);
+    if (editingSet === session?.user?.user_metadata.name) {
+      if (!isDonor) {
+        if (useremotes[0]?.emotes?.length >= 5) {
+          return alert("Emote limit reached!");
+        } else {
+          if (useremotes[0]?.emotes?.length) {
+            arr.push(d);
+            return await supabase
+              .from("useremotes")
+              .update({ emotes: arr })
+              .eq("name", editingSet);
+          } else {
+            return await supabase
+              .from("useremotes")
+              .update({ emotes: [d] })
+              .eq("name", editingSet);
+          }
+        }
+      } else {
+        if (useremotes[0]?.emotes?.length >= 15) {
+          return alert("Emote limit reached!");
+        } else {
+          if (useremotes[0]?.emotes?.length) {
+            arr.push(d);
+            return await supabase
+              .from("useremotes")
+              .update({ emotes: arr })
+              .eq("name", editingSet);
+          } else {
+            return await supabase
+              .from("useremotes")
+              .update({ emotes: [d] })
+              .eq("name", editingSet);
+          }
+        }
+      }
+    } else {
+      if (useremotes[0]?.emotes?.length) {
+        arr.push(d);
+        return await supabase
+          .from("useremotes")
+          .update({ emotes: arr })
+          .eq("name", editingSet);
+      } else {
+        return await supabase
+          .from("useremotes")
+          .update({ emotes: [d] })
+          .eq("name", editingSet);
+      }
+    }
   };
 
   const EmoteTools = () => {

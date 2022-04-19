@@ -5,7 +5,7 @@ import { leftToRightVariant, rightToLeftVariant } from "./transitionVariants";
 export default function DonateSection() {
   return (
     <div
-      className="p-6 lg:p-0 winScl:scale-90 winScl:mt-0 flex flex-col justify-center items-center lg:flex-row lg:pt-16 h-screen"
+      className="p-6 w-full max-w-7xl lg:p-0 winScl:scale-90 winScl:mt-0 flex flex-col justify-center items-center lg:flex-row lg:pt-16 h-screen"
       id="section4"
     >
       <motion.div

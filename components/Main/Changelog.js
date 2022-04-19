@@ -5,7 +5,7 @@ export default function Changelog() {
   return (
     <>
       <div
-        className="p-6 lg:p-0 flex flex-row relative h-screen items-center"
+        className="p-6 w-full max-w-7xl lg:p-0 flex flex-row relative h-screen items-center"
         id="section3"
       >
         <div className="ml-auto h-3/4 w-full flex flex-row lg:flex-row text-white lg:mr-16 justify-center items-center">

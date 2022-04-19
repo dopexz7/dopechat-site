@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 export default function LookAt() {
   return (
     <div
-      className="winScl:scale-[0.9] winScl:mt-20 hidden lg:flex flex-row space-x-10 items-center pt-0 h-screen"
+      className="winScl:scale-[0.9] w-full max-w-7xl winScl:mt-20 hidden lg:flex flex-row space-x-10 items-center pt-0 h-screen"
       id="section2"
     >
       <div className="w-full p-10 lg:p-0 lg:w-2/6 flex flex-col lg:flex-col text-white lg:mr-16 lg:ml-16">

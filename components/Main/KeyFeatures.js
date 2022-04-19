@@ -16,7 +16,7 @@ export default function KeyFeatures() {
 
   return (
     <div
-      className="winScl:scale-90 winScl:mt-0 flex flex-col items-center pt-6 lg:pt-16 h-screen"
+      className="winScl:scale-90 w-full max-w-7xl winScl:mt-0 flex flex-col items-center pt-6 lg:pt-16 h-screen"
       id="section1"
     >
       <motion.span

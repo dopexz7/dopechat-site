@@ -23,7 +23,7 @@ export default function Home() {
       </div>
       <div className="h-full relative">
         <div className="w-screen bg-accent-white ">
-          <div className=" w-screen max-w-7xl ml-auto mr-auto">
+          <div className="w-screen flex flex-col items-center ml-auto mr-auto">
             <KeyFeatures />
             <LookAt />
             <Changelog />
