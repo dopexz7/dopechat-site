@@ -45,14 +45,14 @@ export default function YourEmoteSets(props) {
     setEditingSet(d);
     props.onSuccess(d);
   };
-  const getStreamerImg = async (d) => {
-    let strmimg = await fetch(
-      `https://api.frankerfacez.com/v1/user/${d.toLowerCase()}`
-    )
-      .then((res) => res.json())
-      .then((data) => data.user.avatar);
-    return strmimg;
-  };
+  // const getStreamerImg = async (d) => {
+  //   let strmimg = await fetch(
+  //     `https://api.frankerfacez.com/v1/user/${d.toLowerCase()}`
+  //   )
+  //     .then((res) => res.json())
+  //     .then((data) => data.user.avatar);
+  //   return strmimg;
+  // };
 
   return (
     <div className="text-black bg-border-white h-full w-1/4 flex flex-col">

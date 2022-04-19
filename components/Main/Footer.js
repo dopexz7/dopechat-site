@@ -1,8 +1,6 @@
 import React from "react";
-import Image from "next/image";
 import * as Fa from "react-icons/fa";
 import Link from "next/link";
-import * as Hi from "react-icons/hi";
 import * as Bs from "react-icons/bs";
 import * as Md from "react-icons/md";
 import { NavData } from "./NavData";
@@ -10,7 +8,6 @@ import * as Scroll from "react-scroll";
 import ContactMain from "../Contact/ContactMain";
 const Linkx = Scroll.Link;
 export default function Footer() {
-  //https://codepen.io/scanfcode/pen/MEZPNd
   return (
     <div
       className=" w-full border-t-2 flex flex-col text-accent-gray justify-center"

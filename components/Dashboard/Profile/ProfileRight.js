@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import useCheckIfHasSet from "../../../funcs/useCheckIfHasSet";
 import useShowSetMods from "../../../funcs/useShowSetMods";
-import { Badge } from "@supabase/ui";
 import { Input } from "@mantine/core";
 import Link from "next/link";
 import { supabase } from "../../../lib/supabaseClient";
@@ -73,14 +72,13 @@ export default function ProfileRight({ session }) {
   return (
     <div className="text-black bg-border-white h-full w-1/4 flex flex-col p-5">
       {!isOwnerOfSomething ? (
-        <div>You don't have an emote set.</div>
+        <div
+          onClick={() => createNewSet()}
+          className="group hover:bg-white hover:text-main-purple  bg-main-purple duration-300 cursor-pointer text-white flex justify-center items-center p-3 rounded-2xl w-1/2"
+        >
+          {creatingSet}
+        </div>
       ) : (
-        // <div
-        //   onClick={() => createNewSet()}
-        //   className="group hover:bg-white hover:text-main-purple  bg-main-purple duration-300 cursor-pointer text-white flex justify-center items-center p-3 rounded-2xl w-1/2"
-        // >
-        //   {creatingSet}
-        // </div>
         <>
           <div className="space-x-1 flex flex-row p-0 items-center bg-white w-full rounded-3xl">
             <div className="flex h-full flex-col items-center mr-auto self-start p-4 text-sm border-4 rounded-l-2xl w-max">

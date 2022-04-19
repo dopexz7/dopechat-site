@@ -4,7 +4,7 @@ import { supabase } from "../../lib/supabaseClient";
 const ButtonWrapper = ({ currency, amount, username }) => {
   // usePayPalScriptReducer can be use only inside children of PayPalScriptProviders
   // This is the main reason to wrap the PayPalButtons in a new component
-  const [{ options, isPending }, dispatch] = usePayPalScriptReducer();
+  const [{ options }, dispatch] = usePayPalScriptReducer();
 
   useEffect(() => {
     dispatch({

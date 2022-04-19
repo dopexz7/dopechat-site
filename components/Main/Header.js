@@ -6,7 +6,6 @@ import { motion } from "framer-motion";
 import { leftToRightVariant } from "./transitionVariants";
 import { Menu, Transition } from "@headlessui/react";
 export default function Header() {
-  const [download, setDownload] = useState("Browser might not be supported!");
   const [browsName, setBrowsName] = useState("");
   useEffect(() => {
     setBrowsName(browserName);
