@@ -12,25 +12,29 @@ import useIsMod from "../../../../funcs/useIsMod";
 import useIsDonor from "../../../../funcs/useIsDonor";
 import useHasEdits from "../../../../funcs/useHasEdits";
 import DonationComponent from "../../../Donation/DonationComponent";
-
-const DashboardLeftSignedIn = ({ session }) => {
+import { useAuth } from "../../../../contexts/AppContext";
+const DashboardLeftSignedIn = () => {
   const router = useRouter();
   const [username, setUsername] = useState(null);
   const [avatarUrl, setAvatarUrl] = useState(null);
   const isMod = useIsMod(username);
   const isDonor = useIsDonor(username);
+  const { user } = useAuth();
+  useEffect(() => {
+    console.log(user);
+  }, []);
   const hasEdits = useHasEdits(username);
   useEffect(() => {
     let subed = true;
     if (subed) {
-      setUsername(session?.user?.user_metadata.name);
-      setAvatarUrl(session?.user?.user_metadata.avatar_url);
+      setUsername(user.user_metadata.name);
+      setAvatarUrl(user.user_metadata.avatar_url);
     }
 
     return () => {
       subed = false;
     };
-  }, [session]);
+  }, []);
 
   return (
     <>
@@ -46,7 +50,7 @@ const DashboardLeftSignedIn = ({ session }) => {
             className="rounded-3xl w-10 border-2 shadow-xl"
           />
           <div className="ml-2 font-normal text-main-black rounded-2xl text-md overflow-hidden text-ellipsis whitespace-nowrap">
-            {session.user.user_metadata.name}
+            {username}
           </div>
 
           <div className="ml-auto flex flex-row items-center">
@@ -122,8 +126,8 @@ const DashboardLeftSignedIn = ({ session }) => {
                 : "Your profile"}
             </div>
           </Link>
-          <LeftSideModal username={username} />
-          <DonationComponent username={username} />
+          <LeftSideModal />
+          <DonationComponent />
           <div className="flex flex-row items-center text-sm px-3 text-accent-gray font-medium">
             {isDonor ? (
               <>

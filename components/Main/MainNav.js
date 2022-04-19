@@ -5,7 +5,7 @@ import * as Fa from "react-icons/fa";
 import * as Md from "react-icons/md";
 import { NavData } from "./NavData";
 import MobileNav from "./MobileNav";
-import Links from "../Links";
+//import Links from "../Links";
 import ContactMain from "../Contact/ContactMain";
 // import { useState } from "react";
 
@@ -55,7 +55,7 @@ export default function MainNav() {
               </Linkx>
             );
           })}
-          <Links />
+          {/* <Links /> */}
           <ContactMain
             btnClass={`hover:text-white duration-300 hidden lg:flex cursor-pointer lg:flex-row lg:items-center`}
             iconClass={`mr-3`}

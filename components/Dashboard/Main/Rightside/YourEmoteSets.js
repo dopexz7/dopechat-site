@@ -3,10 +3,12 @@ import { useState } from "react";
 import * as Md from "react-icons/md";
 import useHasEdits from "../../../../funcs/useHasEdits";
 import Link from "next/link";
+import { useAuth } from "../../../../contexts/AppContext";
 export default function YourEmoteSets(props) {
   const [editingSet, setEditingSet] = useState("");
+  const { user } = useAuth();
   //const [availEdits, setAvailEdits] = useState([]);
-  const availEdits = useHasEdits(props.session?.user?.user_metadata.name);
+  const availEdits = useHasEdits(user.user_metadata.name);
 
   const EditorSet = ({ data }) => {
     return (

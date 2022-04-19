@@ -1,23 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { supabase } from "../lib/supabaseClient";
 import Link from "next/link";
 import { CircularProgress } from "@mui/material";
 import useIsMod from "../funcs/useIsMod";
-
+import { useAuth } from "./AppContext";
 const AdminRoute = ({ children }) => {
+  const { user } = useAuth();
   const router = useRouter();
   const [loading, setLoading] = useState(true);
-  const session = supabase.auth.session();
-  const isMod = useIsMod(session?.user?.user_metadata.name);
+  // const session = supabase.auth.session();
+  const isMod = useIsMod(user.user_metadata.name);
 
   useEffect(() => {
-    if (!session) {
+    if (!user) {
       router.push("/dashboard");
       setLoading(false);
     }
     if (isMod === false) setLoading(false);
-    if (session && isMod === true) {
+    if (user && isMod === true) {
       setLoading(false);
     }
   }, []);
@@ -27,7 +27,7 @@ const AdminRoute = ({ children }) => {
         <CircularProgress className="!w-5 !h-5 !text-main-purple" />
       </div>
     );
-  } else if (!session || isMod === false)
+  } else if (!user || isMod === false)
     return (
       <div className="w-screen h-screen bg-accent-white flex flex-col space-y-3 items-center justify-center">
         <div className="text-accent-purple text-xl">

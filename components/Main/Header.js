@@ -12,8 +12,7 @@ export default function Header() {
   }, []);
   const chromeUrl =
     "https://chrome.google.com/webstore/detail/fb-gaming-better/aflheebbcchbhephcfamiiciepiibpak";
-  const firefoxUrl =
-    "https://addons.mozilla.org/en-US/firefox/addon/better-gaming/";
+  const firefoxUrl = "https://addons.mozilla.org/en-US/firefox/addon/dopechat/";
   const operaUrl =
     "https://chrome.google.com/webstore/detail/fb-gaming-better/aflheebbcchbhephcfamiiciepiibpak";
   const edgeUrl =

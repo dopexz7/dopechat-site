@@ -3,14 +3,15 @@ import React, { useState, useEffect } from "react";
 import { supabase } from "../../../../lib/supabaseClient";
 import useUploadLimit from "../../../../funcs/useUploadLimit";
 import setUploadLimit from "../../../../funcs/useSetUploadLimit";
-
-export default function UploadFileFirst(props) {
+import { useAuth } from "../../../../contexts/AppContext";
+export default function UploadFileFirst() {
+  const { user } = useAuth();
   const [selectedFile, setSelectedFile] = useState();
   const [selectedFileName, setSelectedFileName] = useState("");
   const [selfilename, setSelfilename] = useState("");
   const [error, setError] = useState("");
   const [uploading, setUploading] = useState(false);
-  const limit = useUploadLimit(props.username);
+  const limit = useUploadLimit(user.user_metadata.name);
   const [upLimit, setUpLimit] = useState(limit);
 
   useEffect(() => {
@@ -18,7 +19,7 @@ export default function UploadFileFirst(props) {
   }, [limit]);
   const handleUploadLimit = () => {
     return (
-      setUploadLimit(props.username, upLimit ? upLimit - 1 : null),
+      setUploadLimit(user.user_metadata.name, upLimit ? upLimit - 1 : null),
       setUpLimit(upLimit - 1)
     );
   };
@@ -38,7 +39,7 @@ export default function UploadFileFirst(props) {
         if (er) console.log(er);
 
         const newFile = {
-          uploaded_by: supabase.auth.user().user_metadata.name,
+          uploaded_by: user.user_metadata.name,
           name: selfilename,
           url: fileUrl.publicURL,
         };

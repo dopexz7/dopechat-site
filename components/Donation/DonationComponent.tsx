@@ -8,7 +8,8 @@ import { Tabs } from "@mantine/core";
 import { motion } from "framer-motion";
 import * as Fa from "react-icons/fa";
 import ButtonWrapper from "./ButtonWrapper";
-export default function DonationComponent({ username }) {
+
+export default function DonationComponent() {
   const [visible, setVisible] = useState(false);
   const [seeDonation, setSeeDonation] = useState(false);
   const [amount, setAmount] = useState("5");
@@ -159,11 +160,7 @@ export default function DonationComponent({ username }) {
                         currency: "USD",
                       }}
                     >
-                      <ButtonWrapper
-                        currency={currency}
-                        amount={amount}
-                        username={username}
-                      />
+                      <ButtonWrapper currency={currency} amount={amount} />
                     </PayPalScriptProvider>
                   </motion.div>
                 </Tabs.Tab>

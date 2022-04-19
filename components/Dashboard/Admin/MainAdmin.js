@@ -6,7 +6,8 @@ import * as Md from "react-icons/md";
 import Image from "next/image";
 import { supabase } from "../../../lib/supabaseClient";
 import useReadSubmissions from "../../../funcs/useReadSubmissions";
-export default function MainAdmin({ session }) {
+
+export default function MainAdmin() {
   const [data, setData] = useState();
   const submissions = useReadSubmissions();
   useEffect(() => {
@@ -64,7 +65,7 @@ export default function MainAdmin({ session }) {
   };
   return (
     <AdminRoute>
-      <DashboardLayout session={session} title="Admin">
+      <DashboardLayout title="Admin">
         <div className="text-black border-r-2 h-full w-[55%] flex flex-col overflow-hidden">
           <div className="px-6 py-6 font-normal text-lg  border-b-2 flex flex-row items-center">
             <div className="p-0.5">User submitted emotes</div>

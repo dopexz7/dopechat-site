@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import * as Fa from "react-icons/fa";
-import Links from "../../Links";
+//import Links from "../../Links";
 import ContactMain from "../../Contact/ContactMain";
 
 export default function DashboardNav() {
@@ -35,7 +35,7 @@ export default function DashboardNav() {
           iconClass={`mr-3`}
         />
 
-        <Links />
+        {/* <Links /> */}
       </div>
     </div>
   );

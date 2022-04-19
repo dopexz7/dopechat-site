@@ -8,7 +8,7 @@ import UploadFileFirst from "./UploadFileFirst";
 import { Modal } from "@supabase/ui";
 import { motion } from "framer-motion";
 import StyledTabs from "../../../Misc/StyledTabs";
-export default function LeftSideModal({ username }) {
+export default function LeftSideModal() {
   const [visible, setVisible] = useState(false);
   const [seeFileUpload, setSeeFileUpload] = useState(false);
 
@@ -100,7 +100,7 @@ export default function LeftSideModal({ username }) {
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0 }}
                   >
-                    <UploadFileFirst username={username} />
+                    <UploadFileFirst />
                   </motion.div>
                 </Tabs.Tab>
                 <Tabs.Tab label="Drag & drop" icon={<Ri.RiDragDropFill />}>
@@ -109,7 +109,7 @@ export default function LeftSideModal({ username }) {
                     animate={{ opacity: 1, x: 0 }}
                     exit={{ opacity: 0 }}
                   >
-                    <FileDrop username={username} />
+                    <FileDrop />
                   </motion.div>
                 </Tabs.Tab>
               </StyledTabs>

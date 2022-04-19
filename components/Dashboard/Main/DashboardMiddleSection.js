@@ -6,13 +6,9 @@ import React, { useRef, useState } from "react";
 import { supabase } from "../../../lib/supabaseClient";
 import useIsMod from "../../../funcs/useIsMod";
 import EmoteComponent from "./Emote/EmoteComponent";
-
-export default function DashboardMiddleSection({
-  session,
-  data,
-  fullSet,
-  editingSet,
-}) {
+import { useAuth } from "../../../contexts/AppContext";
+export default function DashboardMiddleSection({ data, fullSet, editingSet }) {
+  const { user } = useAuth();
   /* eslint-disable no-unused-vars */
   const [blogs, setBlogs] = useState(fullSet);
   const [allCount, setAllCount] = useState(fullSet.length);
@@ -21,7 +17,7 @@ export default function DashboardMiddleSection({
   const [startUpdate, setStartUpdate] = useState(false);
   const [posts, setPosts] = useState(data);
   const [sorting, setSorting] = useState(false);
-  const isMod = useIsMod(session?.user?.user_metadata.name);
+  const isMod = useIsMod(user.user_metadata.name);
 
   const getMorePost = async () => {
     try {
@@ -123,7 +119,6 @@ export default function DashboardMiddleSection({
               <EmoteComponent
                 key={index}
                 data={data}
-                session={session}
                 editingSet={editingSet}
                 isMod={isMod}
                 kekRef={divRef}
@@ -166,7 +161,6 @@ export default function DashboardMiddleSection({
                   <EmoteComponent
                     key={index}
                     data={data}
-                    session={session}
                     editingSet={editingSet}
                     isMod={isMod}
                     kekRef={divRef}

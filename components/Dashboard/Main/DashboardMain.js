@@ -4,24 +4,26 @@ import DashboardMiddleSection from "./DashboardMiddleSection";
 import YourEmoteSets from "./Rightside/YourEmoteSets";
 import { Accordion } from "@mantine/core";
 import * as Md from "react-icons/md";
-export default function DashboardMain({ session, data }) {
+import { useAuth } from "../../../contexts/AppContext";
+export default function DashboardMain({ data }) {
+  const { user } = useAuth();
   const [editingSet, setEditingSet] = useState("");
+
   const onEditingSet = (x) => {
     setEditingSet(x);
   };
 
   return (
-    <DashboardLayout session={session} title="Dashboard">
+    <DashboardLayout title="Dashboard">
       <div className="text-black border-r-2 h-full w-[55%] flex flex-col">
         <DashboardMiddleSection
           data={data.slice(0, 36)}
           fullSet={data}
           editingSet={editingSet}
-          session={session}
         />
       </div>
-      {session ? (
-        <YourEmoteSets onSuccess={onEditingSet} session={session} />
+      {user ? (
+        <YourEmoteSets onSuccess={onEditingSet} />
       ) : (
         <div className="h-full bg-border-white w-1/4 flex flex-col">
           <div

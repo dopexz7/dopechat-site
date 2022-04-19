@@ -6,16 +6,18 @@ import Image from "next/image";
 import * as Im from "react-icons/im";
 import * as Md from "react-icons/md";
 import ProfileRight from "./ProfileRight";
-export default function MainProfile({ session, data }) {
+import { useAuth } from "../../../contexts/AppContext";
+export default function MainProfile({ data }) {
+  const { user } = useAuth();
   const [approvedEmotes, setApprovedEmotes] = useState();
 
   useEffect(() => {
     let x = [];
     data.forEach((v) => {
-      if (v.uploaded_by === session?.user?.user_metadata.name) x.push(v);
+      if (v.uploaded_by === user.user_metadata.name) x.push(v);
     });
     setApprovedEmotes(x.length ? x : "");
-  }, [session]);
+  }, []);
 
   const EmoteComponent = ({ data }) => {
     const [loading, setLoading] = useState(false);
@@ -88,7 +90,7 @@ export default function MainProfile({ session, data }) {
   };
   return (
     <AuthRoute>
-      <DashboardLayout session={session} title="Profile">
+      <DashboardLayout title="Profile">
         <div className="text-black border-r-2 h-full w-[55%] flex flex-col overflow-hidden">
           <div className="px-6 py-6 font-normal text-lg  border-b-2 flex flex-row items-center">
             <div className="p-0.5">Your approved emotes</div>
@@ -102,7 +104,7 @@ export default function MainProfile({ session, data }) {
           )) || <div className="p-6">You have no approved emotes yet.</div>}
         </div>
 
-        <ProfileRight session={session} />
+        <ProfileRight />
       </DashboardLayout>
     </AuthRoute>
   );

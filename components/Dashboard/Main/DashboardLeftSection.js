@@ -3,16 +3,12 @@ import DashboardLeftSignedIn from "./Leftside/DashboardLeftSignedIn";
 import { supabase } from "../../../lib/supabaseClient";
 import { CircularProgress } from "@mui/material";
 import * as Fa from "react-icons/fa";
+import { useAuth } from "../../../contexts/AppContext";
 export default function DashboardLeftSection() {
-  const [session, setSession] = useState(null);
   const [whyTwitch, setWhyTwitch] = useState(false);
   const [loading, setLoading] = useState(true);
+  const { user } = useAuth();
   useEffect(() => {
-    setSession(supabase.auth.session());
-
-    supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session);
-    });
     setLoading(false);
   }, []);
 
@@ -38,8 +34,8 @@ export default function DashboardLeftSection() {
             </div>
           </div>
         </>
-      ) : session ? (
-        <DashboardLeftSignedIn session={session} />
+      ) : user ? (
+        <DashboardLeftSignedIn />
       ) : (
         <>
           <div className="px-6 py-5 flex flex-col h-full overflow-hidden">

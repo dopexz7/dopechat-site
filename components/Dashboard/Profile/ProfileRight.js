@@ -5,15 +5,14 @@ import { Input } from "@mantine/core";
 import Link from "next/link";
 import { supabase } from "../../../lib/supabaseClient";
 import * as Md from "react-icons/md";
-
-export default function ProfileRight({ session }) {
+import { useAuth } from "../../../contexts/AppContext";
+export default function ProfileRight() {
+  const { user } = useAuth();
   const [emotesLen, setEmotesLen] = useState();
   const [mods, setMods] = useState();
-  const isOwnerOfSomething = useCheckIfHasSet(
-    session?.user?.user_metadata.name
-  );
+  const isOwnerOfSomething = useCheckIfHasSet(user.user_metadata.name);
   const [creatingSet, setCreatingSet] = useState("Create your own set");
-  const showSetMods = useShowSetMods(session?.user?.user_metadata.name);
+  const showSetMods = useShowSetMods(user.user_metadata.name);
   const [loading, setLoading] = useState(false);
   const [modValue, setModValue] = useState("");
   const [requested, setRequested] = useState(false);
@@ -36,7 +35,7 @@ export default function ProfileRight({ session }) {
     return await supabase
       .from("useremotes")
       .update({ mods: p })
-      .eq("name", session?.user?.user_metadata.name);
+      .eq("name", user.user_metadata.name);
   };
   const addMod = async () => {
     setLoading(true);
@@ -46,7 +45,7 @@ export default function ProfileRight({ session }) {
     return await supabase
       .from("useremotes")
       .update({ mods: p })
-      .eq("name", session?.user?.user_metadata.name)
+      .eq("name", user.user_metadata.name)
       .then(() => setLoading(false))
       .then(() => setModValue(""));
   };
@@ -57,8 +56,8 @@ export default function ProfileRight({ session }) {
       .from("useremotes")
       .insert([
         {
-          name: session?.user?.user_metadata.name,
-          mods: [session?.user?.user_metadata.name],
+          name: user.user_metadata.name,
+          mods: [user.user_metadata.name],
         },
       ])
       .then(() =>
@@ -71,14 +70,14 @@ export default function ProfileRight({ session }) {
     await supabase
       .from("useremotes")
       .update({ requested_streamer: true })
-      .eq("name", session?.user?.user_metadata.name)
+      .eq("name", user.user_metadata.name)
       .then(() => setRequested(true));
 
   const initiateSetDeletion = async () =>
     await supabase
       .from("useremotes")
       .delete()
-      .eq("name", session?.user?.user_metadata.name)
+      .eq("name", user.user_metadata.name)
       .then(() => setError("Set deleted!"))
       .then(() => {
         setTimeout(() => {
@@ -102,17 +101,14 @@ export default function ProfileRight({ session }) {
           <div className="space-x-1 flex flex-row p-0 items-center bg-white w-full rounded-3xl">
             <div className="flex h-full flex-col items-center mr-auto self-start p-4 text-sm border-4 rounded-l-2xl w-max">
               <div className="font-semibold text-main-purple">
-                {session?.user?.user_metadata.name}&apos;s set
+                {user.user_metadata.name}&apos;s set
               </div>
               <div className="text-xs">
                 {emotesLen ? emotesLen : "0"} emotes
               </div>
             </div>
 
-            <Link
-              href={`/dashboard/set/${session?.user?.user_metadata.name}`}
-              passHref
-            >
+            <Link href={`/dashboard/set/${user.user_metadata.name}`} passHref>
               <div className="cursor-pointer h-full hover:bg-main-purple hover:text-white p-3 flex items-center text-sm font-semibold rounded-r-2xl border-4 duration-300 ml-auto">
                 View full set
               </div>

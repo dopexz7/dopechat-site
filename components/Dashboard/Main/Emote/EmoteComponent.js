@@ -1,12 +1,14 @@
 import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import * as Md from "react-icons/md";
 import { supabase } from "../../../../lib/supabaseClient";
 import * as Im from "react-icons/im";
 import useIsDonor from "../../../../funcs/useIsDonor";
-const EmoteComponent = ({ data, session, editingSet, isMod, kekRef }) => {
+import { useAuth } from "../../../../contexts/AppContext";
+const EmoteComponent = ({ data, editingSet, isMod, kekRef }) => {
   const [deleted, setDeleted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const { user } = useAuth();
   const deleteFromDb = async (v) => {
     await supabase.from("allemotes").delete().eq("src", v.src);
     setLoading(true);
@@ -15,7 +17,7 @@ const EmoteComponent = ({ data, session, editingSet, isMod, kekRef }) => {
       kekRef.current.textContent = kekRef.current.textContent - 1;
     }, 800);
   };
-  const isDonor = useIsDonor(session?.user?.user_metadata.name);
+  const isDonor = useIsDonor(user.user_metadata.name);
 
   const addToSet = async (d) => {
     let { data: useremotes, erro } = await supabase
@@ -24,7 +26,7 @@ const EmoteComponent = ({ data, session, editingSet, isMod, kekRef }) => {
       .eq("name", editingSet);
     if (erro) console.log(erro);
     const arr = useremotes[0].emotes;
-    if (editingSet === session?.user?.user_metadata.name) {
+    if (editingSet === user.user_metadata.name) {
       if (!isDonor) {
         if (useremotes[0]?.emotes?.length >= 5) {
           return alert("Emote limit reached!");
@@ -79,7 +81,7 @@ const EmoteComponent = ({ data, session, editingSet, isMod, kekRef }) => {
   const EmoteTools = () => {
     return (
       <div className="flex flex-row">
-        {session && editingSet ? (
+        {user && editingSet ? (
           <div
             onClick={() => addToSet(data)}
             className=" approve flex items-center justify-center w-full hover:rounded-2xl p-1 text-white text-xs cursor-pointer duration-300 h-full"
@@ -105,9 +107,6 @@ const EmoteComponent = ({ data, session, editingSet, isMod, kekRef }) => {
       </div>
     );
   };
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
   return (
     <div
       className={`h-32 w-32 group duration-300 bg-accent-white rounded-md select-none`}

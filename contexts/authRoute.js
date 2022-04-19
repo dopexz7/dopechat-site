@@ -1,16 +1,16 @@
 import React, { useEffect } from "react";
 import { useRouter } from "next/router";
-import { supabase } from "../lib/supabaseClient";
-
+import { useAuth } from "../contexts/AppContext";
 const AuthRoute = ({ children }) => {
+  const { user } = useAuth();
   const router = useRouter();
-  const session = supabase.auth.session();
+
   useEffect(() => {
-    if (!session) {
+    if (!user) {
       router.push("/dashboard");
     }
   });
-  if (!session) return <></>;
+  if (!user) return <></>;
   return <>{children}</>;
 };
 

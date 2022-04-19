@@ -36,8 +36,20 @@ export default function Changelog() {
               <div className="">
                 ---Login with Twitch and upload your own emotes
               </div>
+              <div className="">---Create your own emote set:</div>
+              <div>
+                ----Basic user has 5 emote limit, more details in the website
+              </div>
+              <div>
+                ----User can request to be promoted to streamer, increasing
+                capacity
+              </div>
+              <div>
+                ----SOON: share your personal emote set code with friends
+              </div>
+              <div className="">---Support the extension</div>
               <div className="">
-                ---Create your own emote set (up to 5 emotes)
+                ---Contact form to report bugs/issues and submit ideas
               </div>
               <div className="">
                 ---View all current emotes in the extension

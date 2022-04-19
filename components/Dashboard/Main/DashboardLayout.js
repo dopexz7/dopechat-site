@@ -14,7 +14,7 @@ const DashboardLayout = (props) => {
         <DashboardNav />
 
         <div className="overflow-hidden w-full h-full flex flex-row bg-accent-white">
-          <DashboardLeftSection session={props.session} />
+          <DashboardLeftSection />
 
           {props.children}
         </div>

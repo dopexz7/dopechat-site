@@ -1,9 +1,11 @@
 import React, { useEffect } from "react";
 import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
 import { supabase } from "../../lib/supabaseClient";
-const ButtonWrapper = ({ currency, amount, username }) => {
+import { useAuth } from "../../contexts/AppContext";
+const ButtonWrapper = ({ currency, amount }) => {
   // usePayPalScriptReducer can be use only inside children of PayPalScriptProviders
   // This is the main reason to wrap the PayPalButtons in a new component
+  const { user } = useAuth();
   const [{ options }, dispatch] = usePayPalScriptReducer();
 
   useEffect(() => {
@@ -54,7 +56,7 @@ const ButtonWrapper = ({ currency, amount, username }) => {
             await supabase
               .from("donations")
               .update({
-                username: username,
+                username: user.user_metadata.name,
                 amount: amount,
                 status: "COMPLETE",
               })
@@ -65,7 +67,7 @@ const ButtonWrapper = ({ currency, amount, username }) => {
                 .update({
                   is_donor: true,
                 })
-                .eq("username", username);
+                .eq("username", user.user_metadata.name);
             }
           });
         }}
