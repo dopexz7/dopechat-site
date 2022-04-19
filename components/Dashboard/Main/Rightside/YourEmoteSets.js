@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import * as Md from "react-icons/md";
 import useHasEdits from "../../../../funcs/useHasEdits";
@@ -7,6 +7,10 @@ import { useAuth } from "../../../../contexts/AppContext";
 export default function YourEmoteSets(props) {
   const [editingSet, setEditingSet] = useState("");
   const { user } = useAuth();
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    setLoading(false);
+  }, []);
   //const [availEdits, setAvailEdits] = useState([]);
   const availEdits = useHasEdits(user.user_metadata.name);
 
@@ -64,7 +68,10 @@ export default function YourEmoteSets(props) {
         </div>
       </div>
       <div className="w-full overflow-y-auto h-full p-6 flex flex-col space-y-3">
-        {availEdits?.length ? "" : "You do not have access to any emote sets."}
+        {!availEdits && !loading
+          ? "You do not have access to any emote sets."
+          : ""}
+        {availEdits?.length ? "" : ""}
         {availEdits &&
           availEdits.map((data, index) => (
             <EditorSet key={index} data={data} />

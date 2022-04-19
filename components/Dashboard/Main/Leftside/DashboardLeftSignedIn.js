@@ -15,26 +15,11 @@ import DonationComponent from "../../../Donation/DonationComponent";
 import { useAuth } from "../../../../contexts/AppContext";
 const DashboardLeftSignedIn = () => {
   const router = useRouter();
-  const [username, setUsername] = useState(null);
-  const [avatarUrl, setAvatarUrl] = useState(null);
-  const isMod = useIsMod(username);
-  const isDonor = useIsDonor(username);
-  const { user } = useAuth();
-  useEffect(() => {
-    console.log(user);
-  }, []);
-  const hasEdits = useHasEdits(username);
-  useEffect(() => {
-    let subed = true;
-    if (subed) {
-      setUsername(user.user_metadata.name);
-      setAvatarUrl(user.user_metadata.avatar_url);
-    }
 
-    return () => {
-      subed = false;
-    };
-  }, []);
+  const { user } = useAuth();
+  const isMod = useIsMod(user.user_metadata.name);
+  const isDonor = useIsDonor();
+  const hasEdits = useHasEdits(user.user_metadata.name);
 
   return (
     <>
@@ -45,12 +30,12 @@ const DashboardLeftSignedIn = () => {
       >
         <div className="flex flex-row items-center px-6 py-2 ">
           <img
-            src={avatarUrl}
-            alt={username}
+            src={user.user_metadata.avatar_url}
+            alt={user.user_metadata.name}
             className="rounded-3xl w-10 border-2 shadow-xl"
           />
           <div className="ml-2 font-normal text-main-black rounded-2xl text-md overflow-hidden text-ellipsis whitespace-nowrap">
-            {username}
+            {user.user_metadata.name}
           </div>
 
           <div className="ml-auto flex flex-row items-center">
