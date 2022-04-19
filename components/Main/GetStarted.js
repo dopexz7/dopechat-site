@@ -15,7 +15,7 @@ export default function GetStarted() {
           whileInView="onscreen"
           viewport={{ once: true, amount: 0.8 }}
           variants={topToBottomVariant}
-          className="z-50 duration-300 text-6xl font-light text-white"
+          className="duration-300 text-6xl font-light text-white"
         >
           Get started
         </motion.span>
