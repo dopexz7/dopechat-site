@@ -10,7 +10,7 @@ export default function Profile(props) {
   );
 }
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   let { data, error } = await supabase.from("allemotes").select("*");
   if (error) console.log(error);
   return {

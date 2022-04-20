@@ -9,7 +9,7 @@ const DashboardLayout = (props) => {
       <Head>
         <title>{props.title}</title>
       </Head>
-      <div className="overflow-hidden h-screen w-screen flex flex-col justify-center items-center bg-accent-white ">
+      <div className="overflow-hidden h-screen w-screen flex flex-col justify-center items-center bg-accent-white">
         {/* bg-header-bg bg-blend-multiply */}
         <DashboardNav />
         <div className="overflow-hidden w-full h-full flex flex-row bg-accent-white">

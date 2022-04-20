@@ -6,9 +6,8 @@ import React, { useRef, useState } from "react";
 import { supabase } from "../../../lib/supabaseClient";
 import useIsMod from "../../../funcs/useIsMod";
 import EmoteComponent from "./Emote/EmoteComponent";
-import { useAuth } from "../../../contexts/AppContext";
+
 export default function DashboardMiddleSection({ data, fullSet, editingSet }) {
-  const { user } = useAuth();
   /* eslint-disable no-unused-vars */
   const [blogs, setBlogs] = useState(fullSet);
   const [allCount, setAllCount] = useState(fullSet.length);
@@ -17,7 +16,7 @@ export default function DashboardMiddleSection({ data, fullSet, editingSet }) {
   const [startUpdate, setStartUpdate] = useState(false);
   const [posts, setPosts] = useState(data);
   const [sorting, setSorting] = useState(false);
-  const isMod = useIsMod(user?.user_metadata.name);
+  const isMod = useIsMod();
 
   const getMorePost = async () => {
     try {
@@ -37,7 +36,7 @@ export default function DashboardMiddleSection({ data, fullSet, editingSet }) {
 
   const [moreThanTwo, setMoreThanTwo] = useState(false);
   const beginUpdate = () => {
-    if (q.length > 2) {
+    if (q.length >= 2) {
       setStartUpdate(true);
       setMoreThanTwo(false);
     } else {
@@ -105,7 +104,7 @@ export default function DashboardMiddleSection({ data, fullSet, editingSet }) {
           </div>
         </div>
       </div>
-      {startUpdate && q.length > 2 ? (
+      {startUpdate && q.length >= 2 ? (
         <div className="overflow-y-scroll overflow-x-hidden w-full grid xgrd gap-3 p-6">
           {blogs
             .filter((val) => {

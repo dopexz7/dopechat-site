@@ -9,11 +9,12 @@ import { motion } from "framer-motion";
 import * as Fa from "react-icons/fa";
 import ButtonWrapper from "./ButtonWrapper";
 
-export default function DonationComponent() {
+export default function DonationComponent({ btnClass, iconEnabled }) {
   const [visible, setVisible] = useState(false);
   const [seeDonation, setSeeDonation] = useState(false);
   const [amount, setAmount] = useState("5");
   const currency = "USD";
+
   function toggle() {
     setVisible(!visible);
   }
@@ -31,10 +32,8 @@ export default function DonationComponent() {
   ];
   return (
     <>
-      <div
-        onClick={toggle}
-        className="hover:border-main-purple hover:bg-main-purple hover:text-white duration-300 border-2 font-normal text-main-black cursor-pointer flex justify-center items-center p-3 rounded-xl w-full"
-      >
+      <div onClick={toggle} className={btnClass}>
+        {iconEnabled ? <Fa.FaPaypal className="mr-1" /> : ""}
         Donate
       </div>
       <Modal
@@ -90,16 +89,27 @@ export default function DonationComponent() {
                       <span className="bg-border-white p-1 rounded-md text-xs">
                         Increase emote upload limit up to 20 daily
                       </span>
+
                       <span className="bg-border-white p-1 rounded-md text-xs">
-                        Increase your personal emote set capacity from 5 to 10!
-                        (for non-streamers)
+                        Gain input on new global emotes
                       </span>
-                      <div className=" text-xs font-normal">
-                        My first priority is to update the extension and upgrade
-                        the whole dopeChat with paid (not free, as it is
-                        currently) services & servers, further improving user
-                        experience.
-                      </div>
+
+                      <span className="bg-border-white p-1 rounded-md text-xs">
+                        1 global emote (limited spaces for first supporters)
+                      </span>
+                      <span className="text-xs">Coming soon:</span>
+                      {/* <span className="bg-border-white p-1 rounded-md text-xs">
+                        Create a personal emote set, share the code with friends
+                        and use it in the extension (up to 10 emotes) (SOON)
+                      </span> */}
+                      <span className="bg-border-white p-1 rounded-md text-xs">
+                        Zero width emotes (SOON: not in the near future)
+                      </span>
+                      <span className="bg-border-white p-1 rounded-md text-xs">
+                        Custom badge (upload a custom image, get approved by
+                        mods, everyone can see it) (SOON: not in the near
+                        future)
+                      </span>
                     </div>
                   </motion.div>
                 </Tabs.Tab>
@@ -130,16 +140,11 @@ export default function DonationComponent() {
                           {data.amount}$
                         </div>
                       ))}
-                      {/* <input
-                      type="text"
-                      value={amount}
-                      onChange={(e) => setAmount(e.target.value)}
-                      className="bg-transparent border-2 border-white p-3"
-                    /> */}
+
                       <div className="p-1">
                         <NumberInput
                           value={parseInt(amount)}
-                          onChange={(e?) => setAmount(e.toString())}
+                          onChange={(e) => setAmount(e.toString())}
                           defaultValue={parseInt(amount)}
                           parser={(value) => value.replace(/\$\s?|(,*)/g, "")}
                           formatter={(value) =>
@@ -162,6 +167,11 @@ export default function DonationComponent() {
                     >
                       <ButtonWrapper currency={currency} amount={amount} />
                     </PayPalScriptProvider>
+                    <div className="text-xs font-normal text-main-black mt-6">
+                      My first priority is to update the extension and upgrade
+                      the whole dopeChat with better services & servers, further
+                      improving user experience.
+                    </div>
                   </motion.div>
                 </Tabs.Tab>
               </StyledTabs>
@@ -178,11 +188,11 @@ export default function DonationComponent() {
                 />
               </div>
               <div className="text-main-black mt-3 text-sm">
-                Right now the extension and the website runs on completely free
-                services(servers), thus it could sometimes impact the user
-                experience negatively. As I am a student and basically
-                developing this all by myself, I just cannot afford to pay for
-                everything.
+                Currently the website and extension are running on basic servers
+                which may impact the user experience negatively, donations will
+                help upgrade the servers as the user base grows. I am a full
+                time student, developing the website and the extension by myself
+                and don&apos;t have money to spend on upgraded servers.
               </div>
             </div>
           )}

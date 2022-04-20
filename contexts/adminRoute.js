@@ -6,7 +6,7 @@ import { useAuth } from "./AppContext";
 const AdminRoute = ({ children }) => {
   const { user } = useAuth();
   const router = useRouter();
-  const isMod = useIsMod(user?.user_metadata.name);
+  const isMod = useIsMod();
 
   useEffect(() => {
     if (!user) {

@@ -1,26 +1,27 @@
 import { useState, useEffect } from "react";
 import { supabase } from "../lib/supabaseClient";
-function useIsMod(username) {
+import { useAuth } from "../contexts/AppContext";
+function useIsMod() {
   const [res, setRes] = useState(false);
+  const { user } = useAuth();
 
   useEffect(() => {
     let subed = true;
-    const checkMod = async () => {
-      const res = await supabase.from("mods").select("*").eq("name", username);
-      if (res?.data?.length) return true;
-      return false;
-    };
+    const checkMod = async () =>
+      await supabase
+        .from("profiles")
+        .select("admin")
+        .eq("username", user?.user_metadata.name);
 
     checkMod().then((r) => {
-      if (subed) {
-        setRes(r);
-      }
+      const isMod = r?.data[0]?.admin;
+      if (subed) setRes(isMod);
     });
 
     return () => {
       subed = false;
     };
-  }, [username]);
+  }, []);
   return res;
 }
 

@@ -3,8 +3,11 @@ import Link from "next/link";
 import * as Fa from "react-icons/fa";
 //import Links from "../../Links";
 import ContactMain from "../../Contact/ContactMain";
+import DonationComponent from "../../Donation/DonationComponent";
+import { useAuth } from "../../../contexts/AppContext";
 
 export default function DashboardNav() {
+  const { user } = useAuth();
   return (
     <div className={`duration-300 z-50 w-screen bg-darker-purple`}>
       <div
@@ -21,21 +24,20 @@ export default function DashboardNav() {
           </div>
         </Link>
 
-        <a
-          href="https://www.paypal.com/donate/?hosted_button_id=BBESL24DMEABC"
-          target="_blank"
-          rel="noreferrer"
-          className={` hover:text-white duration-300 items-center cursor-pointer flex flex-row`}
-        >
-          <Fa.FaPaypal className="mr-1" />
-          Donate
-        </a>
         <ContactMain
           btnClass={`hover:text-white duration-300 hidden lg:flex cursor-pointer lg:flex-row lg:items-center`}
           iconClass={`mr-3`}
         />
 
         {/* <Links /> */}
+        {user ? (
+          <DonationComponent
+            btnClass={`hover:text-white duration-300 items-center cursor-pointer flex flex-row`}
+            iconEnabled={true}
+          />
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );

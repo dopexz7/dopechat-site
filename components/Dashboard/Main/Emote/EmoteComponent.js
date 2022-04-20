@@ -94,7 +94,7 @@ const EmoteComponent = ({ data, editingSet, isMod, kekRef }) => {
             onClick={() => addToSet(data)}
             className=" approve flex items-center justify-center w-full hover:rounded-2xl p-1 text-white text-xs cursor-pointer duration-300 h-full"
           >
-            <Md.MdAddCircleOutline className="mr-1" />{" "}
+            <Md.MdAddCircleOutline className="mr-1" />
             {isMod ? "" : `${editingSet}'s set`}
           </div>
         ) : (

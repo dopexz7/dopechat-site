@@ -11,14 +11,14 @@ import useIsDonor from "../../../../funcs/useIsDonor";
 import useHasEdits from "../../../../funcs/useHasEdits";
 import DonationComponent from "../../../Donation/DonationComponent";
 import { useAuth } from "../../../../contexts/AppContext";
+
 const DashboardLeftSignedIn = () => {
   const router = useRouter();
 
   const { user } = useAuth();
-  const isMod = useIsMod(user?.user_metadata.name);
+  const isMod = useIsMod();
   const isDonor = useIsDonor();
   const hasEdits = useHasEdits(user?.user_metadata.name);
-
   return (
     <>
       <div
@@ -110,7 +110,9 @@ const DashboardLeftSignedIn = () => {
             </div>
           </Link>
           <LeftSideModal />
-          <DonationComponent />
+          <DonationComponent
+            btnClass={`hover:border-main-purple hover:bg-main-purple hover:text-white duration-300 border-2 font-normal text-main-black cursor-pointer flex justify-center items-center p-3 rounded-xl w-full`}
+          />
           <div className="flex flex-row items-center text-sm px-3 text-accent-gray font-medium">
             {isDonor ? (
               <>

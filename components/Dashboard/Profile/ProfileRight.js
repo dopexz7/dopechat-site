@@ -11,7 +11,9 @@ export default function ProfileRight() {
   const [emotesLen, setEmotesLen] = useState();
   const [mods, setMods] = useState();
   const isOwnerOfSomething = useCheckIfHasSet(user.user_metadata.name);
-  const [creatingSet, setCreatingSet] = useState("Create your own set");
+  const [creatingSet, setCreatingSet] = useState(
+    "Request to make an emote set"
+  );
   const showSetMods = useShowSetMods(user.user_metadata.name);
   const [loading, setLoading] = useState(false);
   const [modValue, setModValue] = useState("");
@@ -50,28 +52,40 @@ export default function ProfileRight() {
       .then(() => setModValue(""));
   };
   const createNewSet = async () => {
-    setCreatingSet("Creating set");
-    setSetCreated(true);
-    return await supabase
-      .from("useremotes")
-      .insert([
-        {
-          name: user.user_metadata.name,
-          mods: [user.user_metadata.name],
-        },
-      ])
-      .then(() =>
-        setTimeout(() => {
-          setCreatingSet("Set created! Refresh the page");
-        }, 1000)
-      );
+    //setSetCreated(true);
+    const { data, error } = await supabase
+      .from("requested_sets")
+      .insert([{ name: user.user_metadata.name }]);
+    if (error) return setCreatingSet("You have already requested.");
+    return setCreatingSet(
+      `Requested for ${data[0].name}. Wait for mod approval.`
+    );
+
+    // return await supabase
+    //   .from("useremotes")
+    //   .insert([
+    //     {
+    //       name: user.user_metadata.name,
+    //       mods: [user.user_metadata.name],
+    //     },
+    //   ])
+    //   .then(() =>
+    //     setTimeout(() => {
+    //       setCreatingSet("Set created! Refresh the page");
+    //     }, 1000)
+    //   );
   };
-  const requestToBePromoted = async () =>
+  const requestToBePromoted = async (d) =>
     await supabase
       .from("useremotes")
       .update({ requested_streamer: true })
-      .eq("name", user.user_metadata.name)
-      .then(() => setRequested(true));
+      .eq("name", user?.user_metadata.name)
+      .then(async () => {
+        await supabase
+          .from("request_streamer")
+          .insert([{ name: user?.user_metadata.name }]);
+        setRequested(true);
+      });
 
   const initiateSetDeletion = async () =>
     await supabase
@@ -92,7 +106,7 @@ export default function ProfileRight() {
         <button
           disabled={setCreated}
           onClick={() => createNewSet()}
-          className="group hover:bg-white hover:text-main-purple  bg-main-purple duration-300 cursor-pointer text-white flex justify-center items-center p-3 rounded-2xl w-1/2"
+          className="group hover:bg-white hover:text-main-purple  bg-main-purple duration-300 cursor-pointer text-white flex justify-center items-center p-3 rounded-2xl w-full"
         >
           {creatingSet}
         </button>

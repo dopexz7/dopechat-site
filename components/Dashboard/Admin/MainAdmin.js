@@ -6,6 +6,7 @@ import * as Md from "react-icons/md";
 import Image from "next/image";
 import { supabase } from "../../../lib/supabaseClient";
 import useReadSubmissions from "../../../funcs/useReadSubmissions";
+import AdminRight from "./AdminRight";
 
 export default function MainAdmin() {
   const [data, setData] = useState();
@@ -114,13 +115,7 @@ export default function MainAdmin() {
           </div>
         </div>
 
-        <div className="text-black bg-border-white h-full w-1/4 flex flex-col">
-          <div className="px-6 py-5 flex flex-row items-center justify-center ">
-            <div className="font-normal text-accent-purple  px-6 py-2 rounded-2xl  text-lg">
-              Pending emote sets
-            </div>
-          </div>
-        </div>
+        <AdminRight />
       </DashboardLayout>
     </AdminRoute>
   );

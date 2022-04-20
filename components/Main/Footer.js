@@ -17,12 +17,13 @@ export default function Footer() {
         <div className="w-full lg:w-1/2 flex flex-col space-y-1">
           <div className="text-main-black text-xl">ABOUT</div>
           <div className="text-base font-light">
-            dopeChat aims to provide the best possible Facebook Gaming
-            livestream viewing experience. It features tons of new features,
-            customizations (and customizations to those customizations...),
-            quality of life improvements with some other tweaks. It is not
-            opinionated, provides settings for every possible new feature, from
-            how a live stream&apos;s chat looks, to how it behaves.
+            <span className="text-main-purple">dopeChat</span> aims to provide
+            the best possible Facebook Gaming livestream viewing experience. It
+            features tons of new features, customizations (and customizations to
+            those customizations...), quality of life improvements with some
+            other tweaks. It is not opinionated, provides settings for every
+            possible new feature, from how a live stream&apos;s chat looks, to
+            how it behaves.
           </div>
         </div>
         <div className="flex flex-row w-full lg:w-1/2 ">
@@ -82,15 +83,19 @@ export default function Footer() {
       </div>
       <div className="w-full">
         <div className="w-full flex flex-row items-center max-w-7xl p-6 border-t-2 m-auto text-base">
-          <div>Copyright © 2022 All Rights Reserved by dopeChat</div>
-          <div className="ml-auto flex flex-row items-center text-2xl space-x-3">
+          <div>
+            Made by <span className="text-main-purple">dope</span>, Copyright ©
+            2022, All Rights Reserved by
+            <span className="text-main-purple"> dopeChat</span>
+          </div>
+          {/* <div className="ml-auto flex flex-row items-center text-2xl space-x-3">
             <div className="bg-accent-gray hover:bg-blue-500 duration-300 cursor-pointer p-1.5 rounded-xl">
               <Fa.FaTwitter className=" text-white" />
             </div>
             <div className="bg-accent-gray hover:bg-blue-400 duration-300 cursor-pointer p-1.5 rounded-xl">
               <Fa.FaDiscord className=" text-white" />
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

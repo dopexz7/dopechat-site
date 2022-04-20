@@ -10,7 +10,7 @@ import useIsDonor from "../../../../funcs/useIsDonor";
 const EditorSet = ({ data, editingSet, passProps }) => {
   const [avatar, setAvatar] = useState();
   const { user } = useAuth();
-  const isDonor = useIsDonor(user.user_metadata.name);
+  const isDonor = useIsDonor(user?.user_metadata.name);
   const getStreamerImg = async (d) => {
     await fetch(`https://api.frankerfacez.com/v1/user/${d.toLowerCase()}`)
       .then((res) => res.json())
@@ -29,16 +29,16 @@ const EditorSet = ({ data, editingSet, passProps }) => {
         editingSet === data.name ? "rounded-2xl" : "rounded"
       } duration-300 w-max self-center   overflow-hidden`}
     >
-      <div className="flex h-full items-center justify-center w-max flex-col relative  overflow-hidden p-0 text-sm ">
+      <div className="flex h-full items-center justify-center w-max flex-col relative overflow-hidden p-0">
         {data.name !== "global" ? (
-          <img src={avatar} alt={data.name} className="w-20 h-20" />
+          <img src={avatar} alt={data.name} className="w-20 h-full" />
         ) : (
-          <div className="font-semibold text-main-purple w-20 text-center">
+          <div className="font-semibold text-main-purple w-24 text-center">
             global
           </div>
         )}
 
-        <div className="text-xs absolute bottom-0  bg-white bg-opacity-80 font-bold px-1 py-0.5 rounded-t-xl">
+        <div className="text-[10px] w-11/12 text-center absolute bottom-0 bg-darker-purple font-medium py-0.25 rounded-tl-3xl self-end text-main-white">
           {data?.emotes ? data?.emotes.length : "0"}
           {data.name !== "global"
             ? data?.streamer
@@ -51,7 +51,7 @@ const EditorSet = ({ data, editingSet, passProps }) => {
             : ""}
         </div>
       </div>
-      <div className="w-max flex flex-row justify-center items-center space-x-3 p-3 h-full bg-accent-purple bg-header-bg bg-blend-multiply">
+      <div className="w-max flex flex-row justify-center items-center space-x-3 p-6 h-full bg-accent-purple bg-header-bg bg-blend-multiply">
         <div
           title="Select set"
           onClick={() =>
@@ -60,7 +60,7 @@ const EditorSet = ({ data, editingSet, passProps }) => {
           className={` ${
             editingSet === data?.name
               ? "bg-white text-main-purple rounded-xl"
-              : "text-white rounded-xl bg-darker-purple hover:bg-white hover:text-main-purple hover:rounded-3xl"
+              : "text-white rounded-xl bg-darker-purple hover:bg-main-purple hover:text-white hover:rounded-3xl"
           }  cursor-pointer p-3  justify-center duration-300 flex items-center w-max `}
         >
           {editingSet === data?.name ? <Md.MdCheck /> : <Md.MdAdd />}
@@ -68,7 +68,7 @@ const EditorSet = ({ data, editingSet, passProps }) => {
         <Link href={`/dashboard/set/${data?.name}`} passHref>
           <a
             title="View full set"
-            className="text-white rounded-xl bg-darker-purple hover:bg-white hover:text-main-purple hover:rounded-3xl cursor-pointer   p-3  justify-center duration-300 flex items-center w-max"
+            className="text-white rounded-xl bg-darker-purple hover:bg-main-purple hover:text-white hover:rounded-3xl cursor-pointer   p-3  justify-center duration-300 flex items-center w-max"
             target="_blank"
             rel="noopener noreferrer"
           >
@@ -98,14 +98,10 @@ export default function YourEmoteSets(props) {
     <div className="text-black bg-border-white h-full w-1/4 flex flex-col">
       <div className="px-6 py-5 flex flex-row items-center justify-center ">
         <div className="font-normal text-accent-purple  px-6 py-2 text-lg">
-          Your emote sets
+          You have {availEdits ? availEdits.length : "no"} emote sets
         </div>
       </div>
       <div className="w-full overflow-y-auto h-full p-6 flex flex-col space-y-3 justify-center">
-        {!availEdits && !loading
-          ? "You do not have access to any emote sets."
-          : ""}
-        {availEdits?.length ? "" : ""}
         {availEdits &&
           availEdits.map((data, index) => (
             <EditorSet
@@ -116,13 +112,6 @@ export default function YourEmoteSets(props) {
             />
           ))}
       </div>
-      {availEdits?.length ? (
-        <div className="text-sm flex justify-center p-3 border-t-2 border-white">
-          To add emotes to a set, click the + icon to select that set.
-        </div>
-      ) : (
-        ""
-      )}
     </div>
   );
 }
