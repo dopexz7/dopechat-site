@@ -1,8 +1,6 @@
 import Head from "next/head";
 import DashboardNav from "../Nav/DashboardNav";
 import DashboardLeftSection from "./DashboardLeftSection";
-
-import Link from "next/link";
 import DashboardFooter from "./DashboardFooter";
 
 const DashboardLayout = (props) => {
