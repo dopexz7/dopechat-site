@@ -17,7 +17,7 @@ export default function Dashboard(props) {
     </AuthProvider>
   );
 }
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   let { data, error } = await supabase
     .from("allemotes")
     .select("*")
