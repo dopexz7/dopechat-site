@@ -1,5 +1,4 @@
 import React from "react";
-import * as Fa from "react-icons/fa";
 import Link from "next/link";
 import * as Bs from "react-icons/bs";
 import * as Md from "react-icons/md";
@@ -88,14 +87,6 @@ export default function Footer() {
             2022, All Rights Reserved by
             <span className="text-main-purple"> dopeChat</span>
           </div>
-          {/* <div className="ml-auto flex flex-row items-center text-2xl space-x-3">
-            <div className="bg-accent-gray hover:bg-blue-500 duration-300 cursor-pointer p-1.5 rounded-xl">
-              <Fa.FaTwitter className=" text-white" />
-            </div>
-            <div className="bg-accent-gray hover:bg-blue-400 duration-300 cursor-pointer p-1.5 rounded-xl">
-              <Fa.FaDiscord className=" text-white" />
-            </div>
-          </div> */}
         </div>
       </div>
     </div>

@@ -21,7 +21,7 @@ export default function ProfileRight() {
   const [setDeletion, setSetDeletion] = useState(false);
   const [setDeleted, setSetDeleted] = useState(false);
   const [error, setError] = useState("");
-  const [setCreated, setSetCreated] = useState(false);
+  //const [setCreated, setSetCreated] = useState(false);
   useEffect(() => {
     setEmotesLen(showSetMods?.emotes?.length);
     setMods(showSetMods?.mods);
@@ -75,7 +75,7 @@ export default function ProfileRight() {
     //     }, 1000)
     //   );
   };
-  const requestToBePromoted = async (d) =>
+  const requestToBePromoted = async () =>
     await supabase
       .from("useremotes")
       .update({ requested_streamer: true })
@@ -104,7 +104,7 @@ export default function ProfileRight() {
     <div className="text-black bg-border-white h-full w-1/4 flex flex-col p-5">
       {!isOwnerOfSomething || setDeleted ? (
         <button
-          disabled={setCreated}
+          //disabled={setCreated}
           onClick={() => createNewSet()}
           className="group hover:bg-white hover:text-main-purple  bg-main-purple duration-300 cursor-pointer text-white flex justify-center items-center p-3 rounded-2xl w-full"
         >
