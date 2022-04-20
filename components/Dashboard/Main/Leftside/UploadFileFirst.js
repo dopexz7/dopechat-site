@@ -11,7 +11,7 @@ export default function UploadFileFirst() {
   const [selfilename, setSelfilename] = useState("");
   const [error, setError] = useState("");
   const [uploading, setUploading] = useState(false);
-  const limit = useUploadLimit(user.user_metadata.name);
+  const limit = useUploadLimit(user?.user_metadata.name);
   const [upLimit, setUpLimit] = useState(limit);
 
   useEffect(() => {
@@ -19,7 +19,7 @@ export default function UploadFileFirst() {
   }, [limit]);
   const handleUploadLimit = () => {
     return (
-      setUploadLimit(user.user_metadata.name, upLimit ? upLimit - 1 : null),
+      setUploadLimit(user?.user_metadata.name, upLimit ? upLimit - 1 : null),
       setUpLimit(upLimit - 1)
     );
   };
@@ -39,7 +39,7 @@ export default function UploadFileFirst() {
         if (er) console.log(er);
 
         const newFile = {
-          uploaded_by: user.user_metadata.name,
+          uploaded_by: user?.user_metadata.name,
           name: selfilename,
           url: fileUrl.publicURL,
         };

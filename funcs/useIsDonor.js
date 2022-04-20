@@ -11,7 +11,7 @@ function useIsDonor() {
       let { data: res, error } = await supabase
         .from("profiles")
         .select("is_donor")
-        .eq("username", user.user_metadata.name);
+        .eq("username", user?.user_metadata.name);
       if (error) console.log(error);
       return res[0]?.is_donor;
     };

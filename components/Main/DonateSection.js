@@ -18,7 +18,7 @@ export default function DonateSection() {
         <Link href="/dashboard" passHref>
           <div className="cursor-pointer bg-accent-white duration-300 border-2 hover:bg-darker-purple hover:border-darker-purple hover:text-white flex-row items-center justify-center flex  p-6 text-accent-purple font-normal rounded-3xl">
             <Fa.FaPaypal className="mr-3" />
-            <div className="flex flex-col">Donate with Paypal</div>
+            <div className="flex flex-col">Donate with PayPal</div>
           </div>
         </Link>
       </motion.div>
@@ -39,7 +39,8 @@ export default function DonateSection() {
         </span>
 
         <span className="flex text-sm lg:ml-auto lg:text-right font-normal lg:font-normal text-accent-gray mt-6 mr-6 lg:mr-0 tracking-tight">
-          Donating 5$ or more grants you benefits!
+          Available only logged in to the dashboard - to give supporters
+          benefits
         </span>
       </motion.div>
     </div>

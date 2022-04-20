@@ -17,7 +17,7 @@ function useIsMod(pageName) {
       return mods;
     };
     seeMods().then((res) => {
-      if (res[0]?.mods.includes(user.user_metadata.name)) {
+      if (res[0]?.mods.includes(user?.user_metadata.name)) {
         if (subed) setRes(true);
       }
     });

@@ -6,7 +6,7 @@ import ContactMain from "../../Contact/ContactMain";
 
 export default function DashboardNav() {
   return (
-    <div className={`duration-300 z-50 w-screen`}>
+    <div className={`duration-300 z-50 w-screen bg-darker-purple`}>
       <div
         className={`max-w-7xl w-screen mr-auto ml-auto flex flex-row justify-center items-center p-6 duration-300 space-x-8 text-main-white text-sm font-semibold`}
       >

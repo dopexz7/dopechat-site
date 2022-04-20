@@ -17,7 +17,7 @@ export default function DashboardMiddleSection({ data, fullSet, editingSet }) {
   const [startUpdate, setStartUpdate] = useState(false);
   const [posts, setPosts] = useState(data);
   const [sorting, setSorting] = useState(false);
-  const isMod = useIsMod(user.user_metadata.name);
+  const isMod = useIsMod(user?.user_metadata.name);
 
   const getMorePost = async () => {
     try {

@@ -15,9 +15,9 @@ const DashboardLeftSignedIn = () => {
   const router = useRouter();
 
   const { user } = useAuth();
-  const isMod = useIsMod(user.user_metadata.name);
+  const isMod = useIsMod(user?.user_metadata.name);
   const isDonor = useIsDonor();
-  const hasEdits = useHasEdits(user.user_metadata.name);
+  const hasEdits = useHasEdits(user?.user_metadata.name);
 
   return (
     <>
@@ -28,12 +28,12 @@ const DashboardLeftSignedIn = () => {
       >
         <div className="flex flex-row items-center px-6 py-2 ">
           <img
-            src={user.user_metadata.avatar_url}
-            alt={user.user_metadata.name}
+            src={user?.user_metadata.avatar_url}
+            alt={user?.user_metadata.name}
             className="rounded-3xl w-10 border-2 shadow-xl"
           />
           <div className="ml-2 font-normal text-main-black rounded-2xl text-md overflow-hidden text-ellipsis whitespace-nowrap">
-            {user.user_metadata.name}
+            {user?.user_metadata.name}
           </div>
 
           <div className="ml-auto flex flex-row items-center">
