@@ -5,16 +5,17 @@ import * as Bs from "react-icons/bs";
 import { motion } from "framer-motion";
 import { leftToRightVariant } from "./transitionVariants";
 import { Menu, Transition } from "@headlessui/react";
+
 export default function Header() {
   const [browsName, setBrowsName] = useState("");
   useEffect(() => {
     setBrowsName(browserName);
   }, []);
   const chromeUrl =
-    "https://chrome.google.com/webstore/detail/fb-gaming-better/aflheebbcchbhephcfamiiciepiibpak";
+    "https://chrome.google.com/webstore/detail/dopechat/pfbgacokbnigfgdninjmcgokijpfldkn?hl=en-GB&authuser=3";
   const firefoxUrl = "https://addons.mozilla.org/en-US/firefox/addon/dopechat/";
   const operaUrl =
-    "https://chrome.google.com/webstore/detail/fb-gaming-better/aflheebbcchbhephcfamiiciepiibpak";
+    "https://chrome.google.com/webstore/detail/dopechat/pfbgacokbnigfgdninjmcgokijpfldkn?hl=en-GB&authuser=3";
   const edgeUrl =
     "https://microsoftedge.microsoft.com/addons/detail/fb-gaming-better/pmmmalmbjnajoogjgbghgiagjpejfhdi";
   const menuData = [

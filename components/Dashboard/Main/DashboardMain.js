@@ -5,6 +5,7 @@ import YourEmoteSets from "./Rightside/YourEmoteSets";
 import { Accordion } from "@mantine/core";
 import * as Md from "react-icons/md";
 import { useAuth } from "../../../contexts/AppContext";
+
 export default function DashboardMain({ data }) {
   const { user } = useAuth();
   const [editingSet, setEditingSet] = useState("");

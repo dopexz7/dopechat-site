@@ -4,6 +4,7 @@ import { supabase } from "../../../lib/supabaseClient";
 import { CircularProgress } from "@mui/material";
 import * as Fa from "react-icons/fa";
 import { useAuth } from "../../../contexts/AppContext";
+
 export default function DashboardLeftSection() {
   const [whyTwitch, setWhyTwitch] = useState(false);
   const [loading, setLoading] = useState(true);

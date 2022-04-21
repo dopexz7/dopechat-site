@@ -1,4 +1,3 @@
-import Image from "next/image";
 import React, { useState } from "react";
 import * as Md from "react-icons/md";
 import { supabase } from "../../../../lib/supabaseClient";
@@ -35,13 +34,13 @@ const EmoteComponent = ({ data, editingSet, isMod, kekRef }) => {
         } else {
           if (useremotes[0]?.emotes?.length) {
             arr.push(d);
-            toggle();
+            toggle(d);
             return await supabase
               .from("useremotes")
               .update({ emotes: arr })
               .eq("name", editingSet);
           } else {
-            toggle();
+            toggle(d);
             return await supabase
               .from("useremotes")
               .update({ emotes: [d] })
@@ -54,13 +53,13 @@ const EmoteComponent = ({ data, editingSet, isMod, kekRef }) => {
         } else {
           if (useremotes[0]?.emotes?.length) {
             arr.push(d);
-            toggle();
+            toggle(d);
             return await supabase
               .from("useremotes")
               .update({ emotes: arr })
               .eq("name", editingSet);
           } else {
-            toggle();
+            toggle(d);
             return await supabase
               .from("useremotes")
               .update({ emotes: [d] })
@@ -71,13 +70,13 @@ const EmoteComponent = ({ data, editingSet, isMod, kekRef }) => {
     } else {
       if (useremotes[0]?.emotes?.length) {
         arr.push(d);
-        toggle();
+        toggle(d);
         return await supabase
           .from("useremotes")
           .update({ emotes: arr })
           .eq("name", editingSet);
       } else {
-        toggle();
+        toggle(d);
         return await supabase
           .from("useremotes")
           .update({ emotes: [d] })
@@ -115,10 +114,13 @@ const EmoteComponent = ({ data, editingSet, isMod, kekRef }) => {
       </div>
     );
   };
-  function toggle() {
+  const [emoteAdded, setEmoteAdded] = useState();
+  function toggle(d) {
+    setEmoteAdded(d.code);
     setVisible(true);
     setTimeout(() => {
       setVisible(false);
+      setEmoteAdded("");
     }, 1500);
   }
   return (
@@ -137,7 +139,7 @@ const EmoteComponent = ({ data, editingSet, isMod, kekRef }) => {
         layout="vertical"
         size="small"
       >
-        Emote added to {editingSet} set!
+        {emoteAdded} added to {editingSet} set!
       </Modal>
       <div
         className={`h-32 w-32 group duration-300 bg-accent-white rounded-md select-none`}
@@ -153,7 +155,7 @@ const EmoteComponent = ({ data, editingSet, isMod, kekRef }) => {
             </div>
           ) : (
             <div className="group absolute w-full h-full duration-300 flex items-center justify-center">
-              <Image
+              <img
                 height={64}
                 width={64}
                 className={`group-hover:scale-50 group-hover:opacity-25 duration-300`}

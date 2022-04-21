@@ -2,11 +2,11 @@ import AuthRoute from "../../../contexts/authRoute";
 import DashboardLayout from "../../../components/Dashboard/Main/DashboardLayout";
 import { useEffect, useState } from "react";
 import { supabase } from "../../../lib/supabaseClient";
-import Image from "next/image";
 import * as Im from "react-icons/im";
 import * as Md from "react-icons/md";
 import ProfileRight from "./ProfileRight";
 import { useAuth } from "../../../contexts/AppContext";
+
 export default function MainProfile({ data }) {
   const { user } = useAuth();
   const [approvedEmotes, setApprovedEmotes] = useState();
@@ -50,7 +50,7 @@ export default function MainProfile({ data }) {
             </div>
           ) : (
             <div className="group absolute w-full h-full duration-300 flex items-center justify-center">
-              <Image
+              <img
                 height={64}
                 width={64}
                 className={`group-hover:scale-50 group-hover:opacity-25 duration-300`}

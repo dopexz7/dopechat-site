@@ -6,6 +6,7 @@ import Link from "next/link";
 import { supabase } from "../../../lib/supabaseClient";
 import * as Md from "react-icons/md";
 import { useAuth } from "../../../contexts/AppContext";
+
 export default function ProfileRight() {
   const { user } = useAuth();
   const [emotesLen, setEmotesLen] = useState();

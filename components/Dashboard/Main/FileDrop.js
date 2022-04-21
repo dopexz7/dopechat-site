@@ -4,6 +4,7 @@ import { FileUploader } from "react-drag-drop-files";
 import useUploadLimit from "../../../funcs/useUploadLimit";
 import setUploadLimit from "../../../funcs/useSetUploadLimit";
 import { useAuth } from "../../../contexts/AppContext";
+
 const fileTypes = ["JPG", "PNG", "GIF", "WEBP"];
 
 const FileDrop = () => {

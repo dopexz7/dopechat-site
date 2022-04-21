@@ -4,6 +4,7 @@ import * as Scroll from "react-scroll";
 import { NavData } from "./NavData";
 import { useRouter } from "next/router";
 import * as Fa from "react-icons/fa";
+
 const Link = Scroll.Link;
 
 export default function MobileNav() {

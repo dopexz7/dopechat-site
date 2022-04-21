@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
 import { supabase } from "../../lib/supabaseClient";
 import { useAuth } from "../../contexts/AppContext";
+
 const ButtonWrapper = ({ currency, amount }) => {
   // usePayPalScriptReducer can be use only inside children of PayPalScriptProviders
   // This is the main reason to wrap the PayPalButtons in a new component

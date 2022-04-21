@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Tabs } from "@mantine/core";
+
 export default function StyledTabs(props) {
   return (
     <motion.div

@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
-
 import useHasEdits from "../../../../funcs/useHasEdits";
-
 import { useAuth } from "../../../../contexts/AppContext";
-
 import EditorSet from "./EditorSet";
 
 export default function YourEmoteSets(props) {

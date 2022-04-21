@@ -2,8 +2,8 @@ import { useState, useEffect } from "react";
 import { supabase } from "../lib/supabaseClient";
 import { useAuth } from "../contexts/AppContext";
 function useIsDonor() {
-  const { user } = useAuth();
   const [res, setRes] = useState(false);
+  const { user } = useAuth();
 
   useEffect(() => {
     let subed = true;

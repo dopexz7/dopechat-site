@@ -3,7 +3,6 @@ import AdminRoute from "../../../contexts/adminRoute";
 import DashboardLayout from "../Main/DashboardLayout";
 import * as Bi from "react-icons/bi";
 import * as Md from "react-icons/md";
-import Image from "next/image";
 import { supabase } from "../../../lib/supabaseClient";
 import useReadSubmissions from "../../../funcs/useReadSubmissions";
 import AdminRight from "./AdminRight";
@@ -81,7 +80,7 @@ export default function MainAdmin() {
                 >
                   <div className="w-full h-32 overflow-hidden text-black flex flex-row justify-center relative border-2 rounded-md">
                     <div className="group absolute w-full h-full duration-300 flex items-center justify-center">
-                      <Image
+                      <img
                         height={64}
                         width={64}
                         className="group-hover:scale-50 group-hover:opacity-25 duration-300"

@@ -2,7 +2,6 @@ import { useState } from "react";
 import * as Bs from "react-icons/bs";
 import * as Go from "react-icons/go";
 import * as Hi from "react-icons/hi";
-import Image from "next/image";
 import { EmoteData } from "./EmoteData";
 import { motion } from "framer-motion";
 import {
@@ -11,6 +10,7 @@ import {
   bottomToTopVariant,
   rightToLeftVariant,
 } from "./transitionVariants";
+
 export default function KeyFeatures() {
   const [emotes, setEmotes] = useState(false);
 
@@ -84,7 +84,7 @@ export default function KeyFeatures() {
             >
               {EmoteData.map((item, index) => {
                 return (
-                  <Image
+                  <img
                     key={index}
                     src={item.path}
                     alt={item.title}

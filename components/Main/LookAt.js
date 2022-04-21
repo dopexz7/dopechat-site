@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-scroll";
 import { leftToRightVariant, rightToLeftVariant } from "./transitionVariants";
 import { motion } from "framer-motion";
+
 export default function LookAt() {
   return (
     <div
