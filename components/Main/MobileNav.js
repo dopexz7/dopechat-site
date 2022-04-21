@@ -1,17 +1,17 @@
-import { useState, Fragment } from "react";
+//import { useState, Fragment } from "react";
 //import { Dialog, Transition } from "@headlessui/react";
-import * as Scroll from "react-scroll";
-import { NavData } from "./NavData";
-import { useRouter } from "next/router";
-import * as Fa from "react-icons/fa";
+//import * as Scroll from "react-scroll";
+//import { NavData } from "./NavData";
+//import { useRouter } from "next/router";
+//import * as Fa from "react-icons/fa";
 
-const Link = Scroll.Link;
+//const Link = Scroll.Link;
 
 export default function MobileNav() {
-  let [isOpen, setIsOpen] = useState(false);
-  const router = useRouter();
-  const { pathname } = router;
-  const splitLocation = pathname.split("/");
+  //let [isOpen, setIsOpen] = useState(false);
+  //const router = useRouter();
+  //const { pathname } = router;
+  //const splitLocation = pathname.split("/");
 
   return (
     <>
