@@ -1,10 +1,9 @@
-import { useEffect, useState, Fragment } from "react";
+import { useEffect, useState } from "react";
 import { browserName } from "react-device-detect";
 import * as Fa from "react-icons/fa";
-import * as Bs from "react-icons/bs";
 import { motion } from "framer-motion";
 import { leftToRightVariant } from "./transitionVariants";
-import { Menu, Transition } from "@headlessui/react";
+import { Menu } from "@mantine/core";
 
 export default function Header() {
   const [browsName, setBrowsName] = useState("");
@@ -86,60 +85,43 @@ export default function Header() {
               Download for {browsName ? browsName : "your browser"}
             </button>
 
-            <div className="hidden lg:flex items-center mt-3">
-              <Menu as="div" className="relative inline-block mr-3">
-                <Menu.Button
-                  className={`hover:text-white duration-300 hidden lg:flex cursor-pointer lg:flex-row lg:items-center`}
-                >
-                  <div className="inline-flex items-center justify-center font-normal text-xs">
-                    All versions
-                    <Bs.BsCaretDownFill
-                      className={`text-main-white  group-hover:text-white
-                     duration-300 w-3 h-3 ml-2`}
-                      aria-hidden="true"
-                    />
-                  </div>
-                </Menu.Button>
+            <Menu
+              control={
+                <button type="button" className="font-normal text-xs mt-3 ">
+                  All versions
+                </button>
+              }
+              classNames={{
+                item: "duration-300 text-main-black",
+                itemHovered: "bg-border-white text-darker-purple",
+              }}
+            >
+              {menuData &&
+                menuData.map((data, index) => (
+                  <a
+                    key={index}
+                    target="_blank"
+                    rel="noreferrer"
+                    href={data.href}
+                  >
+                    <Menu.Item icon={data.icon}>{data.title}</Menu.Item>
+                  </a>
+                ))}
+            </Menu>
 
-                <Transition
-                  as={Fragment}
-                  enter="transition ease-out duration-100"
-                  enterFrom="transform opacity-0 scale-95"
-                  enterTo="transform opacity-100 scale-100"
-                  leave="transition ease-in duration-75"
-                  leaveFrom="transform opacity-100 scale-100"
-                  leaveTo="transform opacity-0 scale-95"
-                >
-                  <Menu.Items className="text-main-black p-1 rounded-md space-y-1 font-semibold text-sm absolute right-0 w-56 mt-3 origin-top-right bg-accent-white shadow-lg">
-                    {menuData.map((data, index) => (
-                      <Menu.Item key={index}>
-                        <a
-                          target="_blank"
-                          rel="noreferrer"
-                          href={data.href}
-                          className={`hover:bg-darker-purple rounded-md cursor-pointer overflow-hidden duration-300 hover:text-white group flex items-center p-2`}
-                        >
-                          <div className="mr-1 p-0.5">{data.icon}</div>
-                          {data.title}
-                        </a>
-                      </Menu.Item>
-                    ))}
-                  </Menu.Items>
-                </Transition>
-              </Menu>
-            </div>
             <div className="lg:mt-9 xlx:mt-3 text-white flex flex-col h-max lg:text-left  p-3 lg:border-0 lg:p-0">
               Available for
               <div className="flex flex-row lg:flex-row mt-3 space-x-2 lg:self-auto">
-                {menuData.map((data, index) => (
-                  <div
-                    key={index}
-                    title={data.title}
-                    className="bg-accent-purple p-2 flex justify-center items-center rounded-2xl text-2xl"
-                  >
-                    {data.icon}
-                  </div>
-                ))}
+                {menuData &&
+                  menuData.map((data, index) => (
+                    <div
+                      key={index}
+                      title={data.title}
+                      className="bg-accent-purple p-2 flex justify-center items-center rounded-2xl text-2xl"
+                    >
+                      {data.icon}
+                    </div>
+                  ))}
               </div>
               <div className="mt-3 text-white flex flex-col">
                 <div className="text-main-white text-xs hidden lg:flex">

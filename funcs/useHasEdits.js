@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { supabase } from "../lib/supabaseClient";
-function useHasEdits(username) {
+import { useAuth } from "../contexts/AppContext";
+function useHasEdits() {
   const [res, setRes] = useState();
-
+  const { user } = useAuth();
   useEffect(() => {
     let subed = true;
     const checkIfHasEdits = async () => {
@@ -10,7 +11,7 @@ function useHasEdits(username) {
       if (error) console.log(error);
       let x = [];
       mods?.forEach((v) => {
-        if (v.mods?.includes(username)) {
+        if (v.mods?.includes(user?.user_metadata.name)) {
           x.push(v);
         }
       });
@@ -23,7 +24,7 @@ function useHasEdits(username) {
     return () => {
       subed = false;
     };
-  }, [username]);
+  }, []);
 
   return res;
 }

@@ -11,7 +11,7 @@ function useCheckIfHasSet(username) {
         .select("name");
       if (error) console.log(error);
       mods.forEach((v) => {
-        if (v.name.includes(username)) setRes(true);
+        if (v.name.includes(username)) if (subed) setRes(true);
       });
     };
 

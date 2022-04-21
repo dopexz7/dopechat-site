@@ -1,7 +1,6 @@
 import React from "react";
 import Link from "next/link";
 import * as Fa from "react-icons/fa";
-//import Links from "../../Links";
 import ContactMain from "../../Contact/ContactMain";
 import DonationComponent from "../../Donation/DonationComponent";
 import { useAuth } from "../../../contexts/AppContext";
@@ -29,7 +28,6 @@ export default function DashboardNav() {
           iconClass={`mr-3`}
         />
 
-        {/* <Links /> */}
         {user ? (
           <DonationComponent
             btnClass={`hover:text-white duration-300 items-center cursor-pointer flex flex-row`}

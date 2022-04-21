@@ -1,5 +1,5 @@
 import { useState, Fragment } from "react";
-import { Dialog, Transition } from "@headlessui/react";
+//import { Dialog, Transition } from "@headlessui/react";
 import * as Scroll from "react-scroll";
 import { NavData } from "./NavData";
 import { useRouter } from "next/router";
@@ -15,7 +15,7 @@ export default function MobileNav() {
 
   return (
     <>
-      <Transition appear show={isOpen} as={Fragment}>
+      {/* <Transition appear show={isOpen} as={Fragment}>
         <Dialog open={isOpen} onClose={() => setIsOpen(false)}>
           <Dialog.Overlay
             as="div"
@@ -71,7 +71,7 @@ export default function MobileNav() {
         className="pr-3 duration-300 lg:hidden text-main-white"
       >
         <Fa.FaBars />
-      </div>
+      </div> */}
     </>
   );
 }

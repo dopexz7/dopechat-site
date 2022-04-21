@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
 
 * {
   outline: none;
@@ -16,7 +15,7 @@ img {
 }
 
 :root {
-  --body-font: "Poppins", sans-serif;
+  --body-font: "Poppins", Helvetica, sans-serif;
   --main-purple: #4f46e5;
   --accent-purple: #5b57e9;
   --darker-purple: #1f1189;

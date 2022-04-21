@@ -14,10 +14,10 @@ import { useAuth } from "../../../../contexts/AppContext";
 
 const DashboardLeftSignedIn = () => {
   const router = useRouter();
-
+  const isDonor = useIsDonor();
   const { user } = useAuth();
   const isMod = useIsMod();
-  const isDonor = useIsDonor();
+
   const hasEdits = useHasEdits(user?.user_metadata.name);
   return (
     <>

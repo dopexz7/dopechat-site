@@ -6,21 +6,14 @@ function useIsMod() {
   const { user } = useAuth();
 
   useEffect(() => {
-    let subed = true;
     const checkMod = async () =>
       await supabase
         .from("profiles")
         .select("admin")
-        .eq("username", user?.user_metadata.name);
+        .eq("username", user?.user_metadata.name)
+        .then((r) => setRes(r?.data[0]?.admin));
 
-    checkMod().then((r) => {
-      const isMod = r?.data[0]?.admin;
-      if (subed) setRes(isMod);
-    });
-
-    return () => {
-      subed = false;
-    };
+    checkMod();
   }, []);
   return res;
 }

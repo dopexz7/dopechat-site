@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
 import { supabase } from "../../lib/supabaseClient";
 import { useAuth } from "../../contexts/AppContext";

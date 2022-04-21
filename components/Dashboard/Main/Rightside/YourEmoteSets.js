@@ -1,20 +1,15 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import useHasEdits from "../../../../funcs/useHasEdits";
-import { useAuth } from "../../../../contexts/AppContext";
 import EditorSet from "./EditorSet";
 
 export default function YourEmoteSets(props) {
   const [editingSet, setEditingSet] = useState("");
-  const { user } = useAuth();
-  const availEdits = useHasEdits(user?.user_metadata.name);
+  const availEdits = useHasEdits();
 
   const passProps = (d) => {
     setEditingSet(d);
     props.onSuccess(d);
   };
-  useEffect(() => {
-    console.log(availEdits);
-  });
 
   return (
     <div className="text-black bg-border-white h-full w-1/4 flex flex-col">

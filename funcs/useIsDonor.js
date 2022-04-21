@@ -6,21 +6,14 @@ function useIsDonor() {
   const { user } = useAuth();
 
   useEffect(() => {
-    let subed = true;
-    const checkDonor = async () =>
+    const checkMod = async () =>
       await supabase
         .from("profiles")
-        .select("is_donor")
-        .eq("username", user?.user_metadata.name);
+        .select("donor")
+        .eq("username", user?.user_metadata.name)
+        .then((r) => setRes(r?.data[0]?.donor));
 
-    checkDonor().then((r) => {
-      const isDonor = r?.data[0]?.is_donor;
-      if (subed) setRes(isDonor);
-    });
-
-    return () => {
-      subed = false;
-    };
+    checkMod();
   }, []);
   return res;
 }
