@@ -25,6 +25,15 @@ export default function DonationComponent({ btnClass, iconEnabled }) {
       amount: "15",
     },
   ];
+  const iconVariant = {
+    hover: {
+      scale: 1.05,
+      rotate: 360,
+    },
+    transition: {
+      yoyo: 1,
+    },
+  };
   return (
     <>
       <div onClick={() => setVisible(true)} className={btnClass}>
@@ -42,9 +51,13 @@ export default function DonationComponent({ btnClass, iconEnabled }) {
         centered
       >
         <div className="flex justify-center items-center mb-3">
-          <div className="text-lg !text-main-purple bg-border-white p-4 rounded-2xl">
+          <motion.div
+            variants={seeDonation ? iconVariant : ""}
+            whileInView="hover"
+            className="text-lg !text-main-purple bg-border-white p-4 rounded-2xl"
+          >
             <Bi.BiDonateHeart />
-          </div>
+          </motion.div>
         </div>
 
         <div className="flex flex-col space-y-3">

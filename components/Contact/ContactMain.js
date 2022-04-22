@@ -3,7 +3,7 @@ import { Modal } from "@mantine/core";
 import * as Bs from "react-icons/bs";
 import { Input } from "@supabase/ui";
 import { supabase } from "../../lib/supabaseClient";
-
+import { motion } from "framer-motion";
 export default function ContactMain({ btnClass, iconClass }) {
   const [loading, setLoading] = useState(false);
   const [visible, setVisible] = useState(false);
@@ -34,6 +34,16 @@ export default function ContactMain({ btnClass, iconClass }) {
     }
   };
 
+  const iconVariant = {
+    hover: {
+      scale: 1.05,
+      rotate: 360,
+    },
+    transition: {
+      yoyo: 1,
+    },
+  };
+
   return (
     <>
       <div onClick={() => setVisible(true)} className={btnClass}>
@@ -50,9 +60,13 @@ export default function ContactMain({ btnClass, iconClass }) {
         centered
       >
         <div className="flex justify-center items-center mb-3">
-          <div className="text-lg !text-main-purple bg-border-white p-4 rounded-2xl">
+          <motion.div
+            variants={disabled ? iconVariant : ""}
+            whileInView="hover"
+            className="text-lg !text-main-purple bg-border-white p-4 rounded-2xl"
+          >
             <Bs.BsChatSquareTextFill />
-          </div>
+          </motion.div>
         </div>
 
         <div className="flex flex-col space-y-3">
