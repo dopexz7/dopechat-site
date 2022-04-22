@@ -27,11 +27,5 @@ module.exports = {
       },
     },
   },
-  variants: {
-    extend: {
-      backgroundColor: ["disabled"],
-      textColor: ["disabled"],
-    },
-  },
   plugins: [require("tailwind-scrollbar")],
 };
