@@ -30,34 +30,42 @@ export default function Changelog() {
               1.0
             </div>
             <div className="m-3">
-              -Official website! dopechat.ddns.net
+              -Official website! dopechat.ddns.net - Extension overview, a look
+              at features, changelog, dashboard.
               <div className="">--Dashboard</div>
               <div className="">--Current dashboard features:</div>
+              <div>
+                ---Streamers now can create their own emote set (RatedEpicz,
+                Ramee, Vader sets are already in)
+              </div>
               <div className="">
                 ---Login with Twitch and upload your own emotes
               </div>
-              <div className="">---Create your own emote set:</div>
+              <div>---View all current emotes in the extension</div>
               <div>
-                ----Basic user has 5 emote limit, more details in the website
-              </div>
-              <div>
-                ----User can request to be promoted to streamer, increasing
-                capacity
-              </div>
-              <div>
-                ----SOON: share your personal emote set code with friends
+                ---Emote set mods can view/edit emote sets easily, and it will
+                automatically update on the extension
               </div>
               <div className="">---Support the extension</div>
+              <div>
+                ---View streamer&apos;s full emote set by going
+                dopechat.ddns.net/dashboard/set/[streamer name]
+              </div>
               <div className="">
                 ---Contact form to report bugs/issues and submit ideas
               </div>
               <div className="">
                 ---View all current emotes in the extension
               </div>
+              <div>-Rewrote like 80% of the extension&apos;s code</div>
               <div>-Reworked a big part of the extension:</div>
               <div>--No more installing emote sets: </div>
               <div>---Global emotes:</div>
-              <div>----They will be constantly updated with new emotes.</div>
+              <div>
+                ----Global emotes available in every streamer&apos;s channel,
+                handpicked by extension mods. Will be constantly updated with
+                new emotes.
+              </div>
               <div>---Channel emotes:</div>
               <div>
                 ----If the streamer has an emote set made in the new website,
@@ -70,11 +78,9 @@ export default function Changelog() {
                 add your own fonts
               </div>
               <div>--Random username colors toggle (enabled by default)</div>
-              <div>--Made it easier to add new highlighted keywords</div>
-              <div>-Theatre mode:</div>
               <div>
-                --Theatre mode no longer has a button, use the keyboard shortcut
-                ALT+T (button clutter)
+                --Made it easier to add new highlighted keywords, with a
+                &quot;Remove all&quot; button
               </div>
               <div>-Updated emote menu:</div>
               <div>--Reworked emote menu completely</div>
@@ -101,6 +107,10 @@ export default function Changelog() {
                 --Type exact start of emote codes, ex. Pepe finds all the emotes
                 starting with &quot;Pepe&quot;, &quot;PepeL&quot; or
                 &quot;Pepeg&quot; narrows downthe search and so on.
+              </div>
+              <div>
+                --Theatre mode no longer has a button, use the keyboard shortcut
+                ALT+T (button clutter)
               </div>
               <div>
                 -Moved &quot;Enable emote set&quot; to the Other settings tab
