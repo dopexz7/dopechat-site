@@ -93,6 +93,9 @@ export default function MainAdmin() {
                       <div className="overflow-hidden mt-auto ml-auto mr-auto text-sm font-normal">
                         {d.name}
                       </div>
+                      <div className="overflow-hidden mt-auto ml-auto mr-auto text-sm font-normal">
+                        by {d.uploaded_by}
+                      </div>
                       <div className="flex flex-row justify-center items-center mt-auto">
                         <div
                           onClick={() => approveToDb(d)}
