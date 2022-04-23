@@ -13,7 +13,6 @@
     "@mantine/hooks": "^4.1.4",
     "@paypal/react-paypal-js": "^7.6.0",
     "@supabase/supabase-js": "^1.35.1",
-    "@supabase/ui": "^0.36.5",
     "framer-motion": "^6.3.0",
     "next": "^12.1.5",
     "nprogress": "^0.2.0",

@@ -4,12 +4,14 @@ import { supabase } from "../../../../lib/supabaseClient";
 import * as Im from "react-icons/im";
 import useIsDonor from "../../../../funcs/useIsDonor";
 import { useAuth } from "../../../../contexts/AppContext";
-import { Modal, IconCheck } from "@supabase/ui";
+import { Modal } from "@mantine/core";
 const EmoteComponent = ({ data, editingSet, isMod, kekRef }) => {
   const [deleted, setDeleted] = useState(false);
   const [loading, setLoading] = useState(false);
   const { user } = useAuth();
   const [visible, setVisible] = useState(false);
+  const isDonor = useIsDonor(user?.user_metadata.name);
+
   const deleteFromDb = async (v) => {
     await supabase.from("allemotes").delete().eq("src", v.src);
     setLoading(true);
@@ -18,7 +20,6 @@ const EmoteComponent = ({ data, editingSet, isMod, kekRef }) => {
       kekRef.current.textContent = kekRef.current.textContent - 1;
     }, 800);
   };
-  const isDonor = useIsDonor(user?.user_metadata.name);
 
   const addToSet = async (d) => {
     let { data: useremotes, erro } = await supabase
@@ -27,6 +28,9 @@ const EmoteComponent = ({ data, editingSet, isMod, kekRef }) => {
       .eq("name", editingSet);
     if (erro) console.log(erro);
     const arr = useremotes[0].emotes;
+    if (arr.some((e) => e.code === d.code)) {
+      return alert("Emote already in the set!");
+    }
     if (editingSet === user?.user_metadata.name) {
       if (!isDonor) {
         if (useremotes[0]?.emotes?.length >= 5) {
@@ -126,19 +130,19 @@ const EmoteComponent = ({ data, editingSet, isMod, kekRef }) => {
   return (
     <>
       <Modal
-        className="backdrop-blur !text-main-black"
-        visible={visible}
-        hideFooter
-        icon={<IconCheck background="brand" size="3xl" />}
-        contentStyle={{
-          textAlign: "center",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
+        opened={visible}
+        withCloseButton={false}
+        onClose={() => setVisible(false)}
+        classNames={{
+          root: "backdrop-blur-2xl ",
+          modal: "text-center rounded-lg",
         }}
-        layout="vertical"
-        size="small"
+        size="xs"
+        centered
       >
+        <div className="flex justify-center text-7xl text-accent-white m-6">
+          <Md.MdCheck className="approve rounded-full p-1" />
+        </div>
         {emoteAdded} added to {editingSet} set!
       </Modal>
       <div

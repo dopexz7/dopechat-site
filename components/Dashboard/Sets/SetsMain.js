@@ -1,5 +1,3 @@
-import React from "react";
-
 import DashboardLayout from "../Main/DashboardLayout";
 import { supabase } from "../../../lib/supabaseClient";
 import { useRouter } from "next/router";
@@ -18,7 +16,9 @@ export default function SetsMain({ pass }) {
   const isSetMod = useIsSetMod(id);
   const [loading, setLoading] = useState(true);
   const [sorting, setSorting] = useState(false);
+  const [allCount, setAllCount] = useState(0);
   useEffect(() => {
+    setAllCount(pass.emotes.length);
     setPageSet(pass.emotes);
     setPageName(pass.name);
     setLoading(false);
@@ -31,6 +31,7 @@ export default function SetsMain({ pass }) {
       if (v.code !== d.code) finalArray.push(v);
     });
     setPageSet(finalArray);
+    setAllCount((prevVal) => prevVal - 1);
     await supabase
       .from("useremotes")
       .update({ emotes: finalArray })
@@ -48,13 +49,19 @@ export default function SetsMain({ pass }) {
     >
       <div className="text-black border-r-2 h-full w-[80%] flex flex-col overflow-hidden">
         <div className="px-6 py-5 border-b-2 flex flex-row items-center">
-          <div className="font-normal text-lg flex-1 max-w-xs">
-            {pageName
-              ? `${pageName}'s set`
-              : loading
-              ? "Loading..."
-              : "Set doesn't exist"}
+          <div className="font-normal space-x-3 flex flex-row items-center">
+            <p className="text-lg">
+              {pageName
+                ? `${pageName}'s set`
+                : loading
+                ? "Loading..."
+                : "Set doesn't exist"}
+            </p>
+            <p className="border-2 px-2 rounded-2xl text-sm text-darker-purple ">
+              {allCount}
+            </p>
           </div>
+
           <div className="overflow-hidden duration-300 border-2 rounded-2xl ml-auto flex flex-row items-center text-md font-semibold">
             <Tooltip
               position="top"

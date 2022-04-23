@@ -1,7 +1,6 @@
 import { useState } from "react";
-import { Modal } from "@mantine/core";
 import * as Bs from "react-icons/bs";
-import { Input } from "@supabase/ui";
+import { Input, Modal, Textarea } from "@mantine/core";
 import { supabase } from "../../lib/supabaseClient";
 import { motion } from "framer-motion";
 export default function ContactMain({ btnClass, iconClass }) {
@@ -89,17 +88,13 @@ export default function ContactMain({ btnClass, iconClass }) {
             placeholder="required"
             onChange={(e) => setUserEmail(e.target.value)}
           />
-          <Input.TextArea
-            label="Your message"
-            limit={280}
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            rows={4}
-            className="mt-6"
+          <Textarea
             placeholder="Message..."
-            type="text"
-            labelOptional="min 20 characters"
+            label="Your message (min 20 characters)"
+            value={message}
+            onChange={(event) => setMessage(event.currentTarget.value)}
           />
+
           <div className="w-full flex flex-col space-y-3 mt-6">
             <div
               onClick={() =>
