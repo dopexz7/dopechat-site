@@ -18,9 +18,9 @@ export default function SetsMain({ pass }) {
   const [sorting, setSorting] = useState(false);
   const [allCount, setAllCount] = useState(0);
   useEffect(() => {
-    setAllCount(pass.emotes.length);
-    setPageSet(pass.emotes);
-    setPageName(pass.name);
+    setAllCount(pass?.emotes?.length);
+    setPageSet(pass?.emotes);
+    setPageName(pass?.name);
     setLoading(false);
   }, [pass]);
 
