@@ -12,7 +12,7 @@ export default function Set(props) {
 
   useEffect(() => {
     props?.data?.data?.forEach((r) => {
-      if (r.name === id) setPass(r);
+      if (r?.name?.toLowerCase() === id.toLowerCase()) setPass(r);
     });
   }, []);
   return (
