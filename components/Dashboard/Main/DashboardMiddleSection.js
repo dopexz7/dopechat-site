@@ -17,6 +17,7 @@ export default function DashboardMiddleSection({ data, fullSet, editingSet }) {
   const [posts, setPosts] = useState(data);
   const [sorting, setSorting] = useState(false);
   const isMod = useIsMod();
+  const [showingAllEmotes, setShowingAllEmotes] = useState(false);
 
   const getMorePost = async () => {
     try {
@@ -104,58 +105,18 @@ export default function DashboardMiddleSection({ data, fullSet, editingSet }) {
           </div>
         </div>
       </div>
-      {startUpdate && q.length >= 2 ? (
-        <div className="overflow-y-scroll overflow-x-hidden w-full grid xgrd gap-3 p-6">
-          {blogs
-            .filter((val) => {
-              if (q === "") {
-                return val;
-              } else if (val.code.toLowerCase().includes(q.toLowerCase())) {
-                return val;
-              }
-            })
-            .map((data, index) => (
-              <EmoteComponent
-                key={index}
-                data={data}
-                editingSet={editingSet}
-                isMod={isMod}
-                kekRef={divRef}
-              />
-            ))
-            .sort((a, b) =>
-              sorting
-                ? a.code > b.code
-                  ? 1
-                  : b.code > a.code
-                  ? -1
-                  : 0
-                : new Date(b.date) - new Date(a.date)
-            )}
-        </div>
-      ) : (
-        <div
-          id="scrollableDiv"
-          className="overflow-y-scroll overflow-x-hidden w-full"
-        >
-          <InfiniteScroll
-            className="grid xgrd gap-3 p-6"
-            dataLength={posts.length}
-            next={getMorePost}
-            hasMore={true}
-            scrollableTarget="scrollableDiv"
-          >
-            {posts &&
-              posts
-                .sort((a, b) =>
-                  sorting
-                    ? a.code > b.code
-                      ? 1
-                      : b.code > a.code
-                      ? -1
-                      : 0
-                    : new Date(b.date) - new Date(a.date)
-                )
+      {showingAllEmotes ? (
+        <>
+          {startUpdate && q.length >= 2 ? (
+            <div className="overflow-y-scroll overflow-x-hidden w-full grid xgrd gap-3 p-6">
+              {blogs
+                .filter((val) => {
+                  if (q === "") {
+                    return val;
+                  } else if (val.code.toLowerCase().includes(q.toLowerCase())) {
+                    return val;
+                  }
+                })
                 .map((data, index) => (
                   <EmoteComponent
                     key={index}
@@ -164,9 +125,62 @@ export default function DashboardMiddleSection({ data, fullSet, editingSet }) {
                     isMod={isMod}
                     kekRef={divRef}
                   />
-                ))}
-          </InfiniteScroll>
-        </div>
+                ))
+                .sort((a, b) =>
+                  sorting
+                    ? a.code > b.code
+                      ? 1
+                      : b.code > a.code
+                      ? -1
+                      : 0
+                    : new Date(b.date) - new Date(a.date)
+                )}
+            </div>
+          ) : (
+            <div
+              id="scrollableDiv"
+              className="overflow-y-scroll overflow-x-hidden w-full"
+            >
+              <InfiniteScroll
+                className="grid xgrd gap-3 p-6"
+                dataLength={posts.length}
+                next={getMorePost}
+                hasMore={true}
+                scrollableTarget="scrollableDiv"
+              >
+                {posts &&
+                  posts
+                    .sort((a, b) =>
+                      sorting
+                        ? a.code > b.code
+                          ? 1
+                          : b.code > a.code
+                          ? -1
+                          : 0
+                        : new Date(b.date) - new Date(a.date)
+                    )
+                    .map((data, index) => (
+                      <EmoteComponent
+                        key={index}
+                        data={data}
+                        editingSet={editingSet}
+                        isMod={isMod}
+                        kekRef={divRef}
+                      />
+                    ))}
+              </InfiniteScroll>
+            </div>
+          )}
+        </>
+      ) : (
+        <>
+          <div
+            onClick={() => setShowingAllEmotes(true)}
+            className="p-3 px-6 m-auto cursor-pointer text-white bg-darker-purple hover:bg-main-purple duration-300 rounded-3xl bg-opacity-10  flex justify-center items-center text-xl"
+          >
+            Show all emotes
+          </div>
+        </>
       )}
     </>
   );
