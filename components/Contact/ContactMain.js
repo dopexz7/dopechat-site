@@ -3,7 +3,7 @@ import * as Bs from "react-icons/bs";
 import { Input, Modal, Textarea } from "@mantine/core";
 import { supabase } from "../../lib/supabaseClient";
 import { motion } from "framer-motion";
-export default function ContactMain({ btnClass, iconClass }) {
+export default function ContactMain({ btnClass, iconClass, text }) {
   const [loading, setLoading] = useState(false);
   const [visible, setVisible] = useState(false);
   const [error, setError] = useState("");
@@ -46,7 +46,8 @@ export default function ContactMain({ btnClass, iconClass }) {
   return (
     <>
       <div onClick={() => setVisible(true)} className={btnClass}>
-        <Bs.BsChatSquareTextFill className={iconClass} /> Contact us
+        <Bs.BsChatSquareTextFill className={iconClass} />{" "}
+        {text ? text : "Contact us"}
       </div>
       <Modal
         opened={visible}
@@ -71,7 +72,7 @@ export default function ContactMain({ btnClass, iconClass }) {
         <div className="flex flex-col space-y-3">
           <div>Send a message!</div>
           <div className="text-accent-gray text-sm">
-            Report bugs/issues, suggest ideas
+            Report bugs/issues, suggest ideas, request emote sets
           </div>
         </div>
         <div className="flex-col flex w-full mt-6">
@@ -85,15 +86,20 @@ export default function ContactMain({ btnClass, iconClass }) {
             label="Your email"
             required
             value={userEmail}
-            placeholder="required"
+            placeholder="Your email"
             onChange={(e) => setUserEmail(e.target.value)}
           />
           <Textarea
+            className="mt-3"
             placeholder="Message..."
-            label="Your message (min 20 characters)"
+            label=""
             value={message}
             onChange={(event) => setMessage(event.currentTarget.value)}
           />
+          <p className="text-xs mt-1">
+            If you&apos;re requesting an emote set, please include your
+            username.
+          </p>
 
           <div className="w-full flex flex-col space-y-3 mt-6">
             <div

@@ -6,6 +6,7 @@ import Link from "next/link";
 import { supabase } from "../../../lib/supabaseClient";
 import * as Md from "react-icons/md";
 import { useAuth } from "../../../contexts/AppContext";
+import ContactMain from "../../Contact/ContactMain";
 
 export default function ProfileRight() {
   const { user } = useAuth();
@@ -104,13 +105,11 @@ export default function ProfileRight() {
   return (
     <div className="text-black bg-border-white h-full w-1/4 flex flex-col p-5">
       {!isOwnerOfSomething || setDeleted ? (
-        <button
-          //disabled={setCreated}
-          onClick={() => createNewSet()}
-          className="group hover:bg-white hover:text-main-purple  bg-main-purple duration-300 cursor-pointer text-white flex justify-center items-center p-3 rounded-2xl w-full"
-        >
-          {creatingSet}
-        </button>
+        <ContactMain
+          btnClass={`hover:bg-white hover:text-main-purple  bg-main-purple duration-300 cursor-pointer text-white flex justify-center items-center p-3 rounded-2xl w-full`}
+          iconClass={`hidden`}
+          text={`Request an emote set`}
+        />
       ) : (
         <>
           <div className="space-x-1 flex flex-row p-0 items-center bg-white w-full rounded-3xl">
@@ -129,16 +128,7 @@ export default function ProfileRight() {
               </div>
             </Link>
           </div>
-          {!showSetMods?.requested_streamer && !requested ? (
-            <div
-              onClick={() => requestToBePromoted()}
-              className="w-max cursor-pointer duration-300 text-xs mt-3 hover:text-main-purple"
-            >
-              Request to be promoted to streamer
-            </div>
-          ) : (
-            ""
-          )}
+
           <div className="flex flex-col mt-3">
             <div className="flex flex-row items-center space-x-3 mb-3">
               <Input

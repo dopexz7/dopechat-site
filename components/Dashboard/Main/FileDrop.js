@@ -26,12 +26,13 @@ const FileDrop = () => {
 
   const handleChange = async (event) => {
     if (!event || event === undefined) {
-      setError("Failed to upload file!");
+      return setError("Failed to upload file!");
     } else {
       setError("Uploading...");
       const file = event;
       const fileName = event.name.split(".")[0];
-
+      if (fileName.length > 24)
+        return setError("Emote code exceeds 24 characters");
       let { error: uploadError } = await supabase.storage
         .from("uploads")
         .upload(fileName, file);

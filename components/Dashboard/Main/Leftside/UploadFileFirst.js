@@ -25,7 +25,9 @@ export default function UploadFileFirst() {
   };
   const handleUploadFile = async () => {
     if (!selectedFile || selectedFile === 0) {
-      setError("You must select an image to upload.");
+      return setError("You must select an image to upload.");
+    } else if (selfilename.length > 24) {
+      return setError("Emote code exceeds 24 characters");
     } else {
       setUploading(true);
       try {
@@ -120,7 +122,7 @@ export default function UploadFileFirst() {
             />
             <span className=" peer-focus:before:w-2/4 peer-focus:after:w-2/4 relative block w-full after:content-[''] after:h-[2px] after:w-0 after:bottom-[0px] after:absolute after:bg-main-purple after:duration-300 before:content-[''] before:h-[2px] before:w-0 before:bottom-[0px] before:absolute before:bg-main-purple before:duration-300 before:left-2/4 after:right-2/4 before:box-shadow-purple after:box-shadow-purple"></span>
             <label className="absolute left-4 top-[-5px] text-main-black text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-6 pointer-events-none peer-focus:top-[-5px] peer-focus:text-sm">
-              Emote code
+              Emote code (max 24 chars)
             </label>
           </div>
           <button
