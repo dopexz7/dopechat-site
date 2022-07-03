@@ -54,7 +54,8 @@ export default function ContactMain({ btnClass, iconClass, text }) {
         onClose={() => setVisible(false)}
         classNames={{
           root: "backdrop-blur-2xl",
-          modal: "text-center rounded-lg",
+          modal:
+            "text-center rounded-lg bg-header-bg bg-main-purple bg-blend-multiply ",
         }}
         size="sm"
         centered
@@ -69,9 +70,9 @@ export default function ContactMain({ btnClass, iconClass, text }) {
           </motion.div>
         </div>
 
-        <div className="flex flex-col space-y-3">
+        <div className="flex flex-col space-y-3 text-white ">
           <div>Send a message!</div>
-          <div className="text-accent-gray text-sm">
+          <div className="opacity-50 text-sm">
             Report bugs/issues, suggest ideas, request emote sets
           </div>
         </div>
@@ -88,15 +89,25 @@ export default function ContactMain({ btnClass, iconClass, text }) {
             value={userEmail}
             placeholder="Your email"
             onChange={(e) => setUserEmail(e.target.value)}
+            classNames={{
+              wrapper: "w-full",
+              defaultVariant:
+                "p-4 bg-transparent border-[1px] border-white border-opacity-5 rounded-3xl text-white",
+            }}
           />
           <Textarea
             className="mt-3"
             placeholder="Message..."
             label=""
             value={message}
+            classNames={{
+              wrapper: "w-full",
+              defaultVariant:
+                "p-4 bg-transparent border-[1px] border-white border-opacity-5 rounded-3xl text-white",
+            }}
             onChange={(event) => setMessage(event.currentTarget.value)}
           />
-          <p className="text-xs mt-1">
+          <p className="text-xs mt-1 text-white opacity-25">
             If you&apos;re requesting an emote set, please include your
             username.
           </p>
@@ -108,16 +119,17 @@ export default function ContactMain({ btnClass, iconClass, text }) {
                   ? setError("Wait before sending more messages!")
                   : handleSubmit()
               }
-              className="p-2 text-center bg-main-purple text-white font-medium text-sm rounded cursor-pointer duration-300 w-full"
-              style={{ background: "var(--main-purple)" }}
+              className="hover:bg-white border-white border-opacity-50 shadow-2xl text-white duration-300 border-2 font-normal hover:text-main-purple cursor-pointer flex justify-center items-center p-3 rounded-3xl w-full"
             >
               {loading ? "Sending..." : "Send message"}
             </div>
             <div
               onClick={() => setVisible(false)}
-              className="p-2 text-center bg-border-white text-main-black font-medium text-sm rounded cursor-pointer duration-300 w-full"
+              className="group hover:bg-white border-white border-opacity-5 shadow-2xl text-white duration-300 border-2 font-normal hover:text-main-purple cursor-pointer flex justify-center items-center p-3 rounded-3xl w-full"
             >
-              Cancel
+              <span className="opacity-75 font-normal group-hover:opacity-100">
+                Cancel
+              </span>
             </div>
           </div>
         </div>

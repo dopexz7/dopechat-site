@@ -1,7 +1,7 @@
 import AuthRoute from "../../../contexts/authRoute";
 
 import { AuthProvider } from "../../../contexts/AppContext";
-import SetsMain from "../../../components/Dashboard/Sets/SetsMain";
+import SetsMain from "../../../components/DashboardDark/Sets/SetsMain";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { supabase } from "../../../lib/supabaseClient";

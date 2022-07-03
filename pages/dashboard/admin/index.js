@@ -1,4 +1,4 @@
-import MainAdmin from "../../../components/Dashboard/Admin/MainAdmin";
+import MainAdmin from "../../../components/DashboardDark/Admin/MainAdmin";
 import { AuthProvider } from "../../../contexts/AppContext";
 
 export default function Admin() {

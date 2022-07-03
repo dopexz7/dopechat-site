@@ -13,8 +13,9 @@ export default function StyledTabs(props) {
         variant="unstyled"
         classNames={{
           tabControl:
-            "border-2 group text-main-black text-md px-6 py-3 w-1/2 font-semibold bg-border-white",
-          tabActive: "!bg-main-purple !text-white",
+            "group text-white text-md px-6 py-3 w-1/2 font-semibold bg-transparent",
+          tabActive:
+            "!bg-white !text-main-purple",
           tabInner: "group-hover:scale-95 group-hover:opacity-75 duration-300 ",
         }}
         styles={() => ({

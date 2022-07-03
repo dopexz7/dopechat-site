@@ -1,4 +1,4 @@
-import MainProfile from "../../../components/Dashboard/Profile/MainProfile";
+import MainProfile from "../../../components/DashboardDark/Profile/MainProfile";
 import { AuthProvider } from "../../../contexts/AppContext";
 import { supabase } from "../../../lib/supabaseClient";
 

@@ -1,4 +1,5 @@
-import DashboardMain from "../../components/Dashboard/Main/DashboardMain";
+//import DashboardMain from "../../components/Dashboard/Main/DashboardMain";
+import DashboardMain from "../../components/DashboardDark/Main/DashboardMain";
 import { supabase } from "../../lib/supabaseClient";
 import { AuthProvider } from "../../contexts/AppContext";
 export default function Dashboard(props) {
