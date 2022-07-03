@@ -1,16 +1,12 @@
-import useIsDonor from "../../../../funcs/useIsDonor";
 import * as Md from "react-icons/md";
 import * as Go from "react-icons/go";
 import { forwardRef } from "react";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { Menu, Transition } from "@headlessui/react";
-import { Fragment, useRef } from "react";
-import { useAuth } from "../../../../contexts/AppContext";
+import { Fragment } from "react";
 const EditingSet = ({ data, editingSet, passProps, profile }) => {
   const [avatar, setAvatar] = useState();
-  const { user } = useAuth();
-  const isDonor = useIsDonor(user?.user_metadata.name);
   const getStreamerImg = async (d) => {
     await fetch(`https://api.frankerfacez.com/v1/user/${d.toLowerCase()}`)
       .then((res) => res.json())
@@ -26,7 +22,9 @@ const EditingSet = ({ data, editingSet, passProps, profile }) => {
   }, [data]);
     
     
+  // eslint-disable-next-line react/display-name
   const MyLink = forwardRef((props, ref) => {
+    // eslint-disable-next-line no-unused-vars
     let { href, children, ...rest } = props;
     return (
       <Link href={href}>

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import useCheckIfHasSet from "../../../funcs/useCheckIfHasSet";
 import useShowSetMods from "../../../funcs/useShowSetMods";
 import { Input } from "@mantine/core";
-import Link from "next/link";
 import { supabase } from "../../../lib/supabaseClient";
 import * as Md from "react-icons/md";
 import { useAuth } from "../../../contexts/AppContext";
@@ -10,7 +9,6 @@ import ContactMain from "../../Contact/ContactMain";
 
 export default function ProfileRight() {
   const { user } = useAuth();
-  const [emotesLen, setEmotesLen] = useState();
   const [mods, setMods] = useState();
   const isOwnerOfSomething = useCheckIfHasSet(user.user_metadata.name);
   const showSetMods = useShowSetMods(user.user_metadata.name);
@@ -21,7 +19,6 @@ export default function ProfileRight() {
   const [error, setError] = useState("");
   //const [setCreated, setSetCreated] = useState(false);
   useEffect(() => {
-    setEmotesLen(showSetMods?.emotes?.length);
     setMods(showSetMods?.mods);
   }, [showSetMods]);
 
