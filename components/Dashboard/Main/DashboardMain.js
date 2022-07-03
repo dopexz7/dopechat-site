@@ -9,7 +9,7 @@ import { useAuth } from "../../../contexts/AppContext";
 export default function DashboardMain({ data }) {
   const { user } = useAuth();
   const [editingSet, setEditingSet] = useState("");
-
+  
   return (
     <DashboardLayout title="Dashboard">
       <div className="text-black border-r-2 h-full w-[55%] flex flex-col">
