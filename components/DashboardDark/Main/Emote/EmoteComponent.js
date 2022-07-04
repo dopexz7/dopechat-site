@@ -151,7 +151,7 @@ const EmoteComponent = ({ data, editingSet, isMod, kekRef }) => {
         <div
           className={`w-full h-32 overflow-hidden text-white flex ${
             deleted ? "flex-col" : "flex-row"
-          } justify-center relative rounded-3xl border-[1px] border-white border-opacity-5`}
+          } justify-center relative rounded-3xl border-[1px] border-white border-opacity-[0.03]`}
         >
           {deleted ? (
             <div className="anim-tobotf remove self-center rounded-md h-4/5 w-4/5 flex items-center justify-center text-center text-accent-white text-lg duration-100">
@@ -162,7 +162,7 @@ const EmoteComponent = ({ data, editingSet, isMod, kekRef }) => {
               <img
                 height={64}
                 width={64}
-                className={`group-hover:scale-125 group-hover:opacity-25 duration-300`}
+                className={`group-hover:scale-150 group-hover:opacity-25 duration-300`}
                 src={data.src}
                 alt={data.code}
               />

@@ -14,9 +14,6 @@ export default function ProfileRight() {
   const showSetMods = useShowSetMods(user.user_metadata.name);
   const [loading, setLoading] = useState(false);
   const [modValue, setModValue] = useState("");
-  const [setDeletion, setSetDeletion] = useState(false);
-  const [setDeleted, setSetDeleted] = useState(false);
-  const [error, setError] = useState("");
   //const [setCreated, setSetCreated] = useState(false);
   useEffect(() => {
     setMods(showSetMods?.mods);
@@ -47,24 +44,13 @@ export default function ProfileRight() {
       .then(() => setModValue(""));
   };
 
-  const initiateSetDeletion = async () =>
-    await supabase
-      .from("useremotes")
-      .delete()
-      .eq("name", user.user_metadata.name)
-      .then(() => setError("Set deleted!"))
-      .then(() => {
-        setTimeout(() => {
-          setError("");
-          setSetDeleted(true);
-        }, 2000);
-      });
+
 
   return (
     <div className="text-white h-full w-full flex flex-col p-5">
-      {!isOwnerOfSomething || setDeleted ? (
+      {!isOwnerOfSomething ? (
         <ContactMain
-          btnClass={`hover:bg-white hover:text-main-purple  bg-main-purple duration-300 cursor-pointer text-white flex justify-center items-center p-3 rounded-2xl w-full`}
+          btnClass={`hover:bg-white backdrop-blur-md z-20 border-white border-opacity-50 shadow-2xl text-white duration-300 border-2 font-normal hover:text-main-purple cursor-pointer flex justify-center items-center p-3 rounded-3xl w-full`}
           iconClass={`hidden`}
           text={`Request an emote set`}
         />
@@ -80,58 +66,41 @@ export default function ProfileRight() {
                 classNames={{
                   wrapper: "w-3/4",
                   defaultVariant:
-                    "border-0 p-3 bg-transparent border-[1px] border-white border-opacity-5 rounded-3xl text-white",
-                  invalid: "your-invalid-class",
-                  disabled: "your-disabled-class",
-                  icon: "your-icon-class",
-                  withIcon: "your-withIcon-class",
-                  input: "your-input-class",
-                  rightSection: "your-rightSection-class",
+                    "border-0 p-5 bg-transparent !border-[1px] !border-white !border-opacity-5 rounded-3xl text-white",
                 }}
               />
-              
+
               <button
                 onClick={() => addMod()}
                 disabled={loading}
-                className="hover:bg-white border-white border-opacity-50 shadow-2xl text-white duration-300 border-2 font-normal hover:text-main-purple cursor-pointer flex justify-center items-center p-1 rounded-3xl w-1/4"
+                className="hover:bg-white border-white border-opacity-50 shadow-2xl text-white duration-300 border-2 font-normal hover:text-main-purple cursor-pointer flex justify-center items-center p-2 rounded-3xl w-1/4"
               >
                 {loading ? "Mod added!" : "Add mod"}
               </button>
             </div>
-            Your mods:
-            <div className="flex flex-row mt-3 flex-wrap w-full">
-              {mods &&
-                mods.map((data, index) => (
-                  <div
-                    key={index}
-                    className="flex flex-row items-center text-sm bg-main-purple text-white w-max rounded-md m-1 p-1"
-                  >
-                    {data}
-                    <div
-                      className="cursor-pointer"
-                      onClick={() => removeMod(data)}
-                    >
-                      <Md.MdOutlineRemoveCircle className="ml-1" />
-                    </div>
-                  </div>
-                ))}
-            </div>
-            <div
-              onClick={() =>
-                !setDeletion ? setSetDeletion(true) : initiateSetDeletion()
-              }
-              className="mt-6 remove text-white duration-300 font-normal hover:text-red-400 cursor-pointer flex justify-center items-center p-3 rounded-xl w-full"
-            >
-              {setDeletion ? "Are you sure? Press again" : "Delete your set"}
-            </div>
-            {error && (
-              <div
-                className="remove mt-3 text-white justify-center mb-3 text-xs bg-border-white
-                rounded font-normal px-2 py-3 flex flex-row items-center"
-              >
-                {error}
+            <div className="flex flex-row items-center w-full">
+              <div className="w-max">Your mods:</div>
+              <div className="flex flex-row mx-3 overflow-x-auto">
+                {mods &&
+                  mods.map((data, index) => (
+                   
+                      <div
+                        key={index}
+                        className="group flex flex-row items-center text-sm border-[1px] border-white border-opacity-25 hover:border-opacity-100 duration-300 text-white w-max rounded-3xl m-1 p-1"
+                      >
+                        {data}
+                        <div
+                          className="cursor-pointer"
+                          onClick={() => removeMod(data)}
+                        >
+                          <Md.MdOutlineRemoveCircle className="ml-1 opacity-50 group-hover:opacity-100 duration-300" />
+                        </div>
+                      </div>
+                      
+                    
+                  ))}
               </div>
-            )}
+            </div>
           </div>
         </>
       )}

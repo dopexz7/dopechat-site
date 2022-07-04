@@ -51,7 +51,7 @@ export default function DashboardMiddleSection({ data, fullSet, editingSet }) {
   const divRef = useRef();
   return (
     <>
-      <div className="px-6 py-2 flex flex-row items-center">
+      <div className="px-6 py-2 flex flex-row items-center shadow-2xl ">
         <div className="flex flex-row items-center  text-white">
           <p className="text-xl">All emotes</p>
           <p className="text-xs mt-1 opacity-50" ref={divRef}>

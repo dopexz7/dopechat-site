@@ -42,8 +42,7 @@ const EditingSet = ({ data, editingSet, passProps, profile }) => {
   });
     return (
       <>
-        {profile ? (
-          <Link href={`/dashboard/set/${data?.name}`} passHref>
+        {/* <Link href={`/dashboard/set/${data?.name}`} passHref>
             <a
               target="_blank"
               className={`hover:border-opacity-50 duration-300 cursor-pointer border-[1px] overflow-hidden border-white
@@ -54,38 +53,39 @@ const EditingSet = ({ data, editingSet, passProps, profile }) => {
               <img
                 src={avatar}
                 alt={data.name}
-                className="w-10 h-full rounded-xl"
+                className="w-full h-full rounded-xl"
               />
             </a>
-          </Link>
-        ) : (
-          <Menu as="div" className="relative inline-block text-left">
-            <div>
-              <Menu.Button
-                className={`hover:border-opacity-50 duration-300 cursor-pointer border-[1px] overflow-hidden border-white ${
-                  editingSet === data?.name
-                    ? "border-opacity-100 bg-opacity-10"
-                    : "border-opacity-5 bg-opacity-5"
-                } p-0.5 rounded-2xl bg-white `}
-              >
-                <img
-                  src={avatar}
-                  alt={data.name}
-                  className="w-10 h-full rounded-xl"
-                />
-              </Menu.Button>
-            </div>
-            <Transition
-              as={Fragment}
-              enter="transition ease-out duration-100"
-              enterFrom="transform opacity-0 scale-95"
-              enterTo="transform opacity-100 scale-100"
-              leave="transition ease-in duration-75"
-              leaveFrom="transform opacity-100 scale-100"
-              leaveTo="transform opacity-0 scale-95"
+          </Link> */}
+
+        <Menu as="div" className="relative inline-block text-left">
+          <div>
+            <Menu.Button
+              className={`hover:border-opacity-50 duration-300 cursor-pointer border-[1px] overflow-hidden border-white ${
+                editingSet === data?.name
+                  ? "border-opacity-100 bg-opacity-10"
+                  : "border-opacity-5 bg-opacity-5"
+              } p-0.5 rounded-2xl bg-white `}
             >
-              <Menu.Items className="absolute w-max  rounded-xl bg-black bg-opacity-5 border-[1px] border-white border-opacity-10 shadow-lg">
-                <div className="px-1 py-1 flex flex-row space-x-1">
+              <img
+                src={avatar}
+                alt={data.name}
+                className="w-10 h-full rounded-xl"
+              />
+            </Menu.Button>
+          </div>
+          <Transition
+            as={Fragment}
+            enter="transition ease-out duration-100"
+            enterFrom="transform opacity-0 scale-95"
+            enterTo="transform opacity-100 scale-100"
+            leave="transition ease-in duration-75"
+            leaveFrom="transform opacity-100 scale-100"
+            leaveTo="transform opacity-0 scale-95"
+          >
+            <Menu.Items className="absolute w-max  rounded-xl bg-black bg-opacity-5 border-[1px] border-white border-opacity-10 shadow-lg">
+              <div className="px-1 py-1 flex flex-row space-x-1">
+                {!profile ? (
                   <Menu.Item>
                     <div
                       title="Select set"
@@ -104,14 +104,17 @@ const EditingSet = ({ data, editingSet, passProps, profile }) => {
                       )}
                     </div>
                   </Menu.Item>
-                  <Menu.Item>
-                    <MyLink href={`/dashboard/set/${data?.name}`}></MyLink>
-                  </Menu.Item>
-                </div>
-              </Menu.Items>
-            </Transition>
-          </Menu>
-        )}
+                ) : (
+                  ""
+                )}
+
+                <Menu.Item>
+                  <MyLink href={`/dashboard/set/${data?.name}`}></MyLink>
+                </Menu.Item>
+              </div>
+            </Menu.Items>
+          </Transition>
+        </Menu>
       </>
       //   title="Select set"
       //   onClick={() =>
