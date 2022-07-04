@@ -22,6 +22,7 @@ const DashboardLayout = (props) => {
     <>
       <Head>
         <title>{props.title}</title>
+        <meta name="description" content="Facebook Gaming extension dopeChat" />
       </Head>
       {user ? (
         <div className="overflow-hidden bg-header-bg bg-main-purple bg-blend-multiply h-screen w-screen flex flex-col justify-center items-center">

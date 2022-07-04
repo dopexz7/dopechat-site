@@ -13,8 +13,9 @@ export default function Home() {
     <>
       <Head>
         <title>dopeChat</title>
-        <meta name="description" content="dopeChat" />
+        <meta name="description" content="Facebook Gaming extension dopeChat" />
         <link rel="icon" href="/favicon.ico" />
+        
       </Head>
 
       <MainNav />

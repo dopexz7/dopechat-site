@@ -15,7 +15,7 @@ export default function MainProfile({ data }) {
   useEffect(() => {
     let x = [];
     data.forEach((v) => {
-      if (v.uploaded_by === user.user_metadata.name) x.push(v);
+      if (v.uploaded_by === user?.user_metadata.name) x.push(v);
     });
     setApprovedEmotes(x.length ? x : "");
   }, []);

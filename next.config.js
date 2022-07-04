@@ -17,6 +17,7 @@ const nextConfig = {
       "cdn.7tv.app",
       "static-cdn.jtvnw.net",
       "emxllayyisdskjtscvck.supabase.co",
+      "cdn-test.frankerfacez.com",
     ],
   },
 };

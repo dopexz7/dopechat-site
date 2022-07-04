@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
+import Image from 'next/image'
 const EditingSet = ({ data, editingSet, passProps, profile }) => {
   const [avatar, setAvatar] = useState();
   const getStreamerImg = async (d) => {
@@ -61,6 +62,7 @@ const EditingSet = ({ data, editingSet, passProps, profile }) => {
         <Menu as="div" className="relative inline-block text-left">
           <div>
             <Menu.Button
+              title={data.name}
               className={`hover:border-opacity-50 duration-300 cursor-pointer border-[1px] overflow-hidden border-white ${
                 editingSet === data?.name
                   ? "border-opacity-100 bg-opacity-10"
@@ -68,9 +70,13 @@ const EditingSet = ({ data, editingSet, passProps, profile }) => {
               } p-0.5 rounded-2xl bg-white `}
             >
               <img
-                src={avatar}
+                src={
+                  avatar
+                }
+                
+
                 alt={data.name}
-                className="w-10 h-full rounded-xl"
+                className="w-10 h-10 rounded-xl"
               />
             </Menu.Button>
           </div>

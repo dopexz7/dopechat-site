@@ -13,7 +13,7 @@ import DonationComponent from "../../../Donation/DonationComponent";
 import { useAuth } from "../../../../contexts/AppContext";
 import { useState } from "react";
 import EditingSet from "./EditingSet";
-
+import Image from 'next/image'
 
 const DashboardLeftSignedIn = (props) => {
   const router = useRouter();
@@ -35,10 +35,12 @@ const DashboardLeftSignedIn = (props) => {
         } `}
       >
         <div className="flex flex-row items-center px-6 py-2 ">
-          <img
+          <Image
             src={user?.user_metadata.avatar_url}
             alt={user?.user_metadata.name}
-            className="rounded-3xl w-10 border-[1px] "
+            width={40}
+            height={40}
+            className="rounded-3xl border-[1px] "
           />
           <div className="ml-2 font-normal text-white rounded-2xl text-md overflow-hidden text-ellipsis whitespace-nowrap">
             {user?.user_metadata.name}
@@ -53,12 +55,11 @@ const DashboardLeftSignedIn = (props) => {
                 label="Mod dashboard"
                 withArrow
               >
-                <a
-                  onClick={() => router.push("/dashboard/admin")}
-                  className="p-2 text-sm hover:bg-white duration-300 hover:text-main-purple cursor-pointer border-[1px] border-white opacity-25 hover:opacity-100 flex text-white items-center justify-center rounded-3xl mr-1"
-                >
-                  <Md.MdOutlineAdminPanelSettings />
-                </a>
+                <Link href={"/dashboard/admin"} passHref>
+                  <div className="p-2 text-sm hover:bg-white duration-300 hover:text-main-purple cursor-pointer border-[1px] border-white opacity-50 hover:opacity-100 flex text-white items-center justify-center rounded-3xl mr-1">
+                    <Md.MdOutlineAdminPanelSettings />
+                  </div>
+                </Link>
               </Tooltip>
             ) : (
               ""
@@ -74,12 +75,12 @@ const DashboardLeftSignedIn = (props) => {
                 label="Return back to dashboard"
                 withArrow
               >
-                <a
-                  onClick={() => router.push("/dashboard")}
-                  className="p-2 text-sm hover:bg-white opacity-25 hover:opacity-100  duration-300 hover:text-main-purple cursor-pointer border-[1px] flex text-white items-center justify-center rounded-3xl mr-1"
-                >
-                  <Io.IoReturnUpBack />
-                </a>
+                <Link href={"/dashboard"} passHref>
+                  <div className="p-2 text-sm hover:bg-white opacity-50 hover:opacity-100  duration-300 hover:text-main-purple cursor-pointer border-[1px] flex text-white items-center justify-center rounded-3xl mr-1">
+                    <Io.IoReturnUpBack />
+                  </div>
+                </Link>
+                
               </Tooltip>
             ) : (
               ""
@@ -94,7 +95,7 @@ const DashboardLeftSignedIn = (props) => {
               <div
                 title="Logout"
                 onClick={() => supabase.auth.signOut()}
-                className="p-2 text-sm hover:bg-white opacity-25 hover:opacity-100  duration-300 hover:text-main-purple cursor-pointer border-[1px] flex text-white items-center justify-center rounded-3xl mr-1"
+                className="p-2 text-sm hover:bg-white opacity-50 hover:opacity-100  duration-300 hover:text-main-purple cursor-pointer border-[1px] flex text-white items-center justify-center rounded-3xl mr-1"
               >
                 <Md.MdLogout />
               </div>
