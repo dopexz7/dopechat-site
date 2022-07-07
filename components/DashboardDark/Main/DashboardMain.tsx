@@ -10,7 +10,7 @@ interface DashMainTypes {
 }
 
 const DashboardMain:FC<DashMainTypes> = ({ data }) =>{
-  const [editingSet, setEditingSet] = useState<String>("");
+  const [editingSet, setEditingSet] = useState<string>("");
 
   return (
     <DashboardLayout title="Dashboard">
@@ -21,8 +21,7 @@ const DashboardMain:FC<DashMainTypes> = ({ data }) =>{
         <DashboardMiddleSection
           data={data.slice(0, 36)}
           fullSet={data}
-          editingSet={editingSet}
-        />
+          editingSet={editingSet}     />
       </div>
 
     </DashboardLayout>

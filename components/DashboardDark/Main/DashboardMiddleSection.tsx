@@ -11,7 +11,6 @@ interface MiddleTypes {
   data: any[];
   fullSet: any[];
   editingSet: string;
-  divRef: React.MutableRefObject<HTMLDivElement>;
 }
 
 
@@ -138,7 +137,7 @@ const DashboardMiddleSection:FC<MiddleTypes> = ({ data, fullSet, editingSet }) =
                       : b.code > a.code
                       ? -1
                       : 0
-                    : new Date(b.date) - new Date(a.date)
+                    : new Date(b.date).getTime() - new Date(a.date).getTime()
                 )}
             </div>
           ) : (

@@ -125,7 +125,7 @@ const SetsMain:FC<SetsMainType> = ({ pass }) => {
                       : b.code > a.code
                       ? -1
                       : 0
-                    : new Date(b.date) - new Date(a.date)
+                    : new Date(b.date).getTime() - new Date(a.date).getTime()
                 )
                 .map((data, index) => (
                   <div

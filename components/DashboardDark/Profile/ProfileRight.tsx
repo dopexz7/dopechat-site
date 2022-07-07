@@ -8,7 +8,7 @@ import { useAuth } from "../../../contexts/AppContext";
 import ContactMain from "../../Contact/ContactMain";
 
 const ProfileRight:FC = () => {
-  const { user } = useAuth();
+  const { user } = useAuth() as any;
   const [mods, setMods] = useState<any[]>([]);
   const isOwnerOfSomething = useCheckIfHasSet(user.user_metadata.name);
   const showSetMods : any = useShowSetMods(user.user_metadata.name);

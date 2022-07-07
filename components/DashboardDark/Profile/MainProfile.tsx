@@ -13,7 +13,7 @@ interface mainProfileI{
 }
 
 const MainProfile:FC<mainProfileI> = ({ data }) => {
-  const { user } = useAuth();
+  const { user } = useAuth() as any;
   const [approvedEmotes, setApprovedEmotes] = useState<any[]>();
 
   useEffect(() => {
