@@ -38,7 +38,7 @@ const ButtonWrapper:FC<buttonWrapperTypes> = ({ currency, amount }) => {
         disabled={false}
         forceReRender={[amount, currency]}
         fundingSource={undefined}
-        createOrder={(data, actions) => {
+        createOrder={(_data:any, actions:any) => {
           return actions.order
             .create({
               purchase_units: [
@@ -50,14 +50,14 @@ const ButtonWrapper:FC<buttonWrapperTypes> = ({ currency, amount }) => {
                 },
               ],
             })
-            .then(async (orderId) => {
+            .then(async (orderId : any) => {
               await supabase
                 .from("donations")
                 .insert([{ orderID: orderId, status: "PENDING" }]);
               return orderId;
             });
         }}
-        onApprove={(data, actions) => {
+        onApprove={(data : any, actions : any) => {
           return actions!.order!.capture().then(async () => {
             await supabase
               .from("donations")
