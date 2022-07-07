@@ -12,7 +12,7 @@ interface LayoutTypes {
 }
 
 const DashboardLayout:FC<LayoutTypes> = (props) => {
-  const { user } = useAuth();
+  const { user } = useAuth() as any;
   async function signInWithTwitch() {
     const href = window.location.href;
     await supabase.auth.signIn(
