@@ -10,7 +10,7 @@ const fileTypes: string[] = ["JPG", "PNG", "GIF", "WEBP"];
 
 
 const FileDrop:FC = () => {
-  const { user } = useAuth();
+  const { user } = useAuth() as any;
   const [error, setError] = useState<String>();
 
   const limit : any = useUploadLimit(user.user_metadata.name);

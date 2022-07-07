@@ -7,11 +7,7 @@ import { supabase } from "../../../lib/supabaseClient";
 import useIsMod from "../../../funcs/useIsMod";
 import EmoteComponent from "./Emote/EmoteComponent";
  
-interface MiddleTypes {
-  data: any[];
-  fullSet: any[];
-  editingSet: string;
-}
+
 
 
 const DashboardMiddleSection:FC<MiddleTypes> = ({ data, fullSet, editingSet }) => {
@@ -194,3 +190,9 @@ const DashboardMiddleSection:FC<MiddleTypes> = ({ data, fullSet, editingSet }) =
   );
 }
 export default DashboardMiddleSection;
+
+interface MiddleTypes {
+  data: any[];
+  fullSet: any[];
+  editingSet: string;
+}
