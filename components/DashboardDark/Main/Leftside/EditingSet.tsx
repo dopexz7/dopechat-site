@@ -10,13 +10,14 @@ interface EditingSetTypes {
   profile?: boolean;
   data: any;
   editingSet: string;
-  passProps: (d?: string) => typeof d;
+  // eslint-disable-next-line no-unused-vars
+  passProps: (d: string) => void;
 
 }
 
 const EditingSet:FC<EditingSetTypes> = ({ data, editingSet, passProps, profile }) => {
   const [avatar, setAvatar] = useState<string>();
-  const getStreamerImg = async (d: string) => {
+  const getStreamerImg:Function = async (d: string):Promise<any> => {
     await fetch(`https://api.frankerfacez.com/v1/user/${d.toLowerCase()}`)
       .then((res) => res.json())
       .then((data) => setAvatar(data?.user?.avatar));
@@ -31,15 +32,14 @@ const EditingSet:FC<EditingSetTypes> = ({ data, editingSet, passProps, profile }
   }, [data]);
     
   interface linkTypes {
-    href: HTMLAnchorElement;
     children: React.ReactNode;
   }
   // eslint-disable-next-line react/display-name
   const MyLink = forwardRef((props, ref: LegacyRef<HTMLAnchorElement>) => {
     // eslint-disable-next-line no-unused-vars
-    let { href, children, ...rest } = props as linkTypes;
+    let { children, ...rest } = props as linkTypes;
     return (
-      <Link href={href}>
+      <Link href={`/dashboard/set/${data}` as string} passHref>
         <a
           ref={ref}
           {...rest}
@@ -84,7 +84,7 @@ const EditingSet:FC<EditingSetTypes> = ({ data, editingSet, passProps, profile }
                     <div
                       title="Select set"
                       onClick={() =>
-                        editingSet === data ? passProps() : passProps(data)
+                        editingSet === data ? passProps('') : passProps(data)
                       }
                       className={`text-white rounded-xl bg-darker-purple hover:rounded-3xl
                         cursor-pointer p-3 justify-center duration-300 flex items-center w-max `}
@@ -98,9 +98,6 @@ const EditingSet:FC<EditingSetTypes> = ({ data, editingSet, passProps, profile }
 
                 <Menu.Item>
                   <MyLink
-                    href={
-                      `/dashboard/set/${data}`
-                    }
                   ></MyLink>
                 </Menu.Item>
               </div>

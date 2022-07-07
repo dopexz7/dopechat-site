@@ -19,20 +19,21 @@ import React from "react";
 
 interface Typies {
   profile?: boolean;
-  onSuccess: (d: any) => typeof d;
+  onSuccess: (d: string) => typeof d;
 }
+
 
 const DashboardLeftSignedIn:FC<Typies> = (props) => {
   const router = useRouter();
   const isDonor : boolean = useIsDonor();
-  const { user } = useAuth();
+  const { user } = useAuth() as any;
   const isMod : boolean = useIsMod();
   const availEdits : string[] = useHasEdits();
   const [editingSet, setEditingSet] = useState<string>("");
-  const passProps = (d: string): void => {
+  const passProps = (d :string): void => {
     setEditingSet(d);
     props.onSuccess(d);
-  };
+  }
   
   return (
     <>
