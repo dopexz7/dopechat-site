@@ -15,7 +15,7 @@ export const AuthProvider:FC<AuthContextProps> = ({ children }) => {
     setLoading(false);
 
     const { data: listener } = supabase.auth.onAuthStateChange(
-      (event, session) => {
+      (_event, session) => {
         setUser(session?.user ?? null);
         setLoading(false);
       }
