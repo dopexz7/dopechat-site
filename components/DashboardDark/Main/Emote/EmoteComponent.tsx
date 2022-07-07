@@ -24,7 +24,7 @@ const EmoteComponent: FC<EmoteComponentTypes> = ({ data, editingSet, isMod, kekR
   const [deleted, setDeleted] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [visible, setVisible] = useState<boolean>(false);
-  const { user } = useAuth();
+  const { user } = useAuth() as any;
   const isDonor = useIsDonor();
 
   const deleteFromDb = async (v: emoteType) => {
@@ -32,7 +32,9 @@ const EmoteComponent: FC<EmoteComponentTypes> = ({ data, editingSet, isMod, kekR
     setLoading(true);
     setTimeout(() => {
       setDeleted(true);
-      kekRef.current.textContent = kekRef.current.textContent - 1;
+      kekRef.current.textContent = (
+        (parseInt(kekRef.current.textContent as string) as number) - 1
+      ).toString();
     }, 800);
   };
 
