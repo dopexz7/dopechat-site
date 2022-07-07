@@ -11,7 +11,7 @@ interface buttonWrapperTypes {
 const ButtonWrapper:FC<buttonWrapperTypes> = ({ currency, amount }) => {
   // usePayPalScriptReducer can be use only inside children of PayPalScriptProviders
   // This is the main reason to wrap the PayPalButtons in a new component
-  const { user } = useAuth();
+  const { user } = useAuth() as any;
   const [{ options }, dispatch] = usePayPalScriptReducer();
 
   useEffect(() => {
