@@ -84,11 +84,10 @@ const ContactMain:FC<ContactMainTypes> = ({ btnClass, iconClass, text }) => {
           )}
 
           <Input
-            label="Your email"
             required
             value={userEmail}
             placeholder="Your email"
-            onChange={(e) => setUserEmail(e.target.value)}
+            onChange={(e: any) => setUserEmail(e.target.value)}
             classNames={{
               wrapper: "w-full",
               defaultVariant:
