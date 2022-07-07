@@ -8,6 +8,7 @@ const useReadSubmissions:Function = () : any[] => {
     const checkMod = async () => {
       const res = await supabase.from("submitfiles").select("*");
       if (res?.data) return res.data;
+      return
     };
 
     checkMod().then((r: any) => {

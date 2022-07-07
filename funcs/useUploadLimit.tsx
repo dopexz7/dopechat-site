@@ -11,9 +11,7 @@ const useUploadLimit: Function = (): string => {
         .from("profiles")
         .select("uploads")
         .eq("username", user.user_metadata.name);
-      return profile!.data![0]?.uploads; //[0]?.uploads;
-      // if (res?.data?.length) return true;
-      // return false;
+      return profile!.data![0]?.uploads;
     };
     checkMod().then((res: string) => {
       if (subed) setRes(res);

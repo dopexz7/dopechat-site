@@ -1,4 +1,3 @@
-import { PostgrestResponse } from "@supabase/supabase-js";
 import { supabase } from "../lib/supabaseClient";
 
 const setUploadLimit: Function = async (
