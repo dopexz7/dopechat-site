@@ -18,12 +18,12 @@ const UploadFileFirst:FC = () => {
   useEffect(() => {
     setUpLimit(limit);
   }, [limit]);
-  const handleUploadLimit:Function = () => {
-    return (
+  const handleUploadLimit:Function = () => 
+    (
       setUploadLimit(user?.user_metadata.name, upLimit ? upLimit - 1 : null),
       setUpLimit(upLimit - 1)
-    );
-  };
+    )
+  
   const handleUploadFile:Function = async () => {
     if (!selectedFile) {
       return setError("You must select an image to upload.");
@@ -126,7 +126,7 @@ const UploadFileFirst:FC = () => {
           </div>
           <button
             onClick={() => {
-              if (upLimit > 0) {
+              if (upLimit && upLimit > 0) {
                 handleUploadFile();
               } else {
                 setError("You have exceeded daily limit!");
@@ -138,7 +138,7 @@ const UploadFileFirst:FC = () => {
             {uploading ? "Uploading..." : "Upload"}
           </button>
         </>
-      ) : upLimit <= 0 ? (
+      ) : upLimit && upLimit <= 0 ? (
         <div className="remove text-white justify-center mb-3 text-xs bg-border-white rounded font-normal px-2 py-3  flex flex-row items-center">
           You have exceeded daily limit! (15 uploads)
         </div>

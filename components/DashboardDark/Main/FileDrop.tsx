@@ -79,7 +79,7 @@ const FileDrop:FC = () => {
             </div>
           </FileUploader>
         </>
-      ) : upLimit <= 0 ? (
+      ) : upLimit && upLimit <= 0 ? (
         <div className="remove text-white justify-center mb-3 text-xs bg-border-white rounded font-normal px-2 py-3  flex flex-row items-center">
           You have exceeded daily limit! (15 uploads)
         </div>

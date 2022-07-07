@@ -6,7 +6,6 @@ import useIsDonor from "../../../../funcs/useIsDonor";
 import { useAuth } from "../../../../contexts/AppContext";
 import { Modal } from "@mantine/core";
 import { FC } from "react";
-import { useEffect } from "react";
 
 interface EmoteComponentTypes {
   data: any;
@@ -37,26 +36,6 @@ const EmoteComponent: FC<EmoteComponentTypes> = ({ data, editingSet, isMod, kekR
       ).toString();
     }, 800);
   };
-
-  useEffect(() => {
-    const checkMod = async (): Promise<any> => {
-      try {
-        await supabase
-          .from("useremotes")
-          .select("emotes")
-          .eq("name", 'Ramee')
-          .then((r) => console.log(r.data![0].emotes))
-          
-         
-      }
-      catch (e) {
-        console.log(e);
-      }
-    }
-      checkMod();
-    
-      // const arr = useremotes[0].emotes;
-    }, []);
 
   const addToSet = async (d: emoteType) => {
     let { data: useremotes } = await supabase
