@@ -7,7 +7,6 @@ import { useAuth } from "../../../../contexts/AppContext";
 import { Modal } from "@mantine/core";
 import { FC } from "react";
 import { useEffect } from "react";
-import { PostgrestResponse } from "@supabase/supabase-js";
 
 interface EmoteComponentTypes {
   data: any;
