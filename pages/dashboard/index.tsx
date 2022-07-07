@@ -1,4 +1,3 @@
-//import DashboardMain from "../../components/Dashboard/Main/DashboardMain";
 import DashboardMain from "../../components/DashboardDark/Main/DashboardMain";
 import { supabase } from "../../lib/supabaseClient";
 import { AuthProvider } from "../../contexts/AppContext";
@@ -24,7 +23,7 @@ export const getServerSideProps:GetServerSideProps = async () => {
 };
 
 interface CoolProps {
-  data: JSON;
+  data: any[];
 }
 
 export default Dashboard;
