@@ -6,7 +6,7 @@ import setUploadLimit from "../../../../funcs/useSetUploadLimit";
 import { useAuth } from "../../../../contexts/AppContext";
 import { FC } from "react";
 const UploadFileFirst:FC = () => {
-  const { user } = useAuth();
+  const { user } = useAuth() as any;
   const [selectedFile, setSelectedFile] = useState<File>();
   const [selectedFileName, setSelectedFileName] = useState<string>("");
   const [selfilename, setSelfilename] = useState<string>("");
