@@ -2,7 +2,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { Tooltip } from "@mantine/core";
 import * as Md from "react-icons/md";
 import * as Bs from "react-icons/bs";
-import React, { FC, useRef, useState } from "react";
+import React, { FC, useEffect, useRef, useState } from "react";
 import { supabase } from "../../../lib/supabaseClient";
 import useIsMod from "../../../funcs/useIsMod";
 import EmoteComponent from "./Emote/EmoteComponent";
@@ -16,8 +16,8 @@ interface MiddleTypes {
 
 const DashboardMiddleSection:FC<MiddleTypes> = ({ data, fullSet, editingSet }) => {
   /* eslint-disable no-unused-vars */
-  const [blogs, setBlogs] = useState<any[]>(fullSet);
-  const [allCount, setAllCount] = useState<number>(fullSet.length);
+  const [blogs, setBlogs] = useState<any[]>([]);
+  const [allCount, setAllCount] = useState<number>(0);
   const [q, setQ] = useState<string>("");
   const [startUpdate, setStartUpdate] = useState<boolean>(false);
   const [posts, setPosts] = useState<any[]>(data);
@@ -54,6 +54,11 @@ const DashboardMiddleSection:FC<MiddleTypes> = ({ data, fullSet, editingSet }) =
       }, 2000);
     }
   };
+
+  useEffect(() => {
+    setBlogs(fullSet);
+    setAllCount(fullSet.length);
+  },[])
   
   return (
     <>
@@ -161,7 +166,7 @@ const DashboardMiddleSection:FC<MiddleTypes> = ({ data, fullSet, editingSet }) =
                           : b.code > a.code
                           ? -1
                           : 0
-                        : new Date(b.date) - new Date(a.date)
+                        : new Date(b.date).getTime() - new Date(a.date).getTime()
                     )
                     .map((data, index) => (
                       <EmoteComponent
