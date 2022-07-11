@@ -1,20 +1,16 @@
 import { FC, useEffect, useState } from "react";
 import { browserName } from "react-device-detect";
 import * as Fa from "react-icons/fa";
-import { motion } from "framer-motion";
-import { leftToRightVariant } from "./transitionVariants";
 import { Menu } from "@mantine/core";
 
 const Header:FC = () => {
-  const [browsName, setBrowsName] = useState("");
+  const [browsName, setBrowsName] = useState<string>("your browser");
   useEffect(() => {
     setBrowsName(browserName);
   }, []);
   const chromeUrl =
     "https://chrome.google.com/webstore/detail/dopechat/pfbgacokbnigfgdninjmcgokijpfldkn?hl=en-GB&authuser=3";
   const firefoxUrl = "https://addons.mozilla.org/en-US/firefox/addon/dopechat/";
-  const operaUrl =
-    "https://chrome.google.com/webstore/detail/dopechat/pfbgacokbnigfgdninjmcgokijpfldkn?hl=en-GB&authuser=3";
   const edgeUrl =
     "https://microsoftedge.microsoft.com/addons/detail/fb-gaming-better/pmmmalmbjnajoogjgbghgiagjpejfhdi";
   const menuData = [
@@ -30,7 +26,7 @@ const Header:FC = () => {
     },
     {
       title: "Opera",
-      href: operaUrl,
+      href: chromeUrl,
       icon: <Fa.FaOpera />,
     },
     {
@@ -46,7 +42,7 @@ const Header:FC = () => {
     } else if (browsName === "Firefox") {
       window.open(firefoxUrl);
     } else if (browsName === "Opera") {
-      window.open(operaUrl);
+      window.open(chromeUrl);
     } else if (browsName === "Edge") {
       window.open(edgeUrl);
     }
@@ -58,11 +54,7 @@ const Header:FC = () => {
         id="section0"
       >
         <div className="h-screen flex flex-row mr-auto">
-          <motion.div
-            initial="offscreen"
-            whileInView="onscreen"
-            viewport={{ once: true, amount: 0.8 }}
-            variants={leftToRightVariant}
+          <div
             className="winScl:scale-75 winScl:mt-20 p-6 lg:p-8 mt-20 lg:mt-44 w-full lg:w-[50vw] fixed top-0 flex-col flex lg:flex-col"
           >
             <div className="flex flex-col">
@@ -82,7 +74,7 @@ const Header:FC = () => {
               className="box-shadow-purple hidden lg:flex lg:flex-row items-center cursor-pointer duration-300 bg-accent-purple rounded-lg px-4 py-2 w-max text-white hover:bg-white hover:text-darker-purple lg:mt-9 xlx:mt-3"
             >
               <Fa.FaDownload className="mr-3 text-sm" />
-              Download for {browsName ? browsName : "your browser"}
+              Download for {browsName}
             </button>
 
             <Menu
@@ -125,11 +117,11 @@ const Header:FC = () => {
               </div>
               <div className="mt-3 text-white flex flex-col">
                 <div className="text-main-white text-xs hidden lg:flex">
-                  Browsers like Brave might work
+                  Other browsers like Brave might work
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </>
