@@ -3,32 +3,46 @@ import { supabase } from "../../../lib/supabaseClient";
 import { useRouter } from "next/router";
 import { FC, useEffect, useState } from "react";
 import * as Md from "react-icons/md";
-import useIsSetMod from "../../../funcs/useIsSetMod";
 import { Tooltip } from "@mantine/core";
 import * as Bs from "react-icons/bs";
 import DashboardLeftSignedIn from "../Main/Leftside/DashboardLeftSignedIn";
-interface SetsMainType {
-  pass: any;
-}
+import { gettingSetEmotes } from "funcs/updatingEmotes";
+import { useAuth } from "contexts/AppContext";
+import getMod from "../../../funcs/useIsSetMod";
+
 interface objectType {
   code: string;
 }
-const SetsMain:FC<SetsMainType> = ({ pass }) => {
+const SetsMain:FC = () => {
   const [q, setQ] = useState<string>("");
   const router = useRouter();
   const [pageSet, setPageSet] = useState<any[]>([]);
-  const [pageName, setPageName] = useState<string>();
-  const { id } = router.query;
-  const isSetMod = useIsSetMod(id);
+  const [pageName, setPageName] = useState<any>();
+  const { id } = router.query as any;
+  const [mod, setMod] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(true);
   const [sorting, setSorting] = useState<boolean>(false);
   const [allCount, setAllCount] = useState(0);
+  const { user } = useAuth() as any;
+  
   useEffect(() => {
-    setAllCount(pass?.emotes?.length);
-    setPageSet(pass?.emotes);
-    setPageName(pass?.name);
-    setLoading(false);
-  }, [pass]);
+    gettingSetEmotes(id).then((r: any) => {
+      setAllCount(r?.length);
+      setPageSet(r);
+      let name =
+        id?.toString().charAt(0).toUpperCase() + id?.toString().slice(1);
+      setPageName(name);
+      setTimeout(() => {
+        setLoading(false);
+       }, 500)
+    });
+  }, [id]);
+
+  useEffect(() => {
+    getMod(pageName, user?.user_metadata.name).then((r: any) => {
+      setMod(r);
+    });
+  },[pageName, user])
   
   const deleteFromSet:Function = async (d: objectType) => {
     const newArray : any[] = pageSet;
@@ -46,27 +60,34 @@ const SetsMain:FC<SetsMainType> = ({ pass }) => {
   return (
     <DashboardLayout
       title={`${
-        pageName
-          ? `${pageName}'s set`
-          : loading
+        loading
           ? "Loading..."
-          : "Set doesn't exist"
+          : pageName
+          ? pageName.toLowerCase() === "global"
+            ? "Global set"
+            : `${pageName}'s set`
+          : "Set doesn't exist..."
       }`}
     >
       <div className="border-[1px] border-white border-opacity-5 shadow-2xl rounded-3xl h-max backdrop-blur-sm max-w-full w-1/5 flex flex-col">
-        <DashboardLeftSignedIn profile={true} onSuccess={function () {
-          throw new Error("Function not implemented.");
-        } } />
+        <DashboardLeftSignedIn
+          profile={true}
+          onSuccess={function () {
+            throw new Error("Function not implemented.");
+          }}
+        />
       </div>
       <div className="shadow-sm backdrop-blur-sm border-[1px] rounded-3xl p-1 border-white border-opacity-5 h-full w-[80%] flex flex-col">
         <div className="px-6 py-2 flex flex-row items-center">
           <div className="flex flex-row items-center  text-white">
             <p className="text-xl">
-              {pageName
-                ? `${pageName}'s set`
-                : loading
+              {loading
                 ? "Loading..."
-                : "Set doesn't exist"}
+                : pageName
+                ? pageName.toLowerCase() === "global"
+                  ? "Global set"
+                  : `${pageName}'s set`
+                : "Set doesn't exist..."}
             </p>
             <p className="text-xs mt-1 opacity-50">{allCount}</p>
           </div>
@@ -102,7 +123,7 @@ const SetsMain:FC<SetsMainType> = ({ pass }) => {
                 gutter={15}
                 label="at least 3 characters"
               >
-
+                <></>
               </Tooltip>
             </div>
           </div>
@@ -150,7 +171,7 @@ const SetsMain:FC<SetsMainType> = ({ pass }) => {
                         <div className="overflow-hidden mt-auto ml-auto mr-auto text-xs font-normal">
                           Date: {data.date ? data.date : "unavailable"}
                         </div>
-                        {isSetMod ? (
+                        {mod ? (
                           <div className="flex flex-row justify-center items-center mt-auto">
                             <div
                               onClick={() => deleteFromSet(data)}

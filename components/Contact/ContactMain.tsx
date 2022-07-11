@@ -4,14 +4,14 @@ import { Input, Modal, Textarea } from "@mantine/core";
 import { supabase } from "../../lib/supabaseClient";
 import { motion } from "framer-motion";
 const ContactMain:FC<ContactMainTypes> = ({ btnClass, iconClass, text }) => {
-  const [loading, setLoading] = useState(false);
-  const [visible, setVisible] = useState(false);
-  const [error, setError] = useState("");
-  const [message, setMessage] = useState("");
-  const [userEmail, setUserEmail] = useState("");
-  const [disabled, setDisabled] = useState(false);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [visible, setVisible] = useState<boolean>(false);
+  const [error, setError] = useState<string>("");
+  const [message, setMessage] = useState<string>("");
+  const [userEmail, setUserEmail] = useState<string>("");
+  const [disabled, setDisabled] = useState<boolean>(false);
 
-  const handleSubmit = async () => {
+  const handleSubmit:Function = async () : Promise<void> => {
     let re = /\S+@\S+\.\S+/;
     let isEmailValid = re.test(userEmail);
     setLoading(true);

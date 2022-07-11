@@ -24,11 +24,11 @@ const UploadFileFirst:FC = () => {
       setUpLimit(upLimit - 1)
     )
   
-  const handleUploadFile:Function = async () => {
+  const handleUploadFile: Function = async () => {
     if (!selectedFile) {
       return setError("You must select an image to upload.");
-    } else if (selfilename.length > 24) {
-      return setError("Emote code exceeds 24 characters");
+    } else if (!selfilename || selfilename.length > 24) {
+      return setError("Emote code invalid.");
     } else {
       setUploading(true);
       try {
@@ -51,7 +51,7 @@ const UploadFileFirst:FC = () => {
         if (error) {
           throw error;
         }
-      } catch (e:any) {
+      } catch (e: any) {
         console.log(e.message);
       } finally {
         setUploading(false);

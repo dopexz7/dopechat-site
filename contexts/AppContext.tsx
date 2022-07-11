@@ -31,9 +31,17 @@ export const AuthProvider:FC<AuthContextProps> = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={value}>
-      {!loading && children}
-    </AuthContext.Provider>
+    <>
+      {loading ? (
+        <div className="overflow-hidden bg-header-bg bg-main-purple bg-blend-multiply h-screen w-screen flex flex-col justify-center items-center">
+          Loading
+        </div>
+      ) : (
+        <AuthContext.Provider value={value}>
+          {!loading && children}
+        </AuthContext.Provider>
+      )}
+    </>
   );
 };
 

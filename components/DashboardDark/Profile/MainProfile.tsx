@@ -7,24 +7,19 @@ import * as Md from "react-icons/md";
 import ProfileRight from "./ProfileRight";
 import { useAuth } from "../../../contexts/AppContext";
 import DashboardLeftSignedIn from "../Main/Leftside/DashboardLeftSignedIn";
+import { gettingProfileEmotes } from "funcs/updatingEmotes";
 
-interface mainProfileI{
-  data: any;
-}
-
-const MainProfile:FC<mainProfileI> = ({ data }) => {
+const MainProfile:FC = () => {
   const { user } = useAuth() as any;
   const [approvedEmotes, setApprovedEmotes] = useState<any[]>();
-
+  
   useEffect(() => {
-    let x : any[] = [];
-    data.forEach((v: any) => {
-      if (v.uploaded_by === user?.user_metadata.name) x.push(v);
+    gettingProfileEmotes(user).then((data: any) => { 
+      setApprovedEmotes(data.length ? data : undefined);
     });
-    setApprovedEmotes(x.length ? x : undefined);
-  }, []);
-
-  const EmoteComponent:FC<mainProfileI> = ({ data }) => {
+  }, [user]);
+  
+  const EmoteComponent:FC<EmCType> = ({ data }) => {
     const [loading, setLoading] = useState(false);
     const [deleted, setDeleted] = useState(false);
     const deleteFromDb = async (v: any) => {
@@ -94,12 +89,15 @@ const MainProfile:FC<mainProfileI> = ({ data }) => {
     );
   };
   return (
-    <AuthRoute>
-      <DashboardLayout title="Profile">
+    <DashboardLayout title="Profile">
+      <AuthRoute>
         <div className="border-[1px] border-white border-opacity-5 shadow-2xl rounded-3xl h-max backdrop-blur-sm max-w-full w-1/5 flex flex-col">
-          <DashboardLeftSignedIn profile={true} onSuccess={function () {
-            throw new Error("Function not implemented.");
-          } } />
+          <DashboardLeftSignedIn
+            profile={true}
+            onSuccess={function () {
+              throw new Error("Function not implemented.");
+            }}
+          />
         </div>
         <div className="shadow-sm backdrop-blur-sm border-[1px] rounded-3xl p-1 border-white border-opacity-5 h-full w-[55%] flex flex-col">
           <div className="h-full ">
@@ -111,18 +109,22 @@ const MainProfile:FC<mainProfileI> = ({ data }) => {
 
             {(approvedEmotes && (
               <div className="grid xgrd gap-3 p-6 overflow-y-auto">
-                {approvedEmotes.map((data, index) => (
-                  <EmoteComponent key={index} data={data}  />
+                {approvedEmotes.map((data: any, index) => (
+                  <EmoteComponent key={index} data={data} />
                 ))}
               </div>
             )) || <div className="p-6">You have no approved emotes yet.</div>}
           </div>
           <div className="h-max mt-auto border-t-[1px] border-white border-opacity-5">
             <ProfileRight />
-            </div>
+          </div>
         </div>
-      </DashboardLayout>
-    </AuthRoute>
+      </AuthRoute>
+    </DashboardLayout>
   );
 }
 export default MainProfile;
+
+interface EmCType {
+  data: any;
+}

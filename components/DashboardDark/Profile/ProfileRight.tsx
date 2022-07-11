@@ -14,7 +14,7 @@ const ProfileRight:FC = () => {
   const showSetMods : any = useShowSetMods(user.user_metadata.name);
   const [loading, setLoading] = useState<boolean>(false);
   const [modValue, setModValue] = useState<string>("");
-  //const [setCreated, setSetCreated] = useState(false);
+
   useEffect(() => {
     setMods(showSetMods?.mods);
   }, [showSetMods]);

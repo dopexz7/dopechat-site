@@ -3,38 +3,40 @@ import { Tooltip } from "@mantine/core";
 import * as Md from "react-icons/md";
 import * as Bs from "react-icons/bs";
 import React, { FC, useEffect, useRef, useState } from "react";
-import { supabase } from "../../../lib/supabaseClient";
 import useIsMod from "../../../funcs/useIsMod";
 import EmoteComponent from "./Emote/EmoteComponent";
- 
+import { gettingFirstEmotes, gettingMoreEmotes } from "../../../funcs/updatingEmotes";
 
 
 
-const DashboardMiddleSection:FC<MiddleTypes> = ({ data, fullSet, editingSet }) => {
+const DashboardMiddleSection:FC<MiddleTypes> = ({ editingSet }) => {
   /* eslint-disable no-unused-vars */
   const [blogs, setBlogs] = useState<any[]>([]);
   const [allCount, setAllCount] = useState<number>(0);
   const [q, setQ] = useState<string>("");
   const [startUpdate, setStartUpdate] = useState<boolean>(false);
-  const [posts, setPosts] = useState<any[]>(data);
+  const [posts, setPosts] = useState<any[]>([]);
   const [sorting, setSorting] = useState<boolean>(false);
   const isMod : boolean = useIsMod();
   const [showingAllEmotes, setShowingAllEmotes] = useState<boolean>(false);
   const divRef: any = useRef();
+  
+
+  useEffect(() => {
+    gettingFirstEmotes().then((data: any) => {
+      setBlogs(data);
+      setAllCount(data.length);
+      setPosts(data.slice(0,36))
+    });
+  }, [])
+  
+  
   const getMorePost = async () => {
-    try {
-      const kekl = posts.length + 12;
-      let { data, error } = await supabase
-        .from("allemotes")
-        .select("*")
-        .range(posts.length, kekl)
-        .order("code", { ascending: true });
-      if (error) console.log(error);
+    const kekl = posts.length + 12;
+    gettingMoreEmotes(posts.length, kekl).then((data: any) => {
       const newPosts: any[] | null = data;
-      setPosts((post) => [...post, ...newPosts!]);
-    } catch (e) {
-      console.log(e);
-    }
+      return setPosts((post) => [...post, ...newPosts!]);
+    });
   };
 
   const [moreThanTwo, setMoreThanTwo] = useState(false);
@@ -51,11 +53,6 @@ const DashboardMiddleSection:FC<MiddleTypes> = ({ data, fullSet, editingSet }) =
     }
   };
 
-  useEffect(() => {
-    setBlogs(fullSet);
-    setAllCount(fullSet.length);
-  },[])
-  
   return (
     <>
       <div className="px-6 py-2 flex flex-row items-center shadow-2xl ">
@@ -192,7 +189,5 @@ const DashboardMiddleSection:FC<MiddleTypes> = ({ data, fullSet, editingSet }) =
 export default DashboardMiddleSection;
 
 interface MiddleTypes {
-  data: any[];
-  fullSet: any[];
   editingSet: string;
 }

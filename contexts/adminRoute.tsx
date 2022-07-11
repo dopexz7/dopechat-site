@@ -12,7 +12,7 @@ const AdminRoute: FC<AdminRouteProps> = ({ children }) => {
     if (!user) {
       router.push("/dashboard");
     }
-  });
+  }, []);
   if (!user || isMod === false) return <></>;
   return <>{children}</>;
 };

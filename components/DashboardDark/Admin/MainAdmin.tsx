@@ -3,80 +3,51 @@ import AdminRoute from "../../../contexts/adminRoute";
 import DashboardLayout from "../Main/DashboardLayout";
 import * as Bi from "react-icons/bi";
 import * as Md from "react-icons/md";
-import { supabase } from "../../../lib/supabaseClient";
-import useReadSubmissions from "../../../funcs/useReadSubmissions";
 import DashboardLeftSignedIn from '../Main/Leftside/DashboardLeftSignedIn'
-
-interface submitFileTypes {
-  url: string;
-  name: string;
-  uploaded_by: string;
-  created_at: Date;
-  
-}
+import { gettingAdminEmotes } from "funcs/updatingEmotes";
+import {
+  deletingFromDb,
+  insertingNewFile,
+  movingToApproved,
+  removeFromUploads,
+  updateAdminEmotes,
+} from "funcs/databaseFuncs";
 
 const MainAdmin: FC = () => {
-  const [data, setData] = useState<any[]>();
-  const submissions = useReadSubmissions();
+  const [data, setData] = useState<any[]>([]);
   useEffect(() => {
-    setData(submissions);
-  }, [submissions]);
-
-  const deleteFromDb = async (v:submitFileTypes) => {
-    const deletingFromDb = supabase
-      .from("submitfiles")
-      .delete()
-      .eq("url", v.url);
-    const removeFromUploads = supabase.storage.from("uploads").remove([v.name]);
-
-    let newAr: any[] = [];
-    const dataAr = data;
-    dataAr!.forEach((d) => {
-      if (d !== v) newAr.push(d);
+    gettingAdminEmotes().then((r: any) => {
+      setData(r);
     });
-    setData(newAr);
+  }, []);
 
-    await Promise.all([deletingFromDb, removeFromUploads]);
+  const deleteFromDb: Function = (v: submitFileTypes): void => {
+    deletingFromDb(v); // deleting from database
+    removeFromUploads(v); // removing from uploads
+    updateAdminEmotes(data, v).then((r: any) => {
+      setData(r);
+    }); // updating data
   };
-  const approveToDb = async (v:submitFileTypes) => {
-    const movingToApproved = supabase.storage
-      .from("uploads")
-      .move(`${v.name}`, `approved/${v.name}`);
-    const { data: fileUrl } = await supabase.storage
-      .from("uploads")
-      .getPublicUrl(`approved/${v.name}`);
-    const newFile = {
-      uploaded_by: v.uploaded_by,
-      code: v.name,
-      src: fileUrl!.publicURL,
-      date: v.created_at,
-    };
-    const insertingNewFile = supabase.from("allemotes").insert(newFile);
 
-    const deletingFromOldTable = supabase
-      .from("submitfiles")
-      .delete()
-      .eq("url", v.url);
-
-    let newAr : any[] = [];
-    const dataAr = data;
-    dataAr!.forEach((d) => {
-      if (d !== v) newAr.push(d);
-    });
-    setData(newAr);
-    await Promise.all([
-      movingToApproved,
-      insertingNewFile,
-      deletingFromOldTable,
-    ]);
+  const approveToDb: Function = (v: submitFileTypes): void => {
+    movingToApproved(v); // move to approved folder
+    deletingFromDb(v); // delete from uploads db
+    insertingNewFile(v); // insert into allemotes db
+    updateAdminEmotes(data, v).then((r: any) => {
+      setData(r);
+    }); // update data
   };
+
   return (
-    <AdminRoute>
-      <DashboardLayout title="Admin">
+    <DashboardLayout title="Admin">
+      <AdminRoute>
         <div className="border-[1px] border-white border-opacity-5 shadow-2xl rounded-3xl h-max backdrop-blur-sm max-w-full w-1/5 flex flex-col">
-          <DashboardLeftSignedIn profile={true} onSuccess={function () {
-            throw new Error("Function not implemented.");
-          } } />
+          <DashboardLeftSignedIn
+            profile={true}
+            onSuccess={function () {
+              throw new Error("Function not implemented.");
+            }}
+          />
         </div>
         <div className="shadow-sm backdrop-blur-sm border-[1px] rounded-3xl p-1 border-white border-opacity-5 h-full w-[55%] flex flex-col">
           <div className="px-6 py-2 flex flex-row items-center">
@@ -130,8 +101,15 @@ const MainAdmin: FC = () => {
               ))}
           </div>
         </div>
-      </DashboardLayout>
-    </AdminRoute>
+      </AdminRoute>
+    </DashboardLayout>
   );
 }
 export default MainAdmin;
+
+interface submitFileTypes {
+  url: string;
+  name: string;
+  uploaded_by: string;
+  created_at: Date;
+}

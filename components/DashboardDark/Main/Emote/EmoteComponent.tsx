@@ -2,31 +2,17 @@ import React, { useState } from "react";
 import * as Md from "react-icons/md";
 import { supabase } from "../../../../lib/supabaseClient";
 import * as Im from "react-icons/im";
-import useIsDonor from "../../../../funcs/useIsDonor";
 import { useAuth } from "../../../../contexts/AppContext";
 import { Modal } from "@mantine/core";
 import { FC } from "react";
-
-interface EmoteComponentTypes {
-  data: any;
-  editingSet: string;
-  isMod: boolean;
-  kekRef: React.MutableRefObject<HTMLDivElement>;
-}
-type emoteType = {
-  src: string;
-  code: string;
-  uploaded_by: string;
-}
 
 const EmoteComponent: FC<EmoteComponentTypes> = ({ data, editingSet, isMod, kekRef }) => {
   const [deleted, setDeleted] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [visible, setVisible] = useState<boolean>(false);
   const { user } = useAuth() as any;
-  const isDonor = useIsDonor();
 
-  const deleteFromDb = async (v: emoteType) => {
+  const deleteFromDb: Function = async (v: emoteType): Promise<any> => {
     await supabase.from("allemotes").delete().eq("src", v.src);
     setLoading(true);
     setTimeout(() => {
@@ -36,73 +22,34 @@ const EmoteComponent: FC<EmoteComponentTypes> = ({ data, editingSet, isMod, kekR
       ).toString();
     }, 800);
   };
-
-  const addToSet = async (d: emoteType) => {
+  
+  const addToSet: Function = async (d: emoteType) => {
     let { data: useremotes } = await supabase
       .from("useremotes")
       .select("emotes")
       .eq("name", editingSet);
-    const arr : any[] = useremotes![0].emotes;
+    const arr: any[] = useremotes![0].emotes;
     if (arr.some((e: emoteType) => e.code === d.code)) {
       return alert("Emote already in the set!");
     }
-    if (editingSet === user?.user_metadata.name) {
-      if (!isDonor) {
-        if (useremotes![0].emotes?.length >= 5) {
-          return alert("Emote limit reached!");
-        } else {
-          if (useremotes![0]?.emotes?.length) {
-            arr.push(d);
-            toggle(d);
-            return await supabase
-              .from("useremotes")
-              .update({ emotes: arr })
-              .eq("name", editingSet);
-          } else {
-            toggle(d);
-            return await supabase
-              .from("useremotes")
-              .update({ emotes: [d] })
-              .eq("name", editingSet);
-          }
-        }
-      } else {
-        if (useremotes![0]?.emotes?.length >= 10) {
-          return alert("Emote limit reached!");
-        } else {
-          if (useremotes![0]?.emotes?.length) {
-            arr.push(d);
-            toggle(d);
-            return await supabase
-              .from("useremotes")
-              .update({ emotes: arr })
-              .eq("name", editingSet);
-          } else {
-            toggle(d);
-            return await supabase
-              .from("useremotes")
-              .update({ emotes: [d] })
-              .eq("name", editingSet);
-          }
-        }
-      }
+    let updatedSet: any = [];
+
+    toggle(d);
+
+    if (useremotes![0]?.emotes?.length) {
+      arr.push(d);
+      updatedSet = arr;
     } else {
-      if (useremotes![0]?.emotes?.length) {
-        arr.push(d);
-        toggle(d);
-        return await supabase
-          .from("useremotes")
-          .update({ emotes: arr })
-          .eq("name", editingSet);
-      } else {
-        toggle(d);
-        return await supabase
-          .from("useremotes")
-          .update({ emotes: [d] })
-          .eq("name", editingSet);
-      }
+      updatedSet = [d];
     }
+
+    return await supabase
+      .from("useremotes")
+      .update({ emotes: updatedSet })
+      .eq("name", editingSet);
   };
+
+
 
   const EmoteTools = () => {
     return (
@@ -209,3 +156,15 @@ const EmoteComponent: FC<EmoteComponentTypes> = ({ data, editingSet, isMod, kekR
   );
 };
 export default EmoteComponent;
+
+interface EmoteComponentTypes {
+  data: any;
+  editingSet: string;
+  isMod: boolean;
+  kekRef: React.MutableRefObject<HTMLDivElement>;
+}
+type emoteType = {
+  src: string;
+  code: string;
+  uploaded_by: string;
+};

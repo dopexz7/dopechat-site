@@ -5,11 +5,8 @@ import DashboardLayout from "./DashboardLayout";
 import DashboardMiddleSection from "./DashboardMiddleSection";
 import DashboardLeftSignedIn from "./Leftside/DashboardLeftSignedIn";
 
-interface DashMainTypes {
-  data: Array<any>;
-}
 
-const DashboardMain:FC<DashMainTypes> = ({ data }) =>{
+const DashboardMain:FC = () =>{
   const [editingSet, setEditingSet] = useState<string>("");
 
   return (
@@ -19,9 +16,7 @@ const DashboardMain:FC<DashMainTypes> = ({ data }) =>{
       </div>
       <div className="shadow-sm backdrop-blur-sm border-[1px] rounded-3xl p-1 border-white border-opacity-5 h-full w-[55%] flex flex-col">
         <DashboardMiddleSection
-          data={data.slice(0, 36)}
-          fullSet={data}
-          editingSet={editingSet}     />
+          editingSet={editingSet}  />
       </div>
 
     </DashboardLayout>
