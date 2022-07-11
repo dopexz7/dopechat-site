@@ -6,7 +6,6 @@ export const gettingFirstEmotes: Function = async (): Promise<any> => {
     .select("*")
     .order("date", { ascending: false });
   return data;
-  //return data
 };
 
 export const gettingMoreEmotes: Function = async (
@@ -44,5 +43,4 @@ export const gettingSetEmotes: Function = async (name : string): Promise<any> =>
   );
   if (arr.length) return arr[0].emotes
   else return false
-  //return data;
 }

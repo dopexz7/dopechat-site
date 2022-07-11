@@ -1,6 +1,6 @@
 import React, { FC, useEffect, useState } from "react";
 import useCheckIfHasSet from "../../../funcs/useCheckIfHasSet";
-import useShowSetMods from "../../../funcs/useShowSetMods";
+import { gettingSetMods } from "../../../funcs/gettingModList";
 import { Input } from "@mantine/core";
 import { supabase } from "../../../lib/supabaseClient";
 import * as Md from "react-icons/md";
@@ -11,13 +11,14 @@ const ProfileRight:FC = () => {
   const { user } = useAuth() as any;
   const [mods, setMods] = useState<any[]>([]);
   const isOwnerOfSomething = useCheckIfHasSet(user.user_metadata.name);
-  const showSetMods : any = useShowSetMods(user.user_metadata.name);
   const [loading, setLoading] = useState<boolean>(false);
   const [modValue, setModValue] = useState<string>("");
 
   useEffect(() => {
-    setMods(showSetMods?.mods);
-  }, [showSetMods]);
+    gettingSetMods(user?.user_metadata?.name).then((res : any) => {
+      setMods(res)
+    })
+   },[user])
 
   const removeMod = async (mod : any) => {
     const x : any = mods;
@@ -31,6 +32,7 @@ const ProfileRight:FC = () => {
       .update({ mods: p })
       .eq("name", user.user_metadata.name);
   };
+
   const addMod = async () => {
     setLoading(true);
     let p = mods;
@@ -43,8 +45,6 @@ const ProfileRight:FC = () => {
       .then(() => setLoading(false))
       .then(() => setModValue(""));
   };
-
-
 
   return (
     <div className="text-white h-full w-full flex flex-col p-5">
