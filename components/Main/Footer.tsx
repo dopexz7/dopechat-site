@@ -6,6 +6,7 @@ import { NavData } from "./NavData";
 import * as Scroll from "react-scroll";
 import ContactMain from "../Contact/ContactMain";
 const Linkx = Scroll.Link;
+
 const Footer:FC = () => {
   return (
     <div

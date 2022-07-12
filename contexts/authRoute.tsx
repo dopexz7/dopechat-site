@@ -1,6 +1,7 @@
 import React, { FC, useEffect } from "react";
 import { useRouter } from "next/router";
 import { useAuth } from "./AppContext";
+
 const AuthRoute:FC<AuthRouteProps> = ({ children }) => {
   const { user } = useAuth() as any;
   const router = useRouter();
@@ -9,7 +10,8 @@ const AuthRoute:FC<AuthRouteProps> = ({ children }) => {
     if (!user) {
       router.push("/dashboard");
     }
-  });
+  }, []);
+
   if (!user) return <></>;
   return <>{children}</>;
 };

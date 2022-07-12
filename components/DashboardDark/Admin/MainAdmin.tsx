@@ -15,6 +15,7 @@ import {
 
 const MainAdmin: FC = () => {
   const [data, setData] = useState<any[]>([]);
+
   useEffect(() => {
     gettingAdminEmotes().then((r: any) => {
       setData(r);
@@ -105,6 +106,7 @@ const MainAdmin: FC = () => {
     </DashboardLayout>
   );
 }
+
 export default MainAdmin;
 
 interface submitFileTypes {

@@ -13,6 +13,7 @@ export const leftToRightVariant = {
     },
   },
 };
+
 export const rightToLeftVariant = {
   offscreen: {
     x: 150,
@@ -28,6 +29,7 @@ export const rightToLeftVariant = {
     },
   },
 };
+
 export const topToBottomVariant = {
   offscreen: {
     y: -50,

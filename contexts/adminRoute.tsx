@@ -1,19 +1,21 @@
-import React, { FC, useEffect } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import useIsMod from "../funcs/useIsMod";
+import { getIsMod } from "../funcs/useIsMod"; 
 import { useAuth } from "./AppContext";
 
 const AdminRoute: FC<AdminRouteProps> = ({ children }) => {
   const { user } = useAuth() as any;
   const router = useRouter();
-  const isMod = useIsMod();
+  const [mod, setMod] = useState<boolean>(false)
 
   useEffect(() => {
     if (!user) {
       router.push("/dashboard");
     }
-  }, []);
-  if (!user || isMod === false) return <></>;
+    getIsMod(user?.user_metadata.name).then((res: any) => { setMod(res)});
+  }, [user]);
+  
+  if (!user || mod === false) return <></>;
   return <>{children}</>;
 };
 

@@ -22,6 +22,7 @@ const MainProfile:FC = () => {
   const EmoteComponent:FC<EmCType> = ({ data }) => {
     const [loading, setLoading] = useState(false);
     const [deleted, setDeleted] = useState(false);
+    
     const deleteFromDb = async (v: any) => {
       await supabase.from("allemotes").delete().eq("src", v.src);
       setLoading(true);
@@ -37,6 +38,7 @@ const MainProfile:FC = () => {
         }, 1500);
       }, 800);
     };
+
     return (
       <div className="h-32 w-32 group duration-300 bg-accent-white rounded-md">
         <div

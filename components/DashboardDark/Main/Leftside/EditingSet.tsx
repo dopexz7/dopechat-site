@@ -6,18 +6,10 @@ import { useState, useEffect } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 
-interface EditingSetTypes {
-  profile?: boolean;
-  data: any;
-  editingSet: string;
-  // eslint-disable-next-line no-unused-vars
-  passProps: (d: string) => void;
-
-}
-
 const EditingSet:FC<EditingSetTypes> = ({ data, editingSet, passProps, profile }) => {
   const [avatar, setAvatar] = useState<string>();
-  const getStreamerImg:Function = async (d: string):Promise<any> => {
+
+  const getStreamerImg: Function = async (d: string): Promise<any> => {
     await fetch(`https://api.frankerfacez.com/v1/user/${d.toLowerCase()}`)
       .then((res) => res.json())
       .then((data) => setAvatar(data?.user?.avatar));
@@ -27,13 +19,10 @@ const EditingSet:FC<EditingSetTypes> = ({ data, editingSet, passProps, profile }
     if (data !== "global") {
       getStreamerImg(data);
     } else {
-        setAvatar("https://cdn.frankerfacez.com/emoticon/381875/4")
+      setAvatar("https://cdn.frankerfacez.com/emoticon/381875/4");
     }
   }, [data]);
-    
-  interface linkTypes {
-    children: React.ReactNode;
-  }
+
   // eslint-disable-next-line react/display-name
   const MyLink = forwardRef((props, ref: LegacyRef<HTMLAnchorElement>) => {
     // eslint-disable-next-line no-unused-vars
@@ -53,6 +42,7 @@ const EditingSet:FC<EditingSetTypes> = ({ data, editingSet, passProps, profile }
       </Link>
     );
   });
+  
     return (
       <>
         <Menu as="div" className="relative inline-block text-left">
@@ -105,11 +95,19 @@ const EditingSet:FC<EditingSetTypes> = ({ data, editingSet, passProps, profile }
           </Transition>
         </Menu>
       </>
-      //   title="Select set"
-      //   onClick={() =>
-      //     editingSet === data?.name ? passProps() : passProps(data?.name)
-      //   }
     );
 };
 
 export default EditingSet;
+
+interface EditingSetTypes {
+  profile?: boolean;
+  data: any;
+  editingSet: string;
+  // eslint-disable-next-line no-unused-vars
+  passProps: (d: string) => void;
+}
+
+interface linkTypes {
+  children: React.ReactNode;
+}

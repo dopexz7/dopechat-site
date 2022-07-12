@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { FC } from "react";
+import React, { FC } from "react";
 
 const DashboardFooter: FC = () => {
   return (
@@ -23,6 +23,6 @@ const DashboardFooter: FC = () => {
       </div>
     </div>
   );
-}
+};
 
 export default DashboardFooter;

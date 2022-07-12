@@ -3,6 +3,7 @@ import * as Bs from "react-icons/bs";
 import { Input, Modal, Textarea } from "@mantine/core";
 import { supabase } from "../../lib/supabaseClient";
 import { motion } from "framer-motion";
+
 const ContactMain:FC<ContactMainTypes> = ({ btnClass, iconClass, text }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [visible, setVisible] = useState<boolean>(false);
@@ -15,6 +16,7 @@ const ContactMain:FC<ContactMainTypes> = ({ btnClass, iconClass, text }) => {
     let re = /\S+@\S+\.\S+/;
     let isEmailValid = re.test(userEmail);
     setLoading(true);
+    
     if (message && message.length >= 20 && userEmail && isEmailValid === true) {
       setError("");
       await supabase

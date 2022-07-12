@@ -5,14 +5,17 @@ import { Menu } from "@mantine/core";
 
 const Header:FC = () => {
   const [browsName, setBrowsName] = useState<string>("your browser");
+  
   useEffect(() => {
     setBrowsName(browserName);
   }, []);
+
   const chromeUrl =
     "https://chrome.google.com/webstore/detail/dopechat/pfbgacokbnigfgdninjmcgokijpfldkn?hl=en-GB&authuser=3";
   const firefoxUrl = "https://addons.mozilla.org/en-US/firefox/addon/dopechat/";
   const edgeUrl =
     "https://microsoftedge.microsoft.com/addons/detail/fb-gaming-better/pmmmalmbjnajoogjgbghgiagjpejfhdi";
+  
   const menuData = [
     {
       title: "Chrome",
@@ -36,17 +39,6 @@ const Header:FC = () => {
     },
   ];
 
-  function handleButton() {
-    if (browsName === "Chrome") {
-      window.open(chromeUrl);
-    } else if (browsName === "Firefox") {
-      window.open(firefoxUrl);
-    } else if (browsName === "Opera") {
-      window.open(chromeUrl);
-    } else if (browsName === "Edge") {
-      window.open(edgeUrl);
-    }
-  }
   return (
     <>
       <div
@@ -54,9 +46,7 @@ const Header:FC = () => {
         id="section0"
       >
         <div className="h-screen flex flex-row mr-auto">
-          <div
-            className="winScl:scale-75 winScl:mt-20 p-6 lg:p-8 mt-20 lg:mt-44 w-full lg:w-[50vw] fixed top-0 flex-col flex lg:flex-col"
-          >
+          <div className="winScl:scale-75 winScl:mt-20 p-6 lg:p-8 mt-20 lg:mt-44 w-full lg:w-[50vw] fixed top-0 flex-col flex lg:flex-col">
             <div className="flex flex-col">
               <h1 className="hidden lg:flex text-5xl font-light max-w-xl ">
                 The ultimate FB Gaming livestream experience
@@ -70,7 +60,17 @@ const Header:FC = () => {
             </div>
 
             <button
-              onClick={() => handleButton()}
+              onClick={() =>
+                browsName === "Chrome"
+                  ? window.open(chromeUrl)
+                  : browsName === "Firefox"
+                  ? window.open(firefoxUrl)
+                  : browsName === "Opera"
+                  ? window.open(chromeUrl)
+                  : browsName === "Edge"
+                  ? window.open(edgeUrl)
+                  : window.open(chromeUrl)
+              }
               className="box-shadow-purple hidden lg:flex lg:flex-row items-center cursor-pointer duration-300 bg-accent-purple rounded-lg px-4 py-2 w-max text-white hover:bg-white hover:text-darker-purple lg:mt-9 xlx:mt-3"
             >
               <Fa.FaDownload className="mr-3 text-sm" />

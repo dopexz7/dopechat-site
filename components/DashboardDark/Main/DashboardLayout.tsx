@@ -6,11 +6,6 @@ import * as Fa from 'react-icons/fa'
 import { FC } from "react";
 import React from "react";
 
-interface LayoutTypes {
-  children: React.ReactNode;
-  title: string;
-}
-
 const DashboardLayout:FC<LayoutTypes> = (props) => {
   const { user } = useAuth() as any;
 
@@ -25,6 +20,7 @@ const DashboardLayout:FC<LayoutTypes> = (props) => {
       }
     );
   }
+  
   return (
     <>
       <Head>
@@ -70,3 +66,8 @@ const DashboardLayout:FC<LayoutTypes> = (props) => {
 };
 
 export default DashboardLayout;
+
+interface LayoutTypes {
+  children: React.ReactNode;
+  title: string;
+}

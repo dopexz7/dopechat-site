@@ -8,6 +8,7 @@ import UploadFileFirst from "./UploadFileFirst";
 import { motion } from "framer-motion";
 import StyledTabs from "../../../Misc/StyledTabs";
 import { FC } from "react";
+
 const LeftSideModal:FC = () => {
   const [visible, setVisible] = useState<boolean>(false);
   const [seeFileUpload, setSeeFileUpload] = useState<boolean>(false);
@@ -17,7 +18,7 @@ const LeftSideModal:FC = () => {
   };
 
   const iconVariant: any = {
-    hover : {
+    hover: {
       scale: 1.05,
       rotate: 360,
     },
@@ -25,6 +26,7 @@ const LeftSideModal:FC = () => {
       yoyo: 1,
     },
   };
+  
   return (
     <>
       <div
@@ -66,18 +68,18 @@ const LeftSideModal:FC = () => {
               <StyledTabs>
                 <Tabs.Tab label="Upload files" icon={<Ai.AiOutlineUpload />}>
                   <motion.div
-                    initial={{ opacity: 0, x: -50 }}
+                    initial={{ opacity: 0.5, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0 }}
+                    exit={{ opacity: 0.5 }}
                   >
                     <UploadFileFirst />
                   </motion.div>
                 </Tabs.Tab>
                 <Tabs.Tab label="Drag & drop" icon={<Ri.RiDragDropFill />}>
                   <motion.div
-                    initial={{ opacity: 0, x: 50 }}
+                    initial={{ opacity: 0.5, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0 }}
+                    exit={{ opacity: 0.5 }}
                   >
                     <FileDrop />
                   </motion.div>
@@ -87,7 +89,7 @@ const LeftSideModal:FC = () => {
           ) : (
             <>
               <div className="m-auto">
-                  <Stepper
+                <Stepper
                   active={0}
                   orientation="vertical"
                   classNames={{

@@ -1,9 +1,8 @@
 import React, { useContext, useState, useEffect, createContext, FC } from "react";
 import { supabase } from "../lib/supabaseClient";
+
 const AuthContext = createContext({});
-interface AuthContextProps {
-  children: React.ReactNode
-}
+
 export const AuthProvider:FC<AuthContextProps> = ({ children }) => {
   const [user, setUser] = useState<any>();
   const [loading, setLoading] = useState<boolean>(true);
@@ -48,3 +47,7 @@ export const AuthProvider:FC<AuthContextProps> = ({ children }) => {
 export const useAuth = () => {
   return useContext(AuthContext);
 };
+
+interface AuthContextProps {
+  children: React.ReactNode;
+}

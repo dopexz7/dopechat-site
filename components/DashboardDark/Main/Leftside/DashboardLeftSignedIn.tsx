@@ -6,34 +6,34 @@ import { supabase } from "../../../../lib/supabaseClient";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import LeftSideModal from "./LeftSideModal";
-import useIsMod from "../../../../funcs/useIsMod";
-import useIsDonor from "../../../../funcs/useIsDonor";
+import { getIsMod } from "../../../../funcs/useIsMod";
+import { getIsDonor } from "../../../../funcs/useIsDonor";
 import useHasEdits from "../../../../funcs/useHasEdits";
 import DonationComponent from "../../../Donation/DonationComponent";
 import { useAuth } from "../../../../contexts/AppContext";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import EditingSet from "./EditingSet";
 import Image from 'next/image'
 import { FC } from "react";
 import React from "react";
 
-interface Typies {
-  profile?: boolean;
-  onSuccess: (d: string) => typeof d;
-}
-
-
 const DashboardLeftSignedIn:FC<Typies> = (props) => {
   const router = useRouter();
-  const isDonor : boolean = useIsDonor();
   const { user } = useAuth() as any;
-  const isMod : boolean = useIsMod();
+  const [isDonor, setIsDonor] = useState<boolean>(false);
+  const [isMod, setIsMod] = useState<boolean>(false)
   const availEdits : string[] = useHasEdits();
   const [editingSet, setEditingSet] = useState<string>("");
-  const passProps = (d :string): void => {
+
+  const passProps = (d: string): void => {
     setEditingSet(d);
     props.onSuccess(d);
   }
+  
+  useEffect(() => {
+    getIsMod(user?.user_metadata?.name).then((res: any) => { setIsMod(res) });
+    getIsDonor(user?.user_metadata?.name).then((res: any) => { setIsDonor(res) });
+  }, [user]);
   
   return (
     <>
@@ -168,4 +168,10 @@ const DashboardLeftSignedIn:FC<Typies> = (props) => {
     </>
   );
 };
+
 export default DashboardLeftSignedIn;
+
+interface Typies {
+  profile?: boolean;
+  onSuccess: (d: string) => typeof d;
+}

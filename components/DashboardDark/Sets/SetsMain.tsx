@@ -10,9 +10,6 @@ import { gettingSetEmotes } from "funcs/updatingEmotes";
 import { useAuth } from "contexts/AppContext";
 import getMod from "../../../funcs/useIsSetMod";
 
-interface objectType {
-  code: string;
-}
 const SetsMain:FC = () => {
   const [q, setQ] = useState<string>("");
   const router = useRouter();
@@ -57,6 +54,7 @@ const SetsMain:FC = () => {
       .update({ emotes: finalArray })
       .eq("name", pageName);
   };
+  
   return (
     <DashboardLayout
       title={`${
@@ -194,3 +192,7 @@ const SetsMain:FC = () => {
   );
 }
 export default SetsMain;
+
+interface objectType {
+  code: string;
+}

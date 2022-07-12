@@ -3,12 +3,6 @@ import * as Fa from "react-icons/fa";
 import * as Hi from "react-icons/hi";
 import * as Md from "react-icons/md";
 
-type MyType = {
-  title: string;
-  section: string;
-  icon: React.ReactElement;
-};
-
 export const NavData: MyType[] = [
   {
     title: "About",
@@ -31,3 +25,9 @@ export const NavData: MyType[] = [
     icon: <Fa.FaPaypal className="mr-1" />,
   },
 ];
+
+type MyType = {
+  title: string;
+  section: string;
+  icon: React.ReactElement;
+};

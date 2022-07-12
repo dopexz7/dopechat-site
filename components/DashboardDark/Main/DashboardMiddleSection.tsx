@@ -3,11 +3,10 @@ import { Tooltip } from "@mantine/core";
 import * as Md from "react-icons/md";
 import * as Bs from "react-icons/bs";
 import React, { FC, useEffect, useRef, useState } from "react";
-import useIsMod from "../../../funcs/useIsMod";
+import { getIsMod } from "../../../funcs/useIsMod";
 import EmoteComponent from "./Emote/EmoteComponent";
 import { gettingFirstEmotes, gettingMoreEmotes } from "../../../funcs/updatingEmotes";
-
-
+import { useAuth } from "contexts/AppContext";
 
 const DashboardMiddleSection:FC<MiddleTypes> = ({ editingSet }) => {
   /* eslint-disable no-unused-vars */
@@ -17,19 +16,20 @@ const DashboardMiddleSection:FC<MiddleTypes> = ({ editingSet }) => {
   const [startUpdate, setStartUpdate] = useState<boolean>(false);
   const [posts, setPosts] = useState<any[]>([]);
   const [sorting, setSorting] = useState<boolean>(false);
-  const isMod : boolean = useIsMod();
+  const [isMod, setIsMod] = useState<boolean>(false);
+  const [moreThanTwo, setMoreThanTwo] = useState<boolean>(false);
   const [showingAllEmotes, setShowingAllEmotes] = useState<boolean>(false);
   const divRef: any = useRef();
-  
+  const { user } = useAuth() as any;
 
   useEffect(() => {
     gettingFirstEmotes().then((data: any) => {
       setBlogs(data);
       setAllCount(data.length);
-      setPosts(data.slice(0,36))
+      setPosts(data.slice(0, 36))
     });
-  }, [])
-  
+    getIsMod(user?.user_metadata.name).then((res: any) => { setIsMod(res) });
+  }, [user])
   
   const getMorePost = async () => {
     const kekl = posts.length + 12;
@@ -39,7 +39,6 @@ const DashboardMiddleSection:FC<MiddleTypes> = ({ editingSet }) => {
     });
   };
 
-  const [moreThanTwo, setMoreThanTwo] = useState(false);
   const beginUpdate = () => {
     if (q.length >= 2) {
       setStartUpdate(true);

@@ -7,6 +7,7 @@ import { useAuth } from "../../../contexts/AppContext";
 
 const DashboardNav:FC = () => {
   const { user } = useAuth() as any;
+  
   return (
     <div className={`duration-300 z-50 w-screen bg-darker-purple`}>
       <div

@@ -3,14 +3,7 @@ import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
 import { supabase } from "../../lib/supabaseClient";
 import { useAuth } from "../../contexts/AppContext";
 
-interface buttonWrapperTypes {
-  currency: string;
-  amount: string;
-}
-
 const ButtonWrapper:FC<buttonWrapperTypes> = ({ currency, amount }) => {
-  // usePayPalScriptReducer can be use only inside children of PayPalScriptProviders
-  // This is the main reason to wrap the PayPalButtons in a new component
   const { user } = useAuth() as any;
   const [{ options }, dispatch] = usePayPalScriptReducer();
 
@@ -83,3 +76,8 @@ const ButtonWrapper:FC<buttonWrapperTypes> = ({ currency, amount }) => {
 };
 
 export default ButtonWrapper;
+
+interface buttonWrapperTypes {
+  currency: string;
+  amount: string;
+}

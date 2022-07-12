@@ -1,7 +1,8 @@
 import React, { FC } from "react";
 import { motion } from "framer-motion";
 import { leftToRightVariant, rightToLeftVariant } from "./transitionVariants";
-const Changelog:FC = () => {
+
+const Changelog: FC = () => {
   return (
     <>
       <div

@@ -3,7 +3,8 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { leftToRightVariant, rightToLeftVariant } from "./transitionVariants";
 import { FC } from "react";
-const DonateSection:FC = () => {
+
+const DonateSection: FC = () => {
   return (
     <div
       className="p-6 w-full max-w-7xl lg:p-0 winScl:scale-90 winScl:mt-0 flex flex-col justify-center items-center lg:flex-row lg:pt-16 h-screen"
@@ -46,5 +47,5 @@ const DonateSection:FC = () => {
       </motion.div>
     </div>
   );
-}
+};
 export default DonateSection;

@@ -7,10 +7,6 @@ import { motion } from "framer-motion";
 import * as Fa from "react-icons/fa";
 import ButtonWrapper from "./ButtonWrapper";
 
-interface donationComponentTypes {
-  btnClass: string;
-  iconEnabled: boolean;
-}
 const DonationComponent:FC<donationComponentTypes> = ({ btnClass, iconEnabled }) => {
   const [visible, setVisible] = useState(false);
   const [seeDonation, setSeeDonation] = useState(false);
@@ -28,6 +24,7 @@ const DonationComponent:FC<donationComponentTypes> = ({ btnClass, iconEnabled })
       amount: "15",
     },
   ];
+
   const iconVariant : any = {
     hover: {
       scale: 1.05,
@@ -37,6 +34,7 @@ const DonationComponent:FC<donationComponentTypes> = ({ btnClass, iconEnabled })
       yoyo: 1,
     },
   };
+  
   return (
     <>
       <div onClick={() => setVisible(true)} className={btnClass}>
@@ -170,4 +168,9 @@ const DonationComponent:FC<donationComponentTypes> = ({ btnClass, iconEnabled })
     </>
   );
 }
-export default DonationComponent
+export default DonationComponent;
+
+interface donationComponentTypes {
+  btnClass: string;
+  iconEnabled: boolean;
+}

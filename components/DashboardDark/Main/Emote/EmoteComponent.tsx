@@ -10,6 +10,7 @@ const EmoteComponent: FC<EmoteComponentTypes> = ({ data, editingSet, isMod, kekR
   const [deleted, setDeleted] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [visible, setVisible] = useState<boolean>(false);
+  const [emoteAdded, setEmoteAdded] = useState<string>();
   const { user } = useAuth() as any;
 
   const deleteFromDb: Function = async (v: emoteType): Promise<any> => {
@@ -22,8 +23,17 @@ const EmoteComponent: FC<EmoteComponentTypes> = ({ data, editingSet, isMod, kekR
       ).toString();
     }, 800);
   };
+
+  const toggle: Function = (d: emoteType): void => {
+    setEmoteAdded(d.code);
+    setVisible(true);
+    setTimeout(() => {
+      setVisible(false);
+      setEmoteAdded("");
+    }, 1500);
+  }
   
-  const addToSet: Function = async (d: emoteType) => {
+  const addToSet: Function = async (d: emoteType): Promise<any> => {
     let { data: useremotes } = await supabase
       .from("useremotes")
       .select("emotes")
@@ -48,8 +58,6 @@ const EmoteComponent: FC<EmoteComponentTypes> = ({ data, editingSet, isMod, kekR
       .update({ emotes: updatedSet })
       .eq("name", editingSet);
   };
-
-
 
   const EmoteTools = () => {
     return (
@@ -80,15 +88,7 @@ const EmoteComponent: FC<EmoteComponentTypes> = ({ data, editingSet, isMod, kekR
       </div>
     );
   };
-  const [emoteAdded, setEmoteAdded] = useState<String>();
-  function toggle(d: emoteType) {
-    setEmoteAdded(d.code);
-    setVisible(true);
-    setTimeout(() => {
-      setVisible(false);
-      setEmoteAdded("");
-    }, 1500);
-  }
+
   return (
     <>
       <Modal
@@ -155,6 +155,7 @@ const EmoteComponent: FC<EmoteComponentTypes> = ({ data, editingSet, isMod, kekR
     </>
   );
 };
+
 export default EmoteComponent;
 
 interface EmoteComponentTypes {
@@ -163,6 +164,7 @@ interface EmoteComponentTypes {
   isMod: boolean;
   kekRef: React.MutableRefObject<HTMLDivElement>;
 }
+
 type emoteType = {
   src: string;
   code: string;

@@ -1,19 +1,15 @@
 import * as Scroll from "react-scroll";
-
 import Link from "next/link";
 import * as Fa from "react-icons/fa";
 import * as Md from "react-icons/md";
 import { NavData } from "./NavData";
 import MobileNav from "./MobileNav";
-
 import ContactMain from "../Contact/ContactMain";
-// import { useState } from "react";
 
 const Linkx = Scroll.Link;
 
 export default function MainNav() {
   const scroll = Scroll.animateScroll;
-  //const [isOpen, setIsOpen] = useState(false);
 
   return (
     <>

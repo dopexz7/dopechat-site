@@ -2,7 +2,8 @@ import React, { FC } from "react";
 import * as Scroll from "react-scroll";
 import { motion } from "framer-motion";
 import { bottomToTopVariant, topToBottomVariant } from "./transitionVariants";
-const GetStarted:FC = () => {
+
+const GetStarted: FC = () => {
   const scroll = Scroll.animateScroll;
   return (
     <div

@@ -14,8 +14,7 @@ const StyledTabs = (props: any) => {
         classNames={{
           tabControl:
             "group text-white text-md px-6 py-3 w-1/2 font-semibold bg-transparent",
-          tabActive:
-            "!bg-white !text-main-purple",
+          tabActive: "!bg-white !text-main-purple",
           tabInner: "group-hover:scale-95 group-hover:opacity-75 duration-300 ",
         }}
         styles={() => ({
@@ -35,5 +34,5 @@ const StyledTabs = (props: any) => {
       />
     </motion.div>
   );
-}
+};
 export default StyledTabs;

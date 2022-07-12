@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { supabase } from "../lib/supabaseClient";
+
 const useCheckIfHasSet:Function = (username : string): boolean => {
   const [res, setRes] = useState<boolean>(false);
 
