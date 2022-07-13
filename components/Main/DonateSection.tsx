@@ -5,7 +5,7 @@ import { FC } from "react";
 const DonateSection: FC = () => {
   return (
     <div
-      className="p-6 w-full max-w-7xl lg:p-0 winScl:scale-90 winScl:mt-0 hidden lg:flex flex-col justify-center items-center lg:flex-row lg:pt-16 h-screen"
+      className="p-6 w-full max-w-7xl lg:p-6 winScl:scale-90 winScl:mt-0 hidden lg:flex flex-col justify-center items-center lg:flex-row lg:pt-16 h-full"
       id="section4"
     >
       <div className="flex flex-col w-full lg:w-1/4">

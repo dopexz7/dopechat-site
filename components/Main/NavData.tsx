@@ -19,11 +19,6 @@ export const NavData: MyType[] = [
     section: "section3",
     icon: <Md.MdOutlineChangeCircle className="mr-1" />,
   },
-  {
-    title: "Donate",
-    section: "section4",
-    icon: <Fa.FaPaypal className="mr-1" />,
-  },
 ];
 
 type MyType = {

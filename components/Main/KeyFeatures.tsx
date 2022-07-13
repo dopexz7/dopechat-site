@@ -4,7 +4,7 @@ const KeyFeatures: FC = () => {
   
   return (
     <div
-      className="winScl:scale-90 w-full max-w-7xl winScl:mt-0 flex flex-col items-center pt-6 lg:pt-16 lg:h-screen"
+      className="winScl:scale-90 w-full max-w-7xl winScl:mt-0 flex flex-col items-center pt-6 lg:pt-16 lg:h-full"
       id="section1"
     >
       <div className="text-xs lg:text-sm font-normal text-accent-gray">
@@ -14,11 +14,10 @@ const KeyFeatures: FC = () => {
         What are the key features?
       </div>
 
-      <div className="flex flex-col text-white lg:mr-16 lg:ml-16 space-y-1 lg:space-x-16 lg:mt-28 lg:flex-row">
+      <div className="flex flex-col text-white lg:mr-16 lg:ml-16 lg:space-x-16 lg:mt-2 lg:flex-row">
         {featuresList.map((data: any, index: any) => (
           <div
-            className={` ${data.title === "Custom emotes" ? "lg:mt-10" : ""}
-            flex flex-col m-auto rounded-3xl lg:flex-col items-center lg:rounded-3xl lg:shadow-lg h-full lg:h-4/5 w-11/12 lg:w-2/5 p-3 lg:p-10 lg:mt-28 bg-darker-purple lg:bg-accent-white bg-opacity-25`}
+            className="flex flex-col m-auto rounded-3xl lg:flex-col items-center lg:rounded-3xl lg:shadow-lg h-full lg:h-4/5 w-11/12 lg:w-2/5 p-3 lg:p-10 lg:mt-28 bg-darker-purple lg:bg-accent-white bg-opacity-25"
             key={index}
           >
             {data.icon}

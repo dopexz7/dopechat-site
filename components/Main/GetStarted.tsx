@@ -5,7 +5,7 @@ const GetStarted: FC = () => {
   const scroll = Scroll.animateScroll;
   return (
     <div
-      className="lg:p-0 w-full max-w-7xl winScl:scale-90 winScl:mt-0 flex flex-col justify-center items-center lg:flex-row lg:pt-16 h-full p-3 lg:h-screen"
+      className="lg:p-0 w-full max-w-7xl winScl:scale-90 winScl:mt-0 flex flex-col justify-center items-center lg:flex-row lg:pt-16 h-full p-4 lg:h-screen"
       id="section5"
     >
       <div className="duration-300 w-full h-1/2 bg-darker-purple rounded-3xl p-6 flex flex-col items-center justify-center relative overflow-hidden">
