@@ -30,7 +30,7 @@ const DashboardLayout:FC<LayoutTypes> = (props) => {
       {user ? (
         <div className="overflow-hidden bg-header-bg bg-main-purple bg-blend-multiply h-screen w-screen flex flex-col justify-center items-center">
           <DashboardNav />
-          <div className="overflow-hidden space-x-20 w-full p-10 h-full flex flex-row space-y-3 items-center justify-center">
+          <div className="overflow-hidden lg:space-x-20 w-full p-10 h-full flex flex-col lg:flex-row space-y-3 items-center justify-center">
             {props.children}
           </div>
         </div>

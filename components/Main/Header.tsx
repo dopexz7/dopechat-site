@@ -48,11 +48,11 @@ const Header:FC = () => {
         <div className="h-screen flex flex-row mr-auto">
           <div className="winScl:scale-75 winScl:mt-20 p-6 lg:p-8 mt-20 lg:mt-44 w-full lg:w-[50vw] fixed top-0 flex-col flex lg:flex-col">
             <div className="flex flex-col">
-              <h1 className="hidden lg:flex text-5xl font-light max-w-xl ">
+              <h1 className="flex text-2xl lg:text-5xl font-light max-w-xl ">
                 The ultimate FB Gaming livestream experience
               </h1>
 
-              <p className="text-base lg:text-lg lg:mt-8 xlx:mt-3 tracking-wider font-light m-0 text-center lg:text-left">
+              <p className="text-sm lg:text-lg lg:mt-8 xlx:mt-3 tracking-wider font-light m-0">
                 The all-in-one extension is designed to add custom emotes,
                 customize chat appearance and add more quality of life
                 improvements, tweaks. All within the easy-to-use settings page.
@@ -79,7 +79,10 @@ const Header:FC = () => {
 
             <Menu
               control={
-                <button type="button" className="font-normal text-xs mt-3 ">
+                <button
+                  type="button"
+                  className="font-normal hidden lg:flex text-xs mt-3 "
+                >
                   All versions
                 </button>
               }
@@ -101,25 +104,40 @@ const Header:FC = () => {
                 ))}
             </Menu>
 
-            <div className="lg:mt-9 xlx:mt-3 text-white flex flex-col h-max lg:text-left  p-3 lg:border-0 lg:p-0">
-              Available for
-              <div className="flex flex-row lg:flex-row mt-3 space-x-2 lg:self-auto">
+            <div className="lg:mt-9 xlx:mt-3 text-white flex flex-col h-max py-3 lg:border-0 lg:p-0">
+              <p>Available for</p>
+
+              <div className="flex flex-col lg:flex-row mt-3 lg:space-x-2 space-y-2 lg:space-y-0 lg:self-auto">
                 {menuData &&
                   menuData.map((data, index) => (
                     <div
                       key={index}
-                      title={data.title}
-                      className="bg-accent-purple p-2 flex justify-center items-center rounded-2xl text-2xl"
+                      className="flex flex-row space-x-3 items-center tracking-wider font-light text-sm"
                     >
-                      {data.icon}
+                      <div
+                        title={data.title}
+                        className="bg-accent-purple p-2 flex w-max justify-center items-center rounded-2xl text-2xl"
+                      >
+                        {data.icon}
+                      </div>
+                      <div className="ml-1 lg:hidden">{data.title}</div>
                     </div>
                   ))}
               </div>
               <div className="mt-3 text-white flex flex-col">
-                <div className="text-main-white text-xs hidden lg:flex">
+                <div className="lg:text-main-white lg:text-xs mt-1 lg:m-0">
                   Other browsers like Brave might work
                 </div>
+                <p className="text-main-white text-xs mt-1 lg:m-0 block lg:hidden">
+                  Only on desktop
+                </p>
               </div>
+            </div>
+
+            <div className="hidden lg:flex flex-row items-end m-auto w-1/6 -z-10 opacity-10 scale-90 blur-sm">
+              <div className="lll3 rounded-3xl z-20 absolute translate-x-[30%] translate-y-[80px]  scale-x-[0.86] skew-y-[8deg]"></div>
+              <div className="lll2 rounded-3xl z-10 absolute translate-x-[95%] translate-y-[180px] skew-y-[8deg]"></div>
+              <div className="lll  rounded-3xl z-0  absolute translate-x-[80%] translate-y-[80px]  scale-x-[0.86] skew-y-[8deg]"></div>
             </div>
           </div>
         </div>
@@ -127,4 +145,4 @@ const Header:FC = () => {
     </>
   );
 }
-export default Header
+export default Header;

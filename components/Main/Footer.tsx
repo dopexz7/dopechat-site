@@ -15,8 +15,8 @@ const Footer:FC = () => {
     >
       <div className="w-full max-w-7xl p-12 flex flex-col lg:flex-row space-y-6 lg:space-y-0 lg:space-x-24 m-auto">
         <div className="w-full lg:w-1/2 flex flex-col space-y-1">
-          <div className="text-main-black text-xl">ABOUT</div>
-          <div className="text-base font-light">
+          <div className="text-main-black text-base lg:text-xl">ABOUT</div>
+          <div className="text-sm lg:text-base font-light">
             <span className="text-main-purple">dopeChat</span> aims to provide
             the best possible Facebook Gaming livestream viewing experience. It
             features tons of new features, customizations (and customizations to
@@ -28,21 +28,23 @@ const Footer:FC = () => {
         </div>
         <div className="flex flex-row w-full lg:w-1/2 ">
           <div className="w-1/2 flex flex-col space-y-2">
-            <div className="text-main-black text-xl">FEATURES</div>
-            <div className="text-sm font-normal">Custom emotes</div>
-            <div className="text-sm font-normal">
+            <div className="text-main-black text-base lg:text-xl">FEATURES</div>
+            <div className="text-xs lg:text-sm font-normal">Custom emotes</div>
+            <div className="text-xs lg:text-sm font-normal">
               Customizable chat appearance
             </div>
-            <div className="text-sm font-normal">Popout chat</div>
-            <div className="text-sm font-normal">Theatre mode</div>
-            <div className="text-sm font-normal">
+            <div className="text-xs lg:text-sm font-normal">Popout chat</div>
+            <div className="text-xs lg:text-sm font-normal">Theatre mode</div>
+            <div className="text-xs lg:text-sm font-normal">
               Mouse wheel scroll volume adjusting
             </div>
-            <div className="text-sm font-normal">Chat splitting</div>
-            <div className="text-sm font-normal">And more!</div>
+            <div className="text-xs lg:text-sm font-normal">Chat splitting</div>
+            <div className="text-xs lg:text-sm font-normal">And more!</div>
           </div>
           <div className="w-max lg:ml-auto flex flex-col space-y-2">
-            <div className="text-main-black text-xl">QUICK LINKS</div>
+            <div className="text-main-black text-base lg:text-xl">
+              QUICK LINKS
+            </div>
             {NavData.map((data, index) => (
               <Linkx
                 activeClass="text-accent-purple duration-300"
@@ -52,7 +54,7 @@ const Footer:FC = () => {
                 smooth={true}
                 offset={-50}
                 duration={600}
-                className="text-sm cursor-pointer hover:text-main-purple duration-300 font-medium flex flex-row items-center"
+                className="text-xs lg:text-sm cursor-pointer hover:text-main-purple duration-300 font-medium flex flex-row items-center"
               >
                 {data.icon}
                 {data.title}
@@ -60,20 +62,22 @@ const Footer:FC = () => {
             ))}
 
             <Link href="/dashboard" passHref>
-              <div className="text-sm cursor-pointer hover:text-main-purple duration-300 font-medium flex flex-row items-center">
+              <div className="text-xs lg:text-sm cursor-pointer hover:text-main-purple duration-300 font-medium flex flex-row items-center">
                 <Md.MdDashboard className="mr-1" /> Dashboard
               </div>
             </Link>
             <ContactMain
               iconClass={`mr-1`}
-              btnClass={`text-sm cursor-pointer hover:text-main-purple duration-300 font-medium flex flex-row items-center`} text={undefined}            />
+              btnClass={`text-xs lg:text-sm cursor-pointer hover:text-main-purple duration-300 font-medium flex flex-row items-center`}
+              text={undefined}
+            />
             <Link href="/legal/privacy" passHref>
-              <div className="text-sm cursor-pointer hover:text-main-purple duration-300 font-medium flex flex-row items-center">
+              <div className="text-xs lg:text-sm cursor-pointer hover:text-main-purple duration-300 font-medium flex flex-row items-center">
                 <Md.MdPrivacyTip className="mr-1" /> Privacy policy
               </div>
             </Link>
             <Link href="/legal/terms" passHref>
-              <div className="text-sm cursor-pointer hover:text-main-purple duration-300 font-medium flex flex-row items-center">
+              <div className="text-xs lg:text-sm cursor-pointer hover:text-main-purple duration-300 font-medium flex flex-row items-center">
                 <Bs.BsExclamationSquareFill className="mr-1" /> Terms of service
               </div>
             </Link>
@@ -81,7 +85,7 @@ const Footer:FC = () => {
         </div>
       </div>
       <div className="w-full">
-        <div className="w-full flex flex-row items-center max-w-7xl p-6 border-t-2 m-auto text-base">
+        <div className="w-full flex flex-row items-center max-w-7xl p-6 border-t-2 m-auto text-sm lg:text-base">
           <div>
             Made by <span className="text-main-purple">dope</span>, Copyright ©
             2022, All Rights Reserved by

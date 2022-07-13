@@ -1,30 +1,20 @@
 import React, { FC } from "react";
-import { motion } from "framer-motion";
-import { leftToRightVariant, rightToLeftVariant } from "./transitionVariants";
 
 const Changelog: FC = () => {
   return (
     <>
       <div
-        className="p-6 w-full max-w-7xl lg:p-0 flex flex-row relative h-screen items-center"
+        className="p-6 w-full max-w-7xl lg:p-0 hidden lg:flex flex-row relative h-screen items-center"
         id="section3"
       >
         <div className="ml-auto h-3/4 w-full flex flex-row lg:flex-row text-white lg:mr-16 justify-center items-center">
-          <motion.span
-            initial="offscreen"
-            whileInView="onscreen"
-            viewport={{ once: true, amount: 0.8 }}
-            variants={leftToRightVariant}
+          <div
             className="w-2/3 text-2xl lg:text-8xl font-normal lg:font-light text-main-black tracking-tight"
           >
             Changelog
-          </motion.span>
+          </div>
 
-          <motion.div
-            initial="offscreen"
-            whileInView="onscreen"
-            viewport={{ once: true, amount: 0.8 }}
-            variants={rightToLeftVariant}
+          <div
             className="h-5/6 shadow-2xl p-3 font-normal text-main-black rounded-xl flex flex-col scrollbar-thin scrollbar-thumb-darker-purple scrollbar-track-main-white overflow-y-scroll border-2 w-3/4 text-sm"
           >
             <div className="bg-darker-purple px-3 py-1 flex text-main-white w-max rounded-2xl">
@@ -283,7 +273,7 @@ const Changelog: FC = () => {
             <div className="m-3">
               <div className="">initial release</div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </>

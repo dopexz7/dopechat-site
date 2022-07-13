@@ -42,7 +42,7 @@ const MainAdmin: FC = () => {
   return (
     <DashboardLayout title="Admin">
       <AdminRoute>
-        <div className="border-[1px] border-white border-opacity-5 shadow-2xl rounded-3xl h-max backdrop-blur-sm max-w-full w-1/5 flex flex-col">
+        <div className="border-[1px] border-white border-opacity-5 shadow-2xl rounded-3xl h-max backdrop-blur-sm max-w-full w-full lg:w-1/5 flex flex-col">
           <DashboardLeftSignedIn
             profile={true}
             onSuccess={function () {
@@ -50,7 +50,7 @@ const MainAdmin: FC = () => {
             }}
           />
         </div>
-        <div className="shadow-sm backdrop-blur-sm border-[1px] rounded-3xl p-1 border-white border-opacity-5 h-full w-[55%] flex flex-col">
+        <div className="shadow-sm backdrop-blur-sm border-[1px] rounded-3xl p-1 border-white border-opacity-5 h-full w-full lg:w-[55%] flex flex-col">
           <div className="px-6 py-2 flex flex-row items-center">
             <div className="flex flex-row items-center  text-white">
               <p className="text-xl">User submitted emotes</p>

@@ -173,9 +173,6 @@ a {
 .anim-bt1 {
   animation: bt1 0.8s var(--delay) both;
 }
-.box-xl {
-  box-shadow: rgb(145 158 171 / 40%) -40px 40px 80px 0px;
-}
 
 ::-webkit-scrollbar-track {
   border-radius: 12px;
