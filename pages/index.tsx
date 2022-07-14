@@ -21,7 +21,7 @@ const Home:FC = () => {
       </Head>
 
       <MainNav />
-      <div className="w-screen h-screen bg-main-purple bg-header-bg bg-blend-multiply z-0 bg-fixed">
+      <div className="w-screen h-screen bg-darker-purple lg:bg-main-purple lg:bg-header-bg lg:bg-blend-multiply z-0 bg-fixed">
         <Header />
       </div>
       <div className="h-full relative">

@@ -14,10 +14,10 @@ const KeyFeatures: FC = () => {
         What are the key features?
       </div>
 
-      <div className="flex flex-col text-white lg:mr-16 lg:ml-16 lg:space-x-16 lg:mt-2 lg:flex-row">
+      <div className="flex flex-col text-white lg:mr-16 lg:ml-16 lg:space-x-16 space-y-1 lg:space-y-0 lg:mt-2 lg:flex-row">
         {featuresList.map((data: any, index: any) => (
           <div
-            className="flex flex-col m-auto rounded-3xl lg:flex-col items-center lg:rounded-3xl lg:shadow-lg h-full lg:h-4/5 w-11/12 lg:w-2/5 p-3 lg:p-10 lg:mt-28 bg-darker-purple lg:bg-accent-white bg-opacity-25"
+            className="flex flex-col m-auto lg:flex-col items-center rounded-3xl lg:shadow-lg lg:h-4/5 w-11/12 lg:w-2/5 p-3 lg:p-10 lg:mt-28 bg-darker-purple lg:bg-accent-white bg-opacity-25"
             key={index}
           >
             {data.icon}
