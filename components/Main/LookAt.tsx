@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Link } from "react-scroll";
+// import { Link } from "react-scroll";
 
 const LookAt:FC = () => {
   return (
