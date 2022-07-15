@@ -18,7 +18,7 @@ const LookAt:FC = () => {
           chat and theatre mode.
         </div>
 
-        <div>
+        {/* <div>
           <Link
             className="border-2 flex flex-row cursor-pointer duration-300 rounded-lg px-4 py-2 w-max font-normal hover:border-accent-purple hover:text-main-purple mt-6"
             to="section3"
@@ -29,7 +29,7 @@ const LookAt:FC = () => {
           >
             View the full changelog
           </Link>
-        </div>
+        </div> */}
       </div>
 
       <div className="flex lg:hidden flex-row w-11/12 p-0 rounded-3xl overflow-hidden">

@@ -4,21 +4,21 @@ import * as Hi from "react-icons/hi";
 import * as Md from "react-icons/md";
 
 export const NavData: MyType[] = [
-  {
-    title: "About",
-    section: "section1",
-    icon: <Fa.FaInfo className="mr-1 p-0.5" />,
-  },
-  {
-    title: "Features",
-    section: "section2",
-    icon: <Hi.HiDotsVertical className="mr-1" />,
-  },
-  {
-    title: "Changelog",
-    section: "section3",
-    icon: <Md.MdOutlineChangeCircle className="mr-1" />,
-  },
+  // {
+  //   title: "About",
+  //   section: "section1",
+  //   icon: <Fa.FaInfo className="mr-1 p-0.5" />,
+  // },
+  // {
+  //   title: "Features",
+  //   section: "section2",
+  //   icon: <Hi.HiDotsVertical className="mr-1" />,
+  // },
+  // {
+  //   title: "Changelog",
+  //   section: "section3",
+  //   icon: <Md.MdOutlineChangeCircle className="mr-1" />,
+  // },
 ];
 
 type MyType = {
