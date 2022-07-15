@@ -1,13 +1,14 @@
 import Head from "next/head";
 import React from "react";
 import { FC } from "react";
-import Changelog from "../components/Main/Changelog";
-import DonateSection from "../components/Main/DonateSection";
-import Footer from "../components/Main/Footer";
-import GetStarted from "../components/Main/GetStarted";
+// import Changelog from "../components/Main/Changelog";
+// import DonateSection from "../components/Main/DonateSection";
+// import Footer from "../components/Main/Footer";
+// import GetStarted from "../components/Main/GetStarted";
+// import KeyFeatures from "../components/Main/KeyFeatures";
+// import LookAt from "../components/Main/LookAt";
 import Header from "../components/Main/Header";
-import KeyFeatures from "../components/Main/KeyFeatures";
-import LookAt from "../components/Main/LookAt";
+
 import MainNav from "../components/Main/MainNav";
 
 const Home:FC = () => {

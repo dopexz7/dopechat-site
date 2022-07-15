@@ -2,11 +2,11 @@ import * as Scroll from "react-scroll";
 import Link from "next/link";
 import * as Fa from "react-icons/fa";
 import * as Md from "react-icons/md";
-import { NavData } from "./NavData";
+// import { NavData } from "./NavData";
 import MobileNav from "./MobileNav";
 import ContactMain from "../Contact/ContactMain";
 
-const Linkx = Scroll.Link;
+// const Linkx = Scroll.Link;
 
 export default function MainNav() {
   const scroll = Scroll.animateScroll;
@@ -34,7 +34,7 @@ export default function MainNav() {
           >
             <Fa.FaHome className="mr-1" /> Home
           </div>
-          {NavData.map((item, index) => {
+          {/* {NavData.map((item, index) => {
             return (
               <Linkx
                 className="hover:text-white duration-300 hidden lg:flex cursor-pointer lg:flex-row lg:items-center"
@@ -50,7 +50,7 @@ export default function MainNav() {
                 {item.title}
               </Linkx>
             );
-          })}
+          })} */}
           <ContactMain
             btnClass={`hover:text-white duration-300 hidden lg:flex cursor-pointer lg:flex-row lg:items-center`}
             iconClass={`mr-3`} text={undefined}          />
