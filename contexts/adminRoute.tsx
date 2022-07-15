@@ -2,7 +2,7 @@ import React, { FC, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { getIsMod } from "../funcs/useIsMod"; 
 import { useAuth } from "./AppContext";
-
+ 
 const AdminRoute: FC<AdminRouteProps> = ({ children }) => {
   const { user } = useAuth() as any;
   const router = useRouter();
