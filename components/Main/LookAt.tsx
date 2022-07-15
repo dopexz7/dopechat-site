@@ -7,23 +7,20 @@ const LookAt:FC = () => {
       className="winScl:scale-[0.9] w-full max-w-7xl winScl:mt-20 flex flex-col lg:flex-row lg:space-x-10 items-center pt-0 h-full lg:h-screen"
       id="section2"
     >
-      <div className="w-full p-8 pb-4 lg:p-0 lg:w-2/6 flex flex-col lg:flex-col text-white lg:mr-16 lg:ml-16">
-        <div className="text-xs lg:text-sm font-normal text-accent-gray">
-          features
-        </div>
+      <div className="w-full p-8 pb-4 lg:p-0 lg:w-2/6 flex flex-col lg:flex-col  lg:mr-16 lg:ml-16">
 
-        <div className="text-2xl lg:text-6xl font-light text-main-black mt-6 tracking-tight w-3/4">
+        <div className="text-2xl lg:text-6xl font-light  mt-6 tracking-tight w-3/4">
           A look at extension&apos;s features
         </div>
 
-        <div className="text-xs lg:text-sm font-normal text-accent-gray mt-6 w-3/4">
+        <div className="text-xs lg:text-sm font-normal text-accent-white mt-3 w-full">
           Extension features customized chat apperance, custom emotes, popout
           chat and theatre mode.
         </div>
 
         <div>
           <Link
-            className="border-2 hidden lg:flex lg:flex-row cursor-pointer duration-300 rounded-lg px-4 py-2 w-max text-main-black font-normal hover:border-accent-purple hover:text-main-purple mt-6"
+            className="border-2 flex flex-row cursor-pointer duration-300 rounded-lg px-4 py-2 w-max font-normal hover:border-accent-purple hover:text-main-purple mt-6"
             to="section3"
             spy={true}
             smooth={true}

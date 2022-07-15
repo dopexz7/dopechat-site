@@ -9,7 +9,7 @@ export const featuresList: MyType[] = [
     description:
       "Freedom to customize the chat however you want: change colors, font, text size, hide elements and more! All within the easy-to-use settings.",
     icon: (
-      <Bs.BsChatRightText className="text-white lg:text-main-purple drop-shadow-md lg:mt-6 p-3 h-10 w-12 mr-2 lg:mr-0 lg:w-10" />
+      <Bs.BsChatRightText className="text-white  drop-shadow-md lg:mt-6 p-3 h-10 w-12 mr-2 lg:mr-0 lg:w-10" />
     ),
   },
   {
@@ -17,7 +17,7 @@ export const featuresList: MyType[] = [
     description:
       "Streamers have the ability to create their own custom emote sets for their followers. Extension also features a global emote set which is updated regularly.",
     icon: (
-      <Hi.HiOutlineEmojiHappy className="text-white lg:text-main-purple drop-shadow-md lg:mt-6 p-3 h-10 w-12 mr-2 lg:mr-0 lg:w-10" />
+      <Hi.HiOutlineEmojiHappy className="text-white  drop-shadow-md lg:mt-6 p-3 h-10 w-12 mr-2 lg:mr-0 lg:w-10" />
     ),
   },
   {
@@ -25,7 +25,7 @@ export const featuresList: MyType[] = [
     description:
       "The extension features other quality of life (toggleable) tweaks, including mouse wheel scroll volume control, chat splitting and more!",
     icon: (
-      <Go.GoSettings className="text-white lg:text-main-purple drop-shadow-md lg:mt-6 p-3 h-10 w-12 mr-2 lg:mr-0 lg:w-10" />
+      <Go.GoSettings className="text-white  drop-shadow-md lg:mt-6 p-3 h-10 w-12 mr-2 lg:mr-0 lg:w-10" />
     ),
   },
 ];

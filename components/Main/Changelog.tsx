@@ -4,20 +4,16 @@ const Changelog: FC = () => {
   return (
     <>
       <div
-        className="p-6 w-full max-w-7xl lg:p-0 hidden lg:flex flex-row relative h-screen items-center"
+        className="w-screen max-w-6xl flex flex-row h-screen items-center"
         id="section3"
       >
-        <div className="ml-auto h-3/4 w-full flex flex-row lg:flex-row text-white lg:mr-16 justify-center items-center">
-          <div
-            className="w-2/3 text-2xl lg:text-8xl font-normal lg:font-light text-main-black tracking-tight"
-          >
+        <div className="ml-auto h-3/4 space-x-20 flex flex-row lg:flex-row lg:mr-16 justify-center items-center">
+          <div className="text-2xl lg:text-8xl font-normal lg:font-light tracking-tight">
             Changelog
           </div>
 
-          <div
-            className="h-5/6 shadow-2xl p-3 font-normal text-main-black rounded-xl flex flex-col scrollbar-thin scrollbar-thumb-darker-purple scrollbar-track-main-white overflow-y-scroll border-2 w-3/4 text-sm"
-          >
-            <div className="bg-darker-purple px-3 py-1 flex text-main-white w-max rounded-2xl">
+          <div className="h-5/6 p-3 font-normal rounded-xl flex flex-col scrollbar-thin scrollbar-thumb-white scrollbar-track-main-white overflow-y-scroll w-full text-sm border-[1px] border-white border-opacity-5 shadow-2xl ">
+            <div className=" bg-darker-purple px-3 py-1 flex text-main-white w-max rounded-2xl ">
               1.0
             </div>
             <div className="m-3">

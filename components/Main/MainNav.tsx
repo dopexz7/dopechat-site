@@ -16,7 +16,7 @@ export default function MainNav() {
       <MobileNav />
 
       <div
-        className={`duration-300 z-50 w-screen fixed top-0 bg-darker-purple bg-opacity-10 backdrop-blur-sm`}
+        className={`z-50 w-screen bg-darker-purple`}
       >
         <div
           className={`winScl:scale-[0.85] relative max-w-7xl w-screen mr-auto ml-auto flex flex-row justify-center items-center p-4 lg:p-6 duration-300 space-x-6 text-main-white text-sm font-semibold`}

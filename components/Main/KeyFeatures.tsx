@@ -1,35 +1,51 @@
+import { motion } from "framer-motion";
 import { FC } from "react";
 import { featuresList } from "./featuresData";
 const KeyFeatures: FC = () => {
-  
+  const leftToRightVariant = {
+    offscreen: {
+      y: 150,
+      opacity: 0,
+    },
+    onscreen: {
+     y: 0,
+      opacity: 1,
+      transition: {
+        type: "fade",
+        fade: 0.4,
+        duration: 0.8,
+      },
+    },
+  };
   return (
     <div
-      className="winScl:scale-90 w-full max-w-7xl winScl:mt-0 flex flex-col items-center pt-6 lg:pt-16 lg:h-full"
+      className="p-6 lg:p-8 mt-36 w-screen max-w-6xl  fixed top-0 flex flex-col"
       id="section1"
     >
-      <div className="text-xs lg:text-sm font-normal text-accent-gray">
-        about
+      <div className="flex flex-col text-2xl lg:text-5xl font-light max-w-xl m-6">
+        <div>Key</div>
+        <div>features</div>
       </div>
-      <div className="text-2xl lg:text-6xl font-light text-main-black m-6 tracking-tight">
-        What are the key features?
-      </div>
-
-      <div className="flex flex-col text-white lg:mr-16 lg:ml-16 lg:space-x-16 space-y-1 lg:space-y-0 lg:mt-2 lg:flex-row">
-        {featuresList.map((data: any, index: any) => (
-          <div
-            className="flex flex-col m-auto lg:flex-col items-center rounded-3xl lg:shadow-lg lg:h-4/5 w-11/12 lg:w-2/5 p-3 lg:p-10 lg:mt-28 bg-darker-purple lg:bg-accent-white bg-opacity-25"
-            key={index}
-          >
-            {data.icon}
-            <div className="lg:mt-14 text-base lg:text-lg text-accent-white lg:text-main-black font-medium w-2/4 lg:w-full text-center lg:border-0">
-              {data.title}
+      <motion.div
+        initial="offscreen"
+        whileInView="onscreen"
+        viewport={{ once: true, amount: 0.8 }}
+        variants={leftToRightVariant}
+        >
+        <div className="flex flex-row text-white space-x-16 space-y-0 lg:mt-2 backdrop-blur-sm shadow-2xl p-10 rounded-3xl">
+          {featuresList.map((data: any, index: any) => (
+            <div className="flex flex-col m-auto items-center " key={index}>
+              {data.icon}
+              <div className="lg:mt-14 text-base lg:text-lg text-white font-medium w-2/4 lg:w-full text-center lg:border-0">
+                {data.title}
+              </div>
+              <div className="lg:mt-6 text-sm tracking-wider font-light w-4/5 lg:w-full p-3 text-justify lg:text-left">
+                {data.description}
+              </div>
             </div>
-            <div className="lg:mt-6 text-xs lg:text-sm text-main-white lg:text-accent-gray font-normal w-4/5 lg:w-full p-3 text-justify lg:text-left">
-              {data.description}
-            </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      </motion.div>
     </div>
   );
 }

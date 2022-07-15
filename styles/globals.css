@@ -40,6 +40,9 @@ body {
   height: 100vh;
   overflow-y: overlay;
   overflow-x: hidden;
+  background-color: var(--main-purple);
+  background-image: var(--header-bg);
+  background-blend-mode: multiply;
 }
 
 a {
@@ -174,24 +177,10 @@ a {
   animation: bt1 0.8s var(--delay) both;
 }
 
-::-webkit-scrollbar-track {
-  border-radius: 12px;
-}
-::-webkit-scrollbar-thumb {
-  border-radius: 12px;
-}
 ::-webkit-scrollbar {
-  width: 10px;
+  display:none
 }
 
-::-webkit-scrollbar-track {
-  background: var(--main-white);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--darker-purple);
-  transition: 0.3s;
-}
 .anim {
   animation: bottom 0.8s 0.1s both;
 }
@@ -417,3 +406,8 @@ a {
   --tw-ring-color: var(--accent-purple) !important;
   box-shadow: var(--main-purple) 0px 0px 2px !important;
 }
+
+.origin-center-50vh {
+  transform-origin: center calc(50vh);
+}
+
