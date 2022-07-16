@@ -4,10 +4,10 @@ import { featuresList } from "./featuresData";
 const KeyFeatures: FC = () => {
   return (
     <div
-      className="w-screen max-w-7xl p-3 lg:p-0 flex flex-col lg:flex-row lg:space-x-10 items-center pt-0 h-full lg:h-screen"
+      className="w-screen max-w-6xl p-3 lg:p-0 flex flex-col lg:flex-row lg:space-x-10 items-center pt-0 h-full lg:h-screen"
       id="section1"
     >
-      <div className="flex space-x-2 lg:space-x-0 lg:flex-col text-2xl lg:text-5xl font-light max-w-xl m-6">
+      <div className="flex space-x-2 lg:space-x-0 lg:flex-col text-2xl lg:text-6xl font-light max-w-xl m-6">
         <div>Key</div>
         <div>features</div>
       </div>

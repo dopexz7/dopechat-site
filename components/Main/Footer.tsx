@@ -7,7 +7,7 @@ import ContactMain from "../Contact/ContactMain";
 const Footer:FC = () => {
   return (
     <div
-      className="w-screen max-w-7xl flex flex-col h-full lg:h-screen justify-center bg-black bg-opacity-25 lg:bg-transparent"
+      className="w-screen max-w-6xl flex flex-col h-full lg:h-screen justify-center bg-black bg-opacity-25 lg:bg-transparent"
       id="section6"
     >
       <div className="w-full max-w-7xl space-y-3 p-12 flex flex-col m-auto">
@@ -62,13 +62,16 @@ const Footer:FC = () => {
             </Link>
           </div>
         </div>
-      </div>
-      <div className="w-full">
-        <div className="w-full flex flex-row items-center max-w-7xl p-6 m-auto text-sm lg:text-base">
-          <div>
-            Made by <span className="text-main-purple">dope</span>, Copyright ©
-            2022, All Rights Reserved by
-            <span className="text-main-purple"> dopeChat</span>
+        <div className="fixed text-2xl lg:text-9xl left-0 opacity-5 font-normal lg:font-light tracking-tight">
+          footer
+        </div>
+        <div className="w-full">
+          <div className="flex flex-row items-center lg:border-t-[1px] border-white border-opacity-5 py-3 lg:w-max text-sm lg:text-base">
+            <div>
+              Made by <span className="text-main-purple">dope</span>, Copyright
+              © 2022, All Rights Reserved by
+              <span className="text-main-purple"> dopeChat</span>
+            </div>
           </div>
         </div>
       </div>

@@ -39,7 +39,7 @@ const MainHeader:FC = () => {
     },
   ];
   return (
-    <div className="w-screen max-w-7xl mt-20 lg:mt-0 flex flex-col lg:flex-row lg:space-x-10 lg:items-center pt-0 h-full lg:h-screen">
+    <div className="w-screen max-w-6xl mt-20 lg:mt-0 flex flex-col lg:flex-row lg:space-x-10 lg:items-center pt-0 h-full lg:h-screen">
       <div className="flex flex-col p-6">
         <h1 className="flex text-2xl lg:text-5xl font-light max-w-xl ">
           The ultimate FB Gaming livestream experience

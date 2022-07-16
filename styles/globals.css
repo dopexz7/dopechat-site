@@ -74,7 +74,6 @@ a {
   transform: translateX(0);
 }
 
-
 .text-shadow-purple {
   text-shadow: 0 0 10px var(--main-purple);
 }
