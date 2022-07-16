@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { motion } from "framer-motion";
 import { leftToRightVariant, rightToLeftVariant } from "./transitionVariants";
-import { BrowserView, MobileView } from "react-device-detect";
+import { isMobile } from "react-device-detect";
 import ChangelogData from "./ChangelogData";
 const Changelog: FC = () => {
   return (
@@ -11,7 +11,11 @@ const Changelog: FC = () => {
         id="section3"
       >
         <div className="mr-auto w-screen max-w-6xl h-3/4 space-x-6 lg:space-x-20 p-6 flex flex-row lg:flex-row justify-center items-center">
-          <BrowserView>
+          {isMobile ? (
+            <div className="text-2xl lg:text-8xl font-normal lg:font-light tracking-tight">
+              Changelog
+            </div>
+          ) : (
             <motion.div
               initial="offscreen"
               whileInView="onscreen"
@@ -21,13 +25,12 @@ const Changelog: FC = () => {
             >
               Changelog
             </motion.div>
-          </BrowserView>
-          <MobileView>
-            <div className="text-2xl lg:text-8xl font-normal lg:font-light tracking-tight">
-              Changelog
+          )}
+          {isMobile ? (
+            <div className="h-5/6 p-3 font-normal rounded-xl flex flex-col scrollbar-thin scrollbar-thumb-white scrollbar-track-main-white overflow-y-scroll w-full text-sm border-[1px] border-white border-opacity-5 shadow-2xl ">
+              <ChangelogData />
             </div>
-          </MobileView>
-          <BrowserView>
+          ) : (
             <motion.div
               initial="offscreen"
               whileInView="onscreen"
@@ -37,14 +40,7 @@ const Changelog: FC = () => {
             >
               <ChangelogData />
             </motion.div>
-          </BrowserView>
-          <MobileView>
-            <div
-              className="h-5/6 p-3 font-normal rounded-xl flex flex-col scrollbar-thin scrollbar-thumb-white scrollbar-track-main-white overflow-y-scroll w-full text-sm border-[1px] border-white border-opacity-5 shadow-2xl "
-            >
-              <ChangelogData />
-            </div>
-          </MobileView>
+          )}
         </div>
       </div>
     </>
