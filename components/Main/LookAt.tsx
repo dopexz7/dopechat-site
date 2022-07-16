@@ -1,8 +1,10 @@
 import React, { FC } from "react";
 // import { Link } from "react-scroll";
 import { motion } from "framer-motion";
+import { useGetDevType } from "./useGetDevType";
 
 const LookAt: FC = () => {
+  const deviceType = useGetDevType();
   const topToBottom = {
     offscreen: {
       y: -150,
@@ -40,7 +42,7 @@ const LookAt: FC = () => {
     >
       <div className="w-full p-8 pb-4 lg:p-0 lg:w-2/6 flex flex-col lg:flex-col  lg:mr-16 lg:ml-16">
         <motion.div
-          initial="offscreen"
+          initial={deviceType === "Mobile" ? "offscreen" : "onscreen"}
           whileInView="onscreen"
           viewport={{ once: true, amount: 0.8 }}
           className="text-2xl lg:text-6xl font-light  mt-6 tracking-tight w-3/4"
@@ -49,7 +51,7 @@ const LookAt: FC = () => {
           A look at extension&apos;s features
         </motion.div>
         <motion.div
-          initial="offscreen"
+          initial={deviceType === "Mobile" ? "offscreen" : "onscreen"}
           whileInView="onscreen"
           viewport={{ once: true, amount: 0.8 }}
           className="text-xs lg:text-sm font-normal text-accent-white mt-3 w-full"
