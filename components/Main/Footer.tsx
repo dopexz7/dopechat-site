@@ -2,10 +2,7 @@ import React, { FC } from "react";
 import Link from "next/link";
 import * as Bs from "react-icons/bs";
 import * as Md from "react-icons/md";
-import { NavData } from "./NavData";
-import * as Scroll from "react-scroll";
 import ContactMain from "../Contact/ContactMain";
-const Linkx = Scroll.Link;
 
 const Footer:FC = () => {
   return (
@@ -45,22 +42,6 @@ const Footer:FC = () => {
             <div className="text-white text-base lg:text-xl">
               QUICK LINKS
             </div>
-            {NavData.map((data, index) => (
-              <Linkx
-                activeClass="text-accent-purple duration-300"
-                key={index}
-                to={data.section ? data.section : ""}
-                spy={true}
-                smooth={true}
-                offset={-50}
-                duration={600}
-                className="text-xs lg:text-sm cursor-pointer hover:text-main-purple duration-300 font-medium flex flex-row items-center"
-              >
-                {data.icon}
-                {data.title}
-              </Linkx>
-            ))}
-
             <Link href="/dashboard" passHref>
               <div className="text-xs lg:text-sm cursor-pointer hover:text-main-purple duration-300 font-medium flex flex-row items-center">
                 <Md.MdDashboard className="mr-1" /> Dashboard
