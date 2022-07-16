@@ -40,7 +40,7 @@ const MainHeader:FC = () => {
   ];
   return (
     <div className="h-screen flex flex-row mr-auto">
-      <div className="p-6 lg:p-8 mt-44 w-[50vw] fixed top-0 flex flex-col">
+      <div className="p-6 lg:p-8 mt-20 lg:mt-44 lg:w-[50vw] lg:fixed top-0 flex flex-col">
         <div className="flex flex-col">
           <h1 className="flex text-2xl lg:text-5xl font-light max-w-xl ">
             The ultimate FB Gaming livestream experience

@@ -6,7 +6,7 @@ const KeyFeatures: FC = () => {
 
   return (
     <div
-      className="p-6 lg:p-8 mt-36 w-screen max-w-6xl  fixed top-0 flex flex-col"
+      className="p-6 lg:p-8 lg:mt-36 w-screen max-w-6xl lg:fixed top-0 flex flex-col"
       id="section1"
     >
       <motion.div
@@ -24,7 +24,7 @@ const KeyFeatures: FC = () => {
         whileInView="onscreen"
         viewport={{ once: true, amount: 0.8 }}
         variants={bottomToTopVariant}
-        className="flex flex-row text-white space-x-16 space-y-0 lg:mt-2 border-[1px] border-white border-opacity-5 shadow-2xl p-10 rounded-3xl"
+        className="flex flex-col lg:flex-row text-white lg:space-x-16 space-y-0 lg:mt-2 border-[1px] border-white border-opacity-5 shadow-2xl p-10 rounded-3xl"
       >
         {featuresList.map((data: any, index: any) => (
           <div className="flex flex-col m-auto items-center " key={index}>

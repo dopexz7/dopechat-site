@@ -8,7 +8,7 @@ const Changelog: FC = () => {
         className="w-screen flex flex-row h-screen items-center"
         id="section3"
       >
-        <div className="mr-auto w-screen max-w-7xl h-3/4 space-x-20 flex flex-row lg:flex-row justify-center items-center">
+        <div className="mr-auto w-screen max-w-6xl h-3/4 space-x-6 lg:space-x-20 p-6 flex flex-row lg:flex-row justify-center items-center">
           <motion.div
             initial="offscreen"
             whileInView="onscreen"

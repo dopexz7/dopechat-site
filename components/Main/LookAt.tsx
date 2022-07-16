@@ -35,7 +35,7 @@ const LookAt: FC = () => {
   };
   return (
     <div
-      className="winScl:scale-[0.9] w-screen max-w-7xl winScl:mt-20 flex flex-col lg:flex-row lg:space-x-10 items-center pt-0 h-full lg:h-screen"
+      className="w-screen max-w-7xl flex flex-col lg:flex-row lg:space-x-10 items-center pt-0 h-full lg:h-screen"
       id="section2"
     >
       <div className="w-full p-8 pb-4 lg:p-0 lg:w-2/6 flex flex-col lg:flex-col  lg:mr-16 lg:ml-16">
