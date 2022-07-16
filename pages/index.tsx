@@ -2,7 +2,6 @@ import Head from "next/head";
 import React from "react";
 import { FC } from "react";
 import Header from "../components/Main/Header";
-
 import MainNav from "../components/Main/MainNav";
 
 const Home:FC = () => {
