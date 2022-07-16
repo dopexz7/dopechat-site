@@ -40,11 +40,10 @@ const MainHeader:FC = () => {
   ];
   return (
     <div className="w-screen max-w-6xl mt-20 lg:mt-0 flex flex-col lg:flex-row lg:space-x-10 lg:items-center pt-0 h-full lg:h-screen">
-      <div className="flex flex-col p-6">
+      <div className="flex flex-col">
         <h1 className="flex text-2xl lg:text-6xl font-light">
           The ultimate FB Gaming livestream experience
         </h1>
-
         <p className="text-sm lg:text-lg lg:mt-3 xlx:mt-3 tracking-wider font-light m-0">
           The all-in-one extension is designed to add custom emotes, customize
           chat appearance and add more quality of life improvements, tweaks. All
