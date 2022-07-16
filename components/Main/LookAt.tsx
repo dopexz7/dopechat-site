@@ -10,6 +10,9 @@ const LookAt: FC = () => {
         <div className="text-2xl lg:text-6xl font-light  mt-6 tracking-tight w-3/4">
           A look at extension&apos;s features
         </div>
+        <div className="hidden lg:flex fixed text-9xl left-0 opacity-[0.02] font-light tracking-tight">
+          features
+        </div>
         <div className="text-xs lg:text-sm font-normal text-accent-white mt-3 w-full">
           Extension features customized chat apperance, custom emotes, popout
           chat and theatre mode.

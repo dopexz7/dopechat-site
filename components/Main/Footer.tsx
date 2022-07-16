@@ -62,7 +62,7 @@ const Footer:FC = () => {
             </Link>
           </div>
         </div>
-        <div className="fixed text-2xl lg:text-9xl left-0 opacity-5 font-normal lg:font-light tracking-tight">
+        <div className="hidden lg:flex fixed text-9xl left-0 opacity-[0.02] font-light tracking-tight">
           footer
         </div>
         <div className="w-full">

@@ -9,6 +9,9 @@ const KeyFeatures: FC = () => {
     >
       <div className="flex space-x-2 lg:space-x-0 lg:flex-col text-2xl lg:text-6xl font-light max-w-xl m-6">
         <div>Key</div>
+        <div className="hidden lg:flex fixed text-9xl left-0 opacity-[0.02] font-light tracking-tight">
+          about
+        </div>
         <div>features</div>
       </div>
       <div className="flex flex-col lg:flex-row text-white lg:space-x-16 space-y-0 lg:mt-2 border-[1px] border-white border-opacity-5 shadow-2xl bg-black bg-opacity-10 p-10 rounded-3xl">
