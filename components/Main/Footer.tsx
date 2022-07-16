@@ -10,12 +10,12 @@ const Linkx = Scroll.Link;
 const Footer:FC = () => {
   return (
     <div
-      className=" w-full border-t-2 flex flex-col text-accent-gray justify-center"
+      className="w-screen max-w-7xl flex flex-col h-screen justify-center "
       id="section6"
     >
-      <div className="w-full max-w-7xl p-12 flex flex-col lg:flex-row space-y-6 lg:space-y-0 lg:space-x-24 m-auto">
-        <div className="w-full lg:w-1/2 flex flex-col space-y-1">
-          <div className="text-main-black text-base lg:text-xl">ABOUT</div>
+      <div className="w-full max-w-7xl space-y-3 p-12 flex flex-col m-auto">
+        <div className="w-full flex flex-col space-y-1">
+          <div className="text-white text-base lg:text-xl">ABOUT</div>
           <div className="text-sm lg:text-base font-light">
             <span className="text-main-purple">dopeChat</span> aims to provide
             the best possible Facebook Gaming livestream viewing experience. It
@@ -28,7 +28,7 @@ const Footer:FC = () => {
         </div>
         <div className="flex flex-row w-full lg:w-1/2 ">
           <div className="w-1/2 flex flex-col space-y-2">
-            <div className="text-main-black text-base lg:text-xl">FEATURES</div>
+            <div className="text-white text-base lg:text-xl">FEATURES</div>
             <div className="text-xs lg:text-sm font-normal">Custom emotes</div>
             <div className="text-xs lg:text-sm font-normal">
               Customizable chat appearance
@@ -42,7 +42,7 @@ const Footer:FC = () => {
             <div className="text-xs lg:text-sm font-normal">And more!</div>
           </div>
           <div className="w-max lg:ml-auto flex flex-col space-y-2">
-            <div className="text-main-black text-base lg:text-xl">
+            <div className="text-white text-base lg:text-xl">
               QUICK LINKS
             </div>
             {NavData.map((data, index) => (
@@ -85,7 +85,7 @@ const Footer:FC = () => {
         </div>
       </div>
       <div className="w-full">
-        <div className="w-full flex flex-row items-center max-w-7xl p-6 border-t-2 m-auto text-sm lg:text-base">
+        <div className="w-full flex flex-row items-center max-w-7xl p-6 m-auto text-sm lg:text-base">
           <div>
             Made by <span className="text-main-purple">dope</span>, Copyright ©
             2022, All Rights Reserved by

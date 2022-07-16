@@ -1,35 +1,63 @@
 import React, { FC } from "react";
 // import { Link } from "react-scroll";
+import { motion } from "framer-motion";
 
-const LookAt:FC = () => {
+const LookAt: FC = () => {
+  const topToBottom = {
+    offscreen: {
+      y: -150,
+      opacity: 0,
+    },
+    onscreen: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "fade",
+        fade: 0.4,
+        duration: 0.8,
+      },
+    },
+  };
+  const bottomToTop = {
+    offscreen: {
+      y: 150,
+      opacity: 0,
+    },
+    onscreen: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        type: "fade",
+        fade: 0.4,
+        duration: 0.8,
+      },
+    },
+  };
   return (
     <div
-      className="winScl:scale-[0.9] w-full max-w-7xl winScl:mt-20 flex flex-col lg:flex-row lg:space-x-10 items-center pt-0 h-full lg:h-screen"
+      className="winScl:scale-[0.9] w-screen max-w-7xl winScl:mt-20 flex flex-col lg:flex-row lg:space-x-10 items-center pt-0 h-full lg:h-screen"
       id="section2"
     >
       <div className="w-full p-8 pb-4 lg:p-0 lg:w-2/6 flex flex-col lg:flex-col  lg:mr-16 lg:ml-16">
-
-        <div className="text-2xl lg:text-6xl font-light  mt-6 tracking-tight w-3/4">
+        <motion.div
+          initial="offscreen"
+          whileInView="onscreen"
+          viewport={{ once: true, amount: 0.8 }}
+          className="text-2xl lg:text-6xl font-light  mt-6 tracking-tight w-3/4"
+          variants={topToBottom}
+        >
           A look at extension&apos;s features
-        </div>
-
-        <div className="text-xs lg:text-sm font-normal text-accent-white mt-3 w-full">
+        </motion.div>
+        <motion.div
+          initial="offscreen"
+          whileInView="onscreen"
+          viewport={{ once: true, amount: 0.8 }}
+          className="text-xs lg:text-sm font-normal text-accent-white mt-3 w-full"
+          variants={bottomToTop}
+        >
           Extension features customized chat apperance, custom emotes, popout
           chat and theatre mode.
-        </div>
-
-        {/* <div>
-          <Link
-            className="border-2 flex flex-row cursor-pointer duration-300 rounded-lg px-4 py-2 w-max font-normal hover:border-accent-purple hover:text-main-purple mt-6"
-            to="section3"
-            spy={true}
-            smooth={true}
-            offset={-50}
-            duration={500}
-          >
-            View the full changelog
-          </Link>
-        </div> */}
+        </motion.div>
       </div>
 
       <div className="flex lg:hidden flex-row w-11/12 p-0 rounded-3xl overflow-hidden">
@@ -52,18 +80,18 @@ const LookAt:FC = () => {
 
       <div className="hidden lg:flex flex-row items-center relative w-4/6">
         <div className="lll3 rounded-xl z-20 shadow-xl border-2 border-main-black absolute translate-x-[10%] translate-y-[40px] scale-x-[0.86] skew-y-[8deg]">
-          <span className="absolute bottom-3 right-3 text-darker-purple font-medium bg-white p-3 px-10 rounded-xl">
+          <span className="bg-opacity-5 text-white backdrop-blur-sm border-[1px] border-white border-opacity-5 absolute bottom-3 right-3 font-medium p-3 px-10 rounded-xl">
             Custom emotes
           </span>
         </div>
 
         <div className="lll2 rounded-xl z-10 shadow-xl border-2 border-main-black absolute translate-x-[65%] skew-y-[8deg]">
-          <span className="absolute bottom-3 right-3 text-darker-purple font-medium bg-white p-3 px-10 rounded-xl">
+          <span className="bg-opacity-5 text-white backdrop-blur-sm border-[1px] border-white border-opacity-5 absolute bottom-3 right-3 font-medium p-3 px-10 rounded-xl">
             Popout chat
           </span>
         </div>
         <div className="lll rounded-xl border-2 border-main-black z-0 absolute translate-x-[50%] translate-y-[-40px] scale-x-[0.86] skew-y-[8deg]">
-          <span className="absolute bottom-3 right-3 text-darker-purple font-medium bg-white p-3 px-10 rounded-xl">
+          <span className="bg-opacity-5 text-white backdrop-blur-sm border-[1px] border-white border-opacity-5 absolute bottom-3 right-3 font-medium p-3 px-10 rounded-xl">
             Theatre mode
           </span>
         </div>

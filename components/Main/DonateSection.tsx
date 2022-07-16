@@ -1,10 +1,10 @@
 import * as Fa from "react-icons/fa";
 import Link from "next/link";
-import { FC } from "react";
+import React, { FC } from "react";
 
 const DonateSection: FC = () => {
   return (
-    <div className="w-screen max-w-6xl flex flex-row h-screen items-center justify-center" id="section4">
+    <div className="w-screen max-w-7xl flex flex-row h-screen items-center justify-center pr-10" id="section4">
       <div className="flex flex-col ">
         <Link href="/dashboard" passHref>
           <div className="cursor-pointer border-2 border-white border-opacity-5 duration-300 flex-row items-center justify-center flex p-6 font-normal rounded-3xl hover:bg-white hover:text-main-purple">
