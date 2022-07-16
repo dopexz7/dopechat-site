@@ -28,7 +28,7 @@ export const rightToLeftVariant = {
     },
   },
 };
-export const topToBottomVariant = {
+export const topToBottom = {
   offscreen: {
     y: -50,
     opacity: 0,
@@ -44,7 +44,7 @@ export const topToBottomVariant = {
   },
 };
 
-export const bottomToTopVariant = {
+export const bottomToTop = {
   offscreen: {
     y: 150,
     opacity: 0,
