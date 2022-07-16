@@ -7,7 +7,7 @@ import ContactMain from "../Contact/ContactMain";
 const Footer:FC = () => {
   return (
     <div
-      className="w-screen max-w-7xl flex flex-col h-screen justify-center "
+      className="w-screen max-w-7xl flex flex-col h-full lg:h-screen justify-center bg-black bg-opacity-25 lg:bg-transparent"
       id="section6"
     >
       <div className="w-full max-w-7xl space-y-3 p-12 flex flex-col m-auto">
@@ -39,9 +39,7 @@ const Footer:FC = () => {
             <div className="text-xs lg:text-sm font-normal">And more!</div>
           </div>
           <div className="w-max lg:ml-auto flex flex-col space-y-2">
-            <div className="text-white text-base lg:text-xl">
-              QUICK LINKS
-            </div>
+            <div className="text-white text-base lg:text-xl">QUICK LINKS</div>
             <Link href="/dashboard" passHref>
               <div className="text-xs lg:text-sm cursor-pointer hover:text-main-purple duration-300 font-medium flex flex-row items-center">
                 <Md.MdDashboard className="mr-1" /> Dashboard

@@ -11,7 +11,7 @@ const KeyFeatures: FC = () => {
         <div>Key</div>
         <div>features</div>
       </div>
-      <div className="flex flex-col lg:flex-row text-white lg:space-x-16 space-y-0 lg:mt-2 border-[1px] border-white border-opacity-5 shadow-2xl p-10 rounded-3xl">
+      <div className="flex flex-col lg:flex-row text-white lg:space-x-16 space-y-0 lg:mt-2 border-[1px] border-white border-opacity-5 shadow-2xl bg-black bg-opacity-10 p-10 rounded-3xl">
         {featuresList.map((data: any, index: any) => (
           <div className="flex flex-col m-auto items-center " key={index}>
             {data.icon}

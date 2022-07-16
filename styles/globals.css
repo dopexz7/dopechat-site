@@ -54,7 +54,7 @@ a {
   text-decoration: none;
 }
 .box-shadow-purple {
-  box-shadow: 0 0 6px #4f46e5;
+  box-shadow: rgba(0,0,0,0.6) 0px 4px 12px 0px;
 }
 .effect-3 {
   display: inline-block;
@@ -74,9 +74,7 @@ a {
   transform: translateX(0);
 }
 
-.box-shadow-purple {
-  box-shadow: var(--main-purple) 0px 3px 12px 0px;
-}
+
 .text-shadow-purple {
   text-shadow: 0 0 10px var(--main-purple);
 }

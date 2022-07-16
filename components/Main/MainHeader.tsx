@@ -64,7 +64,7 @@ const MainHeader:FC = () => {
               >
                 <div
                   title={data.title}
-                  className="bg-accent-purple p-2 flex w-max justify-center items-center rounded-2xl text-2xl"
+                  className="bg-black bg-opacity-25 p-2 flex w-max justify-center items-center rounded-2xl text-2xl"
                 >
                   {data.icon}
                 </div>
@@ -92,7 +92,7 @@ const MainHeader:FC = () => {
               ? window.open(edgeUrl)
               : window.open(chromeUrl)
           }
-          className="box-shadow-purple hidden lg:flex lg:flex-row items-center cursor-pointer duration-300 bg-accent-purple rounded-lg px-4 py-2 w-max text-white hover:bg-white hover:text-darker-purple lg:mt-3 xlx:mt-3"
+          className="hidden lg:flex lg:flex-row items-center cursor-pointer duration-300 bg-black bg-opacity-25 box-shadow-purple rounded-lg px-4 py-2 w-max text-white hover:bg-white hover:text-darker-purple lg:mt-3 xlx:mt-3"
         >
           <Fa.FaDownload className="mr-3 text-sm" />
           Download for {browsName}

@@ -10,7 +10,7 @@ export default function MainNav() {
   return (
     <>
       <div
-        className={`z-50 w-screen fixed top-0 bg-darker-purple`}
+        className={`z-50 w-screen fixed top-0 bg-black bg-opacity-25 backdrop-blur-md lg:bg-darker-purple`}
       >
         <div
           className={`relative max-w-6xl w-screen mx-auto flex flex-row justify-center items-center p-4 lg:p-6 duration-300 space-x-6 text-main-white text-sm font-semibold`}
