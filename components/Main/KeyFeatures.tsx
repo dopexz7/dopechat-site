@@ -4,19 +4,14 @@ import { featuresList } from "./featuresData";
 const KeyFeatures: FC = () => {
   return (
     <div
-      className="p-6 lg:p-8 lg:mt-36 w-screen max-w-6xl lg:fixed top-0 flex flex-col"
+      className="w-screen max-w-7xl p-3 lg:p-0 flex flex-col lg:flex-row lg:space-x-10 items-center pt-0 h-full lg:h-screen"
       id="section1"
     >
-      <div
-        className="flex flex-col text-2xl lg:text-5xl font-light max-w-xl m-6"
-      >
+      <div className="flex space-x-2 lg:space-x-0 lg:flex-col text-2xl lg:text-5xl font-light max-w-xl m-6">
         <div>Key</div>
         <div>features</div>
       </div>
-      <div
-        
-        className="flex flex-col lg:flex-row text-white lg:space-x-16 space-y-0 lg:mt-2 border-[1px] border-white border-opacity-5 shadow-2xl p-10 rounded-3xl"
-      >
+      <div className="flex flex-col lg:flex-row text-white lg:space-x-16 space-y-0 lg:mt-2 border-[1px] border-white border-opacity-5 shadow-2xl p-10 rounded-3xl">
         {featuresList.map((data: any, index: any) => (
           <div className="flex flex-col m-auto items-center " key={index}>
             {data.icon}
