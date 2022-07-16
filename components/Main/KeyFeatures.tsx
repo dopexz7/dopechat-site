@@ -2,8 +2,9 @@ import { motion } from "framer-motion";
 import { FC } from "react";
 import { featuresList } from "./featuresData";
 import { leftToRightVariant, bottomToTopVariant } from './transitionVariants'
+//import { useGetDevType } from "./useGetDevType";
 const KeyFeatures: FC = () => {
-
+  //const deviceType = useGetDevType();
   return (
     <div
       className="p-6 lg:p-8 lg:mt-36 w-screen max-w-6xl lg:fixed top-0 flex flex-col"
