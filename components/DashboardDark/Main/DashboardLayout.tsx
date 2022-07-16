@@ -39,7 +39,7 @@ const DashboardLayout:FC<LayoutTypes> = (props) => {
           <DashboardNav />
           <div className="overflow-hidden w-full p-3 lg:w-1/3 h-full flex flex-col space-y-3 items-center justify-center">
             <div className="border-[1px] border-white border-opacity-[0.05] backdrop-blur-sm shadow-xl rounded-3xl flex flex-row items-center w-full justify-between text-right p-6">
-              <p className="text-4xl font-semibold text-white m-6">
+              <p className="text-4xl font-semibold text-white m-3">
                 Sign in to
               </p>
               <div className="opacity-60 pl-6">
