@@ -110,41 +110,43 @@ const DashboardLeftSignedIn:FC<Typies> = (props) => {
           </div>
         </div>
 
-        <div className="p-6 w-full space-y-3 flex flex-col">
-          <Link
-            href={
-              router.pathname.includes("profile")
-                ? "/dashboard"
-                : "/dashboard/profile"
-            }
-            passHref
-          >
-            <div className="group hover:bg-white border-white border-opacity-5 shadow-2xl text-white duration-300 border-2 font-normal hover:text-main-purple cursor-pointer flex justify-center items-center p-3 rounded-3xl w-full">
-              <span className="opacity-75 font-normal group-hover:opacity-100">
-                {router.pathname.includes("profile")
-                  ? "Dashboard"
-                  : "Your profile"}
-              </span>
-            </div>
-          </Link>
-          <LeftSideModal />
-          <DonationComponent
-            iconEnabled={false}
-            btnClass={`hover:bg-white text-opacity-75 border-white border-opacity-5 shadow-2xl text-white duration-300 border-2 font-normal hover:text-main-purple cursor-pointer flex justify-center items-center p-3 rounded-3xl w-full`}
-          />
+        <div className="lg:p-6 w-full space-y-3 flex flex-col">
+          <div className="flex w-full text-xs text-center lg:text-left lg:text-base flex-row space-x-2 lg:flex-col lg:space-x-0 lg:space-y-3">
+            <Link
+              href={
+                router.pathname.includes("profile")
+                  ? "/dashboard"
+                  : "/dashboard/profile"
+              }
+              passHref
+            >
+              <div className="group hover:bg-white border-white border-opacity-5 shadow-2xl text-white duration-300 border-2 font-normal hover:text-main-purple cursor-pointer flex justify-center items-center p-3 rounded-3xl w-full">
+                <span className="opacity-75 font-normal group-hover:opacity-100">
+                  {router.pathname.includes("profile")
+                    ? "Dashboard"
+                    : "Your profile"}
+                </span>
+              </div>
+            </Link>
+            <LeftSideModal />
+            <DonationComponent
+              iconEnabled={false}
+              btnClass={`hover:bg-white text-opacity-75 border-white border-opacity-5 shadow-2xl text-white duration-300 border-2 font-normal hover:text-main-purple cursor-pointer flex justify-center items-center p-3 rounded-3xl w-full`}
+            />
+          </div>
           <div className="flex flex-row">
-            <div className="flex flex-row items-center text-sm px-3 text-white">
+            <div className="flex flex-row items-center px-3 text-white">
               {isDonor ? (
                 <>
-                  <Bs.BsFillPatchCheckFill className="mr-2 text-main-purple text-xl" />
+                  <Bs.BsFillPatchCheckFill className="mr-2 text-main-purple text-sm lg:text-xl" />
                 </>
               ) : (
                 <>
-                  <Bs.BsFillPatchCheckFill className="mr-2 text-accent-gray text-xl" />
+                  <Bs.BsFillPatchCheckFill className="mr-2 text-accent-gray text-sm lg:text-xl" />
                 </>
               )}
             </div>
-            <div className="text-sm px-3 text-white opacity-75">
+            <div className="text-xs lg:text-sm px-3 text-white opacity-75">
               You have access to {availEdits ? availEdits.length : "0"} emote
               sets.
             </div>

@@ -67,14 +67,14 @@ const EditingSet:FC<EditingSetTypes> = ({ data, editingSet, passProps, profile }
             leaveFrom="transform opacity-100 scale-100"
             leaveTo="transform opacity-0 scale-95"
           >
-            <Menu.Items className="absolute w-max  rounded-xl bg-black bg-opacity-5 border-[1px] border-white border-opacity-10 shadow-lg">
+            <Menu.Items className="absolute w-max rounded-xl bg-black bg-opacity-5 border-[1px] border-white border-opacity-10 shadow-lg">
               <div className="px-1 py-1 flex flex-row space-x-1">
                 {!profile ? (
                   <Menu.Item>
                     <div
                       title="Select set"
                       onClick={() =>
-                        editingSet === data ? passProps('') : passProps(data)
+                        editingSet === data ? passProps("") : passProps(data)
                       }
                       className={`text-white rounded-xl bg-darker-purple hover:rounded-3xl
                         cursor-pointer p-3 justify-center duration-300 flex items-center w-max `}
@@ -87,8 +87,7 @@ const EditingSet:FC<EditingSetTypes> = ({ data, editingSet, passProps, profile }
                 )}
 
                 <Menu.Item>
-                  <MyLink
-                  ></MyLink>
+                  <MyLink></MyLink>
                 </Menu.Item>
               </div>
             </Menu.Items>

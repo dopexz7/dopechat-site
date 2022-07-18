@@ -108,10 +108,10 @@ const EmoteComponent: FC<EmoteComponentTypes> = ({ data, editingSet, isMod, kekR
         {emoteAdded} added to {editingSet} set!
       </Modal>
       <div
-        className={`h-32 w-32 group duration-300 shadow-2xl rounded-3xl select-none`}
+        className={`h-16 w-16 lg:h-32 lg:w-32 group duration-300 shadow-2xl rounded-3xl select-none`}
       >
         <div
-          className={`w-full h-32 overflow-hidden text-white flex ${
+          className={`h-16 lg:h-32 w-full overflow-hidden text-white flex ${
             deleted ? "flex-col" : "flex-row"
           } justify-center relative rounded-3xl border-[1px] border-white border-opacity-[0.03]`}
         >
@@ -139,10 +139,10 @@ const EmoteComponent: FC<EmoteComponentTypes> = ({ data, editingSet, isMod, kekR
             ) : (
               <>
                 <div className="flex flex-col items-center justify-center h-full">
-                  <div className=" overflow-hidden text-sm font-normal">
+                  <div className=" overflow-hidden text-xs lg:text-sm font-normal">
                     {data.code}
                   </div>
-                  <div className="text-xs">
+                  <div className="hidden lg:block text-xs">
                     by {data.uploaded_by ? data.uploaded_by : "dope_xz7"}
                   </div>
                 </div>

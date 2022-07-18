@@ -67,7 +67,7 @@ const SetsMain:FC = () => {
           : "Set doesn't exist..."
       }`}
     >
-      <div className="border-[1px] border-white border-opacity-5 shadow-2xl rounded-3xl h-max backdrop-blur-sm max-w-full w-1/5 flex flex-col">
+      <div className="border-[1px] border-white border-opacity-5 shadow-2xl rounded-3xl h-max backdrop-blur-sm max-w-full w-full lg:w-1/5 flex flex-col">
         <DashboardLeftSignedIn
           profile={true}
           onSuccess={function () {
@@ -75,10 +75,10 @@ const SetsMain:FC = () => {
           }}
         />
       </div>
-      <div className="shadow-sm backdrop-blur-sm border-[1px] rounded-3xl p-1 border-white border-opacity-5 h-full w-[80%] flex flex-col">
+      <div className="overflow-auto shadow-sm backdrop-blur-sm border-[1px] rounded-3xl lg:p-1 border-white border-opacity-5 h-full w-full lg:w-[80%] flex flex-col">
         <div className="px-6 py-2 flex flex-row items-center">
           <div className="flex flex-row items-center  text-white">
-            <p className="text-xl">
+            <p className="text-sm lg:text-xl">
               {loading
                 ? "Loading..."
                 : pageName
@@ -127,7 +127,7 @@ const SetsMain:FC = () => {
           </div>
         </div>
         <div className="w-full flex flex-col p-6 overflow-auto">
-          <div className="h-full w-full grid grid-cols-10 gap-3">
+          <div className="h-full w-full grid grid-cols-4 lg:grid-cols-10 gap-3">
             {pageSet &&
               pageSet
                 .filter((val) => {
@@ -149,9 +149,9 @@ const SetsMain:FC = () => {
                 .map((data, index) => (
                   <div
                     key={index}
-                    className={`h-32 w-32 group duration-300 shadow-2xl rounded-3xl select-none`}
+                    className={`h-16 w-16 lg:h-32 lg:w-32 group duration-300 shadow-2xl rounded-3xl select-none`}
                   >
-                    <div className="w-full h-32 overflow-hidden text-white flex justify-center relative rounded-3xl border-[1px] border-white border-opacity-5">
+                    <div className="h-16 w-full lg:h-32 lg:w-full overflow-hidden text-white flex justify-center relative rounded-3xl border-[1px] border-white border-opacity-5">
                       <div className="group absolute w-full h-full duration-300 flex items-center justify-center">
                         <img
                           height={64}
@@ -163,10 +163,10 @@ const SetsMain:FC = () => {
                       </div>
 
                       <div className="w-full  relative duration-300 flex flex-col opacity-0 scale-0 group-hover:scale-100 group-hover:opacity-100">
-                        <div className="overflow-hidden mt-auto ml-auto mr-auto text-sm font-normal">
+                        <div className="overflow-hidden mt-auto ml-auto mr-auto text-xs lg:text-sm font-normal">
                           {data.code}
                         </div>
-                        <div className="overflow-hidden mt-auto ml-auto mr-auto text-xs font-normal">
+                        <div className="overflow-hidden mt-auto ml-auto mr-auto hidden lg:block text-xs font-normal">
                           Date: {data.date ? data.date : "unavailable"}
                         </div>
                         {mod ? (

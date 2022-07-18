@@ -179,8 +179,17 @@ a {
   animation: bt1 0.8s var(--delay) both;
 }
 
+::-webkit-scrollbar-track {
+  border-radius: 12px;
+  background:var(--main-purple);
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 12px;
+  background: var(--darker-purple);
+  border:0
+}
 ::-webkit-scrollbar {
-  display:none
+  width: 10px;
 }
 
 .anim {
@@ -282,6 +291,11 @@ a {
 }
 .xgrd {
   grid-template-columns: repeat(6, minmax(auto, 1fr));
+}
+@media only screen and (max-width: 600px) {
+  .xgrd {
+  grid-template-columns: repeat(4, minmax(auto, 1fr));
+}
 }
 
 .fadeout {

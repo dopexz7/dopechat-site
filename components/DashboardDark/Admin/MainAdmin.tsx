@@ -62,9 +62,9 @@ const MainAdmin: FC = () => {
               data.map((d, index) => (
                 <div
                   key={index}
-                  className="h-32 w-32 group duration-300 bg-accent-white rounded-md"
+                  className="h-16 w-16 lg:h-32 lg:w-32 group duration-300 shadow-2xl rounded-3xl select-none"
                 >
-                  <div className="w-full h-32 overflow-hidden text-black flex flex-row justify-center relative border-2 rounded-md">
+                  <div className="h-16 lg:h-32 w-full overflow-hidden text-white flex justify-center relative rounded-3xl border-[1px] border-white border-opacity-[0.03]">
                     <div className="group absolute w-full h-full duration-300 flex items-center justify-center">
                       <img
                         height={64}
@@ -76,10 +76,10 @@ const MainAdmin: FC = () => {
                     </div>
 
                     <div className="w-full  relative duration-300 flex flex-col opacity-0 scale-0 group-hover:scale-100 group-hover:opacity-100">
-                      <div className="overflow-hidden mt-auto ml-auto mr-auto text-sm font-normal">
+                      <div className="overflow-hidden mt-auto ml-auto mr-auto text-xs lg:text-sm font-normal">
                         {d.name}
                       </div>
-                      <div className="overflow-hidden mt-auto ml-auto mr-auto text-sm font-normal">
+                      <div className="hidden lg:block overflow-hidden mt-auto ml-auto mr-auto text-sm font-normal">
                         by {d.uploaded_by}
                       </div>
                       <div className="flex flex-row justify-center items-center mt-auto">
