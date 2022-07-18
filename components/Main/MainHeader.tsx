@@ -40,17 +40,16 @@ const MainHeader:FC = () => {
   ];
   return (
     <div className="w-screen max-w-6xl mt-20 lg:mt-0 flex flex-col lg:flex-row lg:space-x-10 lg:items-center pt-0 h-full lg:h-screen">
-      <div className="flex flex-col">
+      <div className="flex flex-col p-6 lg:p-0">
         <h1 className="flex text-2xl lg:text-6xl font-light">
           The ultimate FB Gaming livestream experience
         </h1>
-        <p className="text-sm lg:text-lg lg:mt-3 xlx:mt-3 tracking-wider font-light m-0">
+        <p className="text-sm lg:text-lg lg:mt-1 xlx:mt-3 tracking-wider font-light m-0">
           The all-in-one extension is designed to add custom emotes, customize
           chat appearance and add more quality of life improvements, tweaks. All
           within the easy-to-use settings page.
         </p>
       </div>
-
       <div className="lg:mt-0 p-6 xlx:mt-3 text-white flex flex-col h-max py-3 lg:p-0">
         <p>Available for</p>
 
@@ -119,7 +118,6 @@ const MainHeader:FC = () => {
             ))}
         </Menu>
       </div>
-
       <div className="hidden lg:flex flex-row items-center m-auto w-1/6 -z-10 opacity-10 scale-90 blur-sm">
         <div className="lll3 rounded-3xl z-20 absolute translate-x-[-170%] scale-x-[0.86] skew-y-[8deg]"></div>
         <div className="lll2 rounded-3xl z-10 absolute translate-x-[-130%] translate-y-[100px] skew-y-[8deg]"></div>
