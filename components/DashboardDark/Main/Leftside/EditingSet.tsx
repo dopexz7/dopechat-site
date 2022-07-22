@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
 import { getStreamerAvatar } from "../../../../funcs/getStreamerAvatar";
+
 const EditingSet: FC<EditingSetTypes> = ({
   data,
   editingSet,

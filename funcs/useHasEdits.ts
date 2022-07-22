@@ -5,7 +5,10 @@ export const getAvailEdits = async (username: string) =>
     .from("useremotes")
     .select("*")
     .then((res) => res.data)
-    .then((data) =>
-      data?.map((v) => {
-        if (v.mods.includes(username)) return v.name;
-      })).then((final: any) => final.filter((v: any) => v != undefined));
+    .then((data: any) => {
+      for (var i = 0; i<data.length; i++) {
+        if (data[i].mods.includes(username)) {
+          return data[i].name;
+        }
+      }
+    }).then((final: any) => final.filter((v: any) => v != undefined));
