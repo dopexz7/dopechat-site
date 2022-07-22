@@ -2,24 +2,25 @@ import * as Md from "react-icons/md";
 import * as Go from "react-icons/go";
 import React, { FC, forwardRef, LegacyRef } from "react";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+//import { useState, useEffect } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
-import { getStreamerAvatar } from "../../../../funcs/getStreamerAvatar";
+//import { getStreamerAvatar } from "../../../../funcs/getStreamerAvatar";
 
 const EditingSet: FC<EditingSetTypes> = ({
   data,
   editingSet,
   passProps,
   profile,
+  image
 }): React.ReactElement => {
-  const [avatar, setAvatar] = useState<string>("");
+  // const [avatar, setAvatar] = useState<string>("");
 
-  useEffect(() => {
-    getStreamerAvatar(data).then((res: string) => {
-      setAvatar(res);
-    });
-  }, [data]);
+  // useEffect(() => {
+  //   getStreamerAvatar(data).then((res: string) => {
+  //     setAvatar(res);
+  //   });
+  // }, [data]);
 
   // eslint-disable-next-line react/display-name
   const MyLink = forwardRef((props, ref: LegacyRef<HTMLAnchorElement>) => {
@@ -52,7 +53,9 @@ const EditingSet: FC<EditingSetTypes> = ({
                 : "border-opacity-5 bg-opacity-5"
             } p-0.5 rounded-2xl bg-white `}
           >
-            <img src={avatar} alt={data} className="w-10 h-10 rounded-xl" />
+            
+            {/* //style={{ display: avatar ? "block" : "none" }} */}
+            <img src={image} alt={data} className="w-10 h-10 rounded-xl" />
           </Menu.Button>
         </div>
         <Transition
@@ -102,6 +105,7 @@ interface EditingSetTypes {
   editingSet: string;
   // eslint-disable-next-line no-unused-vars
   passProps: (d: string) => void;
+  image: string;
 }
 
 interface linkTypes {

@@ -6,10 +6,10 @@ export const getAvailEdits = async (username: string) =>
     .select("*")
     .then((res) => res.data)
     .then((data: any) => {
-      let x = [];
+      let x: any = {};
       for (var i = 0; i < data.length; i++) {
         if (data[i].mods.includes(username)) {
-          x.push(data[i].name);
+          x[data[i].name] = data[i].logo;
         }
       }
       return x;

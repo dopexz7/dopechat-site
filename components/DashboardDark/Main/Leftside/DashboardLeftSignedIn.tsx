@@ -30,18 +30,14 @@ const DashboardLeftSignedIn: FC<Typies> = (props): React.ReactElement => {
     props.onSuccess(d);
   };
   useEffect(() => {
-    console.log(availEdits);
-  }, [availEdits]);
-  useEffect(() => {
     getIsMod(user?.user_metadata?.name).then((res: any) => {
       setIsMod(res);
     });
     getIsDonor(user?.user_metadata?.name).then((res: boolean) => {
       setIsDonor(res);
     });
-    getAvailEdits(user?.user_metadata?.name).then((res: string[]) => {
-      console.log(res)
-      setAvailEdits(res);
+    getAvailEdits(user?.user_metadata?.name).then((res: any[]) => {
+        setAvailEdits(res);
     });
   }, [user]);
 
@@ -157,18 +153,20 @@ const DashboardLeftSignedIn: FC<Typies> = (props): React.ReactElement => {
               )}
             </div>
             <div className="text-xs lg:text-sm px-3 text-white opacity-75">
-              You have access to {availEdits ? availEdits.length : "0"} emote
-              sets.
+              You have access to{" "}
+              {Object.keys(availEdits) ? Object.keys(availEdits).length : "0"}{" "}
+              emote sets.
             </div>
           </div>
           <div className="grid grid-cols-5 gap-1 justify-center">
             {availEdits &&
-              availEdits
+              Object.keys(availEdits)
                 .sort((a, b) => a.localeCompare(b))
-                .map((data, index) => (
+                .map((data: any, index: number) => (
                   <EditingSet
                     key={index}
                     data={data}
+                    image={availEdits[data]}
                     passProps={passProps}
                     editingSet={editingSet}
                     profile={props.profile}
