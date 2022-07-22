@@ -5,23 +5,17 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
-
+import { getStreamerAvatar } from "../../../../funcs/getStreamerAvatar";
 const EditingSet:FC<EditingSetTypes> = ({ data, editingSet, passProps, profile }) => {
   const [avatar, setAvatar] = useState<string>();
 
-  const getStreamerImg: Function = async (d: string): Promise<any> => {
-    await fetch(`https://api.frankerfacez.com/v1/user/${d.toLowerCase()}`)
-      .then((res) => res.json())
-      .then((data) => setAvatar(data?.user?.avatar));
-  };
-
   useEffect(() => {
-    if (data !== "global") {
-      getStreamerImg(data);
-    } else {
-      setAvatar("https://cdn.frankerfacez.com/emoticon/381875/4");
-    }
-  }, [data]);
+    getStreamerAvatar(data).then((res: string) => {
+      setAvatar(res);
+    })
+  }
+  , [data]);
+
 
   // eslint-disable-next-line react/display-name
   const MyLink = forwardRef((props, ref: LegacyRef<HTMLAnchorElement>) => {
