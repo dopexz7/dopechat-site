@@ -40,6 +40,7 @@ const DashboardLeftSignedIn: FC<Typies> = (props): React.ReactElement => {
       setIsDonor(res);
     });
     getAvailEdits(user?.user_metadata?.name).then((res: string[]) => {
+      console.log(res)
       setAvailEdits(res);
     });
   }, [user]);

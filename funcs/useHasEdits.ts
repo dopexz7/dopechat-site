@@ -6,9 +6,12 @@ export const getAvailEdits = async (username: string) =>
     .select("*")
     .then((res) => res.data)
     .then((data: any) => {
-      for (var i = 0; i<data.length; i++) {
+      let x = [];
+      for (var i = 0; i < data.length; i++) {
         if (data[i].mods.includes(username)) {
-          return data[i].name;
+          x.push(data[i].name);
         }
       }
-    }).then((final: any) => final.filter((v: any) => v != undefined));
+      return x;
+    })
+    
