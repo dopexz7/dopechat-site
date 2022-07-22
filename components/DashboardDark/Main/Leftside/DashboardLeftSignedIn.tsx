@@ -4,37 +4,46 @@ import { Tooltip } from "@mantine/core";
 import * as Bs from "react-icons/bs";
 import { supabase } from "../../../../lib/supabaseClient";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { NextRouter, useRouter } from "next/router";
 import LeftSideModal from "./LeftSideModal";
 import { getIsMod } from "../../../../funcs/useIsMod";
 import { getIsDonor } from "../../../../funcs/useIsDonor";
-import useHasEdits from "../../../../funcs/useHasEdits";
+import { getAvailEdits } from "../../../../funcs/useHasEdits";
 import DonationComponent from "../../../Donation/DonationComponent";
 import { useAuth } from "../../../../contexts/AppContext";
 import { useEffect, useState } from "react";
 import EditingSet from "./EditingSet";
-import Image from 'next/image'
+import Image from "next/image";
 import { FC } from "react";
 import React from "react";
 
-const DashboardLeftSignedIn:FC<Typies> = (props) => {
-  const router = useRouter();
+const DashboardLeftSignedIn: FC<Typies> = (props): React.ReactElement => {
+  const router: NextRouter = useRouter();
   const { user } = useAuth() as any;
   const [isDonor, setIsDonor] = useState<boolean>(false);
-  const [isMod, setIsMod] = useState<boolean>(false)
-  const availEdits : string[] = useHasEdits();
+  const [isMod, setIsMod] = useState<boolean>(false);
+  const [availEdits, setAvailEdits] = useState<string[]>([]);
   const [editingSet, setEditingSet] = useState<string>("");
 
   const passProps = (d: string): void => {
     setEditingSet(d);
     props.onSuccess(d);
-  }
-  
+  };
   useEffect(() => {
-    getIsMod(user?.user_metadata?.name).then((res: any) => { setIsMod(res) });
-    getIsDonor(user?.user_metadata?.name).then((res: any) => { setIsDonor(res) });
+    console.log(availEdits);
+  }, [availEdits]);
+  useEffect(() => {
+    getIsMod(user?.user_metadata?.name).then((res: any) => {
+      setIsMod(res);
+    });
+    getIsDonor(user?.user_metadata?.name).then((res: boolean) => {
+      setIsDonor(res);
+    });
+    getAvailEdits(user?.user_metadata?.name).then((res: string[]) => {
+      setAvailEdits(res);
+    });
   }, [user]);
-  
+
   return (
     <>
       <div

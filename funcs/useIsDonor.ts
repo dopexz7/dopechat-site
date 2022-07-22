@@ -1,6 +1,6 @@
 import { supabase } from "../lib/supabaseClient";
 
-export const getIsDonor: Function = async (user: any): Promise<any> =>
+export const getIsDonor: Function = async (user: string): Promise<boolean> =>
   await supabase
     .from("profiles")
     .select("donor")
