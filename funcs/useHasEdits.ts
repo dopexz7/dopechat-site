@@ -1,6 +1,6 @@
 import { supabase } from "../lib/supabaseClient";
 
-export const getAvailEdits = async (username: string) =>
+export const getAvailEdits = async (username: string): Promise<any> =>
   await supabase
     .from("useremotes")
     .select("*")

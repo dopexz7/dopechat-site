@@ -2,10 +2,8 @@ import * as Md from "react-icons/md";
 import * as Go from "react-icons/go";
 import React, { FC, forwardRef, LegacyRef } from "react";
 import Link from "next/link";
-//import { useState, useEffect } from "react";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
-//import { getStreamerAvatar } from "../../../../funcs/getStreamerAvatar";
 
 const EditingSet: FC<EditingSetTypes> = ({
   data,
@@ -14,14 +12,6 @@ const EditingSet: FC<EditingSetTypes> = ({
   profile,
   image
 }): React.ReactElement => {
-  // const [avatar, setAvatar] = useState<string>("");
-
-  // useEffect(() => {
-  //   getStreamerAvatar(data).then((res: string) => {
-  //     setAvatar(res);
-  //   });
-  // }, [data]);
-
   // eslint-disable-next-line react/display-name
   const MyLink = forwardRef((props, ref: LegacyRef<HTMLAnchorElement>) => {
     let { ...rest } = props as linkTypes;

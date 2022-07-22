@@ -30,13 +30,13 @@ const DashboardLeftSignedIn: FC<Typies> = (props): React.ReactElement => {
     props.onSuccess(d);
   };
   useEffect(() => {
-    getIsMod(user?.user_metadata?.name).then((res: any) => {
+    getIsMod(user?.user_metadata.name).then((res: any) => {
       setIsMod(res);
     });
-    getIsDonor(user?.user_metadata?.name).then((res: boolean) => {
+    getIsDonor(user?.user_metadata.name).then((res: boolean) => {
       setIsDonor(res);
     });
-    getAvailEdits(user?.user_metadata?.name).then((res: any[]) => {
+    getAvailEdits(user?.user_metadata.name).then((res: any[]) => {
         setAvailEdits(res);
     });
   }, [user]);
