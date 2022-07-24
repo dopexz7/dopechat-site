@@ -1,4 +1,11 @@
 export const changelogData: any = {
+  "1.1": [
+    "-Rewrote some parts of the extension",
+    "-Fixed emotes (now load instantly)",
+    "-Fixed highlighting keywords",
+    "-Performance optimizations",
+    "-Other minor fixes, improvements",
+  ],
   "1.0.0": [
     "-Official website! dopechat.ddns.net - Extension overview, a look at features, changelog, dashboard.",
     "--Dashboard",
