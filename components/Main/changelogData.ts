@@ -1,4 +1,15 @@
 export const changelogData: any = {
+  "1.3": [
+    "-Added a true Picture-In-Picture mode (not limited to Facebook only)",
+    "-Minor fixes and improvements"
+  ],
+  "1.2": [
+    "-Reworked & improved settings menu UI",
+    "-Removed the popup menu (clicking on the icon will now open settings)",
+    "-Extension is now enabled by default",
+    "-Emote menu is also enabled by default",
+    "-Performance optimizations, minor fixes and other improvements",
+  ],
   "1.1": [
     "-Rewrote some parts of the extension",
     "-Fixed emotes (now load instantly)",
