@@ -5,7 +5,6 @@ import { FC, useEffect, useState } from "react";
 import * as Md from "react-icons/md";
 import { Tooltip } from "@mantine/core";
 import * as Bs from "react-icons/bs";
-import DashboardLeftSignedIn from "../Main/Leftside/DashboardLeftSignedIn";
 import { gettingSetEmotes } from "funcs/updatingEmotes";
 import { useAuth } from "contexts/AppContext";
 import getMod from "../../../funcs/useIsSetMod";
