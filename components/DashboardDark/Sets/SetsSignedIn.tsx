@@ -5,11 +5,23 @@ import { supabase } from "../../../lib/supabaseClient"
 import Link from "next/link";
 import { useAuth } from "../../../contexts/AppContext";
 import Image from "next/image";
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import React from "react";
+import { getIsMod } from "funcs/useIsMod";
+import { getIsDonor } from "funcs/useIsDonor";
 
 const SetsSignedIn: FC = (): React.ReactElement => {
-  const { user, isMod, isDonor } = useAuth() as any;
+  const { user } = useAuth() as any;
+  const [isMod, setIsMod] = useState(false);
+  const [isDonor, setIsDonor] = useState(false);
+  useEffect(() => {
+    getIsMod(user?.user_metadata.name).then((res: any) => {
+      setIsMod(res);
+    });
+    getIsDonor(user?.user_metadata.name).then((res: any) => {
+      setIsDonor(res);
+    });
+  }, [user]);
   return (
     <>
       <div className="flex flex-row items-center w-3/4 overflow-hidden border-[1px] border-white border-opacity-5 shadow-2xl backdrop-blur-sm rounded-3xl">
@@ -30,11 +42,7 @@ const SetsSignedIn: FC = (): React.ReactElement => {
                 <>
                   <Bs.BsFillPatchCheckFill className="text-main-purple text-sm lg:text-xl" />
                 </>
-              ) : (
-                <>
-                  <Bs.BsFillPatchCheckFill className="text-accent-gray text-sm lg:text-xl" />
-                </>
-              )}
+              ) : ""}
             </div>
           </div>
           <div className="flex flex-row items-center">
