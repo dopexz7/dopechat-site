@@ -15,7 +15,6 @@ const DashboardMiddleSection:FC<MiddleTypes> = ({ editingSet }) => {
   const [startUpdate, setStartUpdate] = useState<boolean>(false);
   const [posts, setPosts] = useState<any[]>([]);
   const [sorting, setSorting] = useState<boolean>(false);
-  const [moreThanTwo, setMoreThanTwo] = useState<boolean>(false);
   const [showingAllEmotes, setShowingAllEmotes] = useState<boolean>(false);
   const divRef: any = useRef();
   const { user, isMod } = useAuth() as any;
@@ -40,13 +39,8 @@ const DashboardMiddleSection:FC<MiddleTypes> = ({ editingSet }) => {
   const beginUpdate = () => {
     if (q.length >= 2) {
       setStartUpdate(true);
-      setMoreThanTwo(false);
     } else {
       setStartUpdate(false);
-      setMoreThanTwo(true);
-      setTimeout(() => {
-        setMoreThanTwo(false);
-      }, 2000);
     }
   };
 
