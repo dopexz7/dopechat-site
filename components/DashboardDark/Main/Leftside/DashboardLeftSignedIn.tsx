@@ -26,7 +26,7 @@ const DashboardLeftSignedIn: FC<Typies> = (props): React.ReactElement => {
 
 
   return (
-    <>
+    <div className="border-[1px] border-white border-opacity-5 shadow-2xl rounded-3xl h-[55%] backdrop-blur-sm max-w-full w-full lg:w-1/5 flex flex-col">
       <div
         className={`p-6 flex flex-col h-full  ${
           router.route.includes("profile") ? "" : "anim-fade"
@@ -103,15 +103,11 @@ const DashboardLeftSignedIn: FC<Typies> = (props): React.ReactElement => {
         <div className="lg:p-6 w-full space-y-3 flex flex-col">
           <div className="flex w-full text-xs text-center lg:text-left lg:text-base flex-row space-x-2 lg:flex-col lg:space-x-0 lg:space-y-3">
             <Link
-              href={{
-                pathname: "/dashboard/profile",
-                query: { isMod: isMod, isDonor: isDonor },
-              }}
-              // href={
-              //   router.pathname.includes("profile")
-              //     ? "/dashboard"
-              //     : "/dashboard/profile"
-              // }
+              href={
+                router.pathname.includes("profile")
+                  ? "/dashboard"
+                  : "/dashboard/profile"
+              }
               passHref
             >
               <div className="group hover:bg-white border-white border-opacity-5 shadow-2xl text-white duration-300 border-2 font-normal hover:text-main-purple cursor-pointer flex justify-center items-center p-3 rounded-3xl w-full">
@@ -163,7 +159,7 @@ const DashboardLeftSignedIn: FC<Typies> = (props): React.ReactElement => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
