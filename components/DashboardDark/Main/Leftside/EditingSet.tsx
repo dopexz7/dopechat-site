@@ -4,7 +4,7 @@ import React, { FC, forwardRef } from "react";
 import Link from "next/link";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
-
+import Image from 'next/image'
 const EditingSet: FC<EditingSetTypes> = ({
   data,
   editingSet,
@@ -36,11 +36,18 @@ const EditingSet: FC<EditingSetTypes> = ({
               editingSet === data
                 ? "border-opacity-100 bg-opacity-10"
                 : "border-opacity-5 bg-opacity-5"
-            } p-0.5 rounded-2xl bg-white `}
+            } rounded-3xl bg-white `}
           >
-            
             {/* //style={{ display: avatar ? "block" : "none" }} */}
-            <img src={image} alt={data} className="w-10 h-10 rounded-xl" />
+            <div className="rounded-3xl overflow-hidden p-0.5 flex flex-row items-center justify-center">
+              <Image
+                width={40}
+                height={40}
+                
+                src={image}
+                alt={data}
+              />
+            </div>
           </Menu.Button>
         </div>
         <Transition
