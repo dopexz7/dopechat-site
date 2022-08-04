@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-
 import { supabase } from "../../../../lib/supabaseClient";
 import { getUploadLimit, setUploadLimit } from "../../../../funcs/uploadLimits";
 import { useAuth } from "../../../../contexts/AppContext";

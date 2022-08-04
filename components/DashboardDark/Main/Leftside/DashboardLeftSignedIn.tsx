@@ -6,9 +6,6 @@ import { supabase } from "../../../../lib/supabaseClient";
 import Link from "next/link";
 import { NextRouter, useRouter } from "next/router";
 import LeftSideModal from "./LeftSideModal";
-// import { getIsMod } from "../../../../funcs/useIsMod";
-// import { getIsDonor } from "../../../../funcs/useIsDonor";
-// import { getAvailEdits } from "../../../../funcs/useHasEdits";
 import DonationComponent from "../../../Donation/DonationComponent";
 import { useAuth } from "../../../../contexts/AppContext";
 import { useState } from "react"; //useEffect, 
@@ -20,9 +17,6 @@ import React from "react";
 const DashboardLeftSignedIn: FC<Typies> = (props): React.ReactElement => {
   const router: NextRouter = useRouter();
   const { user, isMod, isDonor, availEdits } = useAuth() as any;
-  // const [isDonor, setIsDonor] = useState<boolean>(false);
-  // const [isMod, setIsMod] = useState<boolean>(false);
-  //const [availEdits, setAvailEdits] = useState<string[]>([]);
   const [editingSet, setEditingSet] = useState<string>("");
 
   const passProps = (d: string): void => {

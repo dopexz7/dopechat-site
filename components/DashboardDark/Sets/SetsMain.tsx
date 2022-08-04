@@ -8,7 +8,8 @@ import * as Bs from "react-icons/bs";
 import { gettingSetEmotes } from "funcs/updatingEmotes";
 import { useAuth } from "contexts/AppContext";
 import getMod from "../../../funcs/useIsSetMod";
-import SetsSignedIn from './SetsSignedIn'
+import SetsSignedIn from './SetsSignedIn';
+
 const SetsMain:FC = () => {
   const [q, setQ] = useState<string>("");
   const router = useRouter();
