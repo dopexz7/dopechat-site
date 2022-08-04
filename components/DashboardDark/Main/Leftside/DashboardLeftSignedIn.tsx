@@ -45,10 +45,20 @@ const DashboardLeftSignedIn: FC<Typies> = (props): React.ReactElement => {
             height={40}
             className="rounded-3xl border-[1px] "
           />
-          <div className="ml-2 font-normal text-white rounded-2xl text-md overflow-hidden text-ellipsis whitespace-nowrap">
+          <div className="ml-2 font-normal text-white text-md overflow-hidden text-ellipsis whitespace-nowrap">
             {user?.user_metadata.name}
           </div>
-
+          <div className="flex flex-row items-center px-3 text-sm lg:text-base text-white">
+            {isDonor ? (
+              <>
+                <Bs.BsFillPatchCheckFill className="mr-2 text-main-purple" />
+              </>
+            ) : (
+              <>
+                <Bs.BsFillPatchCheckFill className="mr-2 text-accent-gray" />
+              </>
+            )}
+          </div>
           <div className="ml-auto flex flex-row items-center">
             {isMod ? (
               <Tooltip
@@ -87,9 +97,7 @@ const DashboardLeftSignedIn: FC<Typies> = (props): React.ReactElement => {
           <div className="flex w-full text-xs text-center lg:text-left lg:text-base flex-row space-x-2 lg:flex-col lg:space-x-0 lg:space-y-3">
             {router.pathname.includes("admin") ? (
               <Link href="/dashboard" passHref>
-                <div
-                  className="group hover:bg-white border-white border-opacity-5 shadow-2xl text-white duration-300 border-2 font-normal hover:text-main-purple cursor-pointer flex justify-center items-center p-3 rounded-3xl w-full"
-                >
+                <div className="group hover:bg-white border-white border-opacity-5 shadow-2xl text-white duration-300 border-2 font-normal hover:text-main-purple cursor-pointer flex justify-center items-center p-3 rounded-3xl w-full">
                   <span className="opacity-75 font-normal group-hover:opacity-100">
                     Dashboard
                   </span>
@@ -113,22 +121,11 @@ const DashboardLeftSignedIn: FC<Typies> = (props): React.ReactElement => {
             />
           </div>
           <div className="flex flex-row">
-            <div className="flex flex-row items-center px-3 text-white">
-              {isDonor ? (
-                <>
-                  <Bs.BsFillPatchCheckFill className="mr-2 text-main-purple text-sm lg:text-xl" />
-                </>
-              ) : (
-                <>
-                  <Bs.BsFillPatchCheckFill className="mr-2 text-accent-gray text-sm lg:text-xl" />
-                </>
-              )}
-            </div>
-            <div className="text-xs lg:text-sm px-3 text-white opacity-75">
+            {/* <div className="text-xs lg:text-sm px-3 text-white opacity-75">
               You have access to{" "}
               {Object.keys(availEdits) ? Object.keys(availEdits).length : "0"}{" "}
               emote sets.
-            </div>
+            </div> */}
           </div>
           <div className="grid grid-cols-5 gap-1 justify-center">
             {availEdits &&
