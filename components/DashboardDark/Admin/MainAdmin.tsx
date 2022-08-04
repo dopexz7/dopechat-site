@@ -42,14 +42,17 @@ const MainAdmin: FC = () => {
   return (
     <DashboardLayout title="Admin" layout="admin">
       <AdminRoute>
-        
-          <DashboardLeftSignedIn
-            profile={true}
-            onSuccess={function () {
-              throw new Error("Function not implemented.");
-            }}
-          />
-        
+        <DashboardLeftSignedIn
+          profile={true}
+          onSuccess={function () {
+            throw new Error("Function not implemented.");
+          }}
+          onRouteChange={function () {
+            throw new Error("Function not implemented.");
+          }}
+          route={false}
+        />
+
         <div className="shadow-sm backdrop-blur-sm border-[1px] rounded-3xl p-1 border-white border-opacity-5 h-full w-full lg:w-[55%] flex flex-col">
           <div className="px-6 py-2 flex flex-row items-center">
             <div className="flex flex-row items-center  text-white">
