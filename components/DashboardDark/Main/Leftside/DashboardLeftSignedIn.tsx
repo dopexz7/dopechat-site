@@ -27,11 +27,7 @@ const DashboardLeftSignedIn: FC<Typies> = (props): React.ReactElement => {
 
   return (
     <div className="border-[1px] border-white border-opacity-5 shadow-2xl rounded-3xl h-[55%] backdrop-blur-sm max-w-full w-full lg:w-1/5 flex flex-col">
-      <div
-        className={`p-6 flex flex-col h-full  ${
-          router.route.includes("profile") ? "" : "anim-fade"
-        } `}
-      >
+      <div className="p-6 flex flex-col h-full">
         <div className="flex flex-row items-center px-6 py-2 ">
           <Image
             src={user?.user_metadata.avatar_url}
