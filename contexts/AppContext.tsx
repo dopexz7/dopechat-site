@@ -1,6 +1,3 @@
-import { getAvailEdits } from "funcs/useHasEdits";
-import { getIsDonor } from "funcs/useIsDonor";
-import { getIsMod } from "funcs/useIsMod";
 import React, {
   useContext,
   useState,
@@ -15,20 +12,6 @@ const AuthContext = createContext({});
 export const AuthProvider: FC<AuthContextProps> = ({ children }) => {
   const [user, setUser] = useState<any>();
   const [loading, setLoading] = useState<boolean>(true);
-  const [isMod, setIsMod] = useState<boolean>(false);
-  const [isDonor, setIsDonor] = useState<boolean>(false);
-  const [availEdits, setAvailEdits] = useState<string[]>([]);
-  useEffect(() => {
-    getIsMod(user?.user_metadata.name).then((res: any) => {
-      setIsMod(res);
-    });
-    getIsDonor(user?.user_metadata.name).then((res: any) => {
-      setIsDonor(res);
-    });
-    getAvailEdits(user?.user_metadata.name).then((res: any[]) => {
-      setAvailEdits(res);
-    });
-  }, [user]);
 
   useEffect(() => {
     const session: any = supabase.auth.session();
@@ -49,10 +32,7 @@ export const AuthProvider: FC<AuthContextProps> = ({ children }) => {
   }, []);
 
   const value = {
-    user,
-    isMod,
-    isDonor,
-    availEdits
+    user
   };
 
   return (
