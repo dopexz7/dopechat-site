@@ -53,11 +53,7 @@ const DashboardLeftSignedIn: FC<Typies> = (props): React.ReactElement => {
               <>
                 <Bs.BsFillPatchCheckFill className="mr-2 text-main-purple" />
               </>
-            ) : (
-              <>
-                <Bs.BsFillPatchCheckFill className="mr-2 text-accent-gray" />
-              </>
-            )}
+            ) : ""}
           </div>
           <div className="ml-auto flex flex-row items-center">
             {isMod ? (
