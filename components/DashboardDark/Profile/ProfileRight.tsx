@@ -4,7 +4,6 @@ import { gettingSetMods } from "../../../funcs/gettingModList";
 import { supabase } from "../../../lib/supabaseClient";
 import * as Md from "react-icons/md";
 import { useAuth } from "../../../contexts/AppContext";
-import ContactMain from "../../Contact/ContactMain";
 
 const ProfileRight:FC = () => {
   const { user } = useAuth() as any;
