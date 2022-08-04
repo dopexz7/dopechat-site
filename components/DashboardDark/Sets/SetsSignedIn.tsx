@@ -42,7 +42,6 @@ const SetsSignedIn: FC = (): React.ReactElement => {
               <Tooltip
                 transition="pop"
                 transitionDuration={300}
-                transitionTimingFunction="ease"
                 label="Mod dashboard"
                 withArrow
               >
@@ -61,7 +60,6 @@ const SetsSignedIn: FC = (): React.ReactElement => {
               withArrow
               transition="pop"
               transitionDuration={300}
-              transitionTimingFunction="ease"
             >
               <div
                 title="Logout"
@@ -75,11 +73,6 @@ const SetsSignedIn: FC = (): React.ReactElement => {
         </div>
 
         <div className="flex flex-row items-center ml-auto space-x-1 mr-3">
-          <Link href="/dashboard/profile" passHref>
-            <span className="rounded-3xl flex items-center p-1 px-3 border-white border-opacity-5 border-[1px] hover:bg-white hover:text-main-purple text-sm cursor-pointer duration-300">
-              Your profile
-            </span>
-          </Link>
           <Link href="/dashboard" passHref>
             <span className="rounded-3xl flex items-center p-1 px-3 border-white border-opacity-5 border-[1px] hover:bg-white hover:text-main-purple text-sm cursor-pointer duration-300">
               Dashboard

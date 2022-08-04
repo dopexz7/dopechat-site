@@ -51,8 +51,8 @@ const DashboardMiddleSection:FC<MiddleTypes> = ({ editingSet }) => {
   };
 
   return (
-    <>
-      <div className="px-6 py-2 flex flex-row items-center shadow-2xl ">
+    <div className="shadow-sm backdrop-blur-sm border-[1px] rounded-3xl lg:p-1 border-white border-opacity-5 h-full w-full lg:w-[55%] flex flex-col">
+      <div className="px-6 py-3 flex flex-row items-center shadow-2xl ">
         <div className="flex flex-row items-center  text-white">
           <p className="text-xl">All emotes</p>
           <p className="text-xs mt-1 opacity-50" ref={divRef}>
@@ -63,20 +63,18 @@ const DashboardMiddleSection:FC<MiddleTypes> = ({ editingSet }) => {
         <div className="overflow-hidden duration-300 border-[1px] text-white shadow-2xl backdrop-blur-sm border-white border-opacity-25 rounded-3xl ml-auto flex flex-row items-center text-sm">
           <Tooltip
             position="top"
-            placement="center"
-            gutter={10}
             label={sorting ? "Latest at the top" : "Sort by name, ascending"}
             withArrow
           >
             <div
               onClick={() => setSorting(!sorting)}
-              className="group p-3 text-sm duration-300 cursor-pointer "
+              className="group px-3 text-sm duration-300 cursor-pointer "
             >
               {sorting ? <Bs.BsSortDown /> : <Bs.BsSortAlphaDown />}
             </div>
           </Tooltip>
 
-          <div className="p-1 flex flex-row items-center">
+          <div className="px-1 h-7 flex flex-row items-center">
             <Md.MdOutlineSearch className="mr-3 ml-auto" />
             <input
               value={q}
@@ -93,14 +91,7 @@ const DashboardMiddleSection:FC<MiddleTypes> = ({ editingSet }) => {
             >
               Update
             </div>
-            <Tooltip
-              position="top"
-              placement="end"
-              gutter={15}
-              label="at least 3 characters"
-              opened={moreThanTwo}>
-              
-              </Tooltip>
+            
           </div>
         </div>
       </div>
@@ -180,7 +171,7 @@ const DashboardMiddleSection:FC<MiddleTypes> = ({ editingSet }) => {
           </div>
         </>
       )}
-    </>
+    </div>
   );
 }
 export default DashboardMiddleSection;

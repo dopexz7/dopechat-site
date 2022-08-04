@@ -1,6 +1,6 @@
 import * as Md from "react-icons/md";
 import * as Go from "react-icons/go";
-import React, { FC, forwardRef, LegacyRef } from "react";
+import React, { FC, forwardRef } from "react";
 import Link from "next/link";
 import { Menu, Transition } from "@headlessui/react";
 import { Fragment } from "react";
@@ -13,20 +13,15 @@ const EditingSet: FC<EditingSetTypes> = ({
   image
 }): React.ReactElement => {
   // eslint-disable-next-line react/display-name
-  const MyLink = forwardRef((props, ref: LegacyRef<HTMLAnchorElement>) => {
-    let { ...rest } = props as linkTypes;
+  const MyLink = forwardRef(() => {
     return (
       <Link href={`/dashboard/set/${data}` as string} passHref>
-        <a
-          ref={ref}
-          {...rest}
+        <div
           title="View full set"
           className="text-white rounded-xl bg-darker-purple  hover:rounded-3xl cursor-pointer p-3 justify-center duration-300 flex items-center w-max"
-          target="_blank"
-          rel="noopener noreferrer"
         >
           <Go.GoLinkExternal />
-        </a>
+        </div>
       </Link>
     );
   });
@@ -98,6 +93,3 @@ interface EditingSetTypes {
   image: string;
 }
 
-interface linkTypes {
-  children: React.ReactNode;
-}

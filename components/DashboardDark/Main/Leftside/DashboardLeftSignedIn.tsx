@@ -1,5 +1,4 @@
 import * as Md from "react-icons/md";
-import * as Io from "react-icons/io5";
 import { Tooltip } from "@mantine/core";
 import * as Bs from "react-icons/bs";
 import { supabase } from "../../../../lib/supabaseClient";
@@ -8,7 +7,7 @@ import { NextRouter, useRouter } from "next/router";
 import LeftSideModal from "./LeftSideModal";
 import DonationComponent from "../../../Donation/DonationComponent";
 import { useAuth } from "../../../../contexts/AppContext";
-import { useState } from "react"; //useEffect, 
+import { useState } from "react";
 import EditingSet from "./EditingSet";
 import Image from "next/image";
 import { FC } from "react";
@@ -25,6 +24,16 @@ const DashboardLeftSignedIn: FC<Typies> = (props): React.ReactElement => {
   };
 
 
+
+  const LinkComponent = ({href, icon} : {href: any, icon: any}) => {
+    return (
+      <Link href={href} passHref>
+        <div className="p-2 text-sm hover:bg-white opacity-50 hover:opacity-100  duration-300 hover:text-main-purple cursor-pointer border-[1px] flex text-white items-center justify-center rounded-3xl mr-1">
+          {icon}
+        </div>
+      </Link>
+    );
+  }
   return (
     <div className="border-[1px] border-white border-opacity-5 shadow-2xl rounded-3xl h-[55%] backdrop-blur-sm max-w-full w-full lg:w-1/5 flex flex-col">
       <div className="p-6 flex flex-col h-full">
@@ -45,45 +54,23 @@ const DashboardLeftSignedIn: FC<Typies> = (props): React.ReactElement => {
               <Tooltip
                 transition="pop"
                 transitionDuration={300}
-                transitionTimingFunction="ease"
                 label="Mod dashboard"
                 withArrow
               >
-                <Link href={"/dashboard/admin"} passHref>
-                  <div className="p-2 text-sm hover:bg-white duration-300 hover:text-main-purple cursor-pointer border-[1px] border-white opacity-50 hover:opacity-100 flex text-white items-center justify-center rounded-3xl mr-1">
-                    <Md.MdOutlineAdminPanelSettings />
-                  </div>
-                </Link>
+                <LinkComponent
+                  href={`/dashboard/admin`}
+                  icon={<Md.MdOutlineAdminPanelSettings />}
+                />
               </Tooltip>
             ) : (
               ""
             )}
 
-            {router.pathname.includes("profile") ||
-            router.pathname.includes("admin") ||
-            router.pathname.includes("set") ? (
-              <Tooltip
-                transition="pop"
-                transitionDuration={300}
-                transitionTimingFunction="ease"
-                label="Return back to dashboard"
-                withArrow
-              >
-                <Link href={"/dashboard"} passHref>
-                  <div className="p-2 text-sm hover:bg-white opacity-50 hover:opacity-100  duration-300 hover:text-main-purple cursor-pointer border-[1px] flex text-white items-center justify-center rounded-3xl mr-1">
-                    <Io.IoReturnUpBack />
-                  </div>
-                </Link>
-              </Tooltip>
-            ) : (
-              ""
-            )}
             <Tooltip
               label="Logout"
               withArrow
               transition="pop"
               transitionDuration={300}
-              transitionTimingFunction="ease"
             >
               <div
                 title="Logout"
@@ -98,22 +85,27 @@ const DashboardLeftSignedIn: FC<Typies> = (props): React.ReactElement => {
 
         <div className="lg:p-6 w-full space-y-3 flex flex-col">
           <div className="flex w-full text-xs text-center lg:text-left lg:text-base flex-row space-x-2 lg:flex-col lg:space-x-0 lg:space-y-3">
-            <Link
-              href={
-                router.pathname.includes("profile")
-                  ? "/dashboard"
-                  : "/dashboard/profile"
-              }
-              passHref
-            >
-              <div className="group hover:bg-white border-white border-opacity-5 shadow-2xl text-white duration-300 border-2 font-normal hover:text-main-purple cursor-pointer flex justify-center items-center p-3 rounded-3xl w-full">
+            {router.pathname.includes("admin") ? (
+              <Link href="/dashboard" passHref>
+                <div
+                  className="group hover:bg-white border-white border-opacity-5 shadow-2xl text-white duration-300 border-2 font-normal hover:text-main-purple cursor-pointer flex justify-center items-center p-3 rounded-3xl w-full"
+                >
+                  <span className="opacity-75 font-normal group-hover:opacity-100">
+                    Dashboard
+                  </span>
+                </div>
+              </Link>
+            ) : (
+              <div
+                onClick={() => props.onRouteChange()}
+                className="group hover:bg-white border-white border-opacity-5 shadow-2xl text-white duration-300 border-2 font-normal hover:text-main-purple cursor-pointer flex justify-center items-center p-3 rounded-3xl w-full"
+              >
                 <span className="opacity-75 font-normal group-hover:opacity-100">
-                  {router.pathname.includes("profile")
-                    ? "Dashboard"
-                    : "Your profile"}
+                  {props.route ? "Dashboard" : "Your profile"}
                 </span>
               </div>
-            </Link>
+            )}
+
             <LeftSideModal />
             <DonationComponent
               iconEnabled={false}
@@ -164,4 +156,6 @@ export default DashboardLeftSignedIn;
 interface Typies {
   profile?: boolean;
   onSuccess: (d: string) => typeof d;
+  onRouteChange: () => void;
+  route: boolean;
 }

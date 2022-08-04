@@ -87,8 +87,6 @@ const SetsMain:FC = () => {
           <div className="overflow-hidden duration-300 border-[1px] text-white shadow-2xl backdrop-blur-sm border-white border-opacity-25 rounded-3xl ml-auto flex flex-row items-center text-sm">
             <Tooltip
               position="top"
-              placement="center"
-              gutter={10}
               label={sorting ? "Latest at the top" : "Sort by name, ascending"}
               withArrow
             >
@@ -109,14 +107,6 @@ const SetsMain:FC = () => {
                 className="peer w-16 bg-transparent border-0 focus:w-36 duration-300"
                 placeholder="Search..."
               />
-              <Tooltip
-                position="top"
-                placement="end"
-                gutter={15}
-                label="at least 3 characters"
-              >
-                <></>
-              </Tooltip>
             </div>
           </div>
         </div>

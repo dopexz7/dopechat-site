@@ -3,6 +3,8 @@ import { browserName } from "react-device-detect";
 import * as Fa from "react-icons/fa";
 import { Menu } from "@mantine/core";
 
+
+
 const MainHeader:FC = () => {
   const [browsName, setBrowsName] = useState<string>("your browser");
 
@@ -97,25 +99,34 @@ const MainHeader:FC = () => {
         </button>
 
         <Menu
-          control={
+          position="right-start"
+          classNames={{
+            dropdown: 'w-1/2 !left-auto mt-6',
+            item: "duration-300 text-main-black",
+           //itemHovered: "bg-border-white text-darker-purple",
+          }}
+        >
+          <Menu.Target>
             <button
               type="button"
-              className="font-normal hidden lg:flex text-xs mt-3 "
+              className="font-normal hidden lg:flex text-xs mt-3"
             >
               All versions
             </button>
-          }
-          classNames={{
-            item: "duration-300 text-main-black",
-            itemHovered: "bg-border-white text-darker-purple",
-          }}
-        >
-          {menuData &&
-            menuData.map((data, index) => (
-              <a key={index} target="_blank" rel="noreferrer" href={data.href}>
-                <Menu.Item icon={data.icon}>{data.title}</Menu.Item>
-              </a>
-            ))}
+          </Menu.Target>
+          <Menu.Dropdown>
+            {menuData &&
+              menuData.map((data, index) => (
+                <a
+                  key={index}
+                  target="_blank"
+                  rel="noreferrer"
+                  href={data.href}
+                >
+                  <Menu.Item icon={data.icon}>{data.title}</Menu.Item>
+                </a>
+              ))}
+          </Menu.Dropdown>
         </Menu>
       </div>
       <div className="hidden lg:flex flex-row items-center m-auto w-1/6 -z-10 opacity-10 scale-90 blur-sm">

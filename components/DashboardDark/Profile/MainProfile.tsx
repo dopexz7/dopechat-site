@@ -1,12 +1,9 @@
-import AuthRoute from "../../../contexts/authRoute";
-import DashboardLayout from "../Main/DashboardLayout";
 import { FC, useEffect, useState } from "react";
 import { supabase } from "../../../lib/supabaseClient";
 import * as Im from "react-icons/im";
 import * as Md from "react-icons/md";
 import ProfileRight from "./ProfileRight";
 import { useAuth } from "../../../contexts/AppContext";
-import DashboardLeftSignedIn from "../Main/Leftside/DashboardLeftSignedIn";
 import { gettingProfileEmotes } from "funcs/updatingEmotes";
 
 const MainProfile:FC = () => {
@@ -92,36 +89,25 @@ const MainProfile:FC = () => {
     );
   };
   return (
-    <DashboardLayout title="Profile" layout="profile">
-      <AuthRoute>
-          <DashboardLeftSignedIn
-            profile={true}
-            onSuccess={function () {
-              throw new Error("Function not implemented.");
-            }}
-          />
-        <div className="shadow-sm backdrop-blur-sm border-[1px] rounded-3xl p-1 border-white border-opacity-5 h-full w-full lg:w-[55%] flex flex-col">
-          <div className="h-full ">
-            <div className="px-6 py-2 flex flex-row items-center">
-              <div className="flex flex-row items-center  text-white">
-                <p className="text-xl">Your approved emotes</p>
-              </div>
-            </div>
-
-            {(approvedEmotes && (
-              <div className="grid xgrd gap-3 p-6 overflow-y-auto">
-                {approvedEmotes.map((data: any, index) => (
-                  <EmoteComponent key={index} data={data} />
-                ))}
-              </div>
-            )) || <div className="p-6">You have no approved emotes yet.</div>}
-          </div>
-          <div className="h-max mt-auto border-t-[1px] border-white border-opacity-5">
-            <ProfileRight />
-          </div>
+    <div className="shadow-sm backdrop-blur-sm border-[1px] rounded-3xl lg:p-1 border-white border-opacity-5 h-full w-full lg:w-[55%] flex flex-col">
+      <div className="px-6 py-3 flex flex-row items-center shadow-2xl ">
+        <div className="flex flex-row items-center  text-white">
+          <p className="text-xl">Your approved emotes</p>
         </div>
-      </AuthRoute>
-    </DashboardLayout>
+      </div>
+      <div className="p-1">
+        {(approvedEmotes && (
+          <div className="grid xgrd gap-3 p-6 overflow-y-auto">
+            {approvedEmotes.map((data: any, index) => (
+              <EmoteComponent key={index} data={data} />
+            ))}
+          </div>
+        )) || <div className="p-6">You have no approved emotes yet.</div>}
+      </div>
+      <div className="h-max mt-auto border-t-[1px] border-white border-opacity-5">
+        <ProfileRight />
+      </div>
+    </div>
   );
 }
 export default MainProfile;

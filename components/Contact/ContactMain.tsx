@@ -1,6 +1,6 @@
 import { FC, useState } from "react";
 import * as Bs from "react-icons/bs";
-import { Input, Modal, Textarea } from "@mantine/core";
+import { Modal } from "@mantine/core";
 import { supabase } from "../../lib/supabaseClient";
 import { motion } from "framer-motion";
 
@@ -85,30 +85,23 @@ const ContactMain:FC<ContactMainTypes> = ({ btnClass, iconClass, text }) => {
             </div>
           )}
 
-          <Input
+          <input
             required
             value={userEmail}
             placeholder="Your email"
             onChange={(e: any) => setUserEmail(e.target.value)}
-            classNames={{
-              wrapper: "w-full",
-              defaultVariant:
-                "p-4 bg-transparent border-[1px] border-white border-opacity-5 rounded-3xl text-white",
-            }}
+            className="p-2 px-4 bg-transparent border-[1px] border-white border-opacity-5 rounded-3xl text-white"
           />
-          <Textarea
-            className="mt-3"
-            placeholder="Message..."
-            label=""
+          <textarea
+            required
             value={message}
-            classNames={{
-              wrapper: "w-full",
-              defaultVariant:
-                "p-4 bg-transparent border-[1px] border-white border-opacity-5 rounded-3xl text-white",
-            }}
-            onChange={(event) => setMessage(event.currentTarget.value)}
+            placeholder="Your message"
+            onChange={(e: any) => setMessage(e.target.value)}
+            className="mt-2 p-2 px-4 bg-transparent border-[1px] border-white border-opacity-5 rounded-3xl text-white" 
+
           />
-          <p className="text-xs mt-1 text-white opacity-25">
+          
+          <p className="text-xs font-light mt-1 text-main-purple ">
             If you&apos;re requesting an emote set, please include a link to your Facebook Gaming Page.
           </p>
 
