@@ -6,7 +6,6 @@ import * as Ri from "react-icons/ri";
 import { Stepper, Tabs, Modal } from "@mantine/core";
 import UploadFileFirst from "./UploadFileFirst";
 import { motion } from "framer-motion";
-import StyledTabs from "../../../Misc/StyledTabs";
 import { FC } from "react";
 
 const LeftSideModal:FC = () => {
@@ -26,7 +25,7 @@ const LeftSideModal:FC = () => {
       yoyo: 1,
     },
   };
-  
+  const [activeTab, setActiveTab] = useState<string | null>("uploadfiles");
   return (
     <>
       <div
@@ -65,26 +64,65 @@ const LeftSideModal:FC = () => {
         <div className="h-80 flex w-full mt-3">
           {seeFileUpload ? (
             <>
-              <StyledTabs>
-                <Tabs.Tab label="Upload files" icon={<Ai.AiOutlineUpload />}>
-                  <motion.div
-                    initial={{ opacity: 0.5, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0.5 }}
-                  >
-                    <UploadFileFirst />
-                  </motion.div>
-                </Tabs.Tab>
-                <Tabs.Tab label="Drag & drop" icon={<Ri.RiDragDropFill />}>
-                  <motion.div
-                    initial={{ opacity: 0.5, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0.5 }}
-                  >
-                    <FileDrop />
-                  </motion.div>
-                </Tabs.Tab>
-              </StyledTabs>
+              <motion.div
+                className="w-full"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+              >
+                <Tabs
+                  value={activeTab}
+                  onTabChange={setActiveTab}
+                  variant="pills"
+                  radius="sm"
+                  classNames={{
+                    tab: "text-white text-md px-6 py-3 w-1/2 font-semibold hover:bg-transparent hover:scale-90 duration-300",
+                  }}
+                >
+                  <Tabs.List>
+                    <Tabs.Tab
+                      className={`${
+                        activeTab === "uploadfiles"
+                          ? "!bg-white !text-main-purple"
+                          : ""
+                      }`}
+                      value="uploadfiles"
+                      icon={<Ai.AiOutlineUpload />}
+                    >
+                      Upload files
+                    </Tabs.Tab>
+                    <Tabs.Tab
+                      className={`${
+                        activeTab === "dragndrop"
+                          ? "!bg-white !text-main-purple"
+                          : ""
+                      }`}
+                      value="dragndrop"
+                      icon={<Ri.RiDragDropFill />}
+                    >
+                      Drag & drop
+                    </Tabs.Tab>
+                  </Tabs.List>
+                  <Tabs.Panel value="uploadfiles" pt="xs">
+                    <motion.div
+                      initial={{ opacity: 0.5, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0.5 }}
+                    >
+                      <UploadFileFirst />
+                    </motion.div>
+                  </Tabs.Panel>
+                  <Tabs.Panel value="dragndrop" pt="xs">
+                    <motion.div
+                      initial={{ opacity: 0.5, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0.5 }}
+                    >
+                      <FileDrop />
+                    </motion.div>
+                  </Tabs.Panel>
+                </Tabs>
+              </motion.div>
             </>
           ) : (
             <>
