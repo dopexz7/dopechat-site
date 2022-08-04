@@ -6,12 +6,12 @@ import { supabase } from "../../../../lib/supabaseClient";
 import Link from "next/link";
 import { NextRouter, useRouter } from "next/router";
 import LeftSideModal from "./LeftSideModal";
-import { getIsMod } from "../../../../funcs/useIsMod";
-import { getIsDonor } from "../../../../funcs/useIsDonor";
-import { getAvailEdits } from "../../../../funcs/useHasEdits";
+// import { getIsMod } from "../../../../funcs/useIsMod";
+// import { getIsDonor } from "../../../../funcs/useIsDonor";
+// import { getAvailEdits } from "../../../../funcs/useHasEdits";
 import DonationComponent from "../../../Donation/DonationComponent";
 import { useAuth } from "../../../../contexts/AppContext";
-import { useEffect, useState } from "react";
+import { useState } from "react"; //useEffect, 
 import EditingSet from "./EditingSet";
 import Image from "next/image";
 import { FC } from "react";
@@ -19,27 +19,17 @@ import React from "react";
 
 const DashboardLeftSignedIn: FC<Typies> = (props): React.ReactElement => {
   const router: NextRouter = useRouter();
-  const { user } = useAuth() as any;
-  const [isDonor, setIsDonor] = useState<boolean>(false);
-  const [isMod, setIsMod] = useState<boolean>(false);
-  const [availEdits, setAvailEdits] = useState<string[]>([]);
+  const { user, isMod, isDonor, availEdits } = useAuth() as any;
+  // const [isDonor, setIsDonor] = useState<boolean>(false);
+  // const [isMod, setIsMod] = useState<boolean>(false);
+  //const [availEdits, setAvailEdits] = useState<string[]>([]);
   const [editingSet, setEditingSet] = useState<string>("");
 
   const passProps = (d: string): void => {
     setEditingSet(d);
     props.onSuccess(d);
   };
-  useEffect(() => {
-    getIsMod(user?.user_metadata.name).then((res: any) => {
-      setIsMod(res);
-    });
-    getIsDonor(user?.user_metadata.name).then((res: boolean) => {
-      setIsDonor(res);
-    });
-    getAvailEdits(user?.user_metadata.name).then((res: any[]) => {
-        setAvailEdits(res);
-    });
-  }, [user]);
+
 
   return (
     <>
@@ -119,11 +109,15 @@ const DashboardLeftSignedIn: FC<Typies> = (props): React.ReactElement => {
         <div className="lg:p-6 w-full space-y-3 flex flex-col">
           <div className="flex w-full text-xs text-center lg:text-left lg:text-base flex-row space-x-2 lg:flex-col lg:space-x-0 lg:space-y-3">
             <Link
-              href={
-                router.pathname.includes("profile")
-                  ? "/dashboard"
-                  : "/dashboard/profile"
-              }
+              href={{
+                pathname: "/dashboard/profile",
+                query: { isMod: isMod, isDonor: isDonor },
+              }}
+              // href={
+              //   router.pathname.includes("profile")
+              //     ? "/dashboard"
+              //     : "/dashboard/profile"
+              // }
               passHref
             >
               <div className="group hover:bg-white border-white border-opacity-5 shadow-2xl text-white duration-300 border-2 font-normal hover:text-main-purple cursor-pointer flex justify-center items-center p-3 rounded-3xl w-full">

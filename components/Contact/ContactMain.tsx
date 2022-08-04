@@ -109,8 +109,7 @@ const ContactMain:FC<ContactMainTypes> = ({ btnClass, iconClass, text }) => {
             onChange={(event) => setMessage(event.currentTarget.value)}
           />
           <p className="text-xs mt-1 text-white opacity-25">
-            If you&apos;re requesting an emote set, please include your
-            username.
+            If you&apos;re requesting an emote set, please include a link to your Facebook Gaming Page.
           </p>
 
           <div className="w-full flex flex-col space-y-3 mt-6">

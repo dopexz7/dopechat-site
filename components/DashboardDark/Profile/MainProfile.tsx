@@ -13,6 +13,7 @@ const MainProfile:FC = () => {
   const { user } = useAuth() as any;
   const [approvedEmotes, setApprovedEmotes] = useState<any[]>();
   
+  
   useEffect(() => {
     gettingProfileEmotes(user).then((data: any) => { 
       setApprovedEmotes(data.length ? data : undefined);
@@ -91,7 +92,7 @@ const MainProfile:FC = () => {
     );
   };
   return (
-    <DashboardLayout title="Profile">
+    <DashboardLayout title="Profile" layout="profile">
       <AuthRoute>
         <div className="border-[1px] border-white border-opacity-5 shadow-2xl rounded-3xl h-max backdrop-blur-sm max-w-full w-full lg:w-1/5 flex flex-col">
           <DashboardLeftSignedIn

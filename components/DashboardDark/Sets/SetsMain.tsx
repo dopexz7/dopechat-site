@@ -9,7 +9,7 @@ import DashboardLeftSignedIn from "../Main/Leftside/DashboardLeftSignedIn";
 import { gettingSetEmotes } from "funcs/updatingEmotes";
 import { useAuth } from "contexts/AppContext";
 import getMod from "../../../funcs/useIsSetMod";
-
+import SetsSignedIn from './SetsSignedIn'
 const SetsMain:FC = () => {
   const [q, setQ] = useState<string>("");
   const router = useRouter();
@@ -57,6 +57,7 @@ const SetsMain:FC = () => {
   
   return (
     <DashboardLayout
+      layout="sets"
       title={`${
         loading
           ? "Loading..."
@@ -67,15 +68,8 @@ const SetsMain:FC = () => {
           : "Set doesn't exist..."
       }`}
     >
-      <div className="border-[1px] border-white border-opacity-5 shadow-2xl rounded-3xl h-max backdrop-blur-sm max-w-full w-full lg:w-1/5 flex flex-col">
-        <DashboardLeftSignedIn
-          profile={true}
-          onSuccess={function () {
-            throw new Error("Function not implemented.");
-          }}
-        />
-      </div>
-      <div className="overflow-auto shadow-sm backdrop-blur-sm border-[1px] rounded-3xl lg:p-1 border-white border-opacity-5 h-full w-full lg:w-[80%] flex flex-col">
+      <SetsSignedIn />
+      <div className="overflow-auto shadow-sm backdrop-blur-sm border-[1px] rounded-3xl lg:p-1 border-white border-opacity-5 h-full w-3/4 flex flex-col">
         <div className="px-6 py-2 flex flex-row items-center">
           <div className="flex flex-row items-center  text-white">
             <p className="text-sm lg:text-xl">

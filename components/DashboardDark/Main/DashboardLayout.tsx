@@ -30,7 +30,13 @@ const DashboardLayout:FC<LayoutTypes> = (props) => {
       {user ? (
         <div className="overflow-hidden bg-header-bg bg-main-purple bg-blend-multiply h-screen w-screen flex flex-col justify-center items-center">
           <DashboardNav />
-          <div className="overflow-hidden lg:space-x-20 w-full p-10 h-full flex flex-col lg:flex-row space-y-3 lg:items-center lg:justify-center">
+          <div
+            className={`overflow-hidden  w-full  h-full flex flex-col ${
+              props.layout === "sets"
+                ? "lg:flex-col p-3"
+                : "lg:flex-row lg:space-x-6 p-10"
+            } space-y-3 lg:items-center lg:justify-center`}
+          >
             {props.children}
           </div>
         </div>
@@ -70,4 +76,5 @@ export default DashboardLayout;
 interface LayoutTypes {
   children: React.ReactNode;
   title: string;
+  layout: string;
 }

@@ -4,9 +4,9 @@ import React, { FC } from "react";
 
 const Dashboard:FC = () => {
   return (
-        <AuthProvider>
-          <DashboardMain />
-        </AuthProvider>
+    <AuthProvider>
+        <DashboardMain />
+    </AuthProvider>
   );
 }
 

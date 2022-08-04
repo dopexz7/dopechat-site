@@ -8,9 +8,8 @@ import DashboardLeftSignedIn from "./Leftside/DashboardLeftSignedIn";
 
 const DashboardMain:FC = () =>{
   const [editingSet, setEditingSet] = useState<string>("");
-
   return (
-    <DashboardLayout title="Dashboard">
+    <DashboardLayout title="Dashboard" layout="dashboard">
       <div className="border-[1px] border-white border-opacity-5 shadow-2xl rounded-3xl h-max backdrop-blur-sm max-w-full w-full lg:w-1/5 flex flex-col">
         <DashboardLeftSignedIn onSuccess={(x : string): any => setEditingSet(x)} />
       </div>
