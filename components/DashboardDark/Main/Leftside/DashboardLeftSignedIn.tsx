@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import EditingSet from "./EditingSet";
 import { FC } from "react";
 import React from "react";
-import { getIsMod } from "../../../../funcs/useIsMod";
+// import { getIsMod } from "../../../../funcs/useIsMod";
 import { getAvailEdits } from "../../../../funcs/useHasEdits";
 import { useUser } from "@supabase/auth-helpers-react";
 import { gettingSetEmotes } from "../../../../funcs/updatingEmotes";
@@ -16,7 +16,7 @@ import getMod from "../../../../funcs/useIsSetMod";
 const DashboardLeftSignedIn: FC<Typies> = (props): React.ReactElement => {
   const router: NextRouter = useRouter();
   const user = useUser();
-  const [isMod, setIsMod] = useState<boolean>(false);
+  //const [isMod, setIsMod] = useState<boolean>(false);
   const [q, setQ] = useState<string>("");
   const [pageSet, setPageSet] = useState<any[]>([]);
   const [mod, setMod] = useState<boolean>(false);
@@ -31,9 +31,9 @@ const DashboardLeftSignedIn: FC<Typies> = (props): React.ReactElement => {
   };
 
   useEffect(() => {
-    getIsMod(user?.user_metadata.name).then((res: any) => {
-      setIsMod(res);
-    });
+    // getIsMod(user?.user_metadata.name).then((res: any) => {
+    //   setIsMod(res);
+    // });
     getAvailEdits(user?.user_metadata.name).then((res: any[]) => {
       setAvailEdits(res);
     });
