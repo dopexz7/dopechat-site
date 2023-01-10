@@ -15,7 +15,6 @@ const DashboardMiddleSection:FC<MiddleTypes> = ({ editingSet }) => {
   const [startUpdate, setStartUpdate] = useState<boolean>(false);
   const [posts, setPosts] = useState<any[]>([]);
   const [sorting, setSorting] = useState<boolean>(false);
-  const [showingAllEmotes, setShowingAllEmotes] = useState<boolean>(false);
   const divRef: any = useRef();
   // const { isMod } = useAuth() as any;
   const user = useUser()
