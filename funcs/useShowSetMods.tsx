@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { supabase } from "../lib/supabaseClient";
-import { useAuth } from "../contexts/AppContext";
+import { useUser } from "@supabase/auth-helpers-react";
 const useShowSetMods:Function = (): any[] => {
   const [res, setRes] = useState<any[]>([]);
-  const { user } = useAuth() as any;
+  const user = useUser();
 
   useEffect(() => {
     let subed: boolean = true;

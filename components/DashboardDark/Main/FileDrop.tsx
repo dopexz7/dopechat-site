@@ -2,11 +2,11 @@ import React, { useEffect, useState } from "react";
 import { supabase } from "../../../lib/supabaseClient";
 import { FileUploader } from "react-drag-drop-files";
 import { getUploadLimit, setUploadLimit } from "../../../funcs/uploadLimits";
-import { useAuth } from "../../../contexts/AppContext";
 import { FC } from "react";
+import { useUser } from "@supabase/auth-helpers-react";
 
 const FileDrop:FC = () => {
-  const { user } = useAuth() as any;
+  const user = useUser();
   const [error, setError] = useState<string>();
   const [upLimit, setUpLimit] = useState<number>(0);
   const fileTypes: string[] = ["JPG", "PNG", "GIF", "WEBP"];
@@ -46,9 +46,9 @@ const FileDrop:FC = () => {
         .getPublicUrl(fileName);
       
       const newFile: Object = {
-        uploaded_by: user.user_metadata.name,
+        uploaded_by: user?.user_metadata.name,
         name: fileName,
-        url: fileUrl?.publicURL,
+        url: fileUrl?.publicUrl, //publicURL
       };
 
       await supabase.from("submitfiles").insert(newFile);

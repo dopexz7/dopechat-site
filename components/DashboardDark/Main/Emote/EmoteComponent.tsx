@@ -2,16 +2,16 @@ import React, { useState } from "react";
 import * as Md from "react-icons/md";
 import { supabase } from "../../../../lib/supabaseClient";
 import * as Im from "react-icons/im";
-import { useAuth } from "../../../../contexts/AppContext";
 import { Modal } from "@mantine/core";
 import { FC } from "react";
+import { useUser } from "@supabase/auth-helpers-react";
 
 const EmoteComponent: FC<EmoteComponentTypes> = ({ data, editingSet, isMod, kekRef }) => {
   const [deleted, setDeleted] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [visible, setVisible] = useState<boolean>(false);
   const [emoteAdded, setEmoteAdded] = useState<string>();
-  const { user } = useAuth() as any;
+  const user = useUser();
 
   const deleteFromDb: Function = async (v: emoteType): Promise<any> => {
     await supabase.from("allemotes").delete().eq("src", v.src);
@@ -108,7 +108,7 @@ const EmoteComponent: FC<EmoteComponentTypes> = ({ data, editingSet, isMod, kekR
         {emoteAdded} added to {editingSet} set!
       </Modal>
       <div
-        className={`h-16 w-16 lg:h-32 lg:w-32 group duration-300 shadow-2xl rounded-3xl select-none`}
+        className={`h-16 bg-white bg-opacity-[0.01] w-16 lg:h-32 lg:w-32 group duration-300 rounded-3xl select-none`}
       >
         <div
           className={`h-16 lg:h-32 w-full overflow-hidden text-white flex ${

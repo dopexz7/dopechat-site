@@ -10,17 +10,16 @@ const DashboardMain: FC = () => {
   const [profile, setProfile] = useState<boolean>(false);
   return (
     <DashboardLayout title="Dashboard" layout="dashboard">
-      <DashboardLeftSignedIn
-        route={profile}
-        onRouteChange={(): any => setProfile(!profile)}
-        onSuccess={(x: string): any => setEditingSet(x)}
-      />
-
       {profile ? (
         <MainProfile />
       ) : (
         <DashboardMiddleSection editingSet={editingSet} />
       )}
+      <DashboardLeftSignedIn
+        route={profile}
+        onRouteChange={(): any => setProfile(!profile)}
+        onSuccess={(x: string): any => setEditingSet(x)}
+      />
     </DashboardLayout>
   );
 };

@@ -1,10 +1,10 @@
 import { FC, useEffect } from "react";
 import { PayPalButtons, usePayPalScriptReducer } from "@paypal/react-paypal-js";
 import { supabase } from "../../lib/supabaseClient";
-import { useAuth } from "../../contexts/AppContext";
+import { useUser } from "@supabase/auth-helpers-react";
 
 const ButtonWrapper:FC<buttonWrapperTypes> = ({ currency, amount }) => {
-  const { user } = useAuth() as any;
+  const user = useUser();
   const [{ options }, dispatch] = usePayPalScriptReducer();
 
   useEffect(() => {
@@ -55,7 +55,7 @@ const ButtonWrapper:FC<buttonWrapperTypes> = ({ currency, amount }) => {
             await supabase
               .from("donations")
               .update({
-                username: user.user_metadata.name,
+                username: user?.user_metadata.name,
                 amount: amount,
                 status: "COMPLETE",
               })
@@ -66,7 +66,7 @@ const ButtonWrapper:FC<buttonWrapperTypes> = ({ currency, amount }) => {
                 .update({
                   is_donor: true,
                 })
-                .eq("username", user.user_metadata.name);
+                .eq("username", user?.user_metadata.name);
             }
           });
         }}

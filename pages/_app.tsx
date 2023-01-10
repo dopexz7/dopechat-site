@@ -1,9 +1,18 @@
 import "../styles/globals.css";
-import React from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
+import { createBrowserSupabaseClient } from '@supabase/auth-helpers-nextjs'
+import { SessionContextProvider, Session } from '@supabase/auth-helpers-react'
+
 import NProgress from "nprogress";
 import type { AppProps } from "next/app";
-export default function App({ Component, pageProps: { ...pageProps } }:AppProps) {
+export default function MyApp({
+  Component,
+  pageProps,
+}: AppProps<{
+  initialSession: Session
+}>) {
+  const [supabaseClient] = useState(() => createBrowserSupabaseClient())
   const router = useRouter();
   React.useEffect(() => {
     const handleStart = () => {
@@ -26,7 +35,12 @@ export default function App({ Component, pageProps: { ...pageProps } }:AppProps)
 
   return (
     <>
+      <SessionContextProvider
+      supabaseClient={supabaseClient}
+      initialSession={pageProps.initialSession}
+    >
       <Component {...pageProps} />
+    </SessionContextProvider>
     </>
   );
 }

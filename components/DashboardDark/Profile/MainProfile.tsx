@@ -3,11 +3,11 @@ import { supabase } from "../../../lib/supabaseClient";
 import * as Im from "react-icons/im";
 import * as Md from "react-icons/md";
 import ProfileRight from "./ProfileRight";
-import { useAuth } from "../../../contexts/AppContext";
 import { gettingProfileEmotes } from "funcs/updatingEmotes";
+import { useUser } from "@supabase/auth-helpers-react";
 
 const MainProfile:FC = () => {
-  const { user } = useAuth() as any;
+  const user = useUser()
   const [approvedEmotes, setApprovedEmotes] = useState<any[]>();
   
   
@@ -89,7 +89,7 @@ const MainProfile:FC = () => {
     );
   };
   return (
-    <div className="shadow-sm backdrop-blur-sm border-[1px] rounded-3xl lg:p-1 border-white border-opacity-5 h-full w-full lg:w-[55%] flex flex-col">
+    <div className="shadow-sm backdrop-blur-sm border-[1px] rounded-3xl lg:p-1 border-white border-opacity-5 h-full w-full lg:w-4/5 flex flex-col">
       <div className="px-6 py-3 flex flex-row items-center shadow-2xl ">
         <div className="flex flex-row items-center  text-white">
           <p className="text-xl">Your approved emotes</p>

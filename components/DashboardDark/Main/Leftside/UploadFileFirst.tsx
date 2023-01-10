@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { supabase } from "../../../../lib/supabaseClient";
 import { getUploadLimit, setUploadLimit } from "../../../../funcs/uploadLimits";
-import { useAuth } from "../../../../contexts/AppContext";
 import { FC } from "react";
+import { useUser } from "@supabase/auth-helpers-react";
 
 const UploadFileFirst:FC = () => {
-  const { user } = useAuth() as any;
+  const user = useUser();
   const [selectedFile, setSelectedFile] = useState<File>();
   const [selectedFileName, setSelectedFileName] = useState<string>("");
   const [selfilename, setSelfilename] = useState<string>("");
@@ -42,8 +42,8 @@ const UploadFileFirst:FC = () => {
         const newFile = {
           uploaded_by: user?.user_metadata.name,
           name: selfilename,
-          url: fileUrl!.publicURL,
-        };
+          url: fileUrl!.publicUrl, // publicURL
+        }
 
         await supabase.from("submitfiles").insert(newFile);
 

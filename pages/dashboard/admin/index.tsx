@@ -1,12 +1,9 @@
-import React, { FC } from "react";
+import React from "react";
 import MainAdmin from "../../../components/DashboardDark/Admin/MainAdmin";
-import { AuthProvider } from "../../../contexts/AppContext";
 
-const Admin:FC = () => {
+const Admin = () => {
   return (
-    <AuthProvider>
       <MainAdmin />
-    </AuthProvider>
   );
 }
 

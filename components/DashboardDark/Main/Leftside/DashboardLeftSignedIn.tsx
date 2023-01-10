@@ -2,25 +2,26 @@ import * as Md from "react-icons/md";
 import { Tooltip } from "@mantine/core";
 import * as Bs from "react-icons/bs";
 import { supabase } from "../../../../lib/supabaseClient";
-import Link from "next/link";
 import { NextRouter, useRouter } from "next/router";
-import LeftSideModal from "./LeftSideModal";
-import DonationComponent from "../../../Donation/DonationComponent";
-import { useAuth } from "../../../../contexts/AppContext";
 import { useEffect, useState } from "react";
 import EditingSet from "./EditingSet";
-import Image from "next/image";
 import { FC } from "react";
 import React from "react";
-import { getIsMod } from "funcs/useIsMod";
-import { getIsDonor } from "funcs/useIsDonor";
-import { getAvailEdits } from "funcs/useHasEdits";
+import { getIsMod } from "../../../../funcs/useIsMod";
+import { getAvailEdits } from "../../../../funcs/useHasEdits";
+import { useUser } from "@supabase/auth-helpers-react";
+import { gettingSetEmotes } from "../../../../funcs/updatingEmotes";
+import getMod from "../../../../funcs/useIsSetMod";
 
 const DashboardLeftSignedIn: FC<Typies> = (props): React.ReactElement => {
   const router: NextRouter = useRouter();
-  const { user } = useAuth() as any;
+  const user = useUser();
   const [isMod, setIsMod] = useState<boolean>(false);
-  const [isDonor, setIsDonor] = useState<boolean>(false);
+  const [q, setQ] = useState<string>("");
+  const [pageSet, setPageSet] = useState<any[]>([]);
+  const [mod, setMod] = useState<boolean>(false);
+  const [sorting, setSorting] = useState<boolean>(false);
+  const [allCount, setAllCount] = useState(0);
   const [availEdits, setAvailEdits] = useState<string[]>([]);
   const [editingSet, setEditingSet] = useState<string>("");
 
@@ -33,119 +34,54 @@ const DashboardLeftSignedIn: FC<Typies> = (props): React.ReactElement => {
     getIsMod(user?.user_metadata.name).then((res: any) => {
       setIsMod(res);
     });
-    getIsDonor(user?.user_metadata.name).then((res: any) => {
-      setIsDonor(res);
-    });
     getAvailEdits(user?.user_metadata.name).then((res: any[]) => {
       setAvailEdits(res);
     });
   },[user])
 
+  
+  
+  useEffect(() => {
+    gettingSetEmotes(editingSet).then((r: any) => {
+      setAllCount(r?.length);
+      setPageSet(r);
+    });
+  }, [editingSet, gettingSetEmotes(editingSet)]);
 
-
-  const LinkComponent = ({href, icon} : {href: any, icon: any}) => {
-    return (
-      <Link href={href} passHref>
-        <div className="p-2 text-sm hover:bg-white opacity-50 hover:opacity-100  duration-300 hover:text-main-purple cursor-pointer border-[1px] flex text-white items-center justify-center rounded-3xl mr-1">
-          {icon}
-        </div>
-      </Link>
-    );
-  }
+  useEffect(() => {
+    getMod(editingSet, user?.user_metadata.name).then((r: any) => {
+      setMod(r);
+    });
+    console.log(availEdits)
+  },[editingSet, user]);
+  
+  const deleteFromSet:Function = async (d: any) => {
+    const newArray : any[] = pageSet;
+    const finalArray : any[] = [];
+    newArray.forEach((v) => {
+      if (v.code !== d.code) finalArray.push(v);
+    });
+    setPageSet(finalArray);
+    setAllCount((prevVal) => prevVal - 1);
+    await supabase
+      .from("useremotes")
+      .update({ emotes: finalArray })
+      .eq("name", editingSet);
+  };
   return (
-    <div className="border-[1px] border-white border-opacity-5 shadow-2xl rounded-3xl h-[55%] backdrop-blur-sm max-w-full w-full lg:w-1/5 flex flex-col">
-      <div className="p-6 flex flex-col h-full">
-        <div className="flex flex-row items-center px-6 py-2 ">
-          <Image
-            src={user?.user_metadata.avatar_url}
-            alt={user?.user_metadata.name}
-            width={40}
-            height={40}
-            className="rounded-3xl border-[1px] "
-          />
-          <div className="ml-2 font-normal text-white text-md overflow-hidden text-ellipsis whitespace-nowrap">
-            {user?.user_metadata.name}
-          </div>
-          <div className="flex flex-row items-center px-3 text-sm lg:text-base text-white">
-            {isDonor ? (
-              <>
-                <Bs.BsFillPatchCheckFill className="mr-2 text-main-purple" />
-              </>
-            ) : ""}
-          </div>
-          <div className="ml-auto flex flex-row items-center">
-            {isMod ? (
-              <Tooltip
-                transition="pop"
-                transitionDuration={300}
-                label="Mod dashboard"
-                withArrow
-              >
-                <LinkComponent
-                  href={`/dashboard/admin`}
-                  icon={<Md.MdOutlineAdminPanelSettings />}
-                />
-              </Tooltip>
-            ) : (
-              ""
-            )}
-
-            <Tooltip
-              label="Logout"
-              withArrow
-              transition="pop"
-              transitionDuration={300}
-            >
-              <div
-                title="Logout"
-                onClick={() => supabase.auth.signOut()}
-                className="p-2 text-sm hover:bg-white opacity-50 hover:opacity-100  duration-300 hover:text-main-purple cursor-pointer border-[1px] flex text-white items-center justify-center rounded-3xl mr-1"
-              >
-                <Md.MdLogout />
-              </div>
-            </Tooltip>
-          </div>
-        </div>
-
-        <div className="lg:p-6 w-full space-y-3 flex flex-col">
-          <div className="flex w-full text-xs text-center lg:text-left lg:text-base flex-row space-x-2 lg:flex-col lg:space-x-0 lg:space-y-3">
-            {router.pathname.includes("admin") ? (
-              <Link href="/dashboard" passHref>
-                <div className="group hover:bg-white border-white border-opacity-5 shadow-2xl text-white duration-300 border-2 font-normal hover:text-main-purple cursor-pointer flex justify-center items-center p-3 rounded-3xl w-full">
-                  <span className="opacity-75 font-normal group-hover:opacity-100">
-                    Dashboard
-                  </span>
-                </div>
-              </Link>
-            ) : (
-              <div
-                onClick={() => props.onRouteChange()}
-                className="group hover:bg-white border-white border-opacity-5 shadow-2xl text-white duration-300 border-2 font-normal hover:text-main-purple cursor-pointer flex justify-center items-center p-3 rounded-3xl w-full"
-              >
-                <span className="opacity-75 font-normal group-hover:opacity-100">
-                  {props.route ? "Dashboard" : "Your profile"}
-                </span>
-              </div>
-            )}
-
-            <LeftSideModal />
-            <DonationComponent
-              iconEnabled={false}
-              btnClass={`hover:bg-white text-opacity-75 border-white border-opacity-5 shadow-2xl text-white duration-300 border-2 font-normal hover:text-main-purple cursor-pointer flex justify-center items-center p-3 rounded-3xl w-full`}
-            />
-          </div>
-          <div className="flex flex-row">
-            {/* <div className="text-xs lg:text-sm px-3 text-white opacity-75">
-              You have access to{" "}
-              {Object.keys(availEdits) ? Object.keys(availEdits).length : "0"}{" "}
-              emote sets.
-            </div> */}
-          </div>
-          <div className="grid grid-cols-5 gap-1 justify-center">
+    <div className="border-l-[1px] border-white border-opacity-5 h-full w-full max-w-2xl flex flex-col">
+      {router.pathname === '/dashboard' ? <>
+      <div className="pl-12 w-full space-x-6 flex items-center z-10">
+          {availEdits ? <div className="text-ma-pink font-bold text-lg ">
+            Available sets
+          </div> : 'No sets available'}
+          
+          <div className="flex flex-row flex-wrap space-x-3 justify-center ">
             {availEdits &&
               Object.keys(availEdits)
                 .sort((a, b) => a.localeCompare(b))
                 .map((data: any, index: number) => (
+                  <>
                   <EditingSet
                     key={index}
                     data={data}
@@ -154,11 +90,113 @@ const DashboardLeftSignedIn: FC<Typies> = (props): React.ReactElement => {
                     editingSet={editingSet}
                     profile={props.profile}
                   />
+                  </>
                 ))}
           </div>
         </div>
+        {editingSet ? 
+        <div className="mx-5 overflow-y-auto lg:p-1 border-white border-opacity-5 h-full w-full flex flex-col">
+          <div className="px-6 py-2 flex flex-row items-center">
+            <div className="flex flex-row items-center  text-white">
+              <p className="text-sm lg:text-xl">
+                {editingSet ? `${editingSet}'s set` : 'Nothing selected.'}
+              </p>
+              <p className="text-xs mt-1 opacity-50">{allCount}</p>
+            </div>
+
+          <div className="overflow-hidden duration-300 border-[1px] text-white border-white border-opacity-25 rounded-3xl ml-auto flex flex-row items-center text-sm">
+            <Tooltip
+              position="top"
+              label={sorting ? "Latest at the top" : "Sort by name, ascending"}
+              withArrow
+            >
+              <div
+                onClick={() => setSorting(!sorting)}
+                className="group p-3 text-sm duration-300 cursor-pointer "
+              >
+                {sorting ? <Bs.BsSortDown /> : <Bs.BsSortAlphaDown />}
+              </div>
+            </Tooltip>
+
+            <div className="p-1 flex flex-row items-center">
+              <Md.MdOutlineSearch className="mr-3 ml-auto" />
+              <input
+                value={q}
+                onChange={(e) => setQ(e.target.value)}
+                type="text"
+                className="peer w-16 bg-transparent border-0 focus:w-36 duration-300"
+                placeholder="Search..."
+              />
+            </div>
+          </div>
+        </div>
+        <div className="w-full flex flex-col p-6 overflow-auto">
+          <div className="h-full w-full grid grid-cols-5 gap-3">
+            {pageSet &&
+              pageSet
+                .filter((val) => {
+                  if (q === "") {
+                    return val;
+                  } else if (val.code.toLowerCase().includes(q.toLowerCase())) {
+                    return val;
+                  }
+                })
+                .sort((a, b) =>
+                  sorting
+                    ? a.code > b.code
+                      ? 1
+                      : b.code > a.code
+                      ? -1
+                      : 0
+                    : new Date(b.date).getTime() - new Date(a.date).getTime()
+                )
+                .map((data, index) => (
+                  <div
+                    key={index}
+                    className={`h-24 w-24 group duration-300 rounded-3xl select-none`}
+                  >
+                    <div className="h-24 w-full overflow-hidden text-white flex justify-center relative rounded-2xl bg-white bg-opacity-[0.01] border-[1px] border-white border-opacity-5">
+                      <div className="group absolute w-full h-full duration-300 flex items-center justify-center">
+                        <img
+                          height={64}
+                          width={64}
+                          className={`group-hover:scale-125 group-hover:opacity-25 duration-300`}
+                          src={data.src}
+                          alt={data.code}
+                        />
+                      </div>
+
+                      <div className="w-full  relative duration-300 flex flex-col opacity-0 scale-0 group-hover:scale-100 group-hover:opacity-100">
+                        <div className="overflow-hidden mt-auto ml-auto mr-auto text-xs lg:text-sm font-normal">
+                          {data.code}
+                        </div>
+                        <div className="overflow-hidden mt-auto ml-auto mr-auto hidden lg:block text-xs font-normal">
+                          {data.date ? data.date : ""}
+                        </div>
+                        {mod ? (
+                          <div className="flex flex-row justify-center items-center mt-auto">
+                            <div
+                              onClick={() => deleteFromSet(data)}
+                              className="remove w-full flex items-center justify-center hover:rounded-2xl p-1 text-center text-white text-sm  cursor-pointer duration-300 h-full"
+                            >
+                              <Md.MdRemoveCircleOutline />
+                            </div>
+                          </div>
+                        ) : (
+                          ""
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                ))}
+          </div>
+        </div>
+      </div> :''}
+      </> : ''}
+      
+        
       </div>
-    </div>
+    
   );
 };
 
@@ -167,6 +205,6 @@ export default DashboardLeftSignedIn;
 interface Typies {
   profile?: boolean;
   onSuccess: (d: string) => typeof d;
-  onRouteChange: () => void;
-  route: boolean;
+  onRouteChange?: () => void;
+  route?: boolean;
 }

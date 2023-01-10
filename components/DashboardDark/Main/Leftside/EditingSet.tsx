@@ -32,18 +32,17 @@ const EditingSet: FC<EditingSetTypes> = ({
         <div>
           <Menu.Button
             title={data}
-            className={`hover:border-opacity-50 duration-300 cursor-pointer border-[1px] overflow-hidden border-white ${
+            className={`duration-300 cursor-pointer overflow-hidden border-[1px]   ${
               editingSet === data
-                ? "border-opacity-100 bg-opacity-10"
-                : "border-opacity-5 bg-opacity-5"
-            } rounded-3xl bg-white `}
+                ? "border-ma-pink"
+                : "border-transparent hover:border-[1px] hover:border-ma-pink"
+            } rounded-2xl  `}
           >
             {/* //style={{ display: avatar ? "block" : "none" }} */}
-            <div className="rounded-3xl overflow-hidden p-0.5 flex flex-row items-center justify-center">
+            <div className="rounded-2xl overflow-hidden flex flex-row items-center justify-center">
               <Image
                 width={40}
                 height={40}
-                
                 src={image}
                 alt={data}
               />
@@ -59,7 +58,7 @@ const EditingSet: FC<EditingSetTypes> = ({
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="absolute w-max rounded-xl bg-black bg-opacity-5 border-[1px] border-white border-opacity-10 shadow-lg">
+          <Menu.Items className="absolute w-max rounded-xl bg-black border-[1px] border-white border-opacity-5">
             <div className="px-1 py-1 flex flex-row space-x-1">
               {!profile ? (
                 <Menu.Item>

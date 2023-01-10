@@ -3,15 +3,15 @@ import { Tooltip } from "@mantine/core";
 import * as Bs from "react-icons/bs";
 import { supabase } from "../../../lib/supabaseClient"
 import Link from "next/link";
-import { useAuth } from "../../../contexts/AppContext";
 import Image from "next/image";
 import { FC, useEffect, useState } from "react";
 import React from "react";
 import { getIsMod } from "funcs/useIsMod";
 import { getIsDonor } from "funcs/useIsDonor";
+import { useUser } from "@supabase/auth-helpers-react";
 
 const SetsSignedIn: FC = (): React.ReactElement => {
-  const { user } = useAuth() as any;
+  const user = useUser();
   const [isMod, setIsMod] = useState(false);
   const [isDonor, setIsDonor] = useState(false);
   useEffect(() => {

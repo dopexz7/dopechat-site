@@ -3,7 +3,7 @@ import * as Bs from "react-icons/bs";
 import { Modal } from "@mantine/core";
 import { supabase } from "../../lib/supabaseClient";
 import { motion } from "framer-motion";
-
+import React from "react";
 const ContactMain:FC<ContactMainTypes> = ({ btnClass, iconClass, text }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [visible, setVisible] = useState<boolean>(false);

@@ -5,7 +5,7 @@ import * as Bs from "react-icons/bs";
 import React, { FC, useEffect, useRef, useState } from "react";
 import EmoteComponent from "./Emote/EmoteComponent";
 import { gettingFirstEmotes, gettingMoreEmotes } from "../../../funcs/updatingEmotes";
-import { useAuth } from "contexts/AppContext";
+import { useUser } from "@supabase/auth-helpers-react";
 
 const DashboardMiddleSection:FC<MiddleTypes> = ({ editingSet }) => {
   /* eslint-disable no-unused-vars */
@@ -17,7 +17,8 @@ const DashboardMiddleSection:FC<MiddleTypes> = ({ editingSet }) => {
   const [sorting, setSorting] = useState<boolean>(false);
   const [showingAllEmotes, setShowingAllEmotes] = useState<boolean>(false);
   const divRef: any = useRef();
-  const { user, isMod } = useAuth() as any;
+  // const { isMod } = useAuth() as any;
+  const user = useUser()
 
   useEffect(() => {
     gettingFirstEmotes().then((data: any) => {
@@ -45,16 +46,16 @@ const DashboardMiddleSection:FC<MiddleTypes> = ({ editingSet }) => {
   };
 
   return (
-    <div className="shadow-sm backdrop-blur-sm border-[1px] rounded-3xl lg:p-1 border-white border-opacity-5 h-full w-full lg:w-[55%] flex flex-col">
-      <div className="px-6 py-3 flex flex-row items-center shadow-2xl ">
-        <div className="flex flex-row items-center  text-white">
-          <p className="text-xl">All emotes</p>
+    <div className="border-[0px] rounded-3xl lg:p-1 border-white border-opacity-5 h-full w-4/5 flex flex-col">
+      <div className="px-6 py-3 flex flex-row items-center">
+        <div className="flex flex-row items-center text-ma-pink">
+          <p className="text-xl font-bold">All emotes</p>
           <p className="text-xs mt-1 opacity-50" ref={divRef}>
             {allCount}
           </p>
         </div>
 
-        <div className="overflow-hidden duration-300 border-[1px] text-white shadow-2xl backdrop-blur-sm border-white border-opacity-25 rounded-3xl ml-auto flex flex-row items-center text-sm">
+        <div className="overflow-hidden duration-300 border-[1px] text-white border-white border-opacity-25 rounded-3xl ml-auto flex flex-row items-center text-sm">
           <Tooltip
             position="top"
             label={sorting ? "Latest at the top" : "Sort by name, ascending"}
@@ -89,7 +90,7 @@ const DashboardMiddleSection:FC<MiddleTypes> = ({ editingSet }) => {
           </div>
         </div>
       </div>
-      {showingAllEmotes ? (
+      
         <>
           {startUpdate && q.length >= 2 ? (
             <div className="overflow-y-scroll overflow-x-hidden w-full grid xgrd gap-3 p-6">
@@ -106,7 +107,7 @@ const DashboardMiddleSection:FC<MiddleTypes> = ({ editingSet }) => {
                     key={index}
                     data={data}
                     editingSet={editingSet}
-                    isMod={isMod}
+                    isMod={false}
                     kekRef={divRef}
                   />
                 ))
@@ -148,23 +149,14 @@ const DashboardMiddleSection:FC<MiddleTypes> = ({ editingSet }) => {
                         key={index}
                         data={data}
                         editingSet={editingSet}
-                        isMod={isMod}
+                        isMod={false}
                         kekRef={divRef}                    />
                     ))}
               </InfiniteScroll>
             </div>
           )}
         </>
-      ) : (
-        <>
-          <div
-            onClick={() => setShowingAllEmotes(true)}
-            className="p-3 px-6 m-auto cursor-pointer text-white bg-darker-purple hover:bg-main-purple duration-300 rounded-3xl bg-opacity-10  flex justify-center items-center text-xl"
-          >
-            Show all emotes
-          </div>
-        </>
-      )}
+      
     </div>
   );
 }

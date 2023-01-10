@@ -6,9 +6,9 @@ import * as Md from "react-icons/md";
 import { Tooltip } from "@mantine/core";
 import * as Bs from "react-icons/bs";
 import { gettingSetEmotes } from "funcs/updatingEmotes";
-import { useAuth } from "contexts/AppContext";
 import getMod from "../../../funcs/useIsSetMod";
 import SetsSignedIn from './SetsSignedIn';
+import { useUser } from "@supabase/auth-helpers-react";
 
 const SetsMain:FC = () => {
   const [q, setQ] = useState<string>("");
@@ -20,7 +20,7 @@ const SetsMain:FC = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [sorting, setSorting] = useState<boolean>(false);
   const [allCount, setAllCount] = useState(0);
-  const { user } = useAuth() as any;
+  const user = useUser();
   
   useEffect(() => {
     gettingSetEmotes(id).then((r: any) => {

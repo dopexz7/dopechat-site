@@ -3,12 +3,12 @@ import useCheckIfHasSet from "../../../funcs/useCheckIfHasSet";
 import { gettingSetMods } from "../../../funcs/gettingModList";
 import { supabase } from "../../../lib/supabaseClient";
 import * as Md from "react-icons/md";
-import { useAuth } from "../../../contexts/AppContext";
+import { useUser } from "@supabase/auth-helpers-react";
 
 const ProfileRight:FC = () => {
-  const { user } = useAuth() as any;
+  const user = useUser()
   const [mods, setMods] = useState<any[]>([]);
-  const isOwnerOfSomething = useCheckIfHasSet(user.user_metadata.name);
+  const isOwnerOfSomething = useCheckIfHasSet(user?.user_metadata.name);
   const [loading, setLoading] = useState<boolean>(false);
   const [modValue, setModValue] = useState<string>("");
   useEffect(() => {
@@ -27,7 +27,7 @@ const ProfileRight:FC = () => {
     return await supabase
       .from("useremotes")
       .update({ mods: p })
-      .eq("name", user.user_metadata.name);
+      .eq("name", user?.user_metadata.name);
   };
 
   const addMod = async () => {
@@ -38,7 +38,7 @@ const ProfileRight:FC = () => {
     return await supabase
       .from("useremotes")
       .update({ mods: p })
-      .eq("name", user.user_metadata.name)
+      .eq("name", user?.user_metadata.name)
       .then(() => setLoading(false))
       .then(() => setModValue(""));
   };

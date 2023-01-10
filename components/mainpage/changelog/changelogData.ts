@@ -1,4 +1,8 @@
 export const changelogData: any = {
+  "1.4": [
+    "-Finally working again",
+    "-Some quality of life improvements, optimizations"
+  ],
   "1.3": [
     "-Added a true Picture-In-Picture mode (not limited to Facebook only)",
     "-Minor fixes and improvements"

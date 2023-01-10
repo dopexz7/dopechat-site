@@ -1,9 +1,9 @@
 import React, { FC, useEffect } from "react";
 import { useRouter } from "next/router";
-import { useAuth } from "./AppContext";
+import { useUser } from "@supabase/auth-helpers-react";
 
 const AuthRoute:FC<AuthRouteProps> = ({ children }) => {
-  const { user } = useAuth() as any;
+  const user = useUser();
   const router = useRouter();
 
   useEffect(() => {
