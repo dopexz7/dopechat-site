@@ -8,7 +8,7 @@ const Profile = () => {
   return (
     <DashboardLayout title={`${user?.user_metadata.name}'s profile`} layout="dashboard">
         <MainProfile/>
-        <DashboardLeftSignedIn/>
+        <DashboardLeftSignedIn onSuccess={()=>''}/>
     </DashboardLayout>
         
   );
