@@ -38,7 +38,7 @@ export const returnNewFileName: Function = (v: submitFileTypes): any => {
   const newFile = {
     uploaded_by: v.uploaded_by,
     code: v.name,
-    src: fileUrl!.publicURL,
+    src: fileUrl!.publicUrl, // publicURL
     date: v.created_at,
   };
   return newFile;
