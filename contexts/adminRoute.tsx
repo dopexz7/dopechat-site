@@ -10,7 +10,7 @@ const AdminRoute: FC<AdminRouteProps> = ({ children }) => {
 
   useEffect(() => {
     if (!user) {
-      router.push("/dashboard");
+      router.replace("/");
     }
     getIsMod(user?.user_metadata.name).then((res: any) => { setMod(res)});
   }, [user]);

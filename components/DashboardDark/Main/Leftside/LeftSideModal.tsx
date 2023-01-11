@@ -9,20 +9,8 @@ import { motion } from "framer-motion";
 
 const LeftSideModal = ({coolClass} : {coolClass?: any}) => {
   const [visible, setVisible] = useState<boolean>(false);
-  const [seeFileUpload, setSeeFileUpload] = useState<boolean>(false);
-
   const toggle: MouseEventHandler<HTMLDivElement> = (): void => {
     setVisible(!visible);
-  };
-
-  const iconVariant: any = {
-    hover: {
-      scale: 1.05,
-      rotate: 360,
-    },
-    transition: {
-      yoyo: 1,
-    },
   };
   const [activeTab, setActiveTab] = useState<string | null>("uploadfiles");
   return (
