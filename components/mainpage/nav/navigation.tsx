@@ -35,8 +35,8 @@ export const MainNav = ({ dashboard = false }) => {
             <ContactMain btnClass="group relative duration-300 hover:text-ma-pink cursor-pointer" iconClass="hidden"/>
             {user ? 
             <LoggedInNav/>
-            : <div onClick={()=>signInWithTwitch()} className="hidden lg:flex relative before:absolute before:bg-ma-pink before:w-full before:h-full before:opacity-20 before:left-0 before:top-0 before:right-0 before:bottom-0 before:blur-md hover:before:opacity-0 before:duration-300 before:rounded-3xl duration-300 hover:bg-white px-5 text-black cursor-pointer py-2 bg-ma-pink rounded-3xl">
-            Sign in
+            : <div onClick={()=>signInWithTwitch()} className="hidden lg:flex items-center relative before:absolute before:bg-ma-pink before:w-full before:h-full before:opacity-20 before:left-0 before:top-0 before:right-0 before:bottom-0 before:blur-md hover:before:opacity-0 before:duration-300 before:rounded-3xl duration-300 hover:bg-white px-5 text-black cursor-pointer py-2 bg-ma-pink rounded-3xl">
+            Login
             </div>}
         </div>
     </div>
