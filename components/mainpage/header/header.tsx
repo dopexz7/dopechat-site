@@ -4,7 +4,6 @@ import * as Fa from "react-icons/fa";
 import * as Si from 'react-icons/si';
 import { Menu } from "@mantine/core";
 import { headerData } from "./headerdata";
-import { LogoIcon } from "../nav/icons";
 
 const MainHeader = () => {
     const [browsName, setBrowsName] = useState<string>("your browser");
