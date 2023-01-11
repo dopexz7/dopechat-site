@@ -48,7 +48,7 @@ const MainFooter = () => {
         
       </div>
       <div className='border-t-[2px] text-sm lg:text-base border-white border-opacity-5 w-screen flex items-center px-4 lg:px-[60px] py-6 lg:py-[30px]'>
-        <div>Made by <span className='text-ma-pink font-bold'>&nbsp;dope</span>, Copyright © 2022, All Rights Reserved <span className='lg:block hidden'>by</span> </div>
+        <div>Made by <span className='text-ma-pink font-bold'>&nbsp;dope</span>, Copyright © 2022, All Rights Reserved&nbsp;</div>
         <div onClick={()=> window.scrollTo(0,0)} className='ml-2 pl-6 lg:pl-0 group cursor-pointer text-ma-pink duration-300 hover:before:opacity-0 hover:text-white flex items-center justify-center relative before:absolute before:bg-ma-pink before:w-full before:h-1/2 before:top-2.5 before:opacity-20 before:blur-md'>
             <LogoIcon/>
             <span className='text-xl font-bold lg:block hidden'>dopeChat</span>
