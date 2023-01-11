@@ -5,13 +5,11 @@ import { useUser } from "@supabase/auth-helpers-react";
 const AuthRoute:FC<AuthRouteProps> = ({ children }) => {
   const user = useUser();
   const router = useRouter();
-
   useEffect(() => {
     if (!user) {
-      router.push("/dashboard");
+      router.replace("/");
     }
   }, []);
-
   if (!user) return <></>;
   return <>{children}</>;
 };

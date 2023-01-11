@@ -64,7 +64,7 @@ const FileDrop:FC = () => {
 
   return (
     <>
-      <div className="remove text-white justify-center mb-3 text-xs bg-border-white rounded font-normal px-2 py-3  flex flex-row items-center">
+      <div className="remove text-white justify-center mb-3 text-xs rounded-2xl font-normal px-2 py-3  flex flex-row items-center">
         {error || "Make sure the file name is the code of the emote!"}
       </div>
       <FileUploader
@@ -74,9 +74,9 @@ const FileDrop:FC = () => {
         onTypeError={(e: string) => setError(e)}
         types={fileTypes}
       >
-        <div className="flex-col h-48 cursor-pointer duration-300 border-dashed rounded text-sm font-semibold text-accent-gray border-2 p-14 w-full flex justify-center items-center">
+        <div className="flex-col h-48 cursor-pointer duration-300 border-dashed border-white border-opacity-5 rounded text-sm font-semibold text-white border-2 p-14 w-full flex justify-center items-center">
           Drag & drop files here!
-          <span className="text-xs text-accent-gray opacity-50">
+          <span className="text-xs text-white opacity-50">
             .JPG, .PNG, .WEBP, .GIF
           </span>
         </div>

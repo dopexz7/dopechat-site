@@ -76,16 +76,16 @@ const UploadFileFirst:FC = () => {
   
   return (
     <>
-      <div className="remove text-white justify-center mb-3 text-xs bg-border-white rounded font-normal px-2 py-3  flex flex-row items-center">
+      <div className="remove text-white justify-center mb-3 text-xs rounded-2xl font-normal px-2 py-3  flex flex-row items-center">
         {error || "Accepted formats: .jpg, .png, .webp, .gif"}
       </div>
 
       <div id="fileupload" className="group p-0.5 relative mb-4">
         <div className="block text-center">
-          <div className="rounded block border-2 text-black cursor-pointer h-10  text-left  relative">
+          <div className="rounded-2xl block border-2 border-opacity-5 border-white text-white cursor-pointer h-10  text-left  relative">
             <div className="flex flex-row h-full">
               <div
-                className="cursor-pointer bg-border-white flex items-center justify-center font-semibold h-full w-max p-2 text-xs"
+                className="cursor-pointer flex items-center justify-center font-semibold h-full w-max p-2 text-xs"
                 id="fileName"
               >
                 Choose File
@@ -117,8 +117,8 @@ const UploadFileFirst:FC = () => {
           onChange={(e) => setSelfilename(e.target.value)}
           required
         />
-        <span className=" peer-focus:before:w-2/4 peer-focus:after:w-2/4 relative block w-full after:content-[''] after:h-[2px] after:w-0 after:bottom-[0px] after:absolute after:bg-main-purple after:duration-300 before:content-[''] before:h-[2px] before:w-0 before:bottom-[0px] before:absolute before:bg-main-purple before:duration-300 before:left-2/4 after:right-2/4 before:box-shadow-purple after:box-shadow-purple"></span>
-        <label className="absolute left-4 top-[-5px] text-main-black text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-6 pointer-events-none peer-focus:top-[-5px] peer-focus:text-sm">
+        <span className=" peer-focus:before:w-2/4 peer-focus:after:w-2/4 relative block w-full after:content-[''] after:h-[2px] after:w-0 after:bottom-[0px] after:absolute after:bg-ma-pink after:duration-300 before:content-[''] before:h-[2px] before:w-0 before:bottom-[0px] before:absolute before:bg-ma-pink before:duration-300 before:left-2/4 after:right-2/4"></span>
+        <label className="absolute left-4 top-[-5px] opacity-50 text-white text-sm transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-placeholder-shown:top-6 pointer-events-none peer-focus:top-[-5px] peer-focus:text-sm">
           Emote code (max 24 chars)
         </label>
       </div>
@@ -126,7 +126,7 @@ const UploadFileFirst:FC = () => {
         onClick={() => {
           handleUploadFile();
         }}
-        className="hover:bg-white border-white border-opacity-50 shadow-2xl text-white duration-300 border-2 font-normal hover:text-main-purple cursor-pointer flex justify-center items-center p-3 rounded-3xl w-full"
+        className={`flex uppercase overflow-hidden relative duration-300 ${uploading ? "bg-white" : "hover:bg-white text-black bg-ma-pink"} px-10  cursor-pointer py-3 rounded-3xl items-center justify-center font-bold w-full before:absolute before:bg-ma-pink before:w-full before:h-full before:opacity-20 before:left-0 before:top-0 before:right-0 before:bottom-0 before:blur-md hover:before:opacity-0 before:duration-300 before:rounded-3xl`}
       >
         {uploading ? "Uploading..." : "Upload"}
       </div>

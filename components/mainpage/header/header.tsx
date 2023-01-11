@@ -120,7 +120,7 @@ const MainHeader = () => {
       
       </div>
       <div id="afterHeaderRight" className='border-l-[1px] pb-3 border-opacity-5 border-white pl-11 w-screen max-w-2xl flex flex-col ml-auto font-bold'>
-        <h1 className='text-2xl lg:text-lg font-bold text-ma-pink uppercase pb-7'>Key features</h1>
+        <h1 className='text-2xl lg:text-lg font-bold tracking-tighter text-ma-pink uppercase pb-7'>Key features</h1>
         <div className='flex flex-col space-y-10'>
           {headerData.map((v, index)=> (
             <div key={index} className='group text-sm font-bold max-w-lg space-y-1 cursor-pointer'>

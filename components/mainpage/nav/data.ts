@@ -5,19 +5,15 @@ export const navLinks = [
     },
     {
       title: "Features",
-      href: "#",
+      href: "#alookat",
     },
     {
       title: "About",
-      href: "#",
+      href: "#footer",
     },
     {
       title: "Changelog",
-      href: "#",
-    },
-    {
-      title: "Contact us",
-      href: "#",
+      href: "#changelog",
     },
     // {
     //   title: "Download",

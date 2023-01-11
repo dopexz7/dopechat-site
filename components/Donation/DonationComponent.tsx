@@ -9,7 +9,6 @@ import ButtonWrapper from "./ButtonWrapper";
 
 const DonationComponent:FC<donationComponentTypes> = ({ btnClass, iconEnabled }) => {
   const [visible, setVisible] = useState(false);
-  const [seeDonation, setSeeDonation] = useState(false);
   const [amount, setAmount] = useState("5");
   const currency = "USD";
 
@@ -25,15 +24,6 @@ const DonationComponent:FC<donationComponentTypes> = ({ btnClass, iconEnabled })
     },
   ];
 
-  const iconVariant : any = {
-    hover: {
-      scale: 1.05,
-      rotate: 360,
-    },
-    transition: {
-      yoyo: 1,
-    },
-  };
   
   return (
     <>
@@ -45,21 +35,18 @@ const DonationComponent:FC<donationComponentTypes> = ({ btnClass, iconEnabled })
         opened={visible}
         onClose={() => setVisible(false)}
         classNames={{
-          root: "backdrop-blur-2xl",
+          root: "",
           modal:
-            "text-center rounded-lg bg-header-bg bg-main-purple bg-blend-multiply ",
+            "backdrop-blur-sm text-center rounded-2xl bg-black border-2 border-white border-opacity-5 bg-opacity-50  ",
         }}
         size="sm"
         centered
       >
         <div className="flex justify-center items-center mb-3">
-          <motion.div
-            variants={seeDonation ? iconVariant : ""}
-            whileInView="hover"
-            className="text-lg !text-main-purple bg-border-white p-4 rounded-2xl"
-          >
+          <div
+            className="text-lg text-black bg-ma-pink p-3 rounded-2xl">
             <Bi.BiDonateHeart />
-          </motion.div>
+          </div>
         </div>
 
         <div className="flex flex-col space-y-3 text-white">
@@ -68,8 +55,7 @@ const DonationComponent:FC<donationComponentTypes> = ({ btnClass, iconEnabled })
         </div>
         <div className="flex-col flex w-full mt-3">
           <div className="h-72 flex flex-col w-full text-white">
-            {seeDonation ? (
-              <>
+              
                 <div className="flex flex-row items-center self-center p-3">
                   Donate with
                   <Fa.FaPaypal className="ml-1" />
@@ -79,14 +65,14 @@ const DonationComponent:FC<donationComponentTypes> = ({ btnClass, iconEnabled })
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                 >
-                  <div className="flex mb-3 font-semibold overflow-hidden text-sm rounded flex-row items-center bg-border-white text-main-black">
+                  <div className="flex mb-3 font-semibold overflow-hidden text-sm rounded-2xl flex-row items-center bg-white text-black">
                     {amounts.map((data, index) => (
                       <div
                         key={index}
                         className={`${
                           amount === data.amount
-                            ? "bg-main-purple text-white"
-                            : "hover:bg-main-purple hover:text-white"
+                            ? "bg-ma-pink text-black"
+                            : "hover:bg-ma-pink hover:text-black"
                         } p-3 px-6  duration-300  cursor-pointer w-full`}
                         onClick={() => setAmount(data.amount)}
                       >
@@ -98,8 +84,7 @@ const DonationComponent:FC<donationComponentTypes> = ({ btnClass, iconEnabled })
                       <NumberInput
                         classNames={{
                           wrapper: "w-24",
-                          withIcon: "your-withIcon-class",
-                          input: "border-0 bg-accent-white rounded",
+                          input: "border-0 !bg-black !bg-opacity-20 rounded-2xl",
                           rightSection: "border-0 rounded-2xl ",
                         }}
                         min={0}
@@ -124,44 +109,15 @@ const DonationComponent:FC<donationComponentTypes> = ({ btnClass, iconEnabled })
                   >
                     <ButtonWrapper currency={currency} amount={amount} />
                   </PayPalScriptProvider>
-                </motion.div>
-              </>
-            ) : (
-              <div className="flex flex-col mt-6 text-white opacity-50">
-                <div className="">
-                  If you decide that I&apos;ve been doing a good job, click that
-                  donate button to directly support me!
-                </div>
-                <div className="text-xs font-normal mt-3">
-                  Donations are completely optional, however, are greatly
-                  appreciated!
-                </div>
-                <div className="text-xs font-normal mt-3">
-                  Donations are non-refundable.
-                </div>
-              </div>
-            )}
+                </motion.div>           
           </div>
           <div className="w-full flex flex-row space-x-3">
             <div
               onClick={() => setVisible(false)}
-              className="group hover:bg-white border-white border-opacity-5 shadow-2xl text-white duration-300 border-2 font-normal hover:text-main-purple cursor-pointer flex justify-center items-center p-3 rounded-3xl w-full"
-            >
-              <span className="opacity-75 font-normal group-hover:opacity-100">
-                Cancel
-              </span>
-            </div>
-
-            <div
-              onClick={() => setSeeDonation(!seeDonation)}
-              className={`${
-                seeDonation
-                  ? "bg-white hover:bg-darker-purple hover:text-white"
-                  : "hover:bg-white text-white hover:text-main-purple"
-              } border-white border-opacity-50 shadow-2xl  duration-300 border-2 font-normal  cursor-pointer flex justify-center items-center p-3 rounded-3xl w-full`}
-            >
-              {seeDonation ? "Back" : "Start"}
-            </div>
+              className="flex uppercase overflow-hidden relative duration-300 bg-white px-10 text-black cursor-pointer py-3 hover:bg-ma-pink rounded-3xl items-center justify-center font-bold w-full before:absolute before:bg-ma-pink before:w-full before:h-full before:opacity-20 before:left-0 before:top-0 before:right-0 before:bottom-0 before:blur-md hover:before:opacity-0 before:duration-300 before:rounded-3xl"
+              >
+              Cancel
+            </div> 
           </div>
         </div>
       </Modal>

@@ -2,8 +2,8 @@ import { FC, useState } from "react";
 import * as Bs from "react-icons/bs";
 import { Modal } from "@mantine/core";
 import { supabase } from "../../lib/supabaseClient";
-import { motion } from "framer-motion";
 import React from "react";
+
 const ContactMain:FC<ContactMainTypes> = ({ btnClass, iconClass, text }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [visible, setVisible] = useState<boolean>(false);
@@ -34,43 +34,30 @@ const ContactMain:FC<ContactMainTypes> = ({ btnClass, iconClass, text }) => {
       return setError("Please provide a message.");
     }
   };
-
-  const iconVariant : any = {
-    hover: {
-      scale: 1.05,
-      rotate: 360,
-    },
-    transition: {
-      yoyo: 1,
-    },
-  };
-
   return (
     <>
       <div onClick={() => setVisible(true)} className={btnClass}>
-        <Bs.BsChatSquareTextFill className={iconClass} />{" "}
+        <span className='absolute group-hover:opacity-50 text-ma-pink duration-200 opacity-0 blur-md'>Contact us</span>
+        <Bs.BsChatSquareTextFill className={iconClass} />
         {text ? text : "Contact us"}
       </div>
       <Modal
         opened={visible}
         onClose={() => setVisible(false)}
         classNames={{
-          root: "backdrop-blur-2xl",
+          root: "",
           modal:
-            "text-center rounded-lg bg-header-bg bg-main-purple bg-blend-multiply ",
+            "backdrop-blur-sm text-center rounded-2xl bg-black border-2 border-white border-opacity-5 bg-opacity-50  ",
         }}
         size="sm"
         centered
       >
-        <div className="flex justify-center items-center mb-3">
-          <motion.div
-            variants={disabled ? iconVariant : ""}
-            whileInView="hover"
-            className="text-lg !text-main-purple bg-border-white p-4 rounded-2xl"
-          >
-            <Bs.BsChatSquareTextFill />
-          </motion.div>
-        </div>
+          <div className="flex justify-center items-center mb-3">
+            <div
+              className="text-lg text-black bg-ma-pink p-3 rounded-2xl">
+              <Bs.BsChatSquareTextFill />
+            </div>
+          </div>
 
         <div className="flex flex-col space-y-3 text-white ">
           <div>Send a message!</div>
@@ -106,24 +93,22 @@ const ContactMain:FC<ContactMainTypes> = ({ btnClass, iconClass, text }) => {
           </p>
 
           <div className="w-full flex flex-col space-y-3 mt-6">
-            <div
-              onClick={() =>
-                disabled
-                  ? setError("Wait before sending more messages!")
-                  : handleSubmit()
-              }
-              className="hover:bg-white border-white border-opacity-50 shadow-2xl text-white duration-300 border-2 font-normal hover:text-main-purple cursor-pointer flex justify-center items-center p-3 rounded-3xl w-full"
-            >
-              {loading ? "Sending..." : "Send message"}
-            </div>
+          <div
+            onClick={() =>
+              disabled
+                ? setError("Wait before sending more messages!")
+                : handleSubmit()
+            }
+            className={`flex uppercase overflow-hidden relative duration-300 ${loading ? "bg-white" : "hover:bg-white text-black bg-ma-pink"} px-10  cursor-pointer py-3 rounded-3xl items-center justify-center font-bold w-full before:absolute before:bg-ma-pink before:w-full before:h-full before:opacity-20 before:left-0 before:top-0 before:right-0 before:bottom-0 before:blur-md hover:before:opacity-0 before:duration-300 before:rounded-3xl`}
+          >
+            {loading ? "Sending..." : "Send message"}
+          </div>
             <div
               onClick={() => setVisible(false)}
-              className="group hover:bg-white border-white border-opacity-5 shadow-2xl text-white duration-300 border-2 font-normal hover:text-main-purple cursor-pointer flex justify-center items-center p-3 rounded-3xl w-full"
-            >
-              <span className="opacity-75 font-normal group-hover:opacity-100">
-                Cancel
-              </span>
-            </div>
+              className="flex uppercase overflow-hidden relative duration-300 bg-white px-10 text-black cursor-pointer py-3 hover:bg-ma-pink rounded-3xl items-center justify-center font-bold w-full before:absolute before:bg-ma-pink before:w-full before:h-full before:opacity-20 before:left-0 before:top-0 before:right-0 before:bottom-0 before:blur-md hover:before:opacity-0 before:duration-300 before:rounded-3xl"
+              >
+              Cancel
+            </div> 
           </div>
         </div>
       </Modal>
