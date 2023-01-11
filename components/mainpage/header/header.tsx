@@ -10,6 +10,10 @@ const MainHeader = () => {
 
   useEffect(() => {
     setBrowsName(browserName);
+    //@ts-ignore
+    if(navigator.brave) {
+      setBrowsName("Brave");
+    }
   }, []);
 
   const chromeUrl =
@@ -61,12 +65,12 @@ const MainHeader = () => {
           </div>
           <div className="text-white flex flex-col h-max mt-3 mb-6">
           Available for
-          <div className="flex flex-row mt-3 space-x-2 lg:self-auto">
+          <div className="flex flex-row mt-3 space-x-1 lg:self-auto">
             {menuData.map((data, index) => (
                   <div
                     key={index}
                     title={data.title}
-                    className="flex w-max justify-center items-center rounded-2xl text-2xl"
+                    className={` ${browsName === data.title ? 'bg-ma-pink text-black ' : ''} p-1 flex w-max justify-center items-center rounded-2xl text-2xl`}
                   >
                     {data.icon}
                   </div>
