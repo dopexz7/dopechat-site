@@ -4,6 +4,7 @@ import * as Fa from "react-icons/fa";
 import * as Si from 'react-icons/si';
 import { Menu } from "@mantine/core";
 import { headerData } from "./headerdata";
+import { LogoIcon } from "../nav/icons";
 
 const MainHeader = () => {
     const [browsName, setBrowsName] = useState<string>("your browser");
@@ -51,11 +52,16 @@ const MainHeader = () => {
   ];
     return (
     <>
-    <div id="afterHeader" className='w-screen flex flex-col lg:flex-row lg:px-[60px] py-[60px] mt-24'>
-      <div className='lg:pl-11 mx-10 w-full  h-full my-auto'>
-        <div className="flex flex-col lg:flex-row lg:items-center h-full ">
-          <div className="flex flex-col mr-6">
-            <h1 className="flex text-6xl font-medium">
+    <div id="afterHeader" className='w-screen flex flex-col lg:flex-row lg:px-[60px] lg:py-[60px] lg:mt-24'>
+      <div className='lg:pl-11 h-screen lg:mx-10 w-screen lg:h-full lg:my-auto'>
+        <div className="relative flex flex-col lg:flex-row h-full ">
+          <div className='flex-col ml-auto mr-auto mt-auto mb-auto lg:hidden flex'>
+            <span className='font-bold text-6xl text-ma-pink'>dopeChat</span>
+            <span className="bg-ma-pink text-black rounded-md px-2 font-bold">The ultimate FB Gaming livestream experience</span>
+          </div>
+          <div className="hidden lg:flex mt-auto pb-10 lg:pb-0 pl-3 lg:pl-0 justify-center items-center flex-col lg:mr-6">
+          
+            <h1 className="text-6xl font-medium">
               The ultimate FB Gaming livestream experience
             </h1>
             <p className="text-lg mt-1 tracking-wider font-light">
@@ -63,8 +69,8 @@ const MainHeader = () => {
               chat appearance and add more quality of life improvements, tweaks.
             </p>
           </div>
-          <div className="text-white flex flex-col h-max mt-3 mb-6">
-          Available for
+          <div className="ml-auto mr-auto pl-0 text-white flex flex-col items-center lg:items-start h-max lg:mt-3 mb-6">
+          Available for <span className="lg:hidden">PC only</span>
           <div className="flex flex-row mt-3 space-x-1 lg:self-auto">
             {menuData.map((data, index) => (
                   <div
@@ -123,13 +129,13 @@ const MainHeader = () => {
         </div>
       
       </div>
-      <div id="afterHeaderRight" className='border-l-[1px] pb-3 border-opacity-5 border-white pl-11 w-screen max-w-2xl flex flex-col ml-auto font-bold'>
-        <h1 className='text-2xl lg:text-lg font-bold tracking-tighter text-ma-pink uppercase pb-7'>Key features</h1>
-        <div className='flex flex-col space-y-10'>
+      <div id="afterHeaderRight" className='mt-24 lg:mt-0 lg:border-l-[1px] pb-24 lg:pb-3 border-opacity-5 border-white  lg:pl-11 w-screen max-w-2xl flex flex-col ml-auto font-bold'>
+        <h1 className='text-2xl lg:text-lg font-bold tracking-tighter text-ma-pink uppercase pb-7 pl-6 lg:pl-0'>Key features</h1>
+        <div className='flex flex-col space-y-3 lg:space-y-10'>
           {headerData.map((v, index)=> (
-            <div key={index} className='group text-sm font-bold max-w-lg space-y-1 cursor-pointer'>
+            <div key={index} className='flex flex-col lg:block items-center p-6 lg:p-0 lg:bg-inherit bg-ma-pink text-black lg:text-white group text-sm font-bold max-w-lg space-y-1 cursor-pointer'>
               {v.icon}
-              <div className='group-hover:text-ma-pink duration-300 text-lg font-medium tracking-wider'>{v.body}</div>
+              <div className='lg:group-hover:text-ma-pink text-center lg:text-left duration-300 text-xl lg:text-lg font-bold lg:font-medium tracking-wider'>{v.body}</div>
               <div className='uppercase opacity-50'>{v.title}</div>
           </div>
           ))}
