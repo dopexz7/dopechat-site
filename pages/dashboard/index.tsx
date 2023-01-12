@@ -10,9 +10,9 @@ const Dashboard:FC = () => {
   return (
     <>
     <Head>
-        <title>Dashboard</title>
-        <meta name="description" content="Facebook Gaming extension dopeChat" />
-      </Head>
+      <title>Dashboard</title>
+      <meta name="description" content="Facebook Gaming extension dopeChat" />
+    </Head>
     <AuthRoute>
     <DashboardLayout layout="dashboard">
       <DashboardMiddleSection editingSet={editingSet} />
