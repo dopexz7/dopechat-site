@@ -1,4 +1,3 @@
-import Head from "next/head";
 import { FC } from "react";
 import React from "react";
 import { MainNav } from "../../mainpage/nav/navigation";
@@ -6,10 +5,6 @@ import { MainNav } from "../../mainpage/nav/navigation";
 const DashboardLayout:FC<LayoutTypes> = (props) => {
   return (
     <>
-    <Head>
-        <title>{props.title}</title>
-        <meta name="description" content="Facebook Gaming extension dopeChat" />
-      </Head>
     <div className="overflow-hidden bg-black h-screen w-screen flex flex-col justify-center items-center">
       <MainNav dashboard={true} />
       <div
@@ -30,6 +25,5 @@ export default DashboardLayout;
 
 interface LayoutTypes {
   children: React.ReactNode;
-  title: string;
   layout: string;
 }

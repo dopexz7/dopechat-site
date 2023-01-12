@@ -3,18 +3,25 @@ import DashboardLayout from "components/DashboardDark/Main/DashboardLayout";
 import DashboardMiddleSection from "components/DashboardDark/Main/DashboardMiddleSection";
 import DashboardLeftSignedIn from "components/DashboardDark/Main/Leftside/DashboardLeftSignedIn";
 import AuthRoute from "contexts/authRoute";
+import Head from "next/head";
 
 const Dashboard:FC = () => {
   const [editingSet, setEditingSet] = useState<string>("");
   return (
+    <>
+    <Head>
+        <title>Dashboard</title>
+        <meta name="description" content="Facebook Gaming extension dopeChat" />
+      </Head>
     <AuthRoute>
-    <DashboardLayout title="Dashboard" layout="dashboard">
+    <DashboardLayout layout="dashboard">
       <DashboardMiddleSection editingSet={editingSet} />
       <DashboardLeftSignedIn
         onSuccess={(x: string): any => setEditingSet(x)}
       />
     </DashboardLayout>
     </AuthRoute>
+    </>
   );
 }
 
