@@ -40,7 +40,7 @@ const MainAdmin: FC = () => {
   };
 
   return (
-    <DashboardLayout title="Admin" layout="admin">
+    <DashboardLayout layout="admin">
       <AdminRoute>
         <DashboardLeftSignedIn
           profile={true}
