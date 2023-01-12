@@ -9,6 +9,7 @@ import { gettingSetEmotes } from "funcs/updatingEmotes";
 import getMod from "../../../funcs/useIsSetMod";
 import SetsSignedIn from './SetsSignedIn';
 import { useUser } from "@supabase/auth-helpers-react";
+import Head from "next/head";
 
 const SetsMain:FC = () => {
   const [q, setQ] = useState<string>("");
@@ -58,7 +59,9 @@ const SetsMain:FC = () => {
   return (
     <DashboardLayout
       layout="sets"
-      title={`${
+    >
+      <Head>
+      <title>{
         loading
           ? "Loading..."
           : pageName
@@ -66,8 +69,9 @@ const SetsMain:FC = () => {
             ? "Global set"
             : `${pageName}'s set`
           : "Set doesn't exist..."
-      }`}
-    >
+      }</title>
+      <meta name="description" content="Facebook Gaming extension dopeChat" />
+      </Head>
       <SetsSignedIn />
       <div className="overflow-auto shadow-sm backdrop-blur-sm border-[1px] rounded-3xl lg:p-1 border-white border-opacity-5 h-full w-3/4 flex flex-col">
         <div className="px-6 py-2 flex flex-row items-center">
