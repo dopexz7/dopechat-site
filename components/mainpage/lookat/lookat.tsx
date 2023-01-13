@@ -12,7 +12,7 @@ export const LookAtFeatures = () => {
         <div className='mt-10 items-center mr-auto h-max pb-24 lg:pb-0 lg:border-r-[1px] border-opacity-5 border-white  w-screen max-w-xl flex flex-col justify-center font-bold'>
           <div className='flex flex-col space-y-3 lg:space-y-6 w-full '>
               {lookFeatures.map((v,index)=>(
-                <div key={index} onClick={()=>setActive(v.metaTitle)} className={`${active === v.metaTitle ? 'border-r-2 border-ma-pink' : ''} w-full flex flex-col lg:block p-6 lg:p-0 lg:bg-inherit bg-ma-pink text-black lg:text-white group text-sm font-bold space-y-1 cursor-pointer`}>
+                <div key={index} onClick={()=>setActive(v.metaTitle)} className={`${active === v.metaTitle ? 'border-ma-pink' : 'border-transparent'} duration-300 border-r-2 w-full flex flex-col lg:block p-6 lg:p-0 lg:bg-inherit bg-ma-pink text-black lg:text-white group text-sm font-bold space-y-1 cursor-pointer`}>
                   {v.desc}
                   <div className={`${active === v.metaTitle ? 'text-ma-pink' : ''} w-[90%] lg:group-hover:text-ma-pink text-center lg:text-left duration-300 text-xl lg:text-lg font-bold lg:font-medium tracking-wider`}>{v.body}</div>
                   <div className='uppercase opacity-50'>{v.title}</div>
