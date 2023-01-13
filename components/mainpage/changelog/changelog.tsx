@@ -3,7 +3,7 @@ import { changelogData } from './changelogData';
 
 const Changelog = () => {
   return (
-    <div id="changelog" className='hidden lg:flex border-t-[2px] border-white border-opacity-5 w-screen items-center h-screen flex-col lg:flex-row lg:px-[60px] py-[60px] mt-24'>
+    <div className='hidden lg:flex border-t-[2px] border-white border-opacity-5 w-screen items-center h-screen flex-col lg:flex-row lg:px-[60px] py-[60px] mt-24'>
         <div className='mx-10 h-full w-full max-w-5xl ml-16 my-auto'>
           <div className="flex flex-col lg:flex-row lg:items-center h-full ">
           <h1 className="flex items-center text-6xl font-medium ">

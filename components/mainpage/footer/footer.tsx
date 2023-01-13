@@ -14,7 +14,7 @@ const MainFooter = () => {
   ]
   return (
     <>
-    <div id="footer" className='border-t-[2px] border-white border-opacity-5 w-screen flex flex-col lg:flex-row lg:px-[60px] py-[60px] mt-24'>
+    <div className='border-t-[2px] border-white border-opacity-5 w-screen flex flex-col lg:flex-row lg:px-[60px] py-[60px] mt-24'>
         <div className='lg:pl-11 mx-0 w-full h-full my-auto'>
           <span className='hidden lg:block text-2xl tracking-tighter text-ma-pink font-bold uppercase'>ABOUT</span>
           <div className="h-full mt-2 w-3/4 hidden lg:block">

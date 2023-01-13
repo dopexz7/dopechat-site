@@ -3,22 +3,22 @@ import { ChatLookIcon, CustomEmotesIcon, NewFeatIcon, QolIcon } from "./icons";
 export const headerData = [
     {
       title: 'Chat look',
-      body: 'Freedom to customize the chat however you want: change colors, font, text size, hide elements and more!',
+      body: 'Freedom to personalize the chat to your liking: with options to alter colors, font, text size, conceal elements and more!',
       icon: <ChatLookIcon/>
     },
     {
       title: 'Custom emotes',
-      body: 'Streamers have the ability to create their own custom emote sets for their followers. Extension also features a global emote set which is updated regularly.',
+      body: 'Streamers can create their own distinct emote collections for their audience. The extension also features a frequently updated global emote collection',
       icon: <CustomEmotesIcon/>
     },
     {
       title: 'Quality of life',
-      body: 'The extension features other quality of life (toggleable) tweaks, including mouse wheel scroll volume control, chat splitting and more!',
+      body: 'The extension offers additional quality of life enhancements, which can be enabled or disabled at will, such as volume control through mouse wheel scrolling, chat splitting, and other options.',
       icon: <QolIcon/>
     },
     {
       title: 'New features',
-      body: 'New features to improve the user experience like popout chat, theatre mode, picture-in-picture.',
+      body: 'New features have been introduced to improve the user experience including pop-out chat, theater mode and true picture-in-picture mode.',
       icon: <NewFeatIcon/>
     },
   ]
