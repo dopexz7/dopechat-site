@@ -9,6 +9,7 @@ import { gettingSetEmotes } from "funcs/updatingEmotes";
 import getMod from "../../../funcs/useIsSetMod";
 import { useUser } from "@supabase/auth-helpers-react";
 import Head from "next/head";
+import AuthRoute from "contexts/authRoute";
 
 const SetsMain:FC = () => {
   const [q, setQ] = useState<string>("");
@@ -59,6 +60,7 @@ const SetsMain:FC = () => {
     <DashboardLayout
       layout="sets"
     >
+      <AuthRoute>
       <Head>
       <title>{
         loading
@@ -174,6 +176,7 @@ const SetsMain:FC = () => {
           </div>
         </div>
       </div>
+      </AuthRoute>
     </DashboardLayout>
   );
 }

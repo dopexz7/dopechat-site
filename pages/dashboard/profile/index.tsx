@@ -10,11 +10,13 @@ const Profile = () => {
       <title>Your profile</title>
       <meta name="description" content="Facebook Gaming extension dopeChat" />
     </Head>
-  <AuthRoute>
+  
     <DashboardLayout layout="dashboard">
+      <AuthRoute>
         <MainProfile/>
+      </AuthRoute>  
     </DashboardLayout>
-  </AuthRoute>  
+  
     </>  
   );
 }

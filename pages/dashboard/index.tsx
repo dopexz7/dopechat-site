@@ -13,14 +13,16 @@ const Dashboard:FC = () => {
       <title>Dashboard</title>
       <meta name="description" content="Facebook Gaming extension dopeChat" />
     </Head>
-    <AuthRoute>
+    
     <DashboardLayout layout="dashboard">
+    <AuthRoute>
       <DashboardMiddleSection editingSet={editingSet} />
       <DashboardLeftSignedIn
         onSuccess={(x: string): any => setEditingSet(x)}
       />
+      </AuthRoute>
     </DashboardLayout>
-    </AuthRoute>
+    
     </>
   );
 }
