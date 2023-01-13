@@ -64,7 +64,7 @@ const MainHeader = () => {
               The ultimate FB Gaming livestream experience
             </h1>
             <p className="text-lg mt-1 tracking-wider font-light">
-              The browser extension is created to improve the chat experience by adding custom emotes, adjusting the chat appearance, and incorporating various quality of life enhancements and tweaks.
+              The browser extension aims to improve the chat experience by adding custom emotes, adjusting the chat appearance, and incorporating various quality of life enhancements and tweaks.
             </p>
           </div>
           <div className="ml-auto mr-auto pl-0 text-white flex flex-col items-center lg:items-start h-max lg:mt-3 mb-6">
