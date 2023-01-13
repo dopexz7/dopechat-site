@@ -1,5 +1,8 @@
 
 import { ChatLookIcon, CustomEmotesIcon, NewFeatIcon, QolIcon } from "./icons";
+import * as Fa from "react-icons/fa";
+import * as Si from 'react-icons/si';
+
 export const headerData = [
     {
       title: 'Chat look',
@@ -22,3 +25,37 @@ export const headerData = [
       icon: <NewFeatIcon/>
     },
   ]
+
+export const chromeUrl =
+  "https://chrome.google.com/webstore/detail/dopechat/pfbgacokbnigfgdninjmcgokijpfldkn?hl=en-GB&authuser=3";
+export const firefoxUrl = "https://addons.mozilla.org/en-US/firefox/addon/dopechat/";
+export const edgeUrl =
+  "https://microsoftedge.microsoft.com/addons/detail/fb-gaming-better/pmmmalmbjnajoogjgbghgiagjpejfhdi";
+
+export const menuData = [
+  {
+    title: "Chrome",
+    href: chromeUrl,
+    icon: <Fa.FaChrome />,
+  },
+  {
+    title: "Firefox",
+    href: firefoxUrl,
+    icon: <Fa.FaFirefox />,
+  },
+  {
+    title: "Opera",
+    href: chromeUrl,
+    icon: <Fa.FaOpera />,
+  },
+  {
+    title: "Edge",
+    href: edgeUrl,
+    icon: <Fa.FaEdge />,
+  },
+  {
+    title: "Brave",
+    href: chromeUrl,
+    icon: <Si.SiBrave/>
+  }
+];

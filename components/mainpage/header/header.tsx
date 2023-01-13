@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import { browserName } from "react-device-detect";
-import * as Fa from "react-icons/fa";
-import * as Si from 'react-icons/si';
+
 import { Menu } from "@mantine/core";
-import { headerData } from "./headerdata";
+import { headerData, menuData } from "./headerdata";
 
 const MainHeader = () => {
-    const [browsName, setBrowsName] = useState<string>("your browser");
+  const [browsName, setBrowsName] = useState<string>("your browser");
 
   useEffect(() => {
     setBrowsName(browserName);
@@ -16,42 +15,25 @@ const MainHeader = () => {
     }
   }, []);
 
-  const chromeUrl =
-    "https://chrome.google.com/webstore/detail/dopechat/pfbgacokbnigfgdninjmcgokijpfldkn?hl=en-GB&authuser=3";
-  const firefoxUrl = "https://addons.mozilla.org/en-US/firefox/addon/dopechat/";
-  const edgeUrl =
-    "https://microsoftedge.microsoft.com/addons/detail/fb-gaming-better/pmmmalmbjnajoogjgbghgiagjpejfhdi";
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const handleScroll = () => {
+      setScrollPosition(window.pageYOffset);
+  };
 
-  const menuData = [
-    {
-      title: "Chrome",
-      href: chromeUrl,
-      icon: <Fa.FaChrome />,
-    },
-    {
-      title: "Firefox",
-      href: firefoxUrl,
-      icon: <Fa.FaFirefox />,
-    },
-    {
-      title: "Opera",
-      href: chromeUrl,
-      icon: <Fa.FaOpera />,
-    },
-    {
-      title: "Edge",
-      href: edgeUrl,
-      icon: <Fa.FaEdge />,
-    },
-    {
-      title: "Brave",
-      href: chromeUrl,
-      icon: <Si.SiBrave/>
-    }
-  ];
+  useEffect(() => {
+      window.addEventListener('scroll', handleScroll, { passive: true });
+
+      return () => {
+          window.removeEventListener('scroll', handleScroll);
+      };
+
+  }, []);
+
     return (
     <>
-    <div className='w-screen flex flex-col lg:flex-row lg:px-[60px] lg:py-[60px] lg:mt-24'>
+    <div className={`w-screen flex flex-col lg:flex-row lg:px-[60px] lg:py-[60px] lg:mt-24`}
+    style={{ transform: `translateY(-${scrollPosition > 50 ? scrollPosition - 50 : 0}px) scale(${scrollPosition ? 1-(scrollPosition/2500) : 1})` }} 
+    >
       <div className='lg:pl-11 h-screen lg:mx-10 w-screen lg:h-full lg:my-auto'>
         <div className="relative flex flex-col lg:flex-row h-full ">
           <div className='flex-col ml-auto mr-auto mt-auto mb-auto lg:hidden flex'>

@@ -5,11 +5,11 @@ export const LookAtFeatures = () => {
 
   return (
     <>
-    <div className='lg:h-screen mx-0 lg:mx-0 lg:ml-36 flex w-screen lg:w-auto flex-col  font-bold'>
+    <div id="alookat" className='lg:h-screen mx-0 lg:mx-0 lg:ml-36 flex w-screen lg:w-auto flex-col  font-bold'>
       <div className='flex flex-col justify-center h-full w-full'>
         <h1 className='text-2xl lg:text-2xl font-bold tracking-tighter text-ma-pink uppercase pl-6 lg:pl-0'>A look at the extension&apos;s features</h1>
         <div className='flex items-center w-full mt-3'>
-        <div className='mt-10 items-center mr-auto h-max  pb-24 lg:pb-0 lg:border-r-[1px] border-opacity-5 border-white  w-screen max-w-xl flex flex-col justify-center font-bold'>
+        <div className='mt-10 items-center mr-auto h-max pb-24 lg:pb-0 lg:border-r-[1px] border-opacity-5 border-white  w-screen max-w-xl flex flex-col justify-center font-bold'>
           <div className='flex flex-col space-y-3 lg:space-y-6 w-full '>
               {lookFeatures.map((v,index)=>(
                 <div key={index} onClick={()=>setActive(v.metaTitle)} className={`${active === v.metaTitle ? 'border-r-2 border-ma-pink' : ''} w-full flex flex-col lg:block p-6 lg:p-0 lg:bg-inherit bg-ma-pink text-black lg:text-white group text-sm font-bold space-y-1 cursor-pointer`}>
