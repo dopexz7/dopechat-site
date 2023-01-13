@@ -32,7 +32,7 @@ const MainHeader = () => {
     return (
     <>
     <div className={`w-screen flex flex-col lg:flex-row lg:px-[60px] lg:py-[60px] lg:mt-24`}
-    style={{ transform: `translateY(-${scrollPosition > 50 ? scrollPosition - 50 : 0}px) scale(${scrollPosition ? 1-(scrollPosition/2500) : 1})` }} 
+    style={{ transform: `translateY(-${scrollPosition > 150 ? scrollPosition - 150 : 0}px) scale(${scrollPosition ? 1-(scrollPosition/2500) : 1})` }} 
     >
       <div className='lg:pl-11 h-screen lg:mx-10 w-screen lg:h-full lg:my-auto'>
         <div className="relative flex flex-col lg:flex-row h-full ">
