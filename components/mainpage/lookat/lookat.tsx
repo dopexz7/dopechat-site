@@ -27,14 +27,6 @@ export const LookAtFeatures = () => {
           </div>
         </div>
         </div>
-        <div className='lg:hidden bg-ma-pink mt-3 h-64 flex items-center w-full'>
-            <div className='w-[35%] h-4/5 ml-3 round2xl overflow-hidden relative flex items-center justify-center'>
-              <div className='h-full overflow-hidden w-full   z-50 absolute top-0 left-0'></div>
-              <img alt="Custom emotes & chat appearance" className='z-10 w-full round2xl h-full duration-300' src="https://i.imgur.com/PXH32YX.png"/>
-            </div>
-            <span className='text-center text-lg font-bold w-full text-black py-3'>Custom emotes & chat appearance</span>
-        </div>
-
       </div>
         
       </div>
