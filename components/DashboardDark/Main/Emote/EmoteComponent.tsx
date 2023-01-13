@@ -96,7 +96,7 @@ const EmoteComponent: FC<EmoteComponentTypes> = ({ data, editingSet, isMod, kekR
         withCloseButton={false}
         onClose={() => setVisible(false)}
         classNames={{
-          root: "backdrop-blur-2xl ",
+          root: "",
           modal: "text-center rounded-lg",
         }}
         size="xs"

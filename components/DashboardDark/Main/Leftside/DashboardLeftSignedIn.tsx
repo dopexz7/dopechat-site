@@ -2,7 +2,6 @@ import * as Md from "react-icons/md";
 import { Tooltip } from "@mantine/core";
 import * as Bs from "react-icons/bs";
 import { supabase } from "../../../../lib/supabaseClient";
-import { NextRouter, useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import EditingSet from "./EditingSet";
 import { FC } from "react";
@@ -14,7 +13,6 @@ import { gettingSetEmotes } from "../../../../funcs/updatingEmotes";
 import getMod from "../../../../funcs/useIsSetMod";
 
 const DashboardLeftSignedIn: FC<Typies> = (props): React.ReactElement => {
-  const router: NextRouter = useRouter();
   const user = useUser();
   //const [isMod, setIsMod] = useState<boolean>(false);
   const [q, setQ] = useState<string>("");
@@ -69,8 +67,7 @@ const DashboardLeftSignedIn: FC<Typies> = (props): React.ReactElement => {
       .eq("name", editingSet);
   };
   return (
-    <div className="border-l-[1px] border-white border-opacity-5 h-full w-full max-w-2xl flex flex-col">
-      {router.pathname === '/dashboard' ? <>
+    <div className={`border-l-[1px] border-white border-opacity-5 h-full w-full max-w-2xl  flex-col`}>
       <div className="pl-12 w-full space-x-6 flex items-center z-10">
           {availEdits ? <div className="text-ma-pink font-bold text-lg ">
             Available sets
@@ -131,7 +128,7 @@ const DashboardLeftSignedIn: FC<Typies> = (props): React.ReactElement => {
           </div>
         </div>
         <div className="w-full flex flex-col p-6 overflow-auto">
-          <div className="h-full w-full grid grid-cols-5 gap-3">
+          <div className="h-full w-full flex flex-wrap gap-1">
             {pageSet &&
               pageSet
                 .filter((val) => {
@@ -191,10 +188,7 @@ const DashboardLeftSignedIn: FC<Typies> = (props): React.ReactElement => {
                 ))}
           </div>
         </div>
-      </div> :''}
-      </> : ''}
-      
-        
+      </div> :''}        
       </div>
     
   );

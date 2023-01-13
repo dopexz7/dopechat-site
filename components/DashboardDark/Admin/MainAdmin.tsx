@@ -3,7 +3,6 @@ import AdminRoute from "../../../contexts/adminRoute";
 import DashboardLayout from "../Main/DashboardLayout";
 import * as Bi from "react-icons/bi";
 import * as Md from "react-icons/md";
-import DashboardLeftSignedIn from '../Main/Leftside/DashboardLeftSignedIn'
 import { gettingAdminEmotes } from "funcs/updatingEmotes";
 import {
   deletingFromDb,
@@ -42,16 +41,6 @@ const MainAdmin: FC = () => {
   return (
     <DashboardLayout layout="admin">
       <AdminRoute>
-        <DashboardLeftSignedIn
-          profile={true}
-          onSuccess={function () {
-            throw new Error("Function not implemented.");
-          }}
-          onRouteChange={function () {
-            throw new Error("Function not implemented.");
-          }}
-          route={false}
-        />
 
         <div className="shadow-sm backdrop-blur-sm border-[1px] rounded-3xl p-1 border-white border-opacity-5 h-full w-full lg:w-[55%] flex flex-col">
           <div className="px-6 py-2 flex flex-row items-center">

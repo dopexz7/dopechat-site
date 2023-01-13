@@ -6,7 +6,7 @@ import { LoggedInNav } from "./loggedinuser";
 import { supabase } from "../../../lib/supabaseClient";
 import ContactMain from '../../Contact/ContactMain'
 import { useState } from 'react';
-export const MainNav = ({ dashboard = false }) => {
+export const MainNav = () => {
   const [mobileNav, setMobileNav] = useState(false);
     const user = useUser();
     async function signInWithTwitch() {
@@ -33,7 +33,7 @@ export const MainNav = ({ dashboard = false }) => {
               ))}
           </div>
         </>:""}
-    <div id="mainNav" className={`${dashboard ? '' : 'fixed'} border-b-[1px] border-white border-opacity-5 top-0 left-0 bg-black z-50 w-full lg:w-screen flex items-center px-4 lg:px-[60px] py-6 lg:py-[30px]`}>
+    <div id="mainNav" className={`bg-black fixed border-b-[1px] border-white border-opacity-5 top-0 left-0  z-50 w-full lg:w-screen flex items-center px-4 lg:px-[60px] py-6 lg:py-[30px]`}>
         <Link href='/' id="logo" className='lg:pl-0 group cursor-pointer text-ma-pink duration-300 hover:before:opacity-0 hover:text-white flex items-center justify-center relative before:absolute before:bg-ma-pink before:w-full before:h-1/2 before:top-2.5 before:opacity-20 before:blur-md'>
             <LogoIcon/>
             <span className='hidden lg:block text-2xl font-bold '>dopeChat</span>

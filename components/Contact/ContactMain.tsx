@@ -47,7 +47,7 @@ const ContactMain:FC<ContactMainTypes> = ({ btnClass, iconClass, text }) => {
         classNames={{
           root: "",
           modal:
-            "backdrop-blur-sm text-center rounded-2xl bg-black border-2 border-white border-opacity-5 bg-opacity-50  ",
+            "text-center rounded-2xl bg-black border-2 border-white border-opacity-5 bg-opacity-90",
         }}
         size="sm"
         centered

@@ -3,11 +3,11 @@ import { changelogData } from './changelogData';
 
 const Changelog = () => {
   return (
-    <div id="changelog" className='hidden lg:flex border-t-[2px] border-white border-opacity-5 w-screen items-center h-screen flex flex-col lg:flex-row lg:px-[60px] py-[60px] mt-24'>
+    <div id="changelog" className='hidden lg:flex border-t-[2px] border-white border-opacity-5 w-screen items-center h-screen flex-col lg:flex-row lg:px-[60px] py-[60px] mt-24'>
         <div className='mx-10 h-full w-full max-w-5xl ml-16 my-auto'>
           <div className="flex flex-col lg:flex-row lg:items-center h-full ">
           <h1 className="flex items-center text-6xl font-medium ">
-                <svg className='text-ma-pink text-4xl mr-3' stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M48 48a48 48 0 1 0 48 48 48 48 0 0 0-48-48zm0 160a48 48 0 1 0 48 48 48 48 0 0 0-48-48zm0 160a48 48 0 1 0 48 48 48 48 0 0 0-48-48zm448 16H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-320H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16V80a16 16 0 0 0-16-16zm0 160H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16z"></path></svg> 
+                <svg className='text-ma-pink text-4xl mr-3' stroke="currentColor" fill="currentColor" strokeWidth="0" viewBox="0 0 512 512" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M48 48a48 48 0 1 0 48 48 48 48 0 0 0-48-48zm0 160a48 48 0 1 0 48 48 48 48 0 0 0-48-48zm0 160a48 48 0 1 0 48 48 48 48 0 0 0-48-48zm448 16H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16zm0-320H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16V80a16 16 0 0 0-16-16zm0 160H176a16 16 0 0 0-16 16v32a16 16 0 0 0 16 16h320a16 16 0 0 0 16-16v-32a16 16 0 0 0-16-16z"></path></svg> 
                 Latest extension updates
               </h1>
           </div>

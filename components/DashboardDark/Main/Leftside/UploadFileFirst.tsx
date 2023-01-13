@@ -32,12 +32,12 @@ const UploadFileFirst:FC = () => {
       setUploading(true);
       try {
         const file = selectedFile;
-
         await supabase.storage.from("uploads").upload(selfilename, file);
-
         const { data: fileUrl } = supabase.storage
           .from("uploads")
           .getPublicUrl(selfilename);
+
+
 
         const newFile = {
           uploaded_by: user?.user_metadata.name,

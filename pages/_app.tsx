@@ -6,6 +6,7 @@ import { SessionContextProvider, Session } from '@supabase/auth-helpers-react'
 
 import NProgress from "nprogress";
 import type { AppProps } from "next/app";
+import { MainNav } from "components/mainpage/nav/navigation";
 export default function MyApp({
   Component,
   pageProps,
@@ -39,7 +40,8 @@ export default function MyApp({
       supabaseClient={supabaseClient}
       initialSession={pageProps.initialSession}
     >
-      <Component {...pageProps} />
+      <MainNav />
+      <Component {...pageProps}/>
     </SessionContextProvider>
     </>
   );

@@ -5,7 +5,6 @@ import * as Ai from "react-icons/ai";
 import * as Ri from "react-icons/ri";
 import { Tabs, Modal } from "@mantine/core";
 import UploadFileFirst from "./UploadFileFirst";
-import { motion } from "framer-motion";
 
 const LeftSideModal = ({coolClass} : {coolClass?: any}) => {
   const [visible, setVisible] = useState<boolean>(false);
@@ -18,7 +17,6 @@ const LeftSideModal = ({coolClass} : {coolClass?: any}) => {
       <div
         onClick={toggle}
         className={coolClass ? coolClass : "hover:bg-white backdrop-blur-md z-20 border-white border-opacity-50 shadow-2xl text-white duration-300 border-2 font-normal hover:text-main-purple cursor-pointer flex justify-center items-center p-3 rounded-3xl w-full"}
-        //className="hover:bg-white backdrop-blur-md z-20 border-white border-opacity-50 shadow-2xl text-white duration-300 border-2 font-normal hover:text-main-purple cursor-pointer flex justify-center items-center p-3 rounded-3xl w-full"
       >
         Upload emotes
       </div>
@@ -26,9 +24,8 @@ const LeftSideModal = ({coolClass} : {coolClass?: any}) => {
         opened={visible}
         onClose={() => setVisible(false)}
         classNames={{
-          root: "",
           modal:
-            "backdrop-blur-sm text-center rounded-2xl bg-black border-2 border-white border-opacity-5 bg-opacity-50  ",
+            "text-center rounded-2xl bg-black border-2 border-white border-opacity-5 bg-opacity-90",
         }}
         size="sm"
         centered
@@ -47,13 +44,8 @@ const LeftSideModal = ({coolClass} : {coolClass?: any}) => {
           </div>
         </div>
         <div className="h-80 flex w-full mt-3">
-          
-            <>
-              <motion.div
+              <div
                 className="w-full"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
               >
                 <Tabs
                   value={activeTab}
@@ -90,30 +82,17 @@ const LeftSideModal = ({coolClass} : {coolClass?: any}) => {
                     </Tabs.Tab>
                   </Tabs.List>
                   <Tabs.Panel value="uploadfiles" pt="xs">
-                    <motion.div
-                      initial={{ opacity: 0.5, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0.5 }}
-                    >
                       <UploadFileFirst />
-                    </motion.div>
                   </Tabs.Panel>
                   <Tabs.Panel value="dragndrop" pt="xs">
-                    <motion.div
-                      initial={{ opacity: 0.5, x: 20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      exit={{ opacity: 0.5 }}
-                    >
                       <FileDrop />
-                    </motion.div>
                   </Tabs.Panel>
                 </Tabs>
-              </motion.div>
-            </>
+              </div>
         </div>
         <div className="flex-col flex w-full mt-6">
           <div
-            className="w-full flex flex-row space-x-0 absolute bottom-0 p-3 left-0 right-0"
+            className="px-5 w-full flex flex-row space-x-0 absolute bottom-0 p-3 left-0 right-0"
             key={0}
           >
             <div

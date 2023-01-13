@@ -7,7 +7,6 @@ import { Tooltip } from "@mantine/core";
 import * as Bs from "react-icons/bs";
 import { gettingSetEmotes } from "funcs/updatingEmotes";
 import getMod from "../../../funcs/useIsSetMod";
-import SetsSignedIn from './SetsSignedIn';
 import { useUser } from "@supabase/auth-helpers-react";
 import Head from "next/head";
 
@@ -72,10 +71,9 @@ const SetsMain:FC = () => {
       }</title>
       <meta name="description" content="Facebook Gaming extension dopeChat" />
       </Head>
-      <SetsSignedIn />
-      <div className="overflow-auto shadow-sm backdrop-blur-sm border-[1px] rounded-3xl lg:p-1 border-white border-opacity-5 h-full w-3/4 flex flex-col">
+      <div className="overflow-auto lg:p-1 h-full w-full flex flex-col">
         <div className="px-6 py-2 flex flex-row items-center">
-          <div className="flex flex-row items-center  text-white">
+          <div className="flex flex-row items-center  text-ma-pink font-bold">
             <p className="text-sm lg:text-xl">
               {loading
                 ? "Loading..."
@@ -115,7 +113,7 @@ const SetsMain:FC = () => {
           </div>
         </div>
         <div className="w-full flex flex-col p-6 overflow-auto">
-          <div className="h-full w-full grid grid-cols-4 lg:grid-cols-10 gap-3">
+          <div className="h-full w-full flex flex-wrap gap-3">
             {pageSet &&
               pageSet
                 .filter((val) => {

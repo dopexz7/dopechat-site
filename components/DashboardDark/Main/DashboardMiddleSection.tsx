@@ -45,11 +45,11 @@ const DashboardMiddleSection:FC<MiddleTypes> = ({ editingSet }) => {
   };
 
   return (
-    <div className="border-[0px] rounded-3xl lg:p-1 border-white border-opacity-5 h-full w-4/5 flex flex-col">
-      <div className="px-6 py-3 flex flex-row items-center">
+    <div className="lg:p-1 h-full w-full flex flex-col">
+      <div className="px-6 pb-3 flex flex-row items-center ">
         <div className="flex flex-row items-center text-ma-pink">
-          <p className="text-xl font-bold">All emotes</p>
-          <p className="text-xs mt-1 opacity-50" ref={divRef}>
+          <p className="text-xl tracking-tighter font-bold uppercase">All emotes</p>
+          <p className="text-xs font-bold ml-1 opacity-25" ref={divRef}>
             {allCount}
           </p>
         </div>
@@ -126,7 +126,7 @@ const DashboardMiddleSection:FC<MiddleTypes> = ({ editingSet }) => {
               className="overflow-y-scroll overflow-x-hidden w-full"
             >
               <InfiniteScroll
-                  className="grid xgrd gap-3 p-6"
+                  className="flex flex-wrap gap-3 p-6" //grid xgrd
                   dataLength={posts.length}
                   next={getMorePost}
                   hasMore={true}

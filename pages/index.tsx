@@ -1,5 +1,4 @@
 import Head from 'next/head'
-import { MainNav } from '../components/mainpage/nav/navigation'
 import MainHeader from '../components/mainpage/header/header'
 import { LookAtFeatures } from '../components/mainpage/lookat/lookat'
 import Changelog from '../components/mainpage/changelog/changelog'
@@ -13,7 +12,6 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <MainNav/>
       <MainHeader/>
       <LookAtFeatures/>
       <Changelog/>

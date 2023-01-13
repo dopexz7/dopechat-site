@@ -1,9 +1,7 @@
 import { FC, useState } from "react";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import * as Bi from "react-icons/bi";
-import { NumberInput } from "@mantine/core";
-import { Modal } from "@mantine/core";
-import { motion } from "framer-motion";
+import { NumberInput, Modal } from "@mantine/core";
 import * as Fa from "react-icons/fa";
 import ButtonWrapper from "./ButtonWrapper";
 
@@ -35,9 +33,8 @@ const DonationComponent:FC<donationComponentTypes> = ({ btnClass, iconEnabled })
         opened={visible}
         onClose={() => setVisible(false)}
         classNames={{
-          root: "",
           modal:
-            "backdrop-blur-sm text-center rounded-2xl bg-black border-2 border-white border-opacity-5 bg-opacity-50  ",
+            "text-center rounded-2xl bg-black border-2 border-white border-opacity-5 bg-opacity-90",
         }}
         size="sm"
         centered
@@ -60,11 +57,7 @@ const DonationComponent:FC<donationComponentTypes> = ({ btnClass, iconEnabled })
                   Donate with
                   <Fa.FaPaypal className="ml-1" />
                 </div>
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                >
+                
                   <div className="flex mb-3 font-semibold overflow-hidden text-sm rounded-2xl flex-row items-center bg-white text-black">
                     {amounts.map((data, index) => (
                       <div
@@ -108,8 +101,7 @@ const DonationComponent:FC<donationComponentTypes> = ({ btnClass, iconEnabled })
                     }}
                   >
                     <ButtonWrapper currency={currency} amount={amount} />
-                  </PayPalScriptProvider>
-                </motion.div>           
+                  </PayPalScriptProvider>         
           </div>
           <div className="w-full flex flex-row space-x-3">
             <div
