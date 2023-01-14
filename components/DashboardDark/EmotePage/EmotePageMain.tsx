@@ -6,6 +6,7 @@ import { supabase } from "lib/supabaseClient";
 import Link from "next/link";
 import * as Md from "react-icons/md";
 import EmoteComponent from "../Main/Emote/EmoteComponent";
+import stringSimilarity from "string-similarity";
 const EmotePageMain = () => {
     const router = useRouter();
     const { id } = router.query as any;
@@ -15,7 +16,9 @@ const EmotePageMain = () => {
     useEffect(()=>{
         const gettingEmote = async() => await supabase.from('allemotes').select("*");
         gettingEmote().then((res)=> setData(res.data?.filter((v)=>v.code.toLowerCase()===id?.toLowerCase())[0]));
-        gettingEmote().then((res)=> setRec((res.data?.filter((v)=>v.code.toLowerCase().includes(id?.toLowerCase().slice(0,3)) && v.code.toLowerCase() !== id?.toLowerCase()))?.slice(0,12)))
+        gettingEmote().then((res)=> setRec((res.data?.filter((v)=> (stringSimilarity.compareTwoStrings(v.code.toLowerCase(), id?.toLowerCase()) > 0.4) && v.code.toLowerCase() !== id?.toLowerCase()))?.slice(0,12)));
+        //v.code.toLowerCase().includes(id?.toLowerCase().slice(0,3))
+        console.log(stringSimilarity.compareTwoStrings('Apple', 'Apple'))
     },[id]);
     const deleteFromDb: Function = async (v:any) => 
         await supabase.from("allemotes").delete().eq("src", v.src);
@@ -68,6 +71,7 @@ const EmotePageMain = () => {
                     <div className="mt-10 justify-center space-x-3 flex w-full">
                     {rec && rec.map((v:any, index:number) => (
                             <Link href={`/dashboard/emotes/${v.code}`} key={index}>
+                                {/* {stringSimilarity.compareTwoStrings(v.code.toLowerCase(), id?.toLowerCase())} */}
                                 <EmoteComponent
                                 data={v}
                                 />
