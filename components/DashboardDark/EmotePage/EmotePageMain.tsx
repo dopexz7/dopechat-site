@@ -14,11 +14,9 @@ const EmotePageMain = () => {
     const [data, setData] = useState() as any;
     const [rec, setRec] = useState() as any;
     const similiarStrings = (firstStr:string, secStr:string) => {
-        try {
-            return stringSimilarity?.compareTwoStrings(firstStr, secStr);
-        }
-        catch{}
-        return 0
+        try { return stringSimilarity?.compareTwoStrings(firstStr, secStr); }
+        catch { return 0; }
+        
     }
     useEffect(()=>{
         const gettingEmote = async() => await supabase.from('allemotes').select("*");
@@ -74,6 +72,7 @@ const EmotePageMain = () => {
                                 />
                             </Link>
                     ))}
+                    {!rec  || !rec.length ? 'No simliar emotes.' : ''}
                     </div>
                 </div>
             </div>
