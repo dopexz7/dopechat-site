@@ -6,7 +6,6 @@ import React, { FC, useEffect, useRef, useState } from "react";
 import EmoteComponent from "./Emote/EmoteComponent";
 import { gettingFirstEmotes, gettingMoreEmotes } from "../../../funcs/updatingEmotes";
 import { useUser } from "@supabase/auth-helpers-react";
-import Link from "next/link";
 
 const DashboardMiddleSection:FC<MiddleTypes> = ({ editingSet }) => {
   /* eslint-disable no-unused-vars */
