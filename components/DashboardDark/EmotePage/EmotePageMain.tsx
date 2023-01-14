@@ -13,12 +13,17 @@ const EmotePageMain = () => {
     const user = useUser();
     const [data, setData] = useState() as any;
     const [rec, setRec] = useState() as any;
+    const similiarStrings = (firstStr:string, secStr:string) => {
+        try {
+            return stringSimilarity?.compareTwoStrings(firstStr, secStr);
+        }
+        catch{}
+        return 0
+    }
     useEffect(()=>{
         const gettingEmote = async() => await supabase.from('allemotes').select("*");
-        gettingEmote().then((res)=> setData(res.data?.filter((v)=>v.code.toLowerCase()===id?.toLowerCase())[0]));
-        gettingEmote().then((res)=> setRec((res.data?.filter((v)=> (stringSimilarity.compareTwoStrings(v.code.toLowerCase(), id?.toLowerCase()) > 0.4) && v.code.toLowerCase() !== id?.toLowerCase()))?.slice(0,12)));
-        //v.code.toLowerCase().includes(id?.toLowerCase().slice(0,3))
-        console.log(stringSimilarity.compareTwoStrings('Apple', 'Apple'))
+        gettingEmote().then((res)=> setData(res.data?.filter((v)=>  v.code.toLowerCase()===id?.toLowerCase())[0]));
+        gettingEmote().then((res)=> setRec((res.data?.filter((v)=>  (similiarStrings(v?.code?.toLowerCase(), id?.toLowerCase()) > 0.55) && v.code.toLowerCase() !== id?.toLowerCase()))?.slice(0,12)));
     },[id]);
     const deleteFromDb: Function = async (v:any) => 
         await supabase.from("allemotes").delete().eq("src", v.src);
@@ -31,13 +36,6 @@ const EmotePageMain = () => {
             <div className="relative h-full w-full flex flex-col justify-center items-center">
                 {data ? 
                 <>
-                    <img
-                    height={400}
-                    width={400}
-                    className={`absolute -z-10 opacity-5 blur-2xl`}
-                    src={data?.src}
-                    alt={data?.code}
-                    />
                     <div className="overflow-hidden rounded-2xl">
                         <img
                         height={120}
@@ -71,7 +69,6 @@ const EmotePageMain = () => {
                     <div className="mt-10 justify-center space-x-3 flex w-full">
                     {rec && rec.map((v:any, index:number) => (
                             <Link href={`/dashboard/emotes/${v.code}`} key={index}>
-                                {/* {stringSimilarity.compareTwoStrings(v.code.toLowerCase(), id?.toLowerCase())} */}
                                 <EmoteComponent
                                 data={v}
                                 />
