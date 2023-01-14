@@ -7,6 +7,7 @@ import Link from "next/link";
 import * as Md from "react-icons/md";
 import EmoteComponent from "../Main/Emote/EmoteComponent";
 import stringSimilarity from "string-similarity";
+import Image from "next/image";
 const EmotePageMain = () => {
     const router = useRouter();
     const { id } = router.query as any;
@@ -35,10 +36,9 @@ const EmotePageMain = () => {
                 {data ? 
                 <>
                     <div className="overflow-hidden rounded-2xl">
-                        <img
+                        <Image
                         height={120}
                         width={120}
-                        className={``}
                         src={data?.src}
                         alt={data?.code}
                         />

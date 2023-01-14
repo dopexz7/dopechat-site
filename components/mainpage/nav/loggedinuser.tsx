@@ -2,6 +2,7 @@ import { Menu } from '@mantine/core'
 import { useSupabaseClient, useUser } from '@supabase/auth-helpers-react'
 import Link from 'next/link'
 import LeftSideModal from '../../DashboardDark/Main/Leftside/LeftSideModal'
+import Image from 'next/image'
 
 export const LoggedInNav = () => {
   const supabaseClient = useSupabaseClient();
@@ -22,7 +23,7 @@ export const LoggedInNav = () => {
             </Menu.Target>
             <Menu.Dropdown>
             <div className="p-1 px-3 rounded-2xl text-black normal-case flex items-center cursor-normal">
-                <img src={user?.user_metadata.avatar_url} alt={user?.user_metadata.name} width={36} height={36} 
+                <Image src={user?.user_metadata.avatar_url} alt={user?.user_metadata.name} width={36} height={36} 
                 className="border-[1px] mr-3 border-ma-pink rounded-2xl"
                 /> 
                 {user?.user_metadata.name}

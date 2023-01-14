@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { lookFeatures } from './lookData'
+import Image from 'next/image';
 export const LookAtFeatures = () => {
   const [active, setActive] = useState('customChat');
 
@@ -23,7 +24,7 @@ export const LookAtFeatures = () => {
         <div className='lg:opacity-50  mt-10 h-3/4 justify-center items-center flex w-full pl-6'>
           <div className=' w-full h-60 lg:h-auto relative flex items-center justify-center'>
           <div className="h-full overflow-hidden w-full bggradient z-50 absolute top-0 left-0"/>
-          <img alt="Custom chat appearance & customization" className='z-10 w-full lg:round3xl h-full duration-300' src={lookFeatures.filter((v) => v.metaTitle === active)[0].image}/>
+          <Image width={1919} height={1001} alt="Custom chat appearance & customization" className='z-10 w-full lg:round3xl h-full duration-300' src={lookFeatures.filter((v) => v.metaTitle === active)[0].image}/>
           </div>
         </div>
         </div>

@@ -6,6 +6,7 @@ import { Modal } from "@mantine/core";
 import { FC } from "react";
 import { useUser } from "@supabase/auth-helpers-react";
 import Link from "next/link";
+import Image from "next/image";
 
 const EmoteComponent: FC<EmoteComponentTypes> = ({ data, editingSet, isMod, kekRef, setEmote, setMod }) => {
   const [deleted, setDeleted] = useState<boolean>(false);
@@ -123,7 +124,7 @@ const EmoteComponent: FC<EmoteComponentTypes> = ({ data, editingSet, isMod, kekR
             </div>
           ) : (
             <div className="group absolute w-full h-full duration-300 flex items-center justify-center">
-              <img
+              <Image
                 height={64}
                 width={64}
                 className={`group-hover:scale-150 group-hover:opacity-25 duration-300`}
