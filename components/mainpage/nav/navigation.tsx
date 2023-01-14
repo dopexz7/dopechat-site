@@ -35,7 +35,7 @@ export const MainNav = () => {
     }
     return (
         <>
-        {mobileNav ? <>
+        {mobileNav ?
           <div className="fixed top-0 left-0 z-[9999] bg-ma-pink text-black w-screen h-screen flex flex-col space-y-3 justify-center items-center">
             <div onClick={()=>setMobileNav(false)} className="absolute top-3 right-6 font-bold text-xl">x</div>
             {navLinks.map((v, index)=> (
@@ -45,7 +45,8 @@ export const MainNav = () => {
               </Link>
               ))}
           </div>
-        </>:""}
+        : ""
+        }
     <div className={`bg-black fixed ${scrollPosition >= 250 ? 'border-white':'border-transparent'} border-b-[1px] duration-300 border-opacity-5 top-0 left-0  z-50 w-full lg:w-screen flex items-center px-4 lg:px-[60px] py-6 lg:py-[30px]`}>
         <Link href='/' className='lg:pl-0 group cursor-pointer text-ma-pink duration-300 hover:before:opacity-0 hover:text-white flex items-center justify-center relative before:absolute before:bg-ma-pink before:w-full before:h-1/2 before:top-2.5 before:opacity-20 before:blur-md'>
             <LogoIcon/>

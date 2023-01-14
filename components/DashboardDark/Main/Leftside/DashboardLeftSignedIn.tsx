@@ -6,7 +6,6 @@ import { useEffect, useState } from "react";
 import EditingSet from "./EditingSet";
 import { FC } from "react";
 import React from "react";
-// import { getIsMod } from "../../../../funcs/useIsMod";
 import { getAvailEdits } from "../../../../funcs/useHasEdits";
 import { useUser } from "@supabase/auth-helpers-react";
 import { gettingSetEmotes } from "../../../../funcs/updatingEmotes";
@@ -14,7 +13,6 @@ import getMod from "../../../../funcs/useIsSetMod";
 
 const DashboardLeftSignedIn: FC<Typies> = (props): React.ReactElement => {
   const user = useUser();
-  //const [isMod, setIsMod] = useState<boolean>(false);
   const [q, setQ] = useState<string>("");
   const [pageSet, setPageSet] = useState<any[]>([]);
   const [mod, setMod] = useState<boolean>(false);
@@ -29,9 +27,6 @@ const DashboardLeftSignedIn: FC<Typies> = (props): React.ReactElement => {
   };
 
   useEffect(() => {
-    // getIsMod(user?.user_metadata.name).then((res: any) => {
-    //   setIsMod(res);
-    // });
     getAvailEdits(user?.user_metadata.name).then((res: any[]) => {
       setAvailEdits(res);
     });
@@ -50,7 +45,6 @@ const DashboardLeftSignedIn: FC<Typies> = (props): React.ReactElement => {
     getMod(editingSet, user?.user_metadata.name).then((r: any) => {
       setMod(r);
     });
-    console.log(availEdits)
   },[editingSet, user]);
   
   const deleteFromSet:Function = async (d: any) => {
@@ -78,7 +72,6 @@ const DashboardLeftSignedIn: FC<Typies> = (props): React.ReactElement => {
               Object.keys(availEdits)
                 .sort((a, b) => a.localeCompare(b))
                 .map((data: any, index: number) => (
-                  <>
                   <EditingSet
                     key={index}
                     data={data}
@@ -87,7 +80,7 @@ const DashboardLeftSignedIn: FC<Typies> = (props): React.ReactElement => {
                     editingSet={editingSet}
                     profile={props.profile}
                   />
-                  </>
+
                 ))}
           </div>
         </div>
@@ -188,7 +181,8 @@ const DashboardLeftSignedIn: FC<Typies> = (props): React.ReactElement => {
                 ))}
           </div>
         </div>
-      </div> :''}        
+      </div> 
+      :''}        
       </div>
     
   );

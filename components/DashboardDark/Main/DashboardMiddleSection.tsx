@@ -16,17 +16,27 @@ const DashboardMiddleSection:FC<MiddleTypes> = ({ editingSet }) => {
   const [posts, setPosts] = useState<any[]>([]);
   const [sorting, setSorting] = useState<boolean>(false);
   const divRef: any = useRef();
-  // const { isMod } = useAuth() as any;
-  const user = useUser()
-
+  
+  const user = useUser();
+  const [isMod, setIsMod] = useState(false);
   useEffect(() => {
     gettingFirstEmotes().then((data: any) => {
-      setBlogs(data);
-      setAllCount(data.length);
-      setPosts(data.slice(0, 36))
+      let sortedData = data.sort((a: any, b: any) =>new Date(b.date != null ? b.date : "2022-01-26").getTime() - new Date(a.date != null ? a.date : "2022-01-26").getTime())
+      setBlogs(sortedData);
+      setAllCount(sortedData.length);
+      setPosts(sortedData.slice(0, 36))
     });
-    
-  }, [user])
+    setIsMod(user?.user_metadata.name === 'dope_xz7')
+  }, [user]);
+
+  useEffect(()=>{
+    //console.log(new Date("2023-01-21").getDate()) //day
+    //console.log(new Date("2023-12-21").getMonth()) //month
+    //console.log(new Date("2023-01-21").getUTCFullYear()) //year
+    //new Date(b.date).getTime() - new Date(a.date).getTime()
+    //new Date(b.date).getDate()
+    //console.log(posts.sort((a: any, b: any) =>new Date(b.date != null ? b.date : "2022-01-26").getTime() - new Date(a.date != null ? a.date : "2022-01-26").getTime()))
+  },[sorting])
   
   const getMorePost = async () => {
     const kekl = posts.length + 12;
@@ -106,19 +116,19 @@ const DashboardMiddleSection:FC<MiddleTypes> = ({ editingSet }) => {
                     key={index}
                     data={data}
                     editingSet={editingSet}
-                    isMod={false}
+                    isMod={isMod}
                     kekRef={divRef}
                   />
                 ))
                 .sort((a:any, b:any) =>
                   sorting
-                    ? a.code > b.code
-                      ? 1
-                      : b.code > a.code
-                      ? -1
-                      : 0
-                    : new Date(b.date).getTime() - new Date(a.date).getTime()
-                )}
+                  ? a.code > b.code
+                  ? 1
+                  : b.code > a.code
+                  ? -1
+                  : 0
+                : new Date(b.date != null ? b.date : "2022-01-26").getTime() - new Date(a.date != null ? a.date : "2022-01-26").getTime()
+              )}
             </div>
           ) : (
             <div
@@ -136,20 +146,20 @@ const DashboardMiddleSection:FC<MiddleTypes> = ({ editingSet }) => {
                   posts
                     .sort((a: any, b: any) =>
                       sorting
-                        ? a.code > b.code
-                          ? 1
-                          : b.code > a.code
-                          ? -1
-                          : 0
-                        : new Date(b.date).getTime() - new Date(a.date).getTime()
+                      ? a.code > b.code
+                        ? 1
+                        : b.code > a.code
+                        ? -1
+                        : 0
+                      : new Date(b.date != null ? b.date : "2022-01-26").getTime() - new Date(a.date != null ? a.date : "2022-01-26").getTime()
                     )
                     .map((data, index) => (
                       <EmoteComponent
                         key={index}
                         data={data}
                         editingSet={editingSet}
-                        isMod={false}
-                        kekRef={divRef}                    />
+                        isMod={isMod}
+                        kekRef={divRef}/>
                     ))}
               </InfiniteScroll>
             </div>

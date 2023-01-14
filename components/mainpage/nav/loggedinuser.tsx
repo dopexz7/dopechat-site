@@ -1,20 +1,11 @@
 import { Menu } from '@mantine/core'
 import { useSupabaseClient, useUser } from '@supabase/auth-helpers-react'
 import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
 import LeftSideModal from '../../DashboardDark/Main/Leftside/LeftSideModal'
-import DonationComponent from '../../Donation/DonationComponent'
-import { getIsMod } from '../../../funcs/useIsMod'
 
 export const LoggedInNav = () => {
   const supabaseClient = useSupabaseClient();
   const user = useUser();
-  const [isMod, setIsMod] = useState<boolean>(false);
-  useEffect(() => {
-    getIsMod(user?.user_metadata.name).then((res: any) => {
-      setIsMod(res);
-    });
-  },[user])
   return (
     <Menu
         position="right-start"
@@ -43,17 +34,6 @@ export const LoggedInNav = () => {
             Your Profile
             </Link>
             <LeftSideModal coolClass={"p-3 m-1 hover:bg-black hover:text-white duration-300 cursor-pointer rounded-2xl text-black flex items-center cursor-normal"} />
-            <DonationComponent
-              iconEnabled={false}
-              btnClass={`p-3 m-1 hover:bg-black hover:text-white duration-300 cursor-pointer rounded-2xl text-black flex items-center cursor-normal`}
-            />
-            {isMod ? (
-              <Link href="/dashboard/admin" className="p-3 m-1 hover:bg-black hover:text-white duration-300 cursor-pointer rounded-2xl text-black flex items-center cursor-normal">
-              Mod panel
-              </Link>
-            ) : (
-              ""
-            )}
             <div onClick={()=>supabaseClient.auth.signOut()} className="p-3 m-1 hover:bg-black hover:text-white duration-300 cursor-pointer rounded-2xl text-black flex items-center cursor-normal">
             Log out
             </div>

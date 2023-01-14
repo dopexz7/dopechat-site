@@ -4,7 +4,6 @@ import React from "react";
 const DashboardLayout:FC<LayoutTypes> = (props) => {
   return (
     <>
-
       <div
       className={`overflow-hidden w-screen h-screen flex ${
         props.layout === "sets"
