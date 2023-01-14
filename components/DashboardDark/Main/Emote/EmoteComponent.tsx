@@ -18,8 +18,8 @@ const EmoteComponent: FC<EmoteComponentTypes> = ({ data, editingSet, isMod, kekR
     setLoading(true);
     setTimeout(() => {
       setDeleted(true);
-      kekRef.current.textContent = (
-        (parseInt(kekRef.current.textContent as string) as number) - 1
+      kekRef!.current.textContent = (
+        (parseInt(kekRef!.current.textContent as string) as number) - 1
       ).toString();
     }, 800);
   };
@@ -159,10 +159,10 @@ const EmoteComponent: FC<EmoteComponentTypes> = ({ data, editingSet, isMod, kekR
 export default EmoteComponent;
 
 interface EmoteComponentTypes {
-  data: any;
-  editingSet: string;
-  isMod: boolean;
-  kekRef: React.MutableRefObject<HTMLDivElement>;
+  data?: any;
+  editingSet?: string;
+  isMod?: boolean;
+  kekRef?: React.MutableRefObject<HTMLDivElement>;
 }
 
 type emoteType = {

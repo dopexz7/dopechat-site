@@ -22,5 +22,5 @@ export default DashboardLayout;
 
 interface LayoutTypes {
   children: React.ReactNode;
-  layout: string;
+  layout?: string;
 }

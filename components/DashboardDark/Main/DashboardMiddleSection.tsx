@@ -6,6 +6,7 @@ import React, { FC, useEffect, useRef, useState } from "react";
 import EmoteComponent from "./Emote/EmoteComponent";
 import { gettingFirstEmotes, gettingMoreEmotes } from "../../../funcs/updatingEmotes";
 import { useUser } from "@supabase/auth-helpers-react";
+import Link from "next/link";
 
 const DashboardMiddleSection:FC<MiddleTypes> = ({ editingSet }) => {
   /* eslint-disable no-unused-vars */
@@ -24,19 +25,10 @@ const DashboardMiddleSection:FC<MiddleTypes> = ({ editingSet }) => {
       let sortedData = data.sort((a: any, b: any) =>new Date(b.date != null ? b.date : "2022-01-26").getTime() - new Date(a.date != null ? a.date : "2022-01-26").getTime())
       setBlogs(sortedData);
       setAllCount(sortedData.length);
-      setPosts(sortedData.slice(0, 36))
+      setPosts(sortedData.slice(0, 42))
     });
     setIsMod(user?.user_metadata.name === 'dope_xz7')
   }, [user]);
-
-  useEffect(()=>{
-    //console.log(new Date("2023-01-21").getDate()) //day
-    //console.log(new Date("2023-12-21").getMonth()) //month
-    //console.log(new Date("2023-01-21").getUTCFullYear()) //year
-    //new Date(b.date).getTime() - new Date(a.date).getTime()
-    //new Date(b.date).getDate()
-    //console.log(posts.sort((a: any, b: any) =>new Date(b.date != null ? b.date : "2022-01-26").getTime() - new Date(a.date != null ? a.date : "2022-01-26").getTime()))
-  },[sorting])
   
   const getMorePost = async () => {
     const kekl = posts.length + 12;
@@ -112,13 +104,15 @@ const DashboardMiddleSection:FC<MiddleTypes> = ({ editingSet }) => {
                   }
                 })
                 .map((data, index) => (
+                  <Link href={`/dashboard/emotes/${data.code}`} key={index}>
                   <EmoteComponent
-                    key={index}
                     data={data}
                     editingSet={editingSet}
                     isMod={isMod}
                     kekRef={divRef}
                   />
+                  </Link>
+                  
                 ))
                 .sort((a:any, b:any) =>
                   sorting
@@ -154,13 +148,15 @@ const DashboardMiddleSection:FC<MiddleTypes> = ({ editingSet }) => {
                       : new Date(b.date != null ? b.date : "2022-01-26").getTime() - new Date(a.date != null ? a.date : "2022-01-26").getTime()
                     )
                     .map((data, index) => (
+                      <Link href={`/dashboard/emotes/${data.code}`} key={index}>
                       <EmoteComponent
-                        key={index}
                         data={data}
                         editingSet={editingSet}
                         isMod={isMod}
                         kekRef={divRef}/>
+                        </Link>
                     ))}
+
               </InfiniteScroll>
             </div>
           )}
