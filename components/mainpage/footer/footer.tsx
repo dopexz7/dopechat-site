@@ -15,14 +15,14 @@ const MainFooter = () => {
   return (
     <>
     <div id="footer" className='border-t-[2px] border-white border-opacity-5 w-screen flex flex-col lg:flex-row lg:px-[60px] py-[60px] mt-24'>
-        <div className='lg:pl-11 mx-0 w-full h-full my-auto'>
+        <div className='lg:pl-11 flex flex-col w-full h-full'>
           <span className='hidden lg:block text-2xl tracking-tighter text-ma-pink font-bold uppercase'>ABOUT</span>
           <div className="h-full mt-2 w-3/4 hidden lg:block">
               <span className='text-ma-pink'>dopeChat  </span>      
             aims to provide the best possible Facebook Gaming livestream viewing experience. It features tons of new features, customizations (and customizations to those customizations...), quality of life improvements with some other tweaks. It is not opinionated, provides settings for every possible new feature, from how a live stream&apos;s chat looks, to how it behaves.
             
           </div>
-          <div className="ml-6 lg:ml-0 w-full lg:w-1/2 grid grid-cols-2 lg:flex flex-col space-y-2 mt-3">
+          <div className="ml-6 lg:ml-0 w-full lg:w-1/2 grid grid-cols-2 lg:flex flex-col space-y-2 mt-auto">
               <div className="text-ma-pink text-2xl tracking-tighter font-bold">FEATURES</div>
               {featuresList.map((v, index)=> (
                 <div key={index} className="text-sm lg:text-base lg:font-bold uppercase opacity-50">{v}</div>
