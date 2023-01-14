@@ -3,6 +3,7 @@ import { browserName } from "react-device-detect";
 
 import { Menu } from "@mantine/core";
 import { headerData, menuData } from "./headerdata";
+import Image from "next/image";
 
 const MainHeader = () => {
   const [browsName, setBrowsName] = useState<string>("your browser");
@@ -101,10 +102,10 @@ const MainHeader = () => {
             </Menu.Dropdown>
           </Menu>
           </div>
-          <div className="hidden lg:flex flex-row items-center m-auto w-1/7 -z-10 opacity-5 scale-90 blur-sm">
-          <div className="lll3 rounded-3xl z-20 absolute translate-x-[-170%] scale-x-[0.86] skew-y-[8deg]"></div>
-          <div className="lll2 rounded-3xl z-10 absolute translate-x-[-130%] translate-y-[100px] skew-y-[8deg]"></div>
-          <div className="lll  rounded-3xl z-0  absolute translate-x-[-60%]  scale-x-[0.86] skew-y-[8deg]"></div>
+          <div className="absolute left-[100%] top-[40%] hidden lg:flex flex-row items-center w-full opacity-5 scale-90 -z-10 blur-sm">
+            <Image alt="kekw" className="rounded-3xl z-20 absolute translate-x-[-170%] scale-x-[0.86] skew-y-[8deg]" src="https://i.imgur.com/GW9KkYP.jpg" height={550} width={320}/>
+            <Image alt="kekw" className="rounded-3xl z-10 absolute translate-x-[-130%] translate-y-[100px] skew-y-[8deg]" src="https://i.imgur.com/3ACzjqb.jpg" height={570} width={320}/>
+            <Image alt="kekw" className="rounded-3xl z-0 absolute translate-x-[-60%]  scale-x-[0.86] skew-y-[8deg]" src="https://i.imgur.com/RGkdxSm.jpg" height={600} width={500} />
           </div>
         </div>
       
