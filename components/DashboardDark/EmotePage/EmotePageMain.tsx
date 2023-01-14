@@ -21,7 +21,7 @@ const EmotePageMain = () => {
     useEffect(()=>{
         const gettingEmote = async() => await supabase.from('allemotes').select("*");
         gettingEmote().then((res)=> setData(res.data?.filter((v)=>  v.code.toLowerCase()===id?.toLowerCase())[0]));
-        gettingEmote().then((res)=> setRec((res.data?.filter((v)=>  (similiarStrings(v?.code?.toLowerCase(), id?.toLowerCase()) > 0.55) && v.code.toLowerCase() !== id?.toLowerCase()))?.slice(0,12)));
+        gettingEmote().then((res)=> setRec((res.data?.filter((v)=>  (similiarStrings(v?.code?.toLowerCase(), id?.toLowerCase()) >= 0.5) && v.code.toLowerCase() !== id?.toLowerCase()))?.slice(0,12)));
     },[id]);
     const deleteFromDb: Function = async (v:any) => 
         await supabase.from("allemotes").delete().eq("src", v.src);
