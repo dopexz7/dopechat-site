@@ -10,6 +10,7 @@ import { getAvailEdits } from "../../../../funcs/useHasEdits";
 import { useUser } from "@supabase/auth-helpers-react";
 import { gettingSetEmotes } from "../../../../funcs/updatingEmotes";
 import getMod from "../../../../funcs/useIsSetMod";
+import EmoteComponent from "../Emote/EmoteComponent";
 
 const DashboardLeftSignedIn: FC<Typies> = (props): React.ReactElement => {
   const user = useUser();
@@ -53,12 +54,13 @@ const DashboardLeftSignedIn: FC<Typies> = (props): React.ReactElement => {
     newArray.forEach((v) => {
       if (v.code !== d.code) finalArray.push(v);
     });
-    setPageSet(finalArray);
-    setAllCount((prevVal) => prevVal - 1);
     await supabase
       .from("useremotes")
       .update({ emotes: finalArray })
       .eq("name", editingSet);
+    setPageSet(finalArray);
+    setAllCount((prevVal) => prevVal - 1);
+    
   };
   return (
     <div className={`border-l-[1px] border-white border-opacity-5 h-full w-full max-w-2xl  flex-col`}>
@@ -141,43 +143,7 @@ const DashboardLeftSignedIn: FC<Typies> = (props): React.ReactElement => {
                     : new Date(b.date).getTime() - new Date(a.date).getTime()
                 )
                 .map((data, index) => (
-                  <div
-                    key={index}
-                    className={`h-24 w-24 group duration-300 rounded-3xl select-none`}
-                  >
-                    <div className="h-24 w-full overflow-hidden text-white flex justify-center relative rounded-2xl bg-white bg-opacity-[0.01] border-[1px] border-white border-opacity-5">
-                      <div className="group absolute w-full h-full duration-300 flex items-center justify-center">
-                        <img
-                          height={64}
-                          width={64}
-                          className={`group-hover:scale-125 group-hover:opacity-25 duration-300`}
-                          src={data.src}
-                          alt={data.code}
-                        />
-                      </div>
-
-                      <div className="w-full  relative duration-300 flex flex-col opacity-0 scale-0 group-hover:scale-100 group-hover:opacity-100">
-                        <div className="overflow-hidden mt-auto ml-auto mr-auto text-xs lg:text-sm font-normal">
-                          {data.code}
-                        </div>
-                        <div className="overflow-hidden mt-auto ml-auto mr-auto hidden lg:block text-xs font-normal">
-                          {data.date ? data.date : ""}
-                        </div>
-                        {mod ? (
-                          <div className="flex flex-row justify-center items-center mt-auto">
-                            <div
-                              onClick={() => deleteFromSet(data)}
-                              className="remove w-full flex items-center justify-center hover:rounded-2xl p-1 text-center text-white text-sm  cursor-pointer duration-300 h-full"
-                            >
-                              <Md.MdRemoveCircleOutline />
-                            </div>
-                          </div>
-                        ) : (
-                          ""
-                        )}
-                      </div>
-                    </div>
-                  </div>
+                  <EmoteComponent key={index} setEmote={deleteFromSet} setMod={mod} data={data}/>
                 ))}
           </div>
         </div>

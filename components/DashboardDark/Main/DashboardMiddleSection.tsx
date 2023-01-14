@@ -104,14 +104,13 @@ const DashboardMiddleSection:FC<MiddleTypes> = ({ editingSet }) => {
                   }
                 })
                 .map((data, index) => (
-                  <Link href={`/dashboard/emotes/${data.code}`} key={index}>
                   <EmoteComponent
+                    key={index}
                     data={data}
                     editingSet={editingSet}
                     isMod={isMod}
                     kekRef={divRef}
                   />
-                  </Link>
                   
                 ))
                 .sort((a:any, b:any) =>
@@ -148,13 +147,13 @@ const DashboardMiddleSection:FC<MiddleTypes> = ({ editingSet }) => {
                       : new Date(b.date != null ? b.date : "2022-01-26").getTime() - new Date(a.date != null ? a.date : "2022-01-26").getTime()
                     )
                     .map((data, index) => (
-                      <Link href={`/dashboard/emotes/${data.code}`} key={index}>
                       <EmoteComponent
+                        key={index}
                         data={data}
                         editingSet={editingSet}
                         isMod={isMod}
                         kekRef={divRef}/>
-                        </Link>
+
                     ))}
 
               </InfiniteScroll>

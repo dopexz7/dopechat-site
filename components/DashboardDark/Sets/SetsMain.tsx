@@ -10,6 +10,7 @@ import getMod from "../../../funcs/useIsSetMod";
 import { useUser } from "@supabase/auth-helpers-react";
 import Head from "next/head";
 import AuthRoute from "contexts/authRoute";
+import EmoteComponent from "../Main/Emote/EmoteComponent";
 
 const SetsMain:FC = () => {
   const [q, setQ] = useState<string>("");
@@ -135,43 +136,7 @@ const SetsMain:FC = () => {
                     : new Date(b.date).getTime() - new Date(a.date).getTime()
                 )
                 .map((data, index) => (
-                  <div
-                    key={index}
-                    className={`h-16 w-16 lg:h-32 lg:w-32 group duration-300 shadow-2xl rounded-3xl select-none`}
-                  >
-                    <div className="h-16 w-full lg:h-32 lg:w-full overflow-hidden text-white flex justify-center relative rounded-3xl border-[1px] border-white border-opacity-5">
-                      <div className="group absolute w-full h-full duration-300 flex items-center justify-center">
-                        <img
-                          height={64}
-                          width={64}
-                          className={`group-hover:scale-125 group-hover:opacity-25 duration-300`}
-                          src={data.src}
-                          alt={data.code}
-                        />
-                      </div>
-
-                      <div className="w-full  relative duration-300 flex flex-col opacity-0 scale-0 group-hover:scale-100 group-hover:opacity-100">
-                        <div className="overflow-hidden mt-auto ml-auto mr-auto text-xs lg:text-sm font-normal">
-                          {data.code}
-                        </div>
-                        <div className="overflow-hidden mt-auto ml-auto mr-auto hidden lg:block text-xs font-normal">
-                          Date: {data.date ? data.date : "unavailable"}
-                        </div>
-                        {mod ? (
-                          <div className="flex flex-row justify-center items-center mt-auto">
-                            <div
-                              onClick={() => deleteFromSet(data)}
-                              className="remove w-full flex items-center justify-center hover:rounded-2xl p-1 text-center text-white text-sm  cursor-pointer duration-300 h-full"
-                            >
-                              <Md.MdRemoveCircleOutline />
-                            </div>
-                          </div>
-                        ) : (
-                          ""
-                        )}
-                      </div>
-                    </div>
-                  </div>
+                  <EmoteComponent data={data} key={index} setMod={mod} setEmote={deleteFromSet}/>
                 ))}
           </div>
         </div>

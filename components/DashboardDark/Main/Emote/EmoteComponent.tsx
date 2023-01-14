@@ -5,8 +5,9 @@ import * as Im from "react-icons/im";
 import { Modal } from "@mantine/core";
 import { FC } from "react";
 import { useUser } from "@supabase/auth-helpers-react";
+import Link from "next/link";
 
-const EmoteComponent: FC<EmoteComponentTypes> = ({ data, editingSet, isMod, kekRef }) => {
+const EmoteComponent: FC<EmoteComponentTypes> = ({ data, editingSet, isMod, kekRef, setEmote, setMod }) => {
   const [deleted, setDeleted] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [visible, setVisible] = useState<boolean>(false);
@@ -107,6 +108,7 @@ const EmoteComponent: FC<EmoteComponentTypes> = ({ data, editingSet, isMod, kekR
         </div>
         {emoteAdded} added to {editingSet} set!
       </Modal>
+      <Link href={`/dashboard/emotes/${data.code}`}>
       <div
         className={`h-16 bg-white bg-opacity-[0.01] w-16 lg:h-32 lg:w-32 group duration-300 rounded-3xl select-none`}
       >
@@ -145,6 +147,16 @@ const EmoteComponent: FC<EmoteComponentTypes> = ({ data, editingSet, isMod, kekR
                   <div className="hidden lg:block text-xs">
                     by {data.uploaded_by ? data.uploaded_by : "dope_xz7"}
                   </div>
+                  {setEmote && setMod ? (
+                            <div
+                              onClick={() => setEmote(data)}
+                              className="remove mt-auto w-full flex items-center justify-center hover:rounded-2xl p-1 text-center text-white text-sm  cursor-pointer duration-300"
+                            >
+                              <Md.MdRemoveCircleOutline />
+                            </div>
+                        ) : (
+                          ""
+                        )}
                 </div>
                 <EmoteTools />
               </>
@@ -152,6 +164,7 @@ const EmoteComponent: FC<EmoteComponentTypes> = ({ data, editingSet, isMod, kekR
           </div>
         </div>
       </div>
+      </Link>
     </>
   );
 };
@@ -163,6 +176,8 @@ interface EmoteComponentTypes {
   editingSet?: string;
   isMod?: boolean;
   kekRef?: React.MutableRefObject<HTMLDivElement>;
+  setEmote?: any;
+  setMod?: any;
 }
 
 type emoteType = {

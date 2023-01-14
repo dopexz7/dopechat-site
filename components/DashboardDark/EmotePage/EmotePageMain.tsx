@@ -63,16 +63,15 @@ const EmotePageMain = () => {
                 `Emote doesn't exist.`
                 }
                 <div className="mt-20 p-6 h-1/3 flex flex-col w-full">
-                    <h1 className="text-2xl font-bold text-ma-pink text-center uppercase">Simliar emotes</h1>
+                    <h1 className="text-2xl font-bold text-ma-pink text-center uppercase">Similar emotes</h1>
                     <div className="mt-10 justify-center space-x-3 flex w-full">
                     {rec && rec.map((v:any, index:number) => (
-                            <Link href={`/dashboard/emotes/${v.code}`} key={index}>
-                                <EmoteComponent
-                                data={v}
-                                />
-                            </Link>
+                        <EmoteComponent
+                        key={index}
+                        data={v}
+                        />
                     ))}
-                    {!rec  || !rec.length ? 'No simliar emotes.' : ''}
+                    {!rec  || !rec.length ? 'No similar emotes.' : ''}
                     </div>
                 </div>
             </div>
