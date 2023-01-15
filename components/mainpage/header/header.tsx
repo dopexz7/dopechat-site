@@ -32,7 +32,7 @@ const MainHeader = () => {
 
     return (
     <>
-    <div className={`w-screen flex flex-col lg:flex-row lg:px-[60px] lg:py-[60px] lg:mt-24`}
+    <div className={`max-lg:!translate-y-0 max-lg:!scale-1 w-screen flex flex-col lg:flex-row lg:px-[60px] lg:py-[60px] -mt-20 lg:mt-24`}
     style={{ transform: `translateY(-${scrollPosition > 150 ? scrollPosition - 150 : 0}px) scale(${scrollPosition ? 1-(scrollPosition/2500) : 1})` }} 
     >
       <div className='lg:pl-11 h-screen lg:mx-10 w-screen lg:h-full lg:my-auto'>
@@ -43,7 +43,7 @@ const MainHeader = () => {
           </div>
           <div className="hidden lg:flex mt-auto pb-10 lg:pb-0 pl-3 lg:pl-0 justify-center items-center flex-col lg:mr-6">
           
-            <h1 className="text-6xl font-medium">
+            <h1 className="text-6xl font-bold tracking-tighter">
               The ultimate FB Gaming livestream experience
             </h1>
             <p className="text-lg mt-1 tracking-wider font-light">
@@ -110,11 +110,11 @@ const MainHeader = () => {
         </div>
       
       </div>
-      <div className='mt-24 lg:mt-0 lg:border-l-[1px] pb-24 lg:pb-3 border-opacity-5 border-white  lg:pl-11 w-screen max-w-2xl flex flex-col ml-auto font-bold'>
+      <div className='mt-24 lg:mt-0 lg:border-l-[1px] pb-10 lg:pb-3 border-opacity-5 border-white  lg:pl-11 w-screen lg:max-w-2xl flex flex-col lg:ml-auto font-bold'>
         <h1 className='text-2xl lg:text-lg font-bold tracking-tighter text-ma-pink uppercase pb-7 pl-6 lg:pl-0'>Key features</h1>
         <div className='flex flex-col space-y-3 lg:space-y-10'>
           {headerData.map((v, index)=> (
-            <div key={index} className='flex flex-col lg:block items-center p-6 lg:p-0 lg:bg-inherit bg-ma-pink text-black lg:text-white group text-sm font-bold max-w-lg space-y-1 cursor-pointer'>
+            <div key={index} className='flex flex-col lg:block items-center p-6 lg:p-0 lg:bg-inherit bg-ma-pink text-black lg:text-white group text-sm font-bold lg:max-w-lg space-y-1 cursor-pointer'>
               {v.icon}
               <div className='lg:group-hover:text-ma-pink text-center lg:text-left duration-300 text-xl lg:text-lg font-bold lg:font-medium tracking-wider'>{v.body}</div>
               <div className='uppercase opacity-50'>{v.title}</div>

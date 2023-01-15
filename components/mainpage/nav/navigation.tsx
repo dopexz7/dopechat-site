@@ -47,8 +47,8 @@ export const MainNav = () => {
           </div>
         : ""
         }
-    <div className={` fixed ${scrollPosition >= 100 ? 'bg-black border-white':'border-transparent'} border-b-[1px] duration-300 border-opacity-5 top-0 left-0  z-50 w-full lg:w-screen flex items-center px-4 lg:px-[60px] py-6 lg:py-[30px]`}>
-        <Link href='/' className='lg:pl-0 group cursor-pointer text-ma-pink duration-300 hover:before:opacity-0 hover:text-white flex items-center justify-center relative before:absolute before:bg-ma-pink before:w-full before:h-1/2 before:top-2.5 before:opacity-20 before:blur-md'>
+    <div className={`fixed ${scrollPosition >= 100 ? 'max-lg:border-t-2 max-lg:border-black max-lg:bg-ma-pink lg:bg-black border-white max-lg:bottom-0 lg:top-0':'bg-ma-pink lg:bg-transparent border-transparent max-lg:bottom-0 lg:top-0'} border-b-[1px] duration-300 border-opacity-5 left-0 z-50 w-full lg:w-screen flex items-center px-4 lg:px-[60px] py-6 lg:py-[30px]`}>
+        <Link href='/' className='lg:pl-0 group cursor-pointer text-black lg:text-ma-pink duration-300 hover:before:opacity-0 hover:text-white flex items-center justify-center relative before:absolute before:bg-ma-pink before:w-full before:h-1/2 before:top-2.5 before:opacity-20 before:blur-md'>
             <LogoIcon/>
             <span className='hidden lg:block text-2xl font-bold '>dopeChat</span>
         </Link>
@@ -66,7 +66,7 @@ export const MainNav = () => {
             Login
             </div>}
         </div>
-        <div onClick={()=>  setMobileNav(true)} className="lg:hidden ml-auto text-ma-pink text-2xl">
+        <div onClick={()=>  setMobileNav(true)} className="lg:hidden ml-auto text-black lg:text-ma-pink text-2xl">
           <MobileNavIcon/>
         </div>
     </div>

@@ -22,7 +22,7 @@ const MainFooter = () => {
             aims to provide the best possible Facebook Gaming livestream viewing experience. It features tons of new features, customizations (and customizations to those customizations...), quality of life improvements with some other tweaks. It is not opinionated, provides settings for every possible new feature, from how a live stream&apos;s chat looks, to how it behaves.
             
           </div>
-          <div className="ml-6 lg:ml-0 w-full lg:w-1/2 grid grid-cols-2 lg:flex flex-col space-y-2 mt-auto">
+          <div className="ml-6 lg:ml-0 w-full lg:w-1/2 grid grid-cols-2 lg:flex flex-col space-y-2 lg:mt-6">
               <div className="text-ma-pink text-2xl tracking-tighter font-bold">FEATURES</div>
               {featuresList.map((v, index)=> (
                 <div key={index} className="text-sm lg:text-base lg:font-bold uppercase opacity-50">{v}</div>
