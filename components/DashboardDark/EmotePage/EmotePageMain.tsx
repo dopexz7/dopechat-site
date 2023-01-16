@@ -21,7 +21,7 @@ const EmotePageMain = () => {
     useEffect(()=>{
         const gettingEmote = async() => await supabase.from('allemotes').select("*");
         gettingEmote().then((res)=> setData(res.data?.filter((v)=>  v.code.toLowerCase()===id?.toLowerCase())[0]));
-        gettingEmote().then((res)=> setRec((res.data?.filter((v)=>  (similiarStrings(v?.code?.toLowerCase(), id?.toLowerCase()) >= 0.5) && v.code.toLowerCase() !== id?.toLowerCase()))?.slice(0,12)));
+        gettingEmote().then((res)=> setRec((res.data?.filter((v)=>  (similiarStrings(v?.code?.slice((v?.code?.length/2) - 1, v?.code?.length).toLowerCase(), id?.slice((id?.length/2) - 1, id?.length).toLowerCase()) >= 0.5) && v.code.toLowerCase() !== id?.toLowerCase()))?.slice(0,24)));
     },[id]);
     const deleteFromDb: Function = async (v:any) => 
         await supabase.from("allemotes").delete().eq("src", v.src);
@@ -61,16 +61,17 @@ const EmotePageMain = () => {
                 </> : 
                 `Emote doesn't exist.`
                 }
-                <div className="mt-20 p-6 h-1/3 flex flex-col w-full">
+                <div className="mt-20 p-6 h-1/2 flex flex-col w-full">
                     <h1 className="text-2xl font-bold text-ma-pink text-center uppercase">Similar emotes</h1>
-                    <div className="mt-10 justify-center space-x-3 flex w-full">
-                        {rec && rec.sort((a:any, b:any) => similiarStrings(b?.code?.toLowerCase(), id?.toLowerCase()) - similiarStrings(a?.code?.toLowerCase(), id?.toLowerCase()))
+                    <div className="mt-10 justify-center gap-3 flex flex-wrap w-full">
+                        {rec && rec.sort((a:any, b:any) => similiarStrings(b?.code?.toLowerCase().slice((b?.code?.length/2) - 1, b?.code?.length), id?.toLowerCase().slice((id?.length/2) - 1, id?.length)) - similiarStrings(a?.code?.toLowerCase().slice((a?.code?.length/2) - 1, a?.code?.length), id?.toLowerCase().slice((id?.length/2) - 1, id?.length)))
                             .map((v:any, index:number) => (
-                            <EmoteComponent
-                            key={index}
-                            data={v}
-                            />
-                        ))}
+                                <EmoteComponent
+                                key={index}
+                                data={v}
+                                />
+                            ))
+                        }
                         {!rec  || !rec.length ? 'No similar emotes.' : ''}
                     </div>
                 </div>
