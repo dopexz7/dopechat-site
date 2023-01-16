@@ -17,7 +17,6 @@ const EmotePageMain = () => {
     const similiarStrings = (firstStr:string, secStr:string) => {
         try { return stringSimilarity?.compareTwoStrings(firstStr, secStr); }
         catch { return 0; }
-        
     }
     useEffect(()=>{
         const gettingEmote = async() => await supabase.from('allemotes').select("*");
@@ -65,13 +64,14 @@ const EmotePageMain = () => {
                 <div className="mt-20 p-6 h-1/3 flex flex-col w-full">
                     <h1 className="text-2xl font-bold text-ma-pink text-center uppercase">Similar emotes</h1>
                     <div className="mt-10 justify-center space-x-3 flex w-full">
-                    {rec && rec.map((v:any, index:number) => (
-                        <EmoteComponent
-                        key={index}
-                        data={v}
-                        />
-                    ))}
-                    {!rec  || !rec.length ? 'No similar emotes.' : ''}
+                        {rec && rec.sort((a:any, b:any) => similiarStrings(b?.code?.toLowerCase(), id?.toLowerCase()) - similiarStrings(a?.code?.toLowerCase(), id?.toLowerCase()))
+                            .map((v:any, index:number) => (
+                            <EmoteComponent
+                            key={index}
+                            data={v}
+                            />
+                        ))}
+                        {!rec  || !rec.length ? 'No similar emotes.' : ''}
                     </div>
                 </div>
             </div>
