@@ -109,7 +109,7 @@ const EmoteComponent: FC<EmoteComponentTypes> = ({ data, editingSet, isMod, kekR
         </div>
         {emoteAdded} added to {editingSet} set!
       </Modal>
-      <Link href={`/dashboard/emotes/${data.code}`}>
+      
       <div
         className={`h-16 bg-white bg-opacity-[0.01] w-16 lg:h-32 lg:w-32 group duration-300 rounded-3xl select-none`}
       >
@@ -124,13 +124,15 @@ const EmoteComponent: FC<EmoteComponentTypes> = ({ data, editingSet, isMod, kekR
             </div>
           ) : (
             <div className="group absolute w-full h-full duration-300 flex items-center justify-center">
-              <Image
-                height={64}
-                width={64}
-                className={`group-hover:scale-150 group-hover:opacity-25 duration-300`}
-                src={data.src}
-                alt={data.code}
-              />
+              <Link href={`/dashboard/emotes/${data.code}`}>
+                <Image
+                  height={64}
+                  width={64}
+                  className={`group-hover:scale-150 group-hover:opacity-25 duration-300`}
+                  src={data.src}
+                  alt={data.code}
+                />
+              </Link>
             </div>
           )}
 
@@ -165,7 +167,7 @@ const EmoteComponent: FC<EmoteComponentTypes> = ({ data, editingSet, isMod, kekR
           </div>
         </div>
       </div>
-      </Link>
+      
     </>
   );
 };
