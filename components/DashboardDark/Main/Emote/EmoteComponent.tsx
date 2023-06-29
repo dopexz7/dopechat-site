@@ -124,7 +124,7 @@ const EmoteComponent: FC<EmoteComponentTypes> = ({ data, editingSet, isMod, kekR
             </div>
           ) : (
             <div className="group absolute w-full h-full duration-300 flex items-center justify-center">
-              <Link href={`/dashboard/emotes/${data.code}`}>
+              <Link href={`/dashboard/emotes/${data.code}`} className="z-[9999]">
                 <Image
                   height={64}
                   width={64}
